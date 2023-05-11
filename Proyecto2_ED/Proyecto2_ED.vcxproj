@@ -156,7 +156,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\animales.jpg" />
+    <Image Include="animales.jpg" />
     <Image Include="app.ico" />
   </ItemGroup>
   <ItemGroup>

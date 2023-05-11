@@ -60,7 +60,7 @@
     <Image Include="app.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\animales.jpg">
+    <Image Include="animales.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
