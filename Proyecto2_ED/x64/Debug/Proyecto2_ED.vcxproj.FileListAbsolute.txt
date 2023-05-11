@@ -1,0 +1,6 @@
+C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.AssemblyReference.cache
+C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.Configuracion.resources
+C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.Form1.resources
+C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.GenerateResource.cache
+C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.AreaJuego.resources
