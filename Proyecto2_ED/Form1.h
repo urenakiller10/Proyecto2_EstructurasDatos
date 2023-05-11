@@ -127,7 +127,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			//this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L".\\animales.jpg")));
 			//this->pictureBox1->Image = Image::FromFile("C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\Proyecto2_EstructurasDatos\\Proyecto2_ED\\animales.jpg");
-			this->pictureBox1->Image = Image::FromFile("animales.jpg");
+			this->pictureBox1->Image = Image::FromFile("recursos//animales.jpg");
 			this->pictureBox1->Location = System::Drawing::Point(102, 12);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(592, 442);
