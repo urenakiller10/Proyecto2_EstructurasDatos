@@ -213,7 +213,7 @@ namespace Proyecto2_ED {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(299, 300);
+			this->pictureBox1->Location = System::Drawing::Point(1073, 300);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(230, 265);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -249,7 +249,7 @@ namespace Proyecto2_ED {
 			// 
 			// pictureBox5
 			// 
-			this->pictureBox5->Location = System::Drawing::Point(1061, 300);
+			this->pictureBox5->Location = System::Drawing::Point(277, 300);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(251, 265);
 			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
