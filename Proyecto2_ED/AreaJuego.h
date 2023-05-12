@@ -35,6 +35,8 @@ namespace Proyecto2_ED {
 			}
 		}
 
+	protected:
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -54,13 +56,15 @@ namespace Proyecto2_ED {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::PaleGreen;
-			this->ClientSize = System::Drawing::Size(1099, 603);
+			this->BackColor = System::Drawing::SystemColors::GradientInactiveCaption;
+			this->ClientSize = System::Drawing::Size(1339, 848);
 			this->Name = L"AreaJuego";
 			this->Text = L"AreaJuego";
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+	private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	}
 	};
 }

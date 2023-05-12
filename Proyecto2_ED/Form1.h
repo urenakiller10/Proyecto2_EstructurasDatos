@@ -1,8 +1,10 @@
 
 #include "Configuracion.h"
 #include "AreaJuego.h"
-
-
+using namespace System::Windows::Forms;
+#include "Mercado.h"
+#include "ImputForm.h"
+#include <regex>
 #pragma once
 
 namespace CppCLRWinFormsProject {
@@ -47,7 +49,10 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Button^ button3;
+
+
 
 	private:
 		/// <summary>
@@ -57,7 +62,7 @@ namespace CppCLRWinFormsProject {
 		
 		void initCustom() {
 			this->pictureBox1->Image = Image::FromFile("recursos//animales.jpg");
-			this->pictureBox2->Image = Image::FromFile("recursos//DILUC.jpg");
+			//this->pictureBox2->Image = Image::FromFile("recursos//DILUC.jpg");
 		}
 
 #pragma region Windows Form Designer generated code
@@ -71,21 +76,20 @@ namespace CppCLRWinFormsProject {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Título
 			// 
 			this->Título->AutoSize = true;
-			this->Título->BackColor = System::Drawing::Color::ForestGreen;
+			this->Título->BackColor = System::Drawing::Color::Blue;
 			this->Título->Font = (gcnew System::Drawing::Font(L"Kristen ITC", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Título->Location = System::Drawing::Point(278, 95);
-			this->Título->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->Título->Location = System::Drawing::Point(76, 64);
 			this->Título->Name = L"Título";
-			this->Título->Size = System::Drawing::Size(271, 66);
+			this->Título->Size = System::Drawing::Size(341, 83);
 			this->Título->TabIndex = 0;
 			this->Título->Text = L"TEC Farm";
 			this->Título->Click += gcnew System::EventHandler(this, &Form1::Título_Click);
@@ -93,12 +97,12 @@ namespace CppCLRWinFormsProject {
 			// button1
 			// 
 			this->button1->BackColor = System::Drawing::Color::Red;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(146, 331);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(490, 406);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(188, 107);
+			this->button1->Size = System::Drawing::Size(307, 132);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Jugar";
 			this->button1->UseVisualStyleBackColor = false;
@@ -107,12 +111,12 @@ namespace CppCLRWinFormsProject {
 			// button2
 			// 
 			this->button2->BackColor = System::Drawing::SystemColors::ButtonShadow;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(472, 331);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
+			this->button2->Location = System::Drawing::Point(833, 409);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(222, 102);
+			this->button2->Size = System::Drawing::Size(300, 129);
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Configuraciones";
 			this->button2->UseVisualStyleBackColor = false;
@@ -120,37 +124,55 @@ namespace CppCLRWinFormsProject {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(59, -4);
+			this->pictureBox1->Location = System::Drawing::Point(-3, -58);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(592, 442);
+			this->pictureBox1->Size = System::Drawing::Size(1224, 780);
 			this->pictureBox1->TabIndex = 3;
 			this->pictureBox1->TabStop = false;
 			// 
-			// pictureBox2
+			// button4
 			// 
-			this->pictureBox2->Location = System::Drawing::Point(472, 80);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(615, 720);
-			this->pictureBox2->TabIndex = 4;
-			this->pictureBox2->TabStop = false;
-			this->pictureBox2->Click += gcnew System::EventHandler(this, &Form1::pictureBox2_Click);
+			this->button4->BackColor = System::Drawing::Color::Gold;
+			this->button4->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button4->Location = System::Drawing::Point(490, 568);
+			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(307, 132);
+			this->button4->TabIndex = 5;
+			this->button4->Text = L"Mostrar TOP 10";
+			this->button4->UseVisualStyleBackColor = false;
+			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::CornflowerBlue;
+			this->button3->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(833, 568);
+			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(290, 132);
+			this->button3->TabIndex = 6;
+			this->button3->Text = L"Cargar partida";
+			this->button3->UseVisualStyleBackColor = false;
 			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::PaleGreen;
-			this->ClientSize = System::Drawing::Size(819, 552);
-			this->Controls->Add(this->pictureBox2);
+			this->ClientSize = System::Drawing::Size(1216, 723);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Título);
 			this->Controls->Add(this->pictureBox1);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"Form1";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -167,15 +189,37 @@ namespace CppCLRWinFormsProject {
 
 
 	}
+
 		   //boton de "JUGAR"
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		Proyecto2_ED::AreaJuego^ ventJuego = gcnew Proyecto2_ED::AreaJuego();
-		ventJuego->Show();
+		// Crear una ventana de diálogo para ingresar el nombre
+		Proyecto2_ED::InputForm^ inputForm = gcnew Proyecto2_ED::InputForm();
 
-	}
-	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+		// Mostrar la ventana de diálogo y obtener el nombre ingresado
+		if (inputForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			System::String^ nombre = inputForm->GetNombre();
+
+			// Verificar si el nombre es un string válido
+			if (System::String::IsNullOrEmpty(nombre)) {
+				MessageBox::Show("Nombre inválido. Inténtelo de nuevo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
+			ventMercado->Show();
+
+
+		}
+		else {
+			// El usuario canceló la entrada del nombre
+			return;
+		}
+	
+};
+	
+private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void Título_Click(System::Object^ sender, System::EventArgs^ e) {
 }

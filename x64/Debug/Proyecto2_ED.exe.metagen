@@ -1,10 +1,13 @@
   Proyecto2_ED.AreaJuego.resources - Embedded, ContainedInManifestFile, 
   Proyecto2_ED.Configuracion.resources - Embedded, ContainedInManifestFile, 
   Proyecto2_ED.Form1.resources - Embedded, ContainedInManifestFile, 
+  Proyecto2_ED.Mercado.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly Proyecto2_ED, Version=1.0.*, Culture=Todos los idiomas (todos los países): 
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly Microsoft.VisualBasic, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
 	hash=None, flags=None
 Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
@@ -22,6 +25,16 @@ Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
 Class Proyecto2_ED.Configuracion: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class Proyecto2_ED.Mercado: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ObtenerButton1(): PrivateScope, Public, HideBySig
+Class Proyecto2_ED.InputForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetNombre(): PrivateScope, Public, HideBySig
 Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -1010,10 +1010,10 @@ private: System::Windows::Forms::Button^ button1;
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::LawnGreen;
+			this->button1->BackColor = System::Drawing::Color::LimeGreen;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(649, 582);
+			this->button1->Location = System::Drawing::Point(686, 596);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(399, 56);
 			this->button1->TabIndex = 88;

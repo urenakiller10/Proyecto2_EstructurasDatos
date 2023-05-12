@@ -35,6 +35,12 @@
     <ClInclude Include="AreaJuego.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ImputForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mercado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
@@ -53,6 +59,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AreaJuego.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mercado.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
