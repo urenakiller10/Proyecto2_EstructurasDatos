@@ -25,6 +25,7 @@ namespace CppCLRWinFormsProject {
 		Form1(void)
 		{
 			InitializeComponent();
+			initCustom();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -46,25 +47,18 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container^ components;
+		
+		void initCustom() {
+			this->pictureBox1->Image = Image::FromFile("recursos//animales.jpg");
+			this->pictureBox2->Image = Image::FromFile("recursos//DILUC.jpg");
+		}
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -73,12 +67,13 @@ namespace CppCLRWinFormsProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
 			this->Título = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Título
@@ -101,7 +96,7 @@ namespace CppCLRWinFormsProject {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->Location = System::Drawing::Point(146, 331);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(188, 107);
 			this->button1->TabIndex = 1;
@@ -115,7 +110,7 @@ namespace CppCLRWinFormsProject {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->Location = System::Drawing::Point(472, 331);
-			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(222, 102);
 			this->button2->TabIndex = 2;
@@ -125,14 +120,20 @@ namespace CppCLRWinFormsProject {
 			// 
 			// pictureBox1
 			// 
-			//this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L".\\animales.jpg")));
-			//this->pictureBox1->Image = Image::FromFile("C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\Proyecto2_EstructurasDatos\\Proyecto2_ED\\animales.jpg");
-			this->pictureBox1->Image = Image::FromFile("recursos//animales.jpg");
-			this->pictureBox1->Location = System::Drawing::Point(102, 12);
+			this->pictureBox1->Location = System::Drawing::Point(59, -4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(592, 442);
 			this->pictureBox1->TabIndex = 3;
 			this->pictureBox1->TabStop = false;
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Location = System::Drawing::Point(472, 80);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(615, 720);
+			this->pictureBox2->TabIndex = 4;
+			this->pictureBox2->TabStop = false;
+			this->pictureBox2->Click += gcnew System::EventHandler(this, &Form1::pictureBox2_Click);
 			// 
 			// Form1
 			// 
@@ -140,19 +141,22 @@ namespace CppCLRWinFormsProject {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::PaleGreen;
 			this->ClientSize = System::Drawing::Size(819, 552);
+			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Título);
 			this->Controls->Add(this->pictureBox1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"Form1";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+
 
 		//boton de "Configuraciones"
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -176,6 +180,8 @@ namespace CppCLRWinFormsProject {
 private: System::Void Título_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 
