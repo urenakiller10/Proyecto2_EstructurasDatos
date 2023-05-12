@@ -1,3 +1,3 @@
 ﻿  CppCLR_WinFormsProject.cpp
-  AreaJuego.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
-  Proyecto2_ED.vcxproj -> C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\x64\Debug\Proyecto2_ED.exe
+C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\Form1.h(59,10): error C2039: "pictureBox1": no es un miembro de "CppCLRWinFormsProject::Form1"
+C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\Form1.h(22,19): message : vea la declaración de 'CppCLRWinFormsProject::Form1'
