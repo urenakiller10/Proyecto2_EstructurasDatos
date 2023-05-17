@@ -143,6 +143,7 @@ namespace CppCLRWinFormsProject {
 			this->button4->TabIndex = 5;
 			this->button4->Text = L"Mostrar TOP 10";
 			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
 			// 
 			// button3
 			// 
@@ -226,6 +227,12 @@ private: System::Void Título_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	Proyecto2_ED::AreaJuego^ vent = gcnew Proyecto2_ED::AreaJuego();
+	vent->Show();
+
+
 }
 };
 

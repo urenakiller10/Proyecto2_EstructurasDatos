@@ -1,5 +1,7 @@
 #pragma once
+
 #include "AreaJuego.h"
+
 namespace Proyecto2_ED {
 
 	using namespace System;
@@ -12,6 +14,7 @@ namespace Proyecto2_ED {
 	/// <summary>
 	/// Resumen de Mercado
 	/// </summary>
+	/// 
 	public ref class Mercado : public System::Windows::Forms::Form
 	{
 	public:
@@ -65,10 +68,9 @@ namespace Proyecto2_ED {
 	protected:
 
 	private:
-		/// <summary>
-		/// Variable del diseñador necesaria.
-		/// </summary>
-		System::ComponentModel::Container ^components;
+
+
+		System::ComponentModel::Container^ components;
 
 		void initCustom() {
 			this->pictureBox1->Image = Image::FromFile("recursos//espantapajaros1.png");
@@ -421,12 +423,15 @@ namespace Proyecto2_ED {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		Proyecto2_ED::AreaJuego^ ventJuego = gcnew Proyecto2_ED::AreaJuego();
-		ventJuego->Show();
+		//Proyecto2_ED::AreaJuego^ venta = gcnew Proyecto2_ED::AreaJuego();
+		// venta->Show();
 	}
 
 	public: System::Windows::Forms::Button^ ObtenerButton1() {
-			   return button1;
-		   }
-};
+		return button1;
+	}
+	};
+
 }
+
+

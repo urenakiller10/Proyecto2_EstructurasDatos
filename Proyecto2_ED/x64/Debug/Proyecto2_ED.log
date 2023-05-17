@@ -1,4 +1,5 @@
-﻿  CppCLR_WinFormsProject.cpp
+﻿  AreaJuego.cpp
+  CppCLR_WinFormsProject.cpp
   Mercado.cpp
   Generando código...
   AreaJuego.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo

@@ -15,5 +15,5 @@ C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyect
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.AreaJuego.resources
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Configuracion.resources
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Form1.resources
-C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.GenerateResource.cache
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Mercado.resources
+C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.GenerateResource.cache
