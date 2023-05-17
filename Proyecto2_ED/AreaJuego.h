@@ -17,6 +17,10 @@ namespace Proyecto2_ED {
     {
 
     private: 
+        array<array<Label^, 1>^>^ matrizLabels;
+        Label^ labelRojo;
+        int labelX;
+        int labelY;
 
     public:
         AreaJuego(void)
@@ -24,37 +28,67 @@ namespace Proyecto2_ED {
             InitializeComponent();
             SetupDataGridView();
             EstablecerTextoFilas();
+            initCustom();
+
+
+
+
 
 
             //------------------------------------------------------Matriz de botones---------------------------------------------------------
+// Crear la matriz de etiquetas
+            matrizLabels = gcnew array<array<Label^, 1>^>(12);
+            for (int i = 0; i < 12; i++)
+            {
+                matrizLabels[i] = gcnew array<Label^>(12);
+            }
 
-            // Crear la matriz de botones
-            array<Button^, 2>^ matrizBotones = gcnew array<Button^, 2>(12, 12);
-
-            // Coordenadas iniciales para los botones
-            int x = 10;
-            int y = 10;
-
-            // Crear los botones y agregarlos a la ventana
+            // Crear y agregar las etiquetas a la matriz
             for (int i = 0; i < 12; i++)
             {
                 for (int j = 0; j < 12; j++)
                 {
-                    Button^ boton = gcnew Button();
-                    boton->Width = 50;
-                    boton->Height = 50;
-                    boton->Location = Point(x, y);
-                    boton->BackColor = Color::LimeGreen;
-                    matrizBotones[i, j] = boton;
-                    this->Controls->Add(boton);
-
-                    x += 60; // Espacio horizontal entre los botones
+                    Label^ label = gcnew Label();
+                    label->Width = 50;
+                    label->Height = 50;
+                    label->BackColor = Color::LimeGreen;
+                    matrizLabels[i][j] = label;
+                    this->Controls->Add(label);
                 }
-
-                x = 10; // Reiniciar la coordenada x para la siguiente fila
-                y += 60; // Espacio vertical entre las filas de botones
             }
+
+            // Posicionar las etiquetas en el formulario
+            for (int i = 0; i < 12; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    matrizLabels[i][j]->Left = 10 + j * 60; // Posición horizontal
+                    matrizLabels[i][j]->Top = 10 + i * 60; // Posición vertical
+                }
+            }
+        
+        
+            
+            // Crear el label rojo
+            labelRojo->Width = 50;
+            labelRojo->Height = 50;
+            labelRojo->BackColor = Color::White;
+ ;
+            MoverLabelSobreLabel(0, 0); // Mover el label sobre el label en la posición (0,0)
+            this->Controls->Add(labelRojo);
+
+
+            // Inicializar las coordenadas del label rojo
+            labelX = 0;
+            labelY = 0;
+
+            // Suscribir el formulario al evento KeyDown
+            this->KeyDown += gcnew KeyEventHandler(this, &AreaJuego::Form_KeyDown); 
+
+        
         }
+
+
 
     public:
 
@@ -88,6 +122,11 @@ namespace Proyecto2_ED {
 
 #pragma region Windows Form Designer generated code
 
+        void initCustom() {
+            labelRojo = gcnew Label();
+            this->labelRojo->Image = Image::FromFile("recursos/granjero.png");
+
+        }
 
         //---------------------------------------------Métodos de la tabla de datos--------------------------------------------------------------
 
@@ -113,6 +152,8 @@ namespace Proyecto2_ED {
                  dataGridView1->Rows[fila]->Cells[2]->Value = "Valor 3";
              }
          }
+         
+
 
          void OcultarColumnaSeleccionada()
          {
@@ -139,7 +180,7 @@ namespace Proyecto2_ED {
     //---------------------------------------------------------------------------------------------------------------------------------------------
 
         void InitializeComponent(void)
-        {
+        {   
             System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             this->button1 = (gcnew System::Windows::Forms::Button());
@@ -236,7 +277,8 @@ namespace Proyecto2_ED {
             this->dataGridView1->RowHeadersWidth = 51;
             this->dataGridView1->RowTemplate->Height = 24;
             this->dataGridView1->ScrollBars = System::Windows::Forms::ScrollBars::None;
-            this->dataGridView1->Size = System::Drawing::Size(993, 58);
+            this->dataGridView1->ShowRowErrors = false;
+            this->dataGridView1->Size = System::Drawing::Size(884, 58);
             this->dataGridView1->TabIndex = 3;
             this->dataGridView1->TabStop = false;
             this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AreaJuego::dataGridView1_CellContentClick);
@@ -318,13 +360,14 @@ namespace Proyecto2_ED {
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::PaleGreen;
-            this->ClientSize = System::Drawing::Size(2033, 878);
+            this->ClientSize = System::Drawing::Size(1924, 878);
             this->Controls->Add(this->button5);
             this->Controls->Add(this->button4);
             this->Controls->Add(this->button3);
             this->Controls->Add(this->button2);
             this->Controls->Add(this->button1);
             this->Controls->Add(this->dataGridView1);
+            this->KeyPreview = true;
             this->Name = L"AreaJuego";
             this->Text = L"AreaJuego";
             this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
@@ -332,13 +375,65 @@ namespace Proyecto2_ED {
             this->ResumeLayout(false);
 
         }
+
+
+        void MoverLabelSobreLabel(int x, int y)
+        {
+            labelRojo->Left = matrizLabels[x][y]->Left;
+            labelRojo->Top = matrizLabels[x][y]->Top;
+            labelRojo->BringToFront();
+        }
+
+        void Form_KeyDown(Object^ sender, KeyEventArgs^ e)
+        {
+            int newLabelX = labelX;
+            int newLabelY = labelY;
+
+            // Mover hacia arriba
+            if (e->KeyCode == Keys::Up)
+            {
+                newLabelX = Math::Max(0, labelX - 1);
+
+            }
+            // Mover hacia abajo
+
+            else if (e->KeyCode == Keys::Down)
+            {
+                newLabelX = Math::Min(11, labelX + 1);
+            }
+            // Mover hacia la izquierda
+            else if (e->KeyCode == Keys::Left)
+            {
+                newLabelY = Math::Max(0, labelY - 1);
+            }
+            // Mover hacia la derecha
+            else if (e->KeyCode == Keys::Right)
+            {
+                newLabelY = Math::Min(11, labelY + 1);
+
+            }
+
+            // Verificar si la nueva posición del label está vacía (no hay otro label en esa posición)
+            if (matrizLabels[newLabelX][newLabelY]->BackColor == Color::LimeGreen)
+            {
+                // Mover el label rojo a la nueva posición
+                MoverLabelSobreLabel(newLabelX, newLabelY);
+
+                // Actualizar las coordenadas del label rojo
+                labelX = newLabelX;
+                labelY = newLabelY;
+            }
+        }
+
+
 #pragma endregion
     private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
     }
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-       // Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
-       // ventMercado->Show();
+     //   Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
+      //  ventMercado->Show();
+
     }
     private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
     }

@@ -152,6 +152,7 @@
     <ClCompile Include="Configuracion.cpp" />
     <ClCompile Include="CppCLR_WinFormsProject.cpp" />
     <ClCompile Include="Form1.cpp" />
+    <ClCompile Include="Jugar.cpp" />
     <ClCompile Include="Mercado.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -163,6 +164,7 @@
   <ItemGroup>
     <Image Include="animales.jpg" />
     <Image Include="app.ico" />
+    <Image Include="recursos\arbol1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />

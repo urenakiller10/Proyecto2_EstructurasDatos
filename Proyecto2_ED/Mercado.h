@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Configuracion.h"
 #include "AreaJuego.h"
 
 namespace Proyecto2_ED {
@@ -239,6 +240,7 @@ namespace Proyecto2_ED {
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox3->TabIndex = 13;
 			this->pictureBox3->TabStop = false;
+			this->pictureBox3->Click += gcnew System::EventHandler(this, &Mercado::pictureBox3_Click);
 			// 
 			// pictureBox4
 			// 
@@ -424,13 +426,15 @@ namespace Proyecto2_ED {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		//Proyecto2_ED::AreaJuego^ venta = gcnew Proyecto2_ED::AreaJuego();
-		// venta->Show();
+		//venta->Show();
 	}
 
 	public: System::Windows::Forms::Button^ ObtenerButton1() {
 		return button1;
 	}
-	};
+	private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 
 }
 

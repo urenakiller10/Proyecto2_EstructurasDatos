@@ -64,12 +64,18 @@
     <ClCompile Include="Mercado.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Jugar.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="animales.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="recursos\arbol1.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
