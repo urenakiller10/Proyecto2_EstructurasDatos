@@ -9,24 +9,17 @@ namespace Proyecto2_ED {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Resumen de Configuracion
-	/// </summary>
+
 	public ref class Configuracion : public System::Windows::Forms::Form
 	{
 	public:
 		Configuracion(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: agregar código de constructor aquí
-			//
 		}
 
 	protected:
-		/// <summary>
-		/// Limpiar los recursos que se estén usando.
-		/// </summary>
+
 		~Configuracion()
 		{
 			if (components)
@@ -34,34 +27,30 @@ namespace Proyecto2_ED {
 				delete components;
 			}
 		}
-
-
-
-	private: System::Windows::Forms::TrackBar^ trackBar1;
-	private: System::Windows::Forms::TrackBar^ trackBar3;
-	private: System::Windows::Forms::TrackBar^ trackBar2;
-	private: System::Windows::Forms::TrackBar^ trackBar4;
-	private: System::Windows::Forms::TrackBar^ trackBar5;
-	private: System::Windows::Forms::TrackBar^ trackBar6;
-	private: System::Windows::Forms::TrackBar^ trackBar7;
-	private: System::Windows::Forms::TrackBar^ trackBar8;
-	private: System::Windows::Forms::TrackBar^ trackBar9;
-	private: System::Windows::Forms::TrackBar^ trackBar10;
-	private: System::Windows::Forms::TrackBar^ trackBar11;
-	private: System::Windows::Forms::TrackBar^ trackBar12;
-	private: System::Windows::Forms::TrackBar^ trackBar13;
-	private: System::Windows::Forms::TrackBar^ trackBar14;
-	private: System::Windows::Forms::TrackBar^ trackBar15;
-	private: System::Windows::Forms::TrackBar^ trackBar16;
-	private: System::Windows::Forms::TrackBar^ trackBar17;
-	private: System::Windows::Forms::TrackBar^ trackBar18;
-	private: System::Windows::Forms::TrackBar^ trackBar19;
-	private: System::Windows::Forms::TrackBar^ trackBar20;
-	private: System::Windows::Forms::TrackBar^ trackBar21;
-	private: System::Windows::Forms::TrackBar^ trackBar22;
-	private: System::Windows::Forms::TrackBar^ trackBar23;
-	private: System::Windows::Forms::TrackBar^ trackBar24;
-	
+	private: System::Windows::Forms::TrackBar^ T_BinCosto;
+	private: System::Windows::Forms::TrackBar^ T_BinCosecha;
+	private: System::Windows::Forms::TrackBar^ T_BinCrece;
+	private: System::Windows::Forms::TrackBar^ T_BinFrutos;
+	private: System::Windows::Forms::TrackBar^ T_SplayCosto;
+	private: System::Windows::Forms::TrackBar^ T_SplayCrece;
+	private: System::Windows::Forms::TrackBar^ T_SplayCosecha;
+	private: System::Windows::Forms::TrackBar^ T_SplayFrutos;
+	private: System::Windows::Forms::TrackBar^ T_HeapCosto;
+	private: System::Windows::Forms::TrackBar^ T_HeapCrece;
+	private: System::Windows::Forms::TrackBar^ T_HeapCosecha;
+	private: System::Windows::Forms::TrackBar^ T_HeapFrutos;
+	private: System::Windows::Forms::TrackBar^ T_AvlCosto;
+	private: System::Windows::Forms::TrackBar^ T_AvlCrece;
+	private: System::Windows::Forms::TrackBar^ T_AvlCosecha;
+	private: System::Windows::Forms::TrackBar^ T_AvlFrutos;
+	private: System::Windows::Forms::TrackBar^ T_OvejasAparicion;
+	private: System::Windows::Forms::TrackBar^ T_OvejasFrutos;
+	private: System::Windows::Forms::TrackBar^ T_CuervosAparicion;
+	private: System::Windows::Forms::TrackBar^ T_CuervosFrutos;
+	private: System::Windows::Forms::TrackBar^ T_PlagasAparicion;
+	private: System::Windows::Forms::TrackBar^ T_PlagasArboles;
+	private: System::Windows::Forms::TrackBar^ T_EspantaCosto;
+	private: System::Windows::Forms::TrackBar^ T_EspantaMax;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label8;
@@ -95,87 +84,62 @@ namespace Proyecto2_ED {
 	private: System::Windows::Forms::Label^ label31;
 	private: System::Windows::Forms::Label^ label32;
 	private: System::Windows::Forms::Label^ label33;
-
-
 	private: System::Windows::Forms::Label^ Espantapájaros;
-
-
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox5;
-	private: System::Windows::Forms::TextBox^ textBox6;
-	private: System::Windows::Forms::TextBox^ textBox7;
-	private: System::Windows::Forms::TextBox^ textBox8;
-	private: System::Windows::Forms::TextBox^ textBox9;
-	private: System::Windows::Forms::TextBox^ textBox10;
-	private: System::Windows::Forms::TextBox^ textBox11;
-	private: System::Windows::Forms::TextBox^ textBox12;
-	private: System::Windows::Forms::TextBox^ textBox13;
-	private: System::Windows::Forms::TextBox^ textBox14;
-	private: System::Windows::Forms::TextBox^ textBox15;
-	private: System::Windows::Forms::TextBox^ textBox16;
-	private: System::Windows::Forms::TextBox^ textBox17;
-	private: System::Windows::Forms::TextBox^ textBox18;
-	private: System::Windows::Forms::TextBox^ textBox19;
-	private: System::Windows::Forms::TextBox^ textBox20;
-	private: System::Windows::Forms::TextBox^ textBox21;
-	private: System::Windows::Forms::TextBox^ textBox22;
-	private: System::Windows::Forms::TextBox^ textBox23;
-	private: System::Windows::Forms::TextBox^ textBox24;
-private: System::Windows::Forms::Button^ button1;
-
-
-
-
-
-	protected:
-
-	protected:
-
-
-	protected:
-
-	protected:
-
-	private:
-		/// <summary>
-		/// Variable del diseñador necesaria.
-		/// </summary>
-		System::ComponentModel::Container ^components;
+	private: System::Windows::Forms::TextBox^ BinCosto;
+	private: System::Windows::Forms::TextBox^ BinCrece;
+	private: System::Windows::Forms::TextBox^ BinCosecha;
+	private: System::Windows::Forms::TextBox^ BinFfrutos;
+	private: System::Windows::Forms::TextBox^ SplayCosto;
+	private: System::Windows::Forms::TextBox^ SplayCrece;
+	private: System::Windows::Forms::TextBox^ SplayCosecha;
+	private: System::Windows::Forms::TextBox^ SplayFrutos;
+	private: System::Windows::Forms::TextBox^ HeapCosto;
+	private: System::Windows::Forms::TextBox^ HeapCrece;
+	private: System::Windows::Forms::TextBox^ HeapCosecha;
+	private: System::Windows::Forms::TextBox^ HeapFrutos;
+	private: System::Windows::Forms::TextBox^ AvlCosto;
+	private: System::Windows::Forms::TextBox^ AvlCrece;
+	private: System::Windows::Forms::TextBox^ AvlCosecha;
+	private: System::Windows::Forms::TextBox^ AvlFrutos;
+	private: System::Windows::Forms::TextBox^ OvejaAparicion;
+	private: System::Windows::Forms::TextBox^ OvejaFrutos;
+	private: System::Windows::Forms::TextBox^ CuervoAparicion;
+	private: System::Windows::Forms::TextBox^ CuervoFrutos;
+	private: System::Windows::Forms::TextBox^ PlagaAparicion;
+	private: System::Windows::Forms::TextBox^ PlagaArbol;
+	private: System::Windows::Forms::TextBox^ EspantaCosto;
+	private: System::Windows::Forms::TextBox^ EspantaMax;
+	private: System::Windows::Forms::Button^ B_GuardarConfiguracion;
+	private:System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Método necesario para admitir el Diseñador. No se puede modificar
-		/// el contenido de este método con el editor de código.
-		/// </summary>
+
 		void InitializeComponent(void)
 		{
-			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar3 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar2 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar4 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar5 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar6 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar7 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar8 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar9 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar10 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar11 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar12 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar13 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar14 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar15 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar16 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar17 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar18 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar19 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar20 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar21 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar22 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar23 = (gcnew System::Windows::Forms::TrackBar());
-			this->trackBar24 = (gcnew System::Windows::Forms::TrackBar());
+			this->T_BinCosto = (gcnew System::Windows::Forms::TrackBar());
+			this->T_BinCosecha = (gcnew System::Windows::Forms::TrackBar());
+			this->T_BinCrece = (gcnew System::Windows::Forms::TrackBar());
+			this->T_BinFrutos = (gcnew System::Windows::Forms::TrackBar());
+			this->T_SplayCosto = (gcnew System::Windows::Forms::TrackBar());
+			this->T_SplayCrece = (gcnew System::Windows::Forms::TrackBar());
+			this->T_SplayCosecha = (gcnew System::Windows::Forms::TrackBar());
+			this->T_SplayFrutos = (gcnew System::Windows::Forms::TrackBar());
+			this->T_HeapCosto = (gcnew System::Windows::Forms::TrackBar());
+			this->T_HeapCrece = (gcnew System::Windows::Forms::TrackBar());
+			this->T_HeapCosecha = (gcnew System::Windows::Forms::TrackBar());
+			this->T_HeapFrutos = (gcnew System::Windows::Forms::TrackBar());
+			this->T_AvlCosto = (gcnew System::Windows::Forms::TrackBar());
+			this->T_AvlCrece = (gcnew System::Windows::Forms::TrackBar());
+			this->T_AvlCosecha = (gcnew System::Windows::Forms::TrackBar());
+			this->T_AvlFrutos = (gcnew System::Windows::Forms::TrackBar());
+			this->T_OvejasAparicion = (gcnew System::Windows::Forms::TrackBar());
+			this->T_OvejasFrutos = (gcnew System::Windows::Forms::TrackBar());
+			this->T_CuervosAparicion = (gcnew System::Windows::Forms::TrackBar());
+			this->T_CuervosFrutos = (gcnew System::Windows::Forms::TrackBar());
+			this->T_PlagasAparicion = (gcnew System::Windows::Forms::TrackBar());
+			this->T_PlagasArboles = (gcnew System::Windows::Forms::TrackBar());
+			this->T_EspantaCosto = (gcnew System::Windows::Forms::TrackBar());
+			this->T_EspantaMax = (gcnew System::Windows::Forms::TrackBar());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -209,250 +173,493 @@ private: System::Windows::Forms::Button^ button1;
 			this->label31 = (gcnew System::Windows::Forms::Label());
 			this->label32 = (gcnew System::Windows::Forms::Label());
 			this->label33 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox14 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox15 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox16 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox17 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox18 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox19 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox20 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox21 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox22 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox23 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox24 = (gcnew System::Windows::Forms::TextBox());
+			this->BinCosto = (gcnew System::Windows::Forms::TextBox());
+			this->BinCrece = (gcnew System::Windows::Forms::TextBox());
+			this->BinCosecha = (gcnew System::Windows::Forms::TextBox());
+			this->BinFfrutos = (gcnew System::Windows::Forms::TextBox());
+			this->SplayCosto = (gcnew System::Windows::Forms::TextBox());
+			this->SplayCrece = (gcnew System::Windows::Forms::TextBox());
+			this->SplayCosecha = (gcnew System::Windows::Forms::TextBox());
+			this->SplayFrutos = (gcnew System::Windows::Forms::TextBox());
+			this->HeapCosto = (gcnew System::Windows::Forms::TextBox());
+			this->HeapCrece = (gcnew System::Windows::Forms::TextBox());
+			this->HeapCosecha = (gcnew System::Windows::Forms::TextBox());
+			this->HeapFrutos = (gcnew System::Windows::Forms::TextBox());
+			this->AvlCosto = (gcnew System::Windows::Forms::TextBox());
+			this->AvlCrece = (gcnew System::Windows::Forms::TextBox());
+			this->AvlCosecha = (gcnew System::Windows::Forms::TextBox());
+			this->AvlFrutos = (gcnew System::Windows::Forms::TextBox());
+			this->OvejaAparicion = (gcnew System::Windows::Forms::TextBox());
+			this->OvejaFrutos = (gcnew System::Windows::Forms::TextBox());
+			this->CuervoAparicion = (gcnew System::Windows::Forms::TextBox());
+			this->CuervoFrutos = (gcnew System::Windows::Forms::TextBox());
+			this->PlagaAparicion = (gcnew System::Windows::Forms::TextBox());
+			this->PlagaArbol = (gcnew System::Windows::Forms::TextBox());
+			this->EspantaCosto = (gcnew System::Windows::Forms::TextBox());
+			this->EspantaMax = (gcnew System::Windows::Forms::TextBox());
 			this->Espantapájaros = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar6))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar7))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar8))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar9))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar10))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar11))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar12))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar13))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar14))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar15))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar16))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar17))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar18))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar19))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar20))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar21))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar22))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar23))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar24))->BeginInit();
+			this->B_GuardarConfiguracion = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_BinCosto))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_BinCosecha))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_BinCrece))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_BinFrutos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_SplayCosto))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_SplayCrece))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_SplayCosecha))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_SplayFrutos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_HeapCosto))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_HeapCrece))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_HeapCosecha))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_HeapFrutos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_AvlCosto))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_AvlCrece))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_AvlCosecha))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_AvlFrutos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_OvejasAparicion))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_OvejasFrutos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_CuervosAparicion))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_CuervosFrutos))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_PlagasAparicion))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_PlagasArboles))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_EspantaCosto))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_EspantaMax))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// trackBar1
+			// T_BinCosto
 			// 
-			this->trackBar1->Location = System::Drawing::Point(220, 142);
-			this->trackBar1->Name = L"trackBar1";
-			this->trackBar1->Size = System::Drawing::Size(104, 56);
-			this->trackBar1->TabIndex = 1;
-			this->trackBar1->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar1_Scroll);
+			this->T_BinCosto->LargeChange = 10;
+			this->T_BinCosto->Location = System::Drawing::Point(220, 160);
+			this->T_BinCosto->Maximum = 100;
+			this->T_BinCosto->Name = L"T_BinCosto";
+			this->T_BinCosto->Size = System::Drawing::Size(104, 56);
+			this->T_BinCosto->TabIndex = 1;
+			this->T_BinCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar1_Scroll);
 			// 
-			// trackBar3
+			// T_BinCosecha
 			// 
-			this->trackBar3->Location = System::Drawing::Point(220, 213);
-			this->trackBar3->Name = L"trackBar3";
-			this->trackBar3->Size = System::Drawing::Size(104, 56);
-			this->trackBar3->TabIndex = 3;
-			this->trackBar3->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar3_Scroll);
+			this->T_BinCosecha->LargeChange = 10;
+			this->T_BinCosecha->Location = System::Drawing::Point(223, 234);
+			this->T_BinCosecha->Maximum = 60;
+			this->T_BinCosecha->Name = L"T_BinCosecha";
+			this->T_BinCosecha->Size = System::Drawing::Size(104, 56);
+			this->T_BinCosecha->TabIndex = 3;
+			this->T_BinCosecha->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar3_Scroll);
 			// 
-			// trackBar2
+			// T_BinCrece
 			// 
-			this->trackBar2->Location = System::Drawing::Point(220, 179);
-			this->trackBar2->Name = L"trackBar2";
-			this->trackBar2->Size = System::Drawing::Size(104, 56);
-			this->trackBar2->TabIndex = 16;
-			this->trackBar2->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar2_Scroll);
+			this->T_BinCrece->LargeChange = 10;
+			this->T_BinCrece->Location = System::Drawing::Point(220, 197);
+			this->T_BinCrece->Maximum = 60;
+			this->T_BinCrece->Name = L"T_BinCrece";
+			this->T_BinCrece->Size = System::Drawing::Size(104, 56);
+			this->T_BinCrece->TabIndex = 16;
+			this->T_BinCrece->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar2_Scroll);
 			// 
-			// trackBar4
+			// T_BinFrutos
 			// 
-			this->trackBar4->Location = System::Drawing::Point(220, 251);
-			this->trackBar4->Name = L"trackBar4";
-			this->trackBar4->Size = System::Drawing::Size(104, 56);
-			this->trackBar4->TabIndex = 17;
-			this->trackBar4->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar4_Scroll);
+			this->T_BinFrutos->LargeChange = 10;
+			this->T_BinFrutos->Location = System::Drawing::Point(220, 264);
+			this->T_BinFrutos->Maximum = 70;
+			this->T_BinFrutos->Name = L"T_BinFrutos";
+			this->T_BinFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_BinFrutos->TabIndex = 17;
+			this->T_BinFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar4_Scroll);
 			// 
-			// trackBar5
+			// T_SplayCosto
 			// 
-			this->trackBar5->Location = System::Drawing::Point(220, 347);
-			this->trackBar5->Name = L"trackBar5";
-			this->trackBar5->Size = System::Drawing::Size(104, 56);
-			this->trackBar5->TabIndex = 18;
-			this->trackBar5->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar5_Scroll);
+			this->T_SplayCosto->Location = System::Drawing::Point(220, 347);
+			this->T_SplayCosto->Name = L"T_SplayCosto";
+			this->T_SplayCosto->Size = System::Drawing::Size(104, 56);
+			this->T_SplayCosto->TabIndex = 18;
+			this->T_SplayCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar5_Scroll);
 			// 
-			// trackBar6
+			// T_SplayCrece
 			// 
-			this->trackBar6->Location = System::Drawing::Point(220, 379);
-			this->trackBar6->Name = L"trackBar6";
-			this->trackBar6->Size = System::Drawing::Size(104, 56);
-			this->trackBar6->TabIndex = 19;
-			this->trackBar6->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar6_Scroll);
+			this->T_SplayCrece->LargeChange = 10;
+			this->T_SplayCrece->Location = System::Drawing::Point(220, 379);
+			this->T_SplayCrece->Maximum = 60;
+			this->T_SplayCrece->Name = L"T_SplayCrece";
+			this->T_SplayCrece->Size = System::Drawing::Size(104, 56);
+			this->T_SplayCrece->TabIndex = 19;
+			this->T_SplayCrece->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar6_Scroll);
 			// 
-			// trackBar7
+			// T_SplayCosecha
 			// 
-			this->trackBar7->Location = System::Drawing::Point(220, 424);
-			this->trackBar7->Name = L"trackBar7";
-			this->trackBar7->Size = System::Drawing::Size(104, 56);
-			this->trackBar7->TabIndex = 20;
-			this->trackBar7->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar7_Scroll);
+			this->T_SplayCosecha->LargeChange = 10;
+			this->T_SplayCosecha->Location = System::Drawing::Point(220, 424);
+			this->T_SplayCosecha->Maximum = 60;
+			this->T_SplayCosecha->Name = L"T_SplayCosecha";
+			this->T_SplayCosecha->Size = System::Drawing::Size(104, 56);
+			this->T_SplayCosecha->TabIndex = 20;
+			this->T_SplayCosecha->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar7_Scroll);
 			// 
-			// trackBar8
+			// T_SplayFrutos
 			// 
-			this->trackBar8->Location = System::Drawing::Point(220, 468);
-			this->trackBar8->Name = L"trackBar8";
-			this->trackBar8->Size = System::Drawing::Size(104, 56);
-			this->trackBar8->TabIndex = 21;
-			this->trackBar8->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar8_Scroll);
+			this->T_SplayFrutos->LargeChange = 10;
+			this->T_SplayFrutos->Location = System::Drawing::Point(220, 468);
+			this->T_SplayFrutos->Maximum = 70;
+			this->T_SplayFrutos->Name = L"T_SplayFrutos";
+			this->T_SplayFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_SplayFrutos->TabIndex = 21;
+			this->T_SplayFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar8_Scroll);
 			// 
-			// trackBar9
+			// T_HeapCosto
 			// 
-			this->trackBar9->Location = System::Drawing::Point(664, 142);
-			this->trackBar9->Name = L"trackBar9";
-			this->trackBar9->Size = System::Drawing::Size(104, 56);
-			this->trackBar9->TabIndex = 22;
-			this->trackBar9->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar9_Scroll);
+			this->T_HeapCosto->LargeChange = 10;
+			this->T_HeapCosto->Location = System::Drawing::Point(664, 154);
+			this->T_HeapCosto->Maximum = 100;
+			this->T_HeapCosto->Name = L"T_HeapCosto";
+			this->T_HeapCosto->Size = System::Drawing::Size(104, 56);
+			this->T_HeapCosto->TabIndex = 22;
+			this->T_HeapCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar9_Scroll);
 			// 
-			// trackBar10
+			// T_HeapCrece
 			// 
-			this->trackBar10->Location = System::Drawing::Point(664, 179);
-			this->trackBar10->Name = L"trackBar10";
-			this->trackBar10->Size = System::Drawing::Size(104, 56);
-			this->trackBar10->TabIndex = 23;
-			this->trackBar10->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar10_Scroll);
+			this->T_HeapCrece->LargeChange = 10;
+			this->T_HeapCrece->Location = System::Drawing::Point(664, 194);
+			this->T_HeapCrece->Maximum = 60;
+			this->T_HeapCrece->Name = L"T_HeapCrece";
+			this->T_HeapCrece->Size = System::Drawing::Size(104, 56);
+			this->T_HeapCrece->TabIndex = 23;
+			this->T_HeapCrece->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar10_Scroll);
 			// 
-			// trackBar11
+			// T_HeapCosecha
 			// 
-			this->trackBar11->Location = System::Drawing::Point(664, 213);
-			this->trackBar11->Name = L"trackBar11";
-			this->trackBar11->Size = System::Drawing::Size(104, 56);
-			this->trackBar11->TabIndex = 24;
-			this->trackBar11->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar11_Scroll);
+			this->T_HeapCosecha->LargeChange = 10;
+			this->T_HeapCosecha->Location = System::Drawing::Point(664, 234);
+			this->T_HeapCosecha->Maximum = 60;
+			this->T_HeapCosecha->Name = L"T_HeapCosecha";
+			this->T_HeapCosecha->Size = System::Drawing::Size(104, 56);
+			this->T_HeapCosecha->TabIndex = 24;
+			this->T_HeapCosecha->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar11_Scroll);
 			// 
-			// trackBar12
+			// T_HeapFrutos
 			// 
-			this->trackBar12->Location = System::Drawing::Point(664, 251);
-			this->trackBar12->Name = L"trackBar12";
-			this->trackBar12->Size = System::Drawing::Size(104, 56);
-			this->trackBar12->TabIndex = 25;
-			this->trackBar12->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar12_Scroll);
+			this->T_HeapFrutos->LargeChange = 10;
+			this->T_HeapFrutos->Location = System::Drawing::Point(664, 264);
+			this->T_HeapFrutos->Maximum = 70;
+			this->T_HeapFrutos->Name = L"T_HeapFrutos";
+			this->T_HeapFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_HeapFrutos->TabIndex = 25;
+			this->T_HeapFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar12_Scroll);
 			// 
-			// trackBar13
+			// T_AvlCosto
 			// 
-			this->trackBar13->Location = System::Drawing::Point(664, 347);
-			this->trackBar13->Name = L"trackBar13";
-			this->trackBar13->Size = System::Drawing::Size(104, 56);
-			this->trackBar13->TabIndex = 26;
-			this->trackBar13->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar13_Scroll);
+			this->T_AvlCosto->Location = System::Drawing::Point(664, 347);
+			this->T_AvlCosto->Name = L"T_AvlCosto";
+			this->T_AvlCosto->Size = System::Drawing::Size(104, 56);
+			this->T_AvlCosto->TabIndex = 26;
+			this->T_AvlCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar13_Scroll);
 			// 
-			// trackBar14
+			// T_AvlCrece
 			// 
-			this->trackBar14->Location = System::Drawing::Point(664, 379);
-			this->trackBar14->Name = L"trackBar14";
-			this->trackBar14->Size = System::Drawing::Size(104, 56);
-			this->trackBar14->TabIndex = 27;
-			this->trackBar14->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar14_Scroll);
+			this->T_AvlCrece->LargeChange = 10;
+			this->T_AvlCrece->Location = System::Drawing::Point(664, 379);
+			this->T_AvlCrece->Maximum = 60;
+			this->T_AvlCrece->Name = L"T_AvlCrece";
+			this->T_AvlCrece->Size = System::Drawing::Size(104, 56);
+			this->T_AvlCrece->TabIndex = 27;
+			this->T_AvlCrece->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar14_Scroll);
 			// 
-			// trackBar15
+			// T_AvlCosecha
 			// 
-			this->trackBar15->Location = System::Drawing::Point(664, 424);
-			this->trackBar15->Name = L"trackBar15";
-			this->trackBar15->Size = System::Drawing::Size(104, 56);
-			this->trackBar15->TabIndex = 28;
-			this->trackBar15->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar15_Scroll);
+			this->T_AvlCosecha->LargeChange = 10;
+			this->T_AvlCosecha->Location = System::Drawing::Point(664, 424);
+			this->T_AvlCosecha->Maximum = 60;
+			this->T_AvlCosecha->Name = L"T_AvlCosecha";
+			this->T_AvlCosecha->Size = System::Drawing::Size(104, 56);
+			this->T_AvlCosecha->TabIndex = 28;
+			this->T_AvlCosecha->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar15_Scroll);
 			// 
-			// trackBar16
+			// T_AvlFrutos
 			// 
-			this->trackBar16->Location = System::Drawing::Point(664, 468);
-			this->trackBar16->Name = L"trackBar16";
-			this->trackBar16->Size = System::Drawing::Size(104, 56);
-			this->trackBar16->TabIndex = 45;
-			this->trackBar16->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar16_Scroll);
+			this->T_AvlFrutos->LargeChange = 10;
+			this->T_AvlFrutos->Location = System::Drawing::Point(664, 468);
+			this->T_AvlFrutos->Maximum = 70;
+			this->T_AvlFrutos->Name = L"T_AvlFrutos";
+			this->T_AvlFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_AvlFrutos->TabIndex = 45;
+			this->T_AvlFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar16_Scroll);
 			// 
-			// trackBar17
+			// T_OvejasAparicion
 			// 
-			this->trackBar17->Location = System::Drawing::Point(1077, 142);
-			this->trackBar17->Name = L"trackBar17";
-			this->trackBar17->Size = System::Drawing::Size(104, 56);
-			this->trackBar17->TabIndex = 56;
-			this->trackBar17->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar17_Scroll);
+			this->T_OvejasAparicion->LargeChange = 20;
+			this->T_OvejasAparicion->Location = System::Drawing::Point(1077, 142);
+			this->T_OvejasAparicion->Maximum = 100;
+			this->T_OvejasAparicion->Name = L"T_OvejasAparicion";
+			this->T_OvejasAparicion->Size = System::Drawing::Size(104, 56);
+			this->T_OvejasAparicion->TabIndex = 56;
+			this->T_OvejasAparicion->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar17_Scroll);
 			// 
-			// trackBar18
+			// T_OvejasFrutos
 			// 
-			this->trackBar18->Location = System::Drawing::Point(1077, 179);
-			this->trackBar18->Name = L"trackBar18";
-			this->trackBar18->Size = System::Drawing::Size(104, 56);
-			this->trackBar18->TabIndex = 57;
-			this->trackBar18->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar18_Scroll);
+			this->T_OvejasFrutos->LargeChange = 10;
+			this->T_OvejasFrutos->Location = System::Drawing::Point(1077, 179);
+			this->T_OvejasFrutos->Maximum = 60;
+			this->T_OvejasFrutos->Name = L"T_OvejasFrutos";
+			this->T_OvejasFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_OvejasFrutos->TabIndex = 57;
+			this->T_OvejasFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar18_Scroll);
 			// 
-			// trackBar19
+			// T_CuervosAparicion
 			// 
-			this->trackBar19->Location = System::Drawing::Point(1077, 285);
-			this->trackBar19->Name = L"trackBar19";
-			this->trackBar19->Size = System::Drawing::Size(104, 56);
-			this->trackBar19->TabIndex = 58;
-			this->trackBar19->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar19_Scroll);
+			this->T_CuervosAparicion->LargeChange = 10;
+			this->T_CuervosAparicion->Location = System::Drawing::Point(1077, 285);
+			this->T_CuervosAparicion->Maximum = 100;
+			this->T_CuervosAparicion->Name = L"T_CuervosAparicion";
+			this->T_CuervosAparicion->Size = System::Drawing::Size(104, 56);
+			this->T_CuervosAparicion->TabIndex = 58;
+			this->T_CuervosAparicion->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar19_Scroll);
 			// 
-			// trackBar20
+			// T_CuervosFrutos
 			// 
-			this->trackBar20->Location = System::Drawing::Point(1077, 323);
-			this->trackBar20->Name = L"trackBar20";
-			this->trackBar20->Size = System::Drawing::Size(104, 56);
-			this->trackBar20->TabIndex = 59;
-			this->trackBar20->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar20_Scroll);
+			this->T_CuervosFrutos->LargeChange = 10;
+			this->T_CuervosFrutos->Location = System::Drawing::Point(1077, 323);
+			this->T_CuervosFrutos->Maximum = 60;
+			this->T_CuervosFrutos->Name = L"T_CuervosFrutos";
+			this->T_CuervosFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_CuervosFrutos->TabIndex = 59;
+			this->T_CuervosFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar20_Scroll);
 			// 
-			// trackBar21
+			// T_PlagasAparicion
 			// 
-			this->trackBar21->Location = System::Drawing::Point(1077, 424);
-			this->trackBar21->Name = L"trackBar21";
-			this->trackBar21->Size = System::Drawing::Size(104, 56);
-			this->trackBar21->TabIndex = 60;
-			this->trackBar21->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar21_Scroll);
+			this->T_PlagasAparicion->LargeChange = 10;
+			this->T_PlagasAparicion->Location = System::Drawing::Point(1077, 424);
+			this->T_PlagasAparicion->Maximum = 100;
+			this->T_PlagasAparicion->Name = L"T_PlagasAparicion";
+			this->T_PlagasAparicion->Size = System::Drawing::Size(104, 56);
+			this->T_PlagasAparicion->TabIndex = 60;
+			this->T_PlagasAparicion->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar21_Scroll);
 			// 
-			// trackBar22
+			// T_PlagasArboles
 			// 
-			this->trackBar22->Location = System::Drawing::Point(1077, 468);
-			this->trackBar22->Name = L"trackBar22";
-			this->trackBar22->Size = System::Drawing::Size(104, 56);
-			this->trackBar22->TabIndex = 61;
-			this->trackBar22->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar22_Scroll);
+			this->T_PlagasArboles->LargeChange = 10;
+			this->T_PlagasArboles->Location = System::Drawing::Point(1077, 468);
+			this->T_PlagasArboles->Maximum = 60;
+			this->T_PlagasArboles->Name = L"T_PlagasArboles";
+			this->T_PlagasArboles->Size = System::Drawing::Size(104, 56);
+			this->T_PlagasArboles->TabIndex = 61;
+			this->T_PlagasArboles->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar22_Scroll);
 			// 
-			// trackBar23
+			// T_EspantaCosto
 			// 
-			this->trackBar23->Location = System::Drawing::Point(220, 560);
-			this->trackBar23->Name = L"trackBar23";
-			this->trackBar23->Size = System::Drawing::Size(104, 56);
-			this->trackBar23->TabIndex = 64;
-			this->trackBar23->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar23_Scroll);
+			this->T_EspantaCosto->LargeChange = 10;
+			this->T_EspantaCosto->Location = System::Drawing::Point(220, 560);
+			this->T_EspantaCosto->Maximum = 200;
+			this->T_EspantaCosto->Name = L"T_EspantaCosto";
+			this->T_EspantaCosto->Size = System::Drawing::Size(104, 56);
+			this->T_EspantaCosto->TabIndex = 64;
+			this->T_EspantaCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar23_Scroll);
 			// 
-			// trackBar24
+			// T_EspantaMax
 			// 
-			this->trackBar24->Location = System::Drawing::Point(220, 604);
-			this->trackBar24->Name = L"trackBar24";
-			this->trackBar24->Size = System::Drawing::Size(104, 56);
-			this->trackBar24->TabIndex = 65;
-			this->trackBar24->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar24_Scroll);
+			this->T_EspantaMax->LargeChange = 1;
+			this->T_EspantaMax->Location = System::Drawing::Point(220, 604);
+			this->T_EspantaMax->Maximum = 5;
+			this->T_EspantaMax->Name = L"T_EspantaMax";
+			this->T_EspantaMax->Size = System::Drawing::Size(104, 56);
+			this->T_EspantaMax->TabIndex = 65;
+			this->T_EspantaMax->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar24_Scroll);
+			//
+			// BinCosto
 			// 
+			this->BinCosto->Location = System::Drawing::Point(330, 154);
+			this->BinCosto->Name = L"BinCosto";
+			this->BinCosto->ReadOnly = true;
+			this->BinCosto->Size = System::Drawing::Size(47, 22);
+			this->BinCosto->TabIndex = 4;
+			this->BinCosto->TextChanged += gcnew System::EventHandler(this, &Configuracion::textBox1_TextChanged);
+			// 
+			// BinCrece
+			// 
+			this->BinCrece->Location = System::Drawing::Point(330, 194);
+			this->BinCrece->Name = L"BinCrece";
+			this->BinCrece->Size = System::Drawing::Size(47, 22);
+			this->BinCrece->TabIndex = 66;
+			// 
+			// BinCosecha
+			// 
+			this->BinCosecha->Location = System::Drawing::Point(330, 234);
+			this->BinCosecha->Name = L"BinCosecha";
+			this->BinCosecha->Size = System::Drawing::Size(47, 22);
+			this->BinCosecha->TabIndex = 67;
+			// 
+			// BinFfrutos
+			// 
+			this->BinFfrutos->Location = System::Drawing::Point(330, 268);
+			this->BinFfrutos->Name = L"BinFfrutos";
+			this->BinFfrutos->Size = System::Drawing::Size(47, 22);
+			this->BinFfrutos->TabIndex = 68;
+			// 
+			// SplayCosto
+			// 
+			this->SplayCosto->Location = System::Drawing::Point(330, 347);
+			this->SplayCosto->Name = L"SplayCosto";
+			this->SplayCosto->Size = System::Drawing::Size(47, 22);
+			this->SplayCosto->TabIndex = 69;
+			// 
+			// SplayCrece
+			// 
+			this->SplayCrece->Location = System::Drawing::Point(330, 383);
+			this->SplayCrece->Name = L"SplayCrece";
+			this->SplayCrece->Size = System::Drawing::Size(47, 22);
+			this->SplayCrece->TabIndex = 70;
+			// 
+			// SplayCosecha
+			// 
+			this->SplayCosecha->Location = System::Drawing::Point(330, 421);
+			this->SplayCosecha->Name = L"SplayCosecha";
+			this->SplayCosecha->Size = System::Drawing::Size(47, 22);
+			this->SplayCosecha->TabIndex = 71;
+			// 
+			// SplayFrutos
+			// 
+			this->SplayFrutos->Location = System::Drawing::Point(330, 462);
+			this->SplayFrutos->Name = L"SplayFrutos";
+			this->SplayFrutos->Size = System::Drawing::Size(47, 22);
+			this->SplayFrutos->TabIndex = 72;
+			// 
+			// HeapCosto
+			// 
+			this->HeapCosto->Location = System::Drawing::Point(774, 142);
+			this->HeapCosto->Name = L"HeapCosto";
+			this->HeapCosto->Size = System::Drawing::Size(50, 22);
+			this->HeapCosto->TabIndex = 73;
+			// 
+			// HeapCrece
+			// 
+			this->HeapCrece->Location = System::Drawing::Point(774, 183);
+			this->HeapCrece->Name = L"HeapCrece";
+			this->HeapCrece->Size = System::Drawing::Size(50, 22);
+			this->HeapCrece->TabIndex = 74;
+			// 
+			// HeapCosecha
+			// 
+			this->HeapCosecha->Location = System::Drawing::Point(774, 216);
+			this->HeapCosecha->Name = L"HeapCosecha";
+			this->HeapCosecha->Size = System::Drawing::Size(50, 22);
+			this->HeapCosecha->TabIndex = 75;
+			// 
+			// HeapFrutos
+			// 
+			this->HeapFrutos->Location = System::Drawing::Point(774, 251);
+			this->HeapFrutos->Name = L"HeapFrutos";
+			this->HeapFrutos->Size = System::Drawing::Size(50, 22);
+			this->HeapFrutos->TabIndex = 76;
+			// 
+			// AvlCosto
+			// 
+			this->AvlCosto->Location = System::Drawing::Point(774, 347);
+			this->AvlCosto->Name = L"AvlCosto";
+			this->AvlCosto->Size = System::Drawing::Size(50, 22);
+			this->AvlCosto->TabIndex = 77;
+			// 
+			// AvlCrece
+			// 
+			this->AvlCrece->Location = System::Drawing::Point(774, 383);
+			this->AvlCrece->Name = L"AvlCrece";
+			this->AvlCrece->Size = System::Drawing::Size(50, 22);
+			this->AvlCrece->TabIndex = 78;
+			// 
+			// AvlCosecha
+			// 
+			this->AvlCosecha->Location = System::Drawing::Point(774, 421);
+			this->AvlCosecha->Name = L"AvlCosecha";
+			this->AvlCosecha->Size = System::Drawing::Size(50, 22);
+			this->AvlCosecha->TabIndex = 79;
+			this->AvlCosecha->TextChanged += gcnew System::EventHandler(this, &Configuracion::textBox15_TextChanged);
+			// 
+			// AvlFrutos
+			// 
+			this->AvlFrutos->Location = System::Drawing::Point(774, 465);
+			this->AvlFrutos->Name = L"AvlFrutos";
+			this->AvlFrutos->Size = System::Drawing::Size(50, 22);
+			this->AvlFrutos->TabIndex = 80;
+			// 
+			// OvejaAparicion
+			// 
+			this->OvejaAparicion->Location = System::Drawing::Point(1187, 142);
+			this->OvejaAparicion->Name = L"OvejaAparicion";
+			this->OvejaAparicion->Size = System::Drawing::Size(50, 22);
+			this->OvejaAparicion->TabIndex = 81;
+			// 
+			// OvejaFrutos
+			// 
+			this->OvejaFrutos->Location = System::Drawing::Point(1187, 183);
+			this->OvejaFrutos->Name = L"OvejaFrutos";
+			this->OvejaFrutos->Size = System::Drawing::Size(50, 22);
+			this->OvejaFrutos->TabIndex = 81;
+			// 
+			// CuervoAparicion
+			// 
+			this->CuervoAparicion->Location = System::Drawing::Point(1187, 268);
+			this->CuervoAparicion->Name = L"CuervoAparicion";
+			this->CuervoAparicion->Size = System::Drawing::Size(50, 22);
+			this->CuervoAparicion->TabIndex = 82;
+			// 
+			// CuervoFrutos
+			// 
+			this->CuervoFrutos->Location = System::Drawing::Point(1187, 323);
+			this->CuervoFrutos->Name = L"CuervoFrutos";
+			this->CuervoFrutos->Size = System::Drawing::Size(50, 22);
+			this->CuervoFrutos->TabIndex = 83;
+			// 
+			// PlagaAparicion
+			// 
+			this->PlagaAparicion->Location = System::Drawing::Point(1187, 424);
+			this->PlagaAparicion->Name = L"PlagaAparicion";
+			this->PlagaAparicion->Size = System::Drawing::Size(50, 22);
+			this->PlagaAparicion->TabIndex = 84;
+			// 
+			// PlagaArbol
+			// 
+			this->PlagaArbol->Location = System::Drawing::Point(1187, 474);
+			this->PlagaArbol->Name = L"PlagaArbol";
+			this->PlagaArbol->Size = System::Drawing::Size(50, 22);
+			this->PlagaArbol->TabIndex = 85;
+			// 
+			// EspantaCosto
+			// 
+			this->EspantaCosto->Location = System::Drawing::Point(333, 560);
+			this->EspantaCosto->Name = L"EspantaCosto";
+			this->EspantaCosto->Size = System::Drawing::Size(44, 22);
+			this->EspantaCosto->TabIndex = 86;
+			// 
+			// EspantaMax
+			// 
+			this->EspantaMax->Location = System::Drawing::Point(333, 604);
+			this->EspantaMax->Name = L"EspantaMax";
+			this->EspantaMax->Size = System::Drawing::Size(47, 22);
+			this->EspantaMax->TabIndex = 87;
+			// 
+			// Espantapájaros
+			// 
+			this->Espantapájaros->AutoSize = true;
+			this->Espantapájaros->BackColor = System::Drawing::Color::Cyan;
+			this->Espantapájaros->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Espantapájaros->Location = System::Drawing::Point(21, 535);
+			this->Espantapájaros->Name = L"Espantapájaros";
+			this->Espantapájaros->Size = System::Drawing::Size(125, 18);
+			this->Espantapájaros->TabIndex = 46;
+			this->Espantapájaros->Text = L"Espantapájaros";
+			// 
+			// B_GuardarConfiguracion
+			// 
+			this->B_GuardarConfiguracion->BackColor = System::Drawing::Color::LimeGreen;
+			this->B_GuardarConfiguracion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->B_GuardarConfiguracion->Location = System::Drawing::Point(686, 596);
+			this->B_GuardarConfiguracion->Name = L"B_GuardarConfiguracion";
+			this->B_GuardarConfiguracion->Size = System::Drawing::Size(399, 56);
+			this->B_GuardarConfiguracion->TabIndex = 88;
+			this->B_GuardarConfiguracion->Text = L"Guardar configuración";
+			this->B_GuardarConfiguracion->UseVisualStyleBackColor = false;
+			// 
+
+
+			// 
+			//----------------------------------------------------LABEL (NO SE USAN PARA NADA, IGNORAR)--------------------------------------------------------
 			// label1
 			// 
 			this->label1->AutoSize = true;
@@ -824,242 +1031,47 @@ private: System::Windows::Forms::Button^ button1;
 			this->label33->Size = System::Drawing::Size(146, 16);
 			this->label33->TabIndex = 63;
 			this->label33->Text = L"Máximos en terreno:";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(330, 154);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->ReadOnly = true;
-			this->textBox1->Size = System::Drawing::Size(47, 22);
-			this->textBox1->TabIndex = 4;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Configuracion::textBox1_TextChanged);
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(330, 183);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(47, 22);
-			this->textBox2->TabIndex = 66;
-			// 
-			// textBox3
-			// 
-			this->textBox3->Location = System::Drawing::Point(330, 213);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(47, 22);
-			this->textBox3->TabIndex = 67;
-			// 
-			// textBox4
-			// 
-			this->textBox4->Location = System::Drawing::Point(330, 251);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(47, 22);
-			this->textBox4->TabIndex = 68;
-			// 
-			// textBox5
-			// 
-			this->textBox5->Location = System::Drawing::Point(330, 347);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(47, 22);
-			this->textBox5->TabIndex = 69;
-			// 
-			// textBox6
-			// 
-			this->textBox6->Location = System::Drawing::Point(330, 383);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(47, 22);
-			this->textBox6->TabIndex = 70;
-			// 
-			// textBox7
-			// 
-			this->textBox7->Location = System::Drawing::Point(330, 421);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(47, 22);
-			this->textBox7->TabIndex = 71;
-			// 
-			// textBox8
-			// 
-			this->textBox8->Location = System::Drawing::Point(330, 462);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(47, 22);
-			this->textBox8->TabIndex = 72;
-			// 
-			// textBox9
-			// 
-			this->textBox9->Location = System::Drawing::Point(774, 142);
-			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(50, 22);
-			this->textBox9->TabIndex = 73;
-			// 
-			// textBox10
-			// 
-			this->textBox10->Location = System::Drawing::Point(774, 183);
-			this->textBox10->Name = L"textBox10";
-			this->textBox10->Size = System::Drawing::Size(50, 22);
-			this->textBox10->TabIndex = 74;
-			// 
-			// textBox11
-			// 
-			this->textBox11->Location = System::Drawing::Point(774, 216);
-			this->textBox11->Name = L"textBox11";
-			this->textBox11->Size = System::Drawing::Size(50, 22);
-			this->textBox11->TabIndex = 75;
-			// 
-			// textBox12
-			// 
-			this->textBox12->Location = System::Drawing::Point(774, 251);
-			this->textBox12->Name = L"textBox12";
-			this->textBox12->Size = System::Drawing::Size(50, 22);
-			this->textBox12->TabIndex = 76;
-			// 
-			// textBox13
-			// 
-			this->textBox13->Location = System::Drawing::Point(774, 347);
-			this->textBox13->Name = L"textBox13";
-			this->textBox13->Size = System::Drawing::Size(50, 22);
-			this->textBox13->TabIndex = 77;
-			// 
-			// textBox14
-			// 
-			this->textBox14->Location = System::Drawing::Point(774, 383);
-			this->textBox14->Name = L"textBox14";
-			this->textBox14->Size = System::Drawing::Size(50, 22);
-			this->textBox14->TabIndex = 78;
-			// 
-			// textBox15
-			// 
-			this->textBox15->Location = System::Drawing::Point(774, 421);
-			this->textBox15->Name = L"textBox15";
-			this->textBox15->Size = System::Drawing::Size(50, 22);
-			this->textBox15->TabIndex = 79;
-			this->textBox15->TextChanged += gcnew System::EventHandler(this, &Configuracion::textBox15_TextChanged);
-			// 
-			// textBox16
-			// 
-			this->textBox16->Location = System::Drawing::Point(774, 465);
-			this->textBox16->Name = L"textBox16";
-			this->textBox16->Size = System::Drawing::Size(50, 22);
-			this->textBox16->TabIndex = 80;
-			// 
-			// textBox17
-			// 
-			this->textBox17->Location = System::Drawing::Point(1187, 142);
-			this->textBox17->Name = L"textBox17";
-			this->textBox17->Size = System::Drawing::Size(50, 22);
-			this->textBox17->TabIndex = 81;
-			// 
-			// textBox18
-			// 
-			this->textBox18->Location = System::Drawing::Point(1187, 183);
-			this->textBox18->Name = L"textBox18";
-			this->textBox18->Size = System::Drawing::Size(50, 22);
-			this->textBox18->TabIndex = 81;
-			// 
-			// textBox19
-			// 
-			this->textBox19->Location = System::Drawing::Point(1187, 268);
-			this->textBox19->Name = L"textBox19";
-			this->textBox19->Size = System::Drawing::Size(50, 22);
-			this->textBox19->TabIndex = 82;
-			// 
-			// textBox20
-			// 
-			this->textBox20->Location = System::Drawing::Point(1187, 323);
-			this->textBox20->Name = L"textBox20";
-			this->textBox20->Size = System::Drawing::Size(50, 22);
-			this->textBox20->TabIndex = 83;
-			// 
-			// textBox21
-			// 
-			this->textBox21->Location = System::Drawing::Point(1187, 424);
-			this->textBox21->Name = L"textBox21";
-			this->textBox21->Size = System::Drawing::Size(50, 22);
-			this->textBox21->TabIndex = 84;
-			// 
-			// textBox22
-			// 
-			this->textBox22->Location = System::Drawing::Point(1187, 474);
-			this->textBox22->Name = L"textBox22";
-			this->textBox22->Size = System::Drawing::Size(50, 22);
-			this->textBox22->TabIndex = 85;
-			// 
-			// textBox23
-			// 
-			this->textBox23->Location = System::Drawing::Point(333, 560);
-			this->textBox23->Name = L"textBox23";
-			this->textBox23->Size = System::Drawing::Size(44, 22);
-			this->textBox23->TabIndex = 86;
-			// 
-			// textBox24
-			// 
-			this->textBox24->Location = System::Drawing::Point(333, 604);
-			this->textBox24->Name = L"textBox24";
-			this->textBox24->Size = System::Drawing::Size(47, 22);
-			this->textBox24->TabIndex = 87;
-			// 
-			// Espantapájaros
-			// 
-			this->Espantapájaros->AutoSize = true;
-			this->Espantapájaros->BackColor = System::Drawing::Color::Cyan;
-			this->Espantapájaros->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->Espantapájaros->Location = System::Drawing::Point(21, 535);
-			this->Espantapájaros->Name = L"Espantapájaros";
-			this->Espantapájaros->Size = System::Drawing::Size(125, 18);
-			this->Espantapájaros->TabIndex = 46;
-			this->Espantapájaros->Text = L"Espantapájaros";
-			// 
-			// button1
-			// 
-			this->button1->BackColor = System::Drawing::Color::LimeGreen;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(686, 596);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(399, 56);
-			this->button1->TabIndex = 88;
-			this->button1->Text = L"Guardar configuración";
-			this->button1->UseVisualStyleBackColor = false;
-			// 
-			// Configuracion
+			//---------------------------------------------------------------------------------------------------------------------------------------------------
+			// -----------------------------------------------------------------Se agregan elementos a Configuracion---------------------------------------------
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlDark;
 			this->ClientSize = System::Drawing::Size(1302, 744);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox24);
-			this->Controls->Add(this->textBox23);
-			this->Controls->Add(this->textBox22);
-			this->Controls->Add(this->textBox21);
-			this->Controls->Add(this->textBox20);
-			this->Controls->Add(this->textBox19);
-			this->Controls->Add(this->textBox18);
-			this->Controls->Add(this->textBox17);
-			this->Controls->Add(this->textBox16);
-			this->Controls->Add(this->textBox15);
-			this->Controls->Add(this->textBox14);
-			this->Controls->Add(this->textBox13);
-			this->Controls->Add(this->textBox12);
-			this->Controls->Add(this->textBox11);
-			this->Controls->Add(this->textBox10);
-			this->Controls->Add(this->textBox9);
-			this->Controls->Add(this->textBox8);
-			this->Controls->Add(this->textBox7);
-			this->Controls->Add(this->textBox6);
-			this->Controls->Add(this->textBox5);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->trackBar24);
-			this->Controls->Add(this->trackBar23);
+			this->Controls->Add(this->B_GuardarConfiguracion);
+			this->Controls->Add(this->EspantaMax);
+			this->Controls->Add(this->EspantaCosto);
+			this->Controls->Add(this->PlagaArbol);
+			this->Controls->Add(this->PlagaAparicion);
+			this->Controls->Add(this->CuervoFrutos);
+			this->Controls->Add(this->CuervoAparicion);
+			this->Controls->Add(this->OvejaFrutos);
+			this->Controls->Add(this->OvejaAparicion);
+			this->Controls->Add(this->AvlFrutos);
+			this->Controls->Add(this->AvlCosecha);
+			this->Controls->Add(this->AvlCrece);
+			this->Controls->Add(this->AvlCosto);
+			this->Controls->Add(this->HeapFrutos);
+			this->Controls->Add(this->HeapCosecha);
+			this->Controls->Add(this->HeapCrece);
+			this->Controls->Add(this->HeapCosto);
+			this->Controls->Add(this->SplayFrutos);
+			this->Controls->Add(this->SplayCosecha);
+			this->Controls->Add(this->SplayCrece);
+			this->Controls->Add(this->SplayCosto);
+			this->Controls->Add(this->BinFfrutos);
+			this->Controls->Add(this->BinCosecha);
+			this->Controls->Add(this->BinCrece);
+			this->Controls->Add(this->T_EspantaMax);
+			this->Controls->Add(this->T_EspantaCosto);
 			this->Controls->Add(this->label33);
 			this->Controls->Add(this->label32);
-			this->Controls->Add(this->trackBar22);
-			this->Controls->Add(this->trackBar21);
-			this->Controls->Add(this->trackBar20);
-			this->Controls->Add(this->trackBar19);
-			this->Controls->Add(this->trackBar18);
-			this->Controls->Add(this->trackBar17);
+			this->Controls->Add(this->T_PlagasArboles);
+			this->Controls->Add(this->T_PlagasAparicion);
+			this->Controls->Add(this->T_CuervosFrutos);
+			this->Controls->Add(this->T_CuervosAparicion);
+			this->Controls->Add(this->T_OvejasFrutos);
+			this->Controls->Add(this->T_OvejasAparicion);
 			this->Controls->Add(this->label31);
 			this->Controls->Add(this->label30);
 			this->Controls->Add(this->label29);
@@ -1070,7 +1082,7 @@ private: System::Windows::Forms::Button^ button1;
 			this->Controls->Add(this->label24);
 			this->Controls->Add(this->label23);
 			this->Controls->Add(this->Espantapájaros);
-			this->Controls->Add(this->trackBar16);
+			this->Controls->Add(this->T_AvlFrutos);
 			this->Controls->Add(this->label22);
 			this->Controls->Add(this->label21);
 			this->Controls->Add(this->label20);
@@ -1083,214 +1095,215 @@ private: System::Windows::Forms::Button^ button1;
 			this->Controls->Add(this->label13);
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->label11);
-			this->Controls->Add(this->trackBar4);
-			this->Controls->Add(this->trackBar3);
+			this->Controls->Add(this->T_BinFrutos);
+			this->Controls->Add(this->T_BinCosecha);
 			this->Controls->Add(this->label10);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
-			this->Controls->Add(this->trackBar15);
-			this->Controls->Add(this->trackBar14);
-			this->Controls->Add(this->trackBar13);
-			this->Controls->Add(this->trackBar12);
-			this->Controls->Add(this->trackBar11);
-			this->Controls->Add(this->trackBar10);
-			this->Controls->Add(this->trackBar9);
-			this->Controls->Add(this->trackBar8);
-			this->Controls->Add(this->trackBar7);
-			this->Controls->Add(this->trackBar6);
-			this->Controls->Add(this->trackBar5);
-			this->Controls->Add(this->trackBar2);
+			this->Controls->Add(this->T_AvlCosecha);
+			this->Controls->Add(this->T_AvlCrece);
+			this->Controls->Add(this->T_AvlCosto);
+			this->Controls->Add(this->T_HeapFrutos);
+			this->Controls->Add(this->T_HeapCosecha);
+			this->Controls->Add(this->T_HeapCrece);
+			this->Controls->Add(this->T_HeapCosto);
+			this->Controls->Add(this->T_SplayFrutos);
+			this->Controls->Add(this->T_SplayCosecha);
+			this->Controls->Add(this->T_SplayCrece);
+			this->Controls->Add(this->T_SplayCosto);
+			this->Controls->Add(this->T_BinCrece);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->trackBar1);
+			this->Controls->Add(this->BinCosto);
+			this->Controls->Add(this->T_BinCosto);
 			this->Name = L"Configuracion";
 			this->Text = L"Configuracion";
 			this->Load += gcnew System::EventHandler(this, &Configuracion::Configuracion_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar6))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar7))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar8))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar9))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar10))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar11))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar12))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar13))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar14))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar15))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar16))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar17))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar18))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar19))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar20))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar21))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar22))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar23))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar24))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_BinCosto))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_BinCosecha))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_BinCrece))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_BinFrutos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_SplayCosto))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_SplayCrece))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_SplayCosecha))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_SplayFrutos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_HeapCosto))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_HeapCrece))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_HeapCosecha))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_HeapFrutos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_AvlCosto))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_AvlCrece))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_AvlCosecha))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_AvlFrutos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_OvejasAparicion))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_OvejasFrutos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_CuervosAparicion))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_CuervosFrutos))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_PlagasAparicion))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_PlagasArboles))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_EspantaCosto))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->T_EspantaMax))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e) {
 
 
+			// Actualizar el valor del control TextBox con el valor actual del control TrackBar
+			this->BinCosto->Text = this->T_BinCosto->Value.ToString();
+		}
+
+		private: System::Void trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e) {
+			// Actualizar el valor del control TextBox con el valor actual del control TrackBar
+			this->BinCrece->Text = this->T_BinCrece->Value.ToString();
+		}
+
+
+	private: System::Void trackBar3_Scroll(System::Object^ sender, System::EventArgs^ e) {
 		// Actualizar el valor del control TextBox con el valor actual del control TrackBar
-		this->textBox1->Text = this->trackBar1->Value.ToString();
+		this->BinCosecha->Text = this->T_BinCosecha->Value.ToString();
 	}
 
-	private: System::Void trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void trackBar4_Scroll(System::Object^ sender, System::EventArgs^ e) {
 		// Actualizar el valor del control TextBox con el valor actual del control TrackBar
-		this->textBox2->Text = this->trackBar2->Value.ToString();
+		this->BinFfrutos->Text = this->T_BinFrutos->Value.ToString();
 	}
 
 
-private: System::Void trackBar3_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	// Actualizar el valor del control TextBox con el valor actual del control TrackBar
-	this->textBox3->Text = this->trackBar3->Value.ToString();
+	private: System::Void trackBar5_Scroll(System::Object^ sender, System::EventArgs^ e) {
+
+		this->SplayCosto->Text = this->T_SplayCosto->Value.ToString();
+	}
+
+	private: System::Void trackBar6_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->SplayCrece->Text = this->T_SplayCrece->Value.ToString();
+	}
+
+
+	private: System::Void trackBar7_Scroll(System::Object^ sender, System::EventArgs^ e) {
+
+		this->SplayCosecha->Text = this->T_SplayCosecha->Value.ToString();
+	}
+
+
+	private: System::Void trackBar8_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->SplayFrutos->Text = this->T_SplayFrutos->Value.ToString();
+	}
+
+
+	private: System::Void trackBar9_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->EspantaCosto->Text = this->T_EspantaCosto->Value.ToString();
+	}
+
+	private: System::Void trackBar10_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->EspantaMax->Text = this->T_EspantaMax->Value.ToString();
+	}
+	private: System::Void trackBar11_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->HeapCosto->Text = this->T_HeapCosto->Value.ToString();
+		   }
+
+	private: System::Void trackBar12_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->HeapCrece->Text = this->T_HeapCrece->Value.ToString();
+	}
+
+	private: System::Void trackBar13_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->HeapCosecha->Text = this->T_HeapCosecha->Value.ToString();
+	}
+
+	 private: System::Void trackBar14_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		 this->HeapFrutos->Text = this->T_HeapFrutos->Value.ToString();
+
+	 }
+	private: System::Void trackBar15_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->AvlCosto->Text = this->T_AvlCosto->Value.ToString();
+	}
+	private: System::Void trackBar16_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->AvlCrece->Text = this->T_AvlCrece->Value.ToString();
+	}
+	private: System::Void trackBar17_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->AvlCosecha->Text = this->T_AvlCosecha->Value.ToString();
+		   }
+	private: System::Void trackBar18_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->AvlFrutos->Text = this->T_AvlFrutos->Value.ToString();
+				  }
+	private: System::Void trackBar19_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->OvejaAparicion->Text = this->T_OvejasAparicion->Value.ToString();
+	}
+	private: System::Void trackBar20_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->OvejaFrutos->Text = this->T_OvejasFrutos->Value.ToString();
+	}
+	private: System::Void trackBar21_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->CuervoAparicion->Text = this->T_CuervosAparicion->Value.ToString();
+	}
+	private: System::Void trackBar22_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->CuervoFrutos->Text = this->T_CuervosFrutos->Value.ToString();
+		   }
+	private: System::Void trackBar23_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->PlagaArbol->Text = this->T_PlagasAparicion->Value.ToString();
+	}
+
+	private: System::Void trackBar24_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->PlagaArbol->Text = this->T_PlagasArboles->Value.ToString();
+	}
+
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox7_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox8_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox10_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox11_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox12_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox13_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox14_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox15_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox16_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox17_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox18_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox19_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox20_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox21_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox22_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox23_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox24_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void Configuracion_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 
-
-private: System::Void trackBar4_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	// Actualizar el valor del control TextBox con el valor actual del control TrackBar
-	this->textBox4->Text = this->trackBar4->Value.ToString();
-}
-
-
-private: System::Void trackBar5_Scroll(System::Object^ sender, System::EventArgs^ e) {
-
-	this->textBox5->Text = this->trackBar5->Value.ToString();
-}
-
-private: System::Void trackBar6_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox6->Text = this->trackBar6->Value.ToString();
-}
-
-
-private: System::Void trackBar7_Scroll(System::Object^ sender, System::EventArgs^ e) {
-
-	this->textBox7->Text = this->trackBar7->Value.ToString();
-}
-
-
-private: System::Void trackBar8_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox8->Text = this->trackBar8->Value.ToString();
-}
-
-
-private: System::Void trackBar9_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox9->Text = this->trackBar9->Value.ToString();
-}
-
-private: System::Void trackBar10_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox10->Text = this->trackBar10->Value.ToString();
-}
-private: System::Void trackBar11_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox11->Text = this->trackBar11->Value.ToString();
-	   }
-
-private: System::Void trackBar12_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox12->Text = this->trackBar12->Value.ToString();
-}
-
-private: System::Void trackBar13_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox13->Text = this->trackBar13->Value.ToString();
-}
-
- private: System::Void trackBar14_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	 this->textBox14->Text = this->trackBar14->Value.ToString();
-
- }
-private: System::Void trackBar15_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox15->Text = this->trackBar15->Value.ToString();
-}
-private: System::Void trackBar16_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox16->Text = this->trackBar16->Value.ToString();
-}
-private: System::Void trackBar17_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox17->Text = this->trackBar17->Value.ToString();
-	   }
-private: System::Void trackBar18_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox18->Text = this->trackBar18->Value.ToString();
-			  }
-private: System::Void trackBar19_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox19->Text = this->trackBar19->Value.ToString();
-}
-private: System::Void trackBar20_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox20->Text = this->trackBar20->Value.ToString();
-}
-private: System::Void trackBar21_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox21->Text = this->trackBar21->Value.ToString();
-}
-private: System::Void trackBar22_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox22->Text = this->trackBar22->Value.ToString();
-	   }
-private: System::Void trackBar23_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox23->Text = this->trackBar23->Value.ToString();
-}
-
-private: System::Void trackBar24_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->textBox24->Text = this->trackBar24->Value.ToString();
-}
-
-private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox7_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox8_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
- private: System::Void textBox10_TextChanged(System::Object^ sender, System::EventArgs^ e) {
- }
- private: System::Void textBox11_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox12_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox13_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox14_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox15_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox16_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox17_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox18_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox19_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox20_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox21_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox22_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
- } private: System::Void textBox23_TextChanged(System::Object^ sender, System::EventArgs^ e) {
- }
-private: System::Void textBox24_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void Configuracion_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-};
-}
+	};
+	}

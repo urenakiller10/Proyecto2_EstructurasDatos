@@ -1,4 +1,6 @@
 
+//-----Includes necesarios en el programa-------
+
 #include "Configuracion.h"
 #include "AreaJuego.h"
 using namespace System::Windows::Forms;
@@ -16,10 +18,6 @@ namespace CppCLRWinFormsProject {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-
-	/// <summary>
-	/// Summary for Form1
-	/// </summary>
 	/// 
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
@@ -28,15 +26,11 @@ namespace CppCLRWinFormsProject {
 		{
 			InitializeComponent();
 			initCustom();
-			//
-			//TODO: Add the constructor code here
-			//
+
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
+
 		~Form1()
 		{
 			if (components)
@@ -45,39 +39,28 @@ namespace CppCLRWinFormsProject {
 			}
 		}
 	private: System::Windows::Forms::Label^ Título;
-	protected:
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ B_Jugar;
+	private: System::Windows::Forms::Button^ B_Configuracion;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button3;
-
-
-
-	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		System::ComponentModel::Container^ components;
+	private: System::Windows::Forms::Button^ B_Top;
+	private: System::Windows::Forms::Button^ B_Cargar;
+	private:System::ComponentModel::Container^ components;
 		
 		void initCustom() {
 			this->pictureBox1->Image = Image::FromFile("recursos//animales.jpg");
-			//this->pictureBox2->Image = Image::FromFile("recursos//DILUC.jpg");
-		}
+	
+						}
 
-#pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
+	#pragma region Windows Form Designer generated code
+
 		void InitializeComponent(void)
 		{
 			this->Título = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->B_Jugar = (gcnew System::Windows::Forms::Button());
+			this->B_Configuracion = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->B_Top = (gcnew System::Windows::Forms::Button());
+			this->B_Cargar = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -94,35 +77,35 @@ namespace CppCLRWinFormsProject {
 			this->Título->Text = L"TEC Farm";
 			this->Título->Click += gcnew System::EventHandler(this, &Form1::Título_Click);
 			// 
-			// button1
+			// Boton_Jugar
 			// 
-			this->button1->BackColor = System::Drawing::Color::Red;
-			this->button1->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->B_Jugar->BackColor = System::Drawing::Color::Red;
+			this->B_Jugar->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(490, 406);
-			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(307, 132);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Jugar";
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			this->B_Jugar->Location = System::Drawing::Point(490, 406);
+			this->B_Jugar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->B_Jugar->Name = L"B_Jugar";
+			this->B_Jugar->Size = System::Drawing::Size(307, 132);
+			this->B_Jugar->TabIndex = 1;
+			this->B_Jugar->Text = L"Jugar";
+			this->B_Jugar->UseVisualStyleBackColor = false;
+			this->B_Jugar->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
-			// button2
+			// Boton_Configuracion
 			// 
-			this->button2->BackColor = System::Drawing::SystemColors::ButtonShadow;
-			this->button2->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->B_Configuracion->BackColor = System::Drawing::SystemColors::ButtonShadow;
+			this->B_Configuracion->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(833, 409);
-			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(300, 129);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"Configuraciones";
-			this->button2->UseVisualStyleBackColor = false;
-			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
+			this->B_Configuracion->Location = System::Drawing::Point(833, 409);
+			this->B_Configuracion->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->B_Configuracion->Name = L"B_Configuracion";
+			this->B_Configuracion->Size = System::Drawing::Size(300, 129);
+			this->B_Configuracion->TabIndex = 2;
+			this->B_Configuracion->Text = L"Configuraciones";
+			this->B_Configuracion->UseVisualStyleBackColor = false;
+			this->B_Configuracion->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
 			// 
-			// pictureBox1
+			// Imagen de fondo
 			// 
 			this->pictureBox1->Location = System::Drawing::Point(-3, -58);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
@@ -131,32 +114,32 @@ namespace CppCLRWinFormsProject {
 			this->pictureBox1->TabIndex = 3;
 			this->pictureBox1->TabStop = false;
 			// 
-			// button4
+			// Boton_Top10
 			// 
-			this->button4->BackColor = System::Drawing::Color::Gold;
-			this->button4->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->B_Top->BackColor = System::Drawing::Color::Gold;
+			this->B_Top->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(490, 568);
-			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(307, 132);
-			this->button4->TabIndex = 5;
-			this->button4->Text = L"Mostrar TOP 10";
-			this->button4->UseVisualStyleBackColor = false;
-			this->button4->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
+			this->B_Top->Location = System::Drawing::Point(490, 568);
+			this->B_Top->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->B_Top->Name = L"B_Top";
+			this->B_Top->Size = System::Drawing::Size(307, 132);
+			this->B_Top->TabIndex = 5;
+			this->B_Top->Text = L"Mostrar TOP 10";
+			this->B_Top->UseVisualStyleBackColor = false;
+			this->B_Top->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
 			// 
-			// button3
+			// Boton_CargarPartida
 			// 
-			this->button3->BackColor = System::Drawing::Color::CornflowerBlue;
-			this->button3->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->B_Cargar->BackColor = System::Drawing::Color::CornflowerBlue;
+			this->B_Cargar->Font = (gcnew System::Drawing::Font(L"MV Boli", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(833, 568);
-			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(290, 132);
-			this->button3->TabIndex = 6;
-			this->button3->Text = L"Cargar partida";
-			this->button3->UseVisualStyleBackColor = false;
+			this->B_Cargar->Location = System::Drawing::Point(833, 568);
+			this->B_Cargar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->B_Cargar->Name = L"B_Cargar";
+			this->B_Cargar->Size = System::Drawing::Size(290, 132);
+			this->B_Cargar->TabIndex = 6;
+			this->B_Cargar->Text = L"Cargar partida";
+			this->B_Cargar->UseVisualStyleBackColor = false;
 			// 
 			// Form1
 			// 
@@ -164,10 +147,10 @@ namespace CppCLRWinFormsProject {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::PaleGreen;
 			this->ClientSize = System::Drawing::Size(1216, 723);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button4);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->B_Cargar);
+			this->Controls->Add(this->B_Top);
+			this->Controls->Add(this->B_Configuracion);
+			this->Controls->Add(this->B_Jugar);
 			this->Controls->Add(this->Título);
 			this->Controls->Add(this->pictureBox1);
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -178,63 +161,61 @@ namespace CppCLRWinFormsProject {
 			this->PerformLayout();
 
 		}
-#pragma endregion
+		#pragma endregion
 
 
-		//boton de "Configuraciones"
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		//Boton de "Configuraciones"
+		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
-		Proyecto2_ED::Configuracion^ ventaConfi = gcnew Proyecto2_ED::Configuracion();
-		ventaConfi->Show();
+			Proyecto2_ED::Configuracion^ ventaConfi = gcnew Proyecto2_ED::Configuracion();
+			ventaConfi->Show();
 
 
-	}
+		}
 
-		   //boton de "JUGAR"
+		//Boton de "JUGAR"
 
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		// Crear una ventana de diálogo para ingresar el nombre
-		Proyecto2_ED::InputForm^ inputForm = gcnew Proyecto2_ED::InputForm();
+			//--- Crear una ventana de diálogo para ingresar el nombre---
 
-		// Mostrar la ventana de diálogo y obtener el nombre ingresado
-		if (inputForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			System::String^ nombre = inputForm->GetNombre();
+			Proyecto2_ED::InputForm^ inputForm = gcnew Proyecto2_ED::InputForm();
+
+			//--- Mostrar la ventana de diálogo y obtener el nombre ingresado--
+
+			if (inputForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				System::String^ nombre = inputForm->GetNombre();
 
 			// Verificar si el nombre es un string válido
-			if (System::String::IsNullOrEmpty(nombre)) {
-				MessageBox::Show("Nombre inválido. Inténtelo de nuevo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				if (System::String::IsNullOrEmpty(nombre)) {
+					MessageBox::Show("Nombre inválido. Inténtelo de nuevo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					return;
+				}
+			//Se abre primero mercado y luego ya el juego
+
+				Proyecto2_ED::AreaJuego^ ventaJuego = gcnew Proyecto2_ED::AreaJuego();
+				ventaJuego->Show();
+
+				Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
+				ventMercado->Show();
+			}
+			else {
+				// El usuario canceló la entrada del nombre
 				return;
 			}
-
-			Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
-			ventMercado->Show();
-
-
-		}
-		else {
-			// El usuario canceló la entrada del nombre
-			return;
-		}
 	
-};
+	};
 	
-private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void Título_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	Proyecto2_ED::AreaJuego^ vent = gcnew Proyecto2_ED::AreaJuego();
-	vent->Show();
+	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void Título_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 
-}
-};
+	}
+	};
 
 	};
 

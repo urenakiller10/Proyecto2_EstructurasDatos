@@ -64,9 +64,6 @@
     <ClCompile Include="Mercado.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Jugar.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico">

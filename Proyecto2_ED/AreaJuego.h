@@ -20,7 +20,13 @@ namespace Proyecto2_ED {
         array<array<Label^, 1>^>^ matrizLabels;
         Label^ labelRojo;
         int labelX;
-        int labelY;
+    private: System::Windows::Forms::TextBox^ ArbolesSinPlantar;
+
+    private: System::Windows::Forms::Label^ SinPlantar;
+    private: System::Windows::Forms::Label^ label1;
+    private: System::Windows::Forms::TextBox^ Dinero;
+
+           int labelY;
 
     public:
         AreaJuego(void)
@@ -99,19 +105,26 @@ namespace Proyecto2_ED {
                 delete components;
             }
         }
-    private: System::Windows::Forms::Button^ button1;
-    private: System::Windows::Forms::Button^ button2;
-    private: System::Windows::Forms::Button^ button3;
+    private: System::Windows::Forms::Button^ B_GuardarJuego;
+    public:
+
+    private: System::Windows::Forms::Button^ B_Pausa;
+
+    private: System::Windows::Forms::Button^ B_Plantar;
+
     private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
-    private: System::Windows::Forms::DataGridView^ dataGridView1;
+    private: System::Windows::Forms::DataGridView^ TablaJuego;
+
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Tipo_Arbol;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Ubicacion;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Frutos;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Monto;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Vendidos;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Perdidos;
-    private: System::Windows::Forms::Button^ button4;
-    private: System::Windows::Forms::Button^ button5;
+private: System::Windows::Forms::Button^ B_Salir;
+
+private: System::Windows::Forms::Button^ B_VenderTodo;
+
 
 
     protected:
@@ -132,50 +145,61 @@ namespace Proyecto2_ED {
 
 
 
-         void SetupDataGridView()
-            {
+        void SetupDataGridView()
+        {
             // Configurar la cantidad de filas del DataGridView
-  
-             dataGridView1->RowCount = 4; // Por ejemplo maaeee establece 10 filas fijas
 
-            }
+            TablaJuego->RowCount = 4; // Por ejemplo maaeee establece 10 filas fijas
+
+            TablaJuego->KeyDown += gcnew KeyEventHandler(this, &AreaJuego::TablaJuego_KeyDown);
+
+
+        }
 
      //-------------------METODO QUE SE PUEDE USAR MÁS ADELANTE----------------------
 
          void ActualizarInformacionFilas()
          {
              // Actualizar información en las filas existentes
-             for (int fila = 0; fila < dataGridView1->RowCount; fila++)
+             for (int fila = 0; fila < TablaJuego->RowCount; fila++)
              {
-                 dataGridView1->Rows[fila]->Cells[0]->Value = "Valor 1";
-                 dataGridView1->Rows[fila]->Cells[1]->Value = "Valor 2";
-                 dataGridView1->Rows[fila]->Cells[2]->Value = "Valor 3";
+                 TablaJuego->Rows[fila]->Cells[0]->Value = "Valor 1";
+                 TablaJuego->Rows[fila]->Cells[1]->Value = "Valor 2";
+                 TablaJuego->Rows[fila]->Cells[2]->Value = "Valor 3";
              }
          }
          
-
+         void AreaJuego::TablaJuego_KeyDown(Object^ sender, KeyEventArgs^ e)
+         {
+             // Verificar si la tecla presionada es una tecla de flecha
+             if (e->KeyCode == Keys::Up || e->KeyCode == Keys::Down || e->KeyCode == Keys::Left || e->KeyCode == Keys::Right)
+             {
+                 // Anular el evento de tecla para evitar que se procese
+                 e->SuppressKeyPress = true;
+             }
+         }
 
          void OcultarColumnaSeleccionada()
          {
-             dataGridView1->ColumnHeadersVisible = false;
+             TablaJuego->ColumnHeadersVisible = false;
          }
 
          void EstablecerTextoFilas()
          {
              DataGridViewCellStyle^ rowStyle = gcnew DataGridViewCellStyle();
-             rowStyle->Font = gcnew System::Drawing::Font(dataGridView1->Font->FontFamily, 10, FontStyle::Bold);
+             rowStyle->Font = gcnew System::Drawing::Font(TablaJuego->Font->FontFamily, 10, FontStyle::Bold);
 
-             dataGridView1->Rows[0]->Cells[0]->Value = "Binario";
-             dataGridView1->Rows[0]->DefaultCellStyle = rowStyle;
+             TablaJuego->Rows[0]->Cells[0]->Value = "Binario";
+             TablaJuego->Rows[0]->DefaultCellStyle = rowStyle;
 
-             dataGridView1->Rows[1]->Cells[0]->Value = "AVL";
-             dataGridView1->Rows[1]->DefaultCellStyle = rowStyle;
+             TablaJuego->Rows[1]->Cells[0]->Value = "AVL";
+             TablaJuego->Rows[1]->DefaultCellStyle = rowStyle;
 
-             dataGridView1->Rows[2]->Cells[0]->Value = "Splay";
-             dataGridView1->Rows[2]->DefaultCellStyle = rowStyle;
+             TablaJuego->Rows[2]->Cells[0]->Value = "Splay";
+             TablaJuego->Rows[2]->DefaultCellStyle = rowStyle;
 
-             dataGridView1->Rows[3]->Cells[0]->Value = "Heap";
-             dataGridView1->Rows[3]->DefaultCellStyle = rowStyle;
+             TablaJuego->Rows[3]->Cells[0]->Value = "Heap";
+             TablaJuego->Rows[3]->DefaultCellStyle = rowStyle;
          }
     //---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -183,67 +207,72 @@ namespace Proyecto2_ED {
         {   
             System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
             System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-            this->button1 = (gcnew System::Windows::Forms::Button());
-            this->button2 = (gcnew System::Windows::Forms::Button());
-            this->button3 = (gcnew System::Windows::Forms::Button());
+            this->B_GuardarJuego = (gcnew System::Windows::Forms::Button());
+            this->B_Pausa = (gcnew System::Windows::Forms::Button());
+            this->B_Plantar = (gcnew System::Windows::Forms::Button());
             this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
-            this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+            this->TablaJuego = (gcnew System::Windows::Forms::DataGridView());
             this->Tipo_Arbol = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->Ubicacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->Frutos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->Monto = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->Vendidos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->Perdidos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-            this->button4 = (gcnew System::Windows::Forms::Button());
-            this->button5 = (gcnew System::Windows::Forms::Button());
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+            this->B_Salir = (gcnew System::Windows::Forms::Button());
+            this->B_VenderTodo = (gcnew System::Windows::Forms::Button());
+            this->ArbolesSinPlantar = (gcnew System::Windows::Forms::TextBox());
+            this->SinPlantar = (gcnew System::Windows::Forms::Label());
+            this->label1 = (gcnew System::Windows::Forms::Label());
+            this->Dinero = (gcnew System::Windows::Forms::TextBox());
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablaJuego))->BeginInit();
             this->SuspendLayout();
             // 
-            // button1
+            // B_GuardarJuego
             // 
-            this->button1->BackColor = System::Drawing::Color::Yellow;
-            this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            this->B_GuardarJuego->BackColor = System::Drawing::Color::Yellow;
+            this->B_GuardarJuego->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->button1->Location = System::Drawing::Point(1469, 631);
-            this->button1->Name = L"button1";
-            this->button1->Size = System::Drawing::Size(169, 87);
-            this->button1->TabIndex = 0;
-            this->button1->Text = L"Guardar juego";
-            this->button1->UseVisualStyleBackColor = false;
-            this->button1->Click += gcnew System::EventHandler(this, &AreaJuego::button1_Click);
+            this->B_GuardarJuego->Location = System::Drawing::Point(1430, 626);
+            this->B_GuardarJuego->Name = L"B_GuardarJuego";
+            this->B_GuardarJuego->Size = System::Drawing::Size(209, 108);
+            this->B_GuardarJuego->TabIndex = 0;
+            this->B_GuardarJuego->Text = L"Guardar juego";
+            this->B_GuardarJuego->UseVisualStyleBackColor = false;
+            this->B_GuardarJuego->Click += gcnew System::EventHandler(this, &AreaJuego::button1_Click);
             // 
-            // button2
+            // B_Pausa
             // 
-            this->button2->BackColor = System::Drawing::Color::Red;
-            this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            this->B_Pausa->BackColor = System::Drawing::Color::RoyalBlue;
+            this->B_Pausa->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->button2->Location = System::Drawing::Point(1368, 743);
-            this->button2->Name = L"button2";
-            this->button2->Size = System::Drawing::Size(169, 87);
-            this->button2->TabIndex = 1;
-            this->button2->Text = L"Pausa";
-            this->button2->UseVisualStyleBackColor = false;
+            this->B_Pausa->Location = System::Drawing::Point(1302, 758);
+            this->B_Pausa->Name = L"B_Pausa";
+            this->B_Pausa->Size = System::Drawing::Size(209, 108);
+            this->B_Pausa->TabIndex = 1;
+            this->B_Pausa->Text = L"Pausa";
+            this->B_Pausa->UseVisualStyleBackColor = false;
+            this->B_Pausa->Click += gcnew System::EventHandler(this, &AreaJuego::button2_Click);
             // 
-            // button3
+            // B_Plantar
             // 
-            this->button3->BackColor = System::Drawing::Color::LawnGreen;
-            this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            this->B_Plantar->BackColor = System::Drawing::Color::OrangeRed;
+            this->B_Plantar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->button3->Location = System::Drawing::Point(982, 533);
-            this->button3->Name = L"button3";
-            this->button3->Size = System::Drawing::Size(169, 87);
-            this->button3->TabIndex = 2;
-            this->button3->Text = L"Plantar";
-            this->button3->UseVisualStyleBackColor = false;
+            this->B_Plantar->Location = System::Drawing::Point(982, 565);
+            this->B_Plantar->Name = L"B_Plantar";
+            this->B_Plantar->Size = System::Drawing::Size(169, 57);
+            this->B_Plantar->TabIndex = 2;
+            this->B_Plantar->Text = L"Plantar";
+            this->B_Plantar->UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // TablaJuego
             // 
-            this->dataGridView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+            this->TablaJuego->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
                 | System::Windows::Forms::AnchorStyles::Left)
                 | System::Windows::Forms::AnchorStyles::Right));
-            this->dataGridView1->BackgroundColor = System::Drawing::Color::ForestGreen;
-            this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-            this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Sunken;
+            this->TablaJuego->BackgroundColor = System::Drawing::Color::ForestGreen;
+            this->TablaJuego->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+            this->TablaJuego->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Sunken;
             dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
             dataGridViewCellStyle1->BackColor = System::Drawing::Color::PaleGreen;
             dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -252,19 +281,19 @@ namespace Proyecto2_ED {
             dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::PaleGreen;
             dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::PaleGreen;
             dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this->dataGridView1->ColumnHeadersHeight = 31;
-            this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
-            this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+            this->TablaJuego->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this->TablaJuego->ColumnHeadersHeight = 31;
+            this->TablaJuego->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
+            this->TablaJuego->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
                 this->Tipo_Arbol,
                     this->Ubicacion, this->Frutos, this->Monto, this->Vendidos, this->Perdidos
             });
-            this->dataGridView1->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-            this->dataGridView1->Location = System::Drawing::Point(982, 268);
-            this->dataGridView1->MultiSelect = false;
-            this->dataGridView1->Name = L"dataGridView1";
-            this->dataGridView1->ReadOnly = true;
-            this->dataGridView1->RightToLeft = System::Windows::Forms::RightToLeft::No;
+            this->TablaJuego->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
+            this->TablaJuego->Location = System::Drawing::Point(982, 268);
+            this->TablaJuego->MultiSelect = false;
+            this->TablaJuego->Name = L"TablaJuego";
+            this->TablaJuego->ReadOnly = true;
+            this->TablaJuego->RightToLeft = System::Windows::Forms::RightToLeft::No;
             dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
             dataGridViewCellStyle2->BackColor = System::Drawing::Color::ForestGreen;
             dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -273,15 +302,15 @@ namespace Proyecto2_ED {
             dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
             dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
             dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-            this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this->dataGridView1->RowHeadersWidth = 51;
-            this->dataGridView1->RowTemplate->Height = 24;
-            this->dataGridView1->ScrollBars = System::Windows::Forms::ScrollBars::None;
-            this->dataGridView1->ShowRowErrors = false;
-            this->dataGridView1->Size = System::Drawing::Size(884, 58);
-            this->dataGridView1->TabIndex = 3;
-            this->dataGridView1->TabStop = false;
-            this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AreaJuego::dataGridView1_CellContentClick);
+            this->TablaJuego->RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this->TablaJuego->RowHeadersWidth = 51;
+            this->TablaJuego->RowTemplate->Height = 24;
+            this->TablaJuego->ScrollBars = System::Windows::Forms::ScrollBars::None;
+            this->TablaJuego->ShowRowErrors = false;
+            this->TablaJuego->Size = System::Drawing::Size(884, 58);
+            this->TablaJuego->TabIndex = 3;
+            this->TablaJuego->TabStop = false;
+            this->TablaJuego->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AreaJuego::dataGridView1_CellContentClick);
             // 
             // Tipo_Arbol
             // 
@@ -331,29 +360,78 @@ namespace Proyecto2_ED {
             this->Perdidos->ReadOnly = true;
             this->Perdidos->Width = 125;
             // 
-            // button4
+            // B_Salir
             // 
-            this->button4->BackColor = System::Drawing::Color::Cyan;
-            this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            this->B_Salir->BackColor = System::Drawing::SystemColors::ButtonShadow;
+            this->B_Salir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->button4->Location = System::Drawing::Point(1595, 743);
-            this->button4->Name = L"button4";
-            this->button4->Size = System::Drawing::Size(169, 87);
-            this->button4->TabIndex = 4;
-            this->button4->Text = L"Plantar";
-            this->button4->UseVisualStyleBackColor = false;
+            this->B_Salir->Location = System::Drawing::Point(1569, 758);
+            this->B_Salir->Name = L"B_Salir";
+            this->B_Salir->Size = System::Drawing::Size(209, 108);
+            this->B_Salir->TabIndex = 4;
+            this->B_Salir->Text = L"SALIR";
+            this->B_Salir->UseVisualStyleBackColor = false;
             // 
-            // button5
+            // B_VenderTodo
             // 
-            this->button5->BackColor = System::Drawing::Color::OrangeRed;
-            this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            this->B_VenderTodo->BackColor = System::Drawing::Color::Red;
+            this->B_VenderTodo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->button5->Location = System::Drawing::Point(1469, 470);
-            this->button5->Name = L"button5";
-            this->button5->Size = System::Drawing::Size(169, 87);
-            this->button5->TabIndex = 5;
-            this->button5->Text = L"VENDER TODO";
-            this->button5->UseVisualStyleBackColor = false;
+            this->B_VenderTodo->Location = System::Drawing::Point(1302, 455);
+            this->B_VenderTodo->Name = L"B_VenderTodo";
+            this->B_VenderTodo->Size = System::Drawing::Size(290, 57);
+            this->B_VenderTodo->TabIndex = 5;
+            this->B_VenderTodo->Text = L"VENDER TODO";
+            this->B_VenderTodo->UseVisualStyleBackColor = false;
+            // 
+            // ArbolesSinPlantar
+            // 
+            this->ArbolesSinPlantar->BackColor = System::Drawing::SystemColors::ButtonFace;
+            this->ArbolesSinPlantar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->ArbolesSinPlantar->ForeColor = System::Drawing::SystemColors::WindowText;
+            this->ArbolesSinPlantar->Location = System::Drawing::Point(1327, 145);
+            this->ArbolesSinPlantar->Name = L"ArbolesSinPlantar";
+            this->ArbolesSinPlantar->ReadOnly = true;
+            this->ArbolesSinPlantar->Size = System::Drawing::Size(82, 30);
+            this->ArbolesSinPlantar->TabIndex = 6;
+            this->ArbolesSinPlantar->TextChanged += gcnew System::EventHandler(this, &AreaJuego::textBox1_TextChanged);
+            // 
+            // SinPlantar
+            // 
+            this->SinPlantar->AutoSize = true;
+            this->SinPlantar->BackColor = System::Drawing::Color::Blue;
+            this->SinPlantar->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->SinPlantar->Location = System::Drawing::Point(1077, 145);
+            this->SinPlantar->Name = L"SinPlantar";
+            this->SinPlantar->Size = System::Drawing::Size(210, 26);
+            this->SinPlantar->TabIndex = 7;
+            this->SinPlantar->Text = L"Árboles sin plantar";
+            // 
+            // label1
+            // 
+            this->label1->AutoSize = true;
+            this->label1->BackColor = System::Drawing::Color::Yellow;
+            this->label1->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label1->Location = System::Drawing::Point(1514, 149);
+            this->label1->Name = L"label1";
+            this->label1->Size = System::Drawing::Size(78, 26);
+            this->label1->TabIndex = 8;
+            this->label1->Text = L"Dinero";
+            // 
+            // Dinero
+            // 
+            this->Dinero->BackColor = System::Drawing::SystemColors::ButtonFace;
+            this->Dinero->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->Dinero->ForeColor = System::Drawing::SystemColors::WindowText;
+            this->Dinero->Location = System::Drawing::Point(1619, 149);
+            this->Dinero->Name = L"Dinero";
+            this->Dinero->ReadOnly = true;
+            this->Dinero->Size = System::Drawing::Size(82, 30);
+            this->Dinero->TabIndex = 9;
             // 
             // AreaJuego
             // 
@@ -361,18 +439,23 @@ namespace Proyecto2_ED {
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::PaleGreen;
             this->ClientSize = System::Drawing::Size(1924, 878);
-            this->Controls->Add(this->button5);
-            this->Controls->Add(this->button4);
-            this->Controls->Add(this->button3);
-            this->Controls->Add(this->button2);
-            this->Controls->Add(this->button1);
-            this->Controls->Add(this->dataGridView1);
+            this->Controls->Add(this->Dinero);
+            this->Controls->Add(this->label1);
+            this->Controls->Add(this->SinPlantar);
+            this->Controls->Add(this->ArbolesSinPlantar);
+            this->Controls->Add(this->B_VenderTodo);
+            this->Controls->Add(this->B_Salir);
+            this->Controls->Add(this->B_Plantar);
+            this->Controls->Add(this->B_Pausa);
+            this->Controls->Add(this->B_GuardarJuego);
+            this->Controls->Add(this->TablaJuego);
             this->KeyPreview = true;
             this->Name = L"AreaJuego";
             this->Text = L"AreaJuego";
             this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablaJuego))->EndInit();
             this->ResumeLayout(false);
+            this->PerformLayout();
 
         }
 
@@ -431,11 +514,15 @@ namespace Proyecto2_ED {
     }
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-     //   Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
-      //  ventMercado->Show();
+      Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
+      ventMercado->Show();
 
     }
     private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
     }
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

@@ -36,6 +36,7 @@ Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     initCustom(): PrivateScope, Public, HideBySig
     SetupDataGridView(): PrivateScope, Public, HideBySig
     ActualizarInformacionFilas(): PrivateScope, Public, HideBySig
+    TablaJuego_KeyDown(Object, KeyEventArgs): PrivateScope, Public, HideBySig
     OcultarColumnaSeleccionada(): PrivateScope, Public, HideBySig
     EstablecerTextoFilas(): PrivateScope, Public, HideBySig
     InitializeComponent(): PrivateScope, Public, HideBySig
@@ -47,8 +48,5 @@ Class Proyecto2_ED.InputForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
   Methods:
     GetNombre(): PrivateScope, Public, HideBySig
 Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class Proyecto2_ED.Jugar: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
