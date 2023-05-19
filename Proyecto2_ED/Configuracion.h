@@ -1305,5 +1305,8 @@ namespace Proyecto2_ED {
 	private: System::Void Configuracion_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 
+
+
+
 	};
 	}

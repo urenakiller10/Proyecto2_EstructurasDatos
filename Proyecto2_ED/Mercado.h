@@ -18,15 +18,20 @@ namespace Proyecto2_ED {
 	public ref class Mercado : public System::Windows::Forms::Form
 	{
 
-	private:
+	public:
+
 		static int disponible =5000;
+		int PendAVL;
+		int PendSplay;
+		int PendHeap;
+		int PendEspanta;
+
 	public:
 		Mercado(void)
 		{
 			InitializeComponent();
 			initCustom();
 			DineroDisponible->Text = disponible.ToString();
-
 
 		}
 
@@ -46,8 +51,7 @@ namespace Proyecto2_ED {
 		private: System::Windows::Forms::Label^ label4;
 		private: System::Windows::Forms::Label^ label5;
 		private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Button^ B_Comprar;
-
+		private: System::Windows::Forms::Button^ B_Comprar;
 		private: System::Windows::Forms::PictureBox^ pictureBox1;
 		private: System::Windows::Forms::PictureBox^ pictureBox2;
 		private: System::Windows::Forms::PictureBox^ pictureBox3;
@@ -56,18 +60,15 @@ namespace Proyecto2_ED {
 		private: System::Windows::Forms::NumericUpDown^ Up_AVL;
 		private: System::Windows::Forms::NumericUpDown^ Up_SPLAY;
 		private: System::Windows::Forms::NumericUpDown^ Up_HEAP;
-	private: System::Windows::Forms::NumericUpDown^ Up_Espanta;
-
+		private: System::Windows::Forms::NumericUpDown^ Up_Espanta;
 		private: System::Windows::Forms::Label^ label7;
 		private: System::Windows::Forms::Label^ label8;
 		private: System::Windows::Forms::Label^ label9;
 		private: System::Windows::Forms::Label^ label10;
 		private: System::Windows::Forms::Label^ label11;
 		private: System::Windows::Forms::Label^ label12;
-	private: System::Windows::Forms::Label^ DineroDisponible;
+		private: System::Windows::Forms::Label^ DineroDisponible;
 
-
-		protected:
 
 		private:
 
@@ -430,6 +431,9 @@ namespace Proyecto2_ED {
 		private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
 
+	//------------------------------------------------------------Lógica de la compra de arboles---------------------------------------------------------------
+
+
 
 		private: System::Void B_Comprar_Click(System::Object^ sender, System::EventArgs^ e) {
 			
@@ -451,7 +455,6 @@ namespace Proyecto2_ED {
 				disponible -= precioTotal;
 				DineroDisponible->Text = disponible.ToString();
 				ActualizarLabelDisponible();
-
 
 				// Debe de ir lo de agregar al inventario de árboles sin sembrar aquí
 			}

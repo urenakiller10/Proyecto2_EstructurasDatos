@@ -1,8 +1,14 @@
 #pragma once
-#include "Mercado.h"
 #include <vector>
 #include <cstdlib> // Para generar números aleatorios
 #include <ctime> 
+#include "Mercado.h"
+#include "ImputForm.h"
+#include <iostream>
+#include <fstream>
+
+
+
 
 
 // Resto de tus inclusiones de archivos de encabezado
@@ -19,13 +25,17 @@ namespace Proyecto2_ED {
     using namespace System::Drawing;
     using namespace System::Threading;
 
+
+
     /// <summary>
     /// Resumen de AreaJuego
     /// </summary>
     public ref class AreaJuego : public System::Windows::Forms::Form
     {
+        
 
     private: 
+     
         array<array<Label^, 1>^>^ matrizLabels;
         Label^ labelGranjero;
         int labelX;
@@ -35,10 +45,13 @@ namespace Proyecto2_ED {
         Label^ LabelGusano;
         System::Windows::Forms::Timer^ timer;
         System::Windows::Forms::Timer^ temporizador;
-    private: System::Windows::Forms::TextBox^ ArbolesSinPlantar;
+ 
+
+
+   
 
     private: System::Windows::Forms::Label^ SinPlantar;
-
+    private: System::Windows::Forms::Label^ Arboles_Pendientes;
 
 
 
@@ -54,21 +67,22 @@ namespace Proyecto2_ED {
             initCustom();
             CrearMatriz();
 
-            mercadoVisible = false;
 
+            mercadoVisible = false;
 
             //Que ventana de mercado aparezca cada cierto tiempo en AreaJuego
 
-            
+
 
             System::Windows::Forms::Timer^ timer = gcnew System::Windows::Forms::Timer();
             timer->Interval = 8000; // 15000 ms = 15 s 
 
             timer->Tick += gcnew EventHandler(this, &AreaJuego::MostrarVentanaMercado);
             timer->Start();
-            
- 
+
+
         }
+
 
 
 
@@ -103,6 +117,11 @@ namespace Proyecto2_ED {
         System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
+
+
+
+
+        
 
         //------------------------------------------------------Matriz de botones---------------------------------------------------------
 
@@ -280,6 +299,7 @@ namespace Proyecto2_ED {
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------
 
+
         //---------------------------------------------Métodos de la tabla de datos--------------------------------------------------------------
 
 
@@ -400,8 +420,8 @@ namespace Proyecto2_ED {
             this->Perdidos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->B_Salir = (gcnew System::Windows::Forms::Button());
             this->B_VenderTodo = (gcnew System::Windows::Forms::Button());
-            this->ArbolesSinPlantar = (gcnew System::Windows::Forms::TextBox());
             this->SinPlantar = (gcnew System::Windows::Forms::Label());
+            this->Arboles_Pendientes = (gcnew System::Windows::Forms::Label());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablaJuego))->BeginInit();
             this->SuspendLayout();
             // 
@@ -416,7 +436,7 @@ namespace Proyecto2_ED {
             this->B_GuardarJuego->TabIndex = 0;
             this->B_GuardarJuego->Text = L"Guardar juego";
             this->B_GuardarJuego->UseVisualStyleBackColor = false;
-            this->B_GuardarJuego->Click += gcnew System::EventHandler(this, &AreaJuego::button1_Click);
+            this->B_GuardarJuego->Click += gcnew System::EventHandler(this, &AreaJuego::B_GuardarJuego_Click);
             // 
             // B_Pausa
             // 
@@ -562,19 +582,6 @@ namespace Proyecto2_ED {
             this->B_VenderTodo->Text = L"VENDER TODO";
             this->B_VenderTodo->UseVisualStyleBackColor = false;
             // 
-            // ArbolesSinPlantar
-            // 
-            this->ArbolesSinPlantar->BackColor = System::Drawing::SystemColors::ButtonFace;
-            this->ArbolesSinPlantar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->ArbolesSinPlantar->ForeColor = System::Drawing::SystemColors::WindowText;
-            this->ArbolesSinPlantar->Location = System::Drawing::Point(1521, 141);
-            this->ArbolesSinPlantar->Name = L"ArbolesSinPlantar";
-            this->ArbolesSinPlantar->ReadOnly = true;
-            this->ArbolesSinPlantar->Size = System::Drawing::Size(82, 30);
-            this->ArbolesSinPlantar->TabIndex = 6;
-            this->ArbolesSinPlantar->TextChanged += gcnew System::EventHandler(this, &AreaJuego::textBox1_TextChanged);
-            // 
             // SinPlantar
             // 
             this->SinPlantar->AutoSize = true;
@@ -587,14 +594,27 @@ namespace Proyecto2_ED {
             this->SinPlantar->TabIndex = 7;
             this->SinPlantar->Text = L"Árboles sin plantar";
             // 
+            // Arboles_Pendientes
+            // 
+            this->Arboles_Pendientes->AutoSize = true;
+            this->Arboles_Pendientes->BackColor = System::Drawing::Color::White;
+            this->Arboles_Pendientes->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->Arboles_Pendientes->Location = System::Drawing::Point(1489, 141);
+            this->Arboles_Pendientes->Name = L"Arboles_Pendientes";
+            this->Arboles_Pendientes->Size = System::Drawing::Size(23, 26);
+            this->Arboles_Pendientes->TabIndex = 8;
+           // this->Arboles_Pendientes->Text = L"x";
+
+            // 
             // AreaJuego
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::PaleGreen;
             this->ClientSize = System::Drawing::Size(1924, 878);
+            this->Controls->Add(this->Arboles_Pendientes);
             this->Controls->Add(this->SinPlantar);
-            this->Controls->Add(this->ArbolesSinPlantar);
             this->Controls->Add(this->B_VenderTodo);
             this->Controls->Add(this->B_Salir);
             this->Controls->Add(this->B_Plantar);
@@ -618,17 +638,46 @@ namespace Proyecto2_ED {
 #pragma endregion
     private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
     }
-    private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+ 
 
-      Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
-      ventMercado->Show();
-
-    }
+    
     private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
     }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
+
+
+
+       void B_GuardarJuego_Click(Object^ sender, EventArgs^ e)
+       {
+           std::string filePath = "Top10.txt";
+
+           // Abrir el archivo en modo de escritura
+           std::ofstream archivo(filePath, std::ios::app); // std::ios::app para agregar contenido al final del archivo
+
+           // Verificar si el archivo se abrió correctamente
+           if (!archivo)
+           {
+               MessageBox::Show("Error al abrir el archivo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+               return;
+           }
+
+           // Escribir en el archivo
+           archivo << "Hola mundo 10" << std::endl;
+
+           // Cerrar el archivo
+           archivo.close();
+
+           MessageBox::Show("El archivo ha sido guardado correctamente.", "Guardar", MessageBoxButtons::OK, MessageBoxIcon::Information);
+       }
+
+
+
+
+
+
+
 };
 }

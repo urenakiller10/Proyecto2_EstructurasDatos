@@ -2,6 +2,7 @@
 
 #include <string>
 
+
 namespace Proyecto2_ED {
 
 	using namespace System;
@@ -13,6 +14,7 @@ namespace Proyecto2_ED {
 		Label^ label;
 		TextBox^ textBox;
 		Button^ buttonAceptar;
+		System::String^ nombreGlobal;
 
 	public:
 		InputForm()
@@ -63,6 +65,7 @@ namespace Proyecto2_ED {
 			}
 			else
 			{
+				nombreGlobal = textBox->Text;
 				this->DialogResult = System::Windows::Forms::DialogResult::OK;
 				this->Close();
 			}

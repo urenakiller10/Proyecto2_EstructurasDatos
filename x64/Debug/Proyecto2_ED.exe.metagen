@@ -25,8 +25,19 @@ Class Proyecto2_ED.Configuracion: AutoLayout, AnsiClass, Class, Public, BeforeFi
 Class Proyecto2_ED.Mercado: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 PendAVL : Public
+    Int32 PendSplay : Public
+    Int32 PendHeap : Public
+    Int32 PendEspanta : Public
+    Int32 disponible : Public, Static
   Methods:
     ObtenerButton1(): PrivateScope, Public, HideBySig
+Class Proyecto2_ED.InputForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetNombre(): PrivateScope, Public, HideBySig
 Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -46,11 +57,6 @@ Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     MostrarVentanaMercado(Object, EventArgs): PrivateScope, Public, HideBySig
     CerrarVentanaMercado(Object, EventArgs): PrivateScope, Public, HideBySig
     InitializeComponent(): PrivateScope, Public, HideBySig
-Class Proyecto2_ED.InputForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    GetNombre(): PrivateScope, Public, HideBySig
 Class CppCLRWinFormsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
