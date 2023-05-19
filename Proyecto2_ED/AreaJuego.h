@@ -4,6 +4,11 @@
 #include <cstdlib> // Para generar números aleatorios
 #include <ctime> 
 
+
+// Resto de tus inclusiones de archivos de encabezado
+
+using namespace System::Collections::Generic;
+
 namespace Proyecto2_ED {
 
     using namespace System;
@@ -22,16 +27,21 @@ namespace Proyecto2_ED {
 
     private: 
         array<array<Label^, 1>^>^ matrizLabels;
-        Label^ labelRojo;
+        Label^ labelGranjero;
         int labelX;
         bool mercadoVisible;
+        Label^ LabelCuervo;
+        Label^ LabelOveja;
+        Label^ LabelGusano;
         System::Windows::Forms::Timer^ timer;
         System::Windows::Forms::Timer^ temporizador;
     private: System::Windows::Forms::TextBox^ ArbolesSinPlantar;
 
     private: System::Windows::Forms::Label^ SinPlantar;
-    private: System::Windows::Forms::Label^ label1;
-    private: System::Windows::Forms::TextBox^ Dinero;
+
+
+
+
 
            int labelY;
 
@@ -49,15 +59,15 @@ namespace Proyecto2_ED {
 
             //Que ventana de mercado aparezca cada cierto tiempo en AreaJuego
 
-            /*/
+            
 
             System::Windows::Forms::Timer^ timer = gcnew System::Windows::Forms::Timer();
             timer->Interval = 8000; // 15000 ms = 15 s 
 
             timer->Tick += gcnew EventHandler(this, &AreaJuego::MostrarVentanaMercado);
             timer->Start();
-            /*/
-            //timer->Start();
+            
+ 
         }
 
 
@@ -127,13 +137,13 @@ namespace Proyecto2_ED {
                     matrizLabels[i][j]->Top = 10 + i * 60; // Posición vertical
                 }
             }
+            labelGranjero = gcnew Label();
+            labelGranjero->Width = 50;
+            labelGranjero->Height = 50;
+            labelGranjero->BackgroundImage = Image::FromFile("recursos/granje.png");
+            labelGranjero->BackgroundImageLayout = ImageLayout::Stretch;
+            this->Controls->Add(labelGranjero);
 
-            // Crear el label rojo
-            labelRojo->Width = 50;
-            labelRojo->Height = 50;
-            labelRojo->BackColor = Color::White;
-            MoverLabelSobreLabel(0, 0); // Mover el label sobre el label en la posición (0,0)
-            this->Controls->Add(labelRojo);
 
             // Inicializar las coordenadas del label rojo
             labelX = 0;
@@ -142,13 +152,16 @@ namespace Proyecto2_ED {
             // Suscribir el formulario al evento KeyDown
             this->KeyDown += gcnew KeyEventHandler(this, &AreaJuego::Form_KeyDown);
 
+
+
+            //------------------------------------------------------Aparezcan plagas cada cierto tiempo-------------------------------------------------------
+            
             // Crear el temporizador
             System::Windows::Forms::Timer^ temporizador = gcnew System::Windows::Forms::Timer();
-            temporizador->Interval = 10000; // Intervalo de 10 segundos
+            temporizador->Interval = 8000; // Intervalo de 10 segundos
             temporizador->Tick += gcnew EventHandler(this, &AreaJuego::Temporizador_Tick);
             temporizador->Start();
         }
-
 
         void AreaJuego::Temporizador_Tick(Object^ sender, EventArgs^ e)
         {
@@ -160,16 +173,112 @@ namespace Proyecto2_ED {
                 columna = rand() % 12;
             } while (matrizLabels[fila][columna]->BackColor != Color::LimeGreen); // Seguir buscando si la casilla no está vacía
 
-            // Cambiar el color de la casilla vacía a negro
-            matrizLabels[fila][columna]->BackColor = Color::Black;
+            // Crear una lista de los tres labels
+            List<Label^>^ listaLabels = gcnew List<Label^>();
+            listaLabels->Add(LabelCuervo);
+            listaLabels->Add(LabelOveja);
+            listaLabels->Add(LabelGusano);
+
+            // Obtener un número aleatorio para seleccionar uno de los tres labels
+            int indiceAleatorio = rand() % listaLabels->Count;
+
+            // Obtener el label correspondiente al índice aleatorio
+            Label^ labelImagen = listaLabels[indiceAleatorio];
+
+            // Clonar la imagen del label y asignarla a la casilla vacía en la matriz
+            matrizLabels[fila][columna]->BackgroundImage = labelImagen->Image;
+
+            // Redimensionar la imagen para que se ajuste al tamaño del label
+            matrizLabels[fila][columna]->BackgroundImageLayout = ImageLayout::Stretch;
         }
 
+
+        //------------------------------------------------------------Movimiento granjero a traves de matriz--------------------------------------------------
+
+        //Perro esto es para mover granjero a traves de la matriz de Labels
+
+        void MoverLabelSobreLabel(int x, int y)
+        {
+            labelGranjero->Left = matrizLabels[x][y]->Left;
+            labelGranjero->Top = matrizLabels[x][y]->Top;
+            labelGranjero->BringToFront();
+        }
+
+        //Esto es para mover el granjero, pero utilizando las teclas del bendito teclado de la compu
+
+        void Form_KeyDown(Object^ sender, KeyEventArgs^ e)
+        {
+            int newLabelX = labelX;
+            int newLabelY = labelY;
+
+            // Mover hacia arriba
+            if (e->KeyCode == Keys::Up)
+            {
+                newLabelX = Math::Max(0, labelX - 1);
+
+            }
+            // Mover hacia abajo
+
+            else if (e->KeyCode == Keys::Down)
+            {
+                newLabelX = Math::Min(11, labelX + 1);
+            }
+            // Mover hacia la izquierda
+            else if (e->KeyCode == Keys::Left)
+            {
+                newLabelY = Math::Max(0, labelY - 1);
+            }
+            // Mover hacia la derecha
+            else if (e->KeyCode == Keys::Right)
+            {
+                newLabelY = Math::Min(11, labelY + 1);
+
+            }
+
+            // Verificar si la nueva posición del label está vacía (no hay otro label en esa posición)
+            if (matrizLabels[newLabelX][newLabelY]->BackColor == Color::LimeGreen)
+            {
+                // Mover el label rojo a la nueva posición
+                MoverLabelSobreLabel(newLabelX, newLabelY);
+
+                // Verificar si hay una plaga en la nueva posición
+                if (matrizLabels[newLabelX][newLabelY]->BackgroundImage != nullptr)
+                {
+                    // Eliminar la plaga de la matriz
+                    matrizLabels[newLabelX][newLabelY]->BackgroundImage = nullptr;
+                    matrizLabels[newLabelX][newLabelY]->BackgroundImageLayout = ImageLayout::None;
+                }
+
+                // Actualizar las coordenadas del label rojo
+                labelX = newLabelX;
+                labelY = newLabelY;
+            }
+        }
+
+        //------------------------------------------Se colocan imágenes de los labels y otros elementos del área de juego------------------------------------
 
         void initCustom() {
-            labelRojo = gcnew Label();
-            this->labelRojo->Image = Image::FromFile("recursos/granjero.png");
+
+
+            labelGranjero = gcnew Label();
+            this->labelGranjero->Image = Image::FromFile("recursos/granje.png");
+            this->labelGranjero->Width = 50;
+            this->labelGranjero->Height = 50;
+            this->labelGranjero->BackgroundImageLayout = ImageLayout::Stretch;
+
+
+            LabelGusano = gcnew Label();
+            this->LabelGusano->Image = Image::FromFile("recursos/oruga.png");
+
+            LabelCuervo = gcnew Label();
+            this->LabelCuervo->Image = Image::FromFile("recursos/cuervo.png");
+
+            LabelOveja = gcnew Label();
+            this->LabelOveja->Image = Image::FromFile("recursos/oveja.png");
 
         }
+
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------
 
         //---------------------------------------------Métodos de la tabla de datos--------------------------------------------------------------
 
@@ -186,7 +295,7 @@ namespace Proyecto2_ED {
 
         }
 
-     //-------------------METODO QUE SE PUEDE USAR MÁS ADELANTE----------------------
+     //----------****-METODO QUE SE PUEDE USAR MÁS ADELANTE----******------------
 
          void ActualizarInformacionFilas()
          {
@@ -245,7 +354,7 @@ namespace Proyecto2_ED {
 
              // Configura un temporizador para cerrar la ventana de mercado después de 30 segundos
              System::Windows::Forms::Timer^ timerCerrar = gcnew System::Windows::Forms::Timer();
-             timerCerrar->Interval = 4000; // 30000 ms = 30 segundos
+             timerCerrar->Interval = 15000; // 30000 ms = 30 segundos
              timerCerrar->Tick += gcnew EventHandler(this, &AreaJuego::CerrarVentanaMercado);
              timerCerrar->Start();
          }
@@ -267,7 +376,7 @@ namespace Proyecto2_ED {
 
              // Configura un temporizador para mostrar la ventana de mercado nuevamente después de cierto tiempo
              System::Windows::Forms::Timer^ timerMostrar = gcnew System::Windows::Forms::Timer();
-             timerMostrar->Interval = 4000; // 60000 ms = 1 minuto
+             timerMostrar->Interval = 15000; // 60000 ms = 1 minuto
              timerMostrar->Tick += gcnew EventHandler(this, &AreaJuego::MostrarVentanaMercado);
              timerMostrar->Start();
          }
@@ -293,8 +402,6 @@ namespace Proyecto2_ED {
             this->B_VenderTodo = (gcnew System::Windows::Forms::Button());
             this->ArbolesSinPlantar = (gcnew System::Windows::Forms::TextBox());
             this->SinPlantar = (gcnew System::Windows::Forms::Label());
-            this->label1 = (gcnew System::Windows::Forms::Label());
-            this->Dinero = (gcnew System::Windows::Forms::TextBox());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablaJuego))->BeginInit();
             this->SuspendLayout();
             // 
@@ -461,7 +568,7 @@ namespace Proyecto2_ED {
             this->ArbolesSinPlantar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             this->ArbolesSinPlantar->ForeColor = System::Drawing::SystemColors::WindowText;
-            this->ArbolesSinPlantar->Location = System::Drawing::Point(1327, 145);
+            this->ArbolesSinPlantar->Location = System::Drawing::Point(1521, 141);
             this->ArbolesSinPlantar->Name = L"ArbolesSinPlantar";
             this->ArbolesSinPlantar->ReadOnly = true;
             this->ArbolesSinPlantar->Size = System::Drawing::Size(82, 30);
@@ -474,35 +581,11 @@ namespace Proyecto2_ED {
             this->SinPlantar->BackColor = System::Drawing::Color::Blue;
             this->SinPlantar->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->SinPlantar->Location = System::Drawing::Point(1077, 145);
+            this->SinPlantar->Location = System::Drawing::Point(1241, 141);
             this->SinPlantar->Name = L"SinPlantar";
             this->SinPlantar->Size = System::Drawing::Size(210, 26);
             this->SinPlantar->TabIndex = 7;
             this->SinPlantar->Text = L"Árboles sin plantar";
-            // 
-            // label1
-            // 
-            this->label1->AutoSize = true;
-            this->label1->BackColor = System::Drawing::Color::Yellow;
-            this->label1->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->label1->Location = System::Drawing::Point(1514, 149);
-            this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(78, 26);
-            this->label1->TabIndex = 8;
-            this->label1->Text = L"Dinero";
-            // 
-            // Dinero
-            // 
-            this->Dinero->BackColor = System::Drawing::SystemColors::ButtonFace;
-            this->Dinero->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->Dinero->ForeColor = System::Drawing::SystemColors::WindowText;
-            this->Dinero->Location = System::Drawing::Point(1619, 149);
-            this->Dinero->Name = L"Dinero";
-            this->Dinero->ReadOnly = true;
-            this->Dinero->Size = System::Drawing::Size(82, 30);
-            this->Dinero->TabIndex = 9;
             // 
             // AreaJuego
             // 
@@ -510,8 +593,6 @@ namespace Proyecto2_ED {
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::PaleGreen;
             this->ClientSize = System::Drawing::Size(1924, 878);
-            this->Controls->Add(this->Dinero);
-            this->Controls->Add(this->label1);
             this->Controls->Add(this->SinPlantar);
             this->Controls->Add(this->ArbolesSinPlantar);
             this->Controls->Add(this->B_VenderTodo);
@@ -531,53 +612,7 @@ namespace Proyecto2_ED {
         }
 
 
-        void MoverLabelSobreLabel(int x, int y)
-        {
-            labelRojo->Left = matrizLabels[x][y]->Left;
-            labelRojo->Top = matrizLabels[x][y]->Top;
-            labelRojo->BringToFront();
-        }
-
-        void Form_KeyDown(Object^ sender, KeyEventArgs^ e)
-        {
-            int newLabelX = labelX;
-            int newLabelY = labelY;
-
-            // Mover hacia arriba
-            if (e->KeyCode == Keys::Up)
-            {
-                newLabelX = Math::Max(0, labelX - 1);
-
-            }
-            // Mover hacia abajo
-
-            else if (e->KeyCode == Keys::Down)
-            {
-                newLabelX = Math::Min(11, labelX + 1);
-            }
-            // Mover hacia la izquierda
-            else if (e->KeyCode == Keys::Left)
-            {
-                newLabelY = Math::Max(0, labelY - 1);
-            }
-            // Mover hacia la derecha
-            else if (e->KeyCode == Keys::Right)
-            {
-                newLabelY = Math::Min(11, labelY + 1);
-
-            }
-
-            // Verificar si la nueva posición del label está vacía (no hay otro label en esa posición)
-            if (matrizLabels[newLabelX][newLabelY]->BackColor == Color::LimeGreen)
-            {
-                // Mover el label rojo a la nueva posición
-                MoverLabelSobreLabel(newLabelX, newLabelY);
-
-                // Actualizar las coordenadas del label rojo
-                labelX = newLabelX;
-                labelY = newLabelY;
-            }
-        }
+    
 
 
 #pragma endregion

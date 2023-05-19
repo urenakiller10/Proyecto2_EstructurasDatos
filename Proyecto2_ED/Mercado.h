@@ -13,13 +13,20 @@ namespace Proyecto2_ED {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+
+
 	public ref class Mercado : public System::Windows::Forms::Form
 	{
+
+	private:
+		static int disponible =5000;
 	public:
 		Mercado(void)
 		{
 			InitializeComponent();
 			initCustom();
+			DineroDisponible->Text = disponible.ToString();
+
 
 		}
 
@@ -34,8 +41,6 @@ namespace Proyecto2_ED {
 		}
 		private: System::Windows::Forms::Label^ label1;
 		private: System::Windows::Forms::NumericUpDown^ Up_Binario;
-
-
 		private: System::Windows::Forms::Label^ label2;
 		private: System::Windows::Forms::Label^ label3;
 		private: System::Windows::Forms::Label^ label4;
@@ -51,14 +56,16 @@ namespace Proyecto2_ED {
 		private: System::Windows::Forms::NumericUpDown^ Up_AVL;
 		private: System::Windows::Forms::NumericUpDown^ Up_SPLAY;
 		private: System::Windows::Forms::NumericUpDown^ Up_HEAP;
-		private: System::Windows::Forms::NumericUpDown^ Cant_Espantapajaros;
+	private: System::Windows::Forms::NumericUpDown^ Up_Espanta;
+
 		private: System::Windows::Forms::Label^ label7;
 		private: System::Windows::Forms::Label^ label8;
 		private: System::Windows::Forms::Label^ label9;
 		private: System::Windows::Forms::Label^ label10;
 		private: System::Windows::Forms::Label^ label11;
 		private: System::Windows::Forms::Label^ label12;
-		private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::Label^ DineroDisponible;
+
 
 		protected:
 
@@ -66,6 +73,12 @@ namespace Proyecto2_ED {
 
 
 			System::ComponentModel::Container^ components;
+
+
+
+			void ActualizarLabelDisponible() {
+				DineroDisponible->Text = disponible.ToString();
+			}
 
 			void initCustom() {
 				this->pictureBox1->Image = Image::FromFile("recursos//espantapajaros1.png");
@@ -92,7 +105,7 @@ namespace Proyecto2_ED {
 				this->label10 = (gcnew System::Windows::Forms::Label());
 				this->label11 = (gcnew System::Windows::Forms::Label());
 				this->label12 = (gcnew System::Windows::Forms::Label());
-				this->label13 = (gcnew System::Windows::Forms::Label());
+				this->DineroDisponible = (gcnew System::Windows::Forms::Label());
 				this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 				this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 				this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
@@ -101,7 +114,7 @@ namespace Proyecto2_ED {
 				this->Up_AVL = (gcnew System::Windows::Forms::NumericUpDown());
 				this->Up_SPLAY = (gcnew System::Windows::Forms::NumericUpDown());
 				this->Up_HEAP = (gcnew System::Windows::Forms::NumericUpDown());
-				this->Cant_Espantapajaros = (gcnew System::Windows::Forms::NumericUpDown());
+				this->Up_Espanta = (gcnew System::Windows::Forms::NumericUpDown());
 				this->B_Comprar = (gcnew System::Windows::Forms::Button());
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_Binario))->BeginInit();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -112,12 +125,9 @@ namespace Proyecto2_ED {
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_AVL))->BeginInit();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_SPLAY))->BeginInit();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_HEAP))->BeginInit();
-				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Cant_Espantapajaros))->BeginInit();
+				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_Espanta))->BeginInit();
 				this->SuspendLayout();
-				
-
-
-				//-------------------------------------------------------------LABELS----------------------------------------------------------------------
+				// 
 				// label1
 				// 
 				this->label1->AutoSize = true;
@@ -130,6 +140,15 @@ namespace Proyecto2_ED {
 				this->label1->TabIndex = 0;
 				this->label1->Text = L"MercaTEC";
 				this->label1->Click += gcnew System::EventHandler(this, &Mercado::label1_Click);
+				// 
+				// Up_Binario
+				// 
+				this->Up_Binario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				this->Up_Binario->Location = System::Drawing::Point(86, 618);
+				this->Up_Binario->Name = L"Up_Binario";
+				this->Up_Binario->Size = System::Drawing::Size(50, 34);
+				this->Up_Binario->TabIndex = 1;
 				// 
 				// label2
 				// 
@@ -251,21 +270,20 @@ namespace Proyecto2_ED {
 				this->label12->Size = System::Drawing::Size(220, 29);
 				this->label12->TabIndex = 25;
 				this->label12->Text = L"Dinero disponible:";
+				this->label12->Click += gcnew System::EventHandler(this, &Mercado::label12_Click);
 				// 
-				// label13
+				// DineroDisponible
 				// 
-				this->label13->AutoSize = true;
-				this->label13->BackColor = System::Drawing::Color::White;
-				this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				this->DineroDisponible->AutoSize = true;
+				this->DineroDisponible->BackColor = System::Drawing::Color::White;
+				this->DineroDisponible->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label13->Location = System::Drawing::Point(1219, 37);
-				this->label13->Name = L"label13";
-				this->label13->Size = System::Drawing::Size(61, 25);
-				this->label13->TabIndex = 26;
-				this->label13->Text = L"100 $";
-				
-
-				//-------------------------------------------------------------PictureBOX----------------------------------------------------------------------
+				this->DineroDisponible->Location = System::Drawing::Point(1219, 37);
+				this->DineroDisponible->Name = L"DineroDisponible";
+				this->DineroDisponible->Size = System::Drawing::Size(67, 25);
+				this->DineroDisponible->TabIndex = 26;
+				this->DineroDisponible->Text = L"Monto";
+				// 
 				// pictureBox1
 				// 
 				this->pictureBox1->Location = System::Drawing::Point(1073, 300);
@@ -311,9 +329,7 @@ namespace Proyecto2_ED {
 				this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 				this->pictureBox5->TabIndex = 15;
 				this->pictureBox5->TabStop = false;
-				
-				//
-				//-------------------------------------------------------------UP numericos----------------------------------------------------------------------
+				// 
 				// Up_AVL
 				// 
 				this->Up_AVL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -341,25 +357,15 @@ namespace Proyecto2_ED {
 				this->Up_HEAP->Size = System::Drawing::Size(50, 34);
 				this->Up_HEAP->TabIndex = 18;
 				// 
-				// Up_Binario
+				// Up_Espanta
 				// 
-				this->Up_Binario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				this->Up_Espanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_Binario->Location = System::Drawing::Point(86, 618);
-				this->Up_Binario->Name = L"Up_Binario";
-				this->Up_Binario->Size = System::Drawing::Size(50, 34);
-				this->Up_Binario->TabIndex = 1;
+				this->Up_Espanta->Location = System::Drawing::Point(1171, 618);
+				this->Up_Espanta->Name = L"Up_Espanta";
+				this->Up_Espanta->Size = System::Drawing::Size(50, 34);
+				this->Up_Espanta->TabIndex = 19;
 				// 
-				// Cant_Espantapajaros
-				// 
-				this->Cant_Espantapajaros->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular,
-					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-				this->Cant_Espantapajaros->Location = System::Drawing::Point(1171, 618);
-				this->Cant_Espantapajaros->Name = L"Cant_Espantapajaros";
-				this->Cant_Espantapajaros->Size = System::Drawing::Size(50, 34);
-				this->Cant_Espantapajaros->TabIndex = 19;
-				// 
-				//------------------------------------------------------------------------Boton Comprar-----------------------------------------------------------
 				// B_Comprar
 				// 
 				this->B_Comprar->BackColor = System::Drawing::Color::Firebrick;
@@ -373,20 +379,20 @@ namespace Proyecto2_ED {
 				this->B_Comprar->UseVisualStyleBackColor = false;
 				this->B_Comprar->Click += gcnew System::EventHandler(this, &Mercado::B_Comprar_Click);
 				// 
-				// --------------------------------------------------------------Se agregan elementos a Mercado----------------------------------------------------------
+				// Mercado
 				// 
 				this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 				this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				this->BackColor = System::Drawing::Color::LightSalmon;
 				this->ClientSize = System::Drawing::Size(1324, 765);
-				this->Controls->Add(this->label13);
+				this->Controls->Add(this->DineroDisponible);
 				this->Controls->Add(this->label12);
 				this->Controls->Add(this->label11);
 				this->Controls->Add(this->label10);
 				this->Controls->Add(this->label9);
 				this->Controls->Add(this->label8);
 				this->Controls->Add(this->label7);
-				this->Controls->Add(this->Cant_Espantapajaros);
+				this->Controls->Add(this->Up_Espanta);
 				this->Controls->Add(this->Up_HEAP);
 				this->Controls->Add(this->Up_SPLAY);
 				this->Controls->Add(this->Up_AVL);
@@ -414,7 +420,7 @@ namespace Proyecto2_ED {
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_AVL))->EndInit();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_SPLAY))->EndInit();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_HEAP))->EndInit();
-				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Cant_Espantapajaros))->EndInit();
+				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_Espanta))->EndInit();
 				this->ResumeLayout(false);
 				this->PerformLayout();
 
@@ -423,10 +429,38 @@ namespace Proyecto2_ED {
 	#pragma endregion
 		private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
+
+
 		private: System::Void B_Comprar_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+			
+			int precioBinario = 500;
+			int precioAVL = 500;
+			int precioSPLAY = 500;
+			int precioHEAP = 500;
+			int precioEspanta = 500;
+
+			int cantBinario = Convert::ToInt32(Up_Binario->Value);
+			int cantAVL = Convert::ToInt32(Up_AVL->Value);
+			int cantSPLAY = Convert::ToInt32(Up_SPLAY->Value);
+			int cantHEAP = Convert::ToInt32(Up_HEAP->Value);
+			int cantEspanta = Convert::ToInt32(Up_Espanta->Value);
+
+			int precioTotal = (precioBinario * cantBinario) + (precioAVL * cantAVL) + (precioSPLAY * cantSPLAY) + (precioHEAP * cantHEAP)+ (precioEspanta * cantEspanta);
+
+			if (precioTotal <= disponible) {
+				disponible -= precioTotal;
+				DineroDisponible->Text = disponible.ToString();
+				ActualizarLabelDisponible();
+
+
+				// Debe de ir lo de agregar al inventario de árboles sin sembrar aquí
+			}
+			else {
+				MessageBox::Show("No tienes suficiente dinero disponible", "Error de compra", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
 			//Aquí va que actualice el "inventario de arboles"
-			this->Close();
+			
+			//this->Close();
 		}
 
 		public: System::Windows::Forms::Button^ ObtenerButton1() {
@@ -434,7 +468,9 @@ namespace Proyecto2_ED {
 		}
 		private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
-	};
+	private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 
 	}
 
