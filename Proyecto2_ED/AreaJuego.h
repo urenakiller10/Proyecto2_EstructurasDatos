@@ -1,6 +1,9 @@
 #pragma once
 #include "Mercado.h"
 #include <vector>
+#include <cstdlib> // Para generar números aleatorios
+#include <ctime> 
+
 namespace Proyecto2_ED {
 
     using namespace System;
@@ -9,6 +12,7 @@ namespace Proyecto2_ED {
     using namespace System::Windows::Forms;
     using namespace System::Data;
     using namespace System::Drawing;
+    using namespace System::Threading;
 
     /// <summary>
     /// Resumen de AreaJuego
@@ -20,6 +24,9 @@ namespace Proyecto2_ED {
         array<array<Label^, 1>^>^ matrizLabels;
         Label^ labelRojo;
         int labelX;
+        bool mercadoVisible;
+        System::Windows::Forms::Timer^ timer;
+        System::Windows::Forms::Timer^ temporizador;
     private: System::Windows::Forms::TextBox^ ArbolesSinPlantar;
 
     private: System::Windows::Forms::Label^ SinPlantar;
@@ -35,14 +42,62 @@ namespace Proyecto2_ED {
             SetupDataGridView();
             EstablecerTextoFilas();
             initCustom();
+            CrearMatriz();
+
+            mercadoVisible = false;
+
+
+            //Que ventana de mercado aparezca cada cierto tiempo en AreaJuego
+
+            /*/
+
+            System::Windows::Forms::Timer^ timer = gcnew System::Windows::Forms::Timer();
+            timer->Interval = 8000; // 15000 ms = 15 s 
+
+            timer->Tick += gcnew EventHandler(this, &AreaJuego::MostrarVentanaMercado);
+            timer->Start();
+            /*/
+            //timer->Start();
+        }
 
 
 
+    public:
 
+        ~AreaJuego()
+        {
+            if (components)
+            {
+                delete components;
+            }
+        }
+    private: System::Windows::Forms::Button^ B_GuardarJuego;
+    public:
+    private: System::Windows::Forms::Button^ B_Pausa;
+    private: System::Windows::Forms::Button^ B_Plantar;
+    private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
+    private: System::Windows::Forms::DataGridView^ TablaJuego;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Tipo_Arbol;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Ubicacion;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Frutos;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Monto;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Vendidos;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Perdidos;
+    private: System::Windows::Forms::Button^ B_Salir;
+    private: System::Windows::Forms::Button^ B_VenderTodo;
 
+    protected:
 
-            //------------------------------------------------------Matriz de botones---------------------------------------------------------
-// Crear la matriz de etiquetas
+    public:
+
+        System::ComponentModel::Container^ components;
+
+#pragma region Windows Form Designer generated code
+
+        //------------------------------------------------------Matriz de botones---------------------------------------------------------
+
+        void AreaJuego::CrearMatriz()
+        {
             matrizLabels = gcnew array<array<Label^, 1>^>(12);
             for (int i = 0; i < 12; i++)
             {
@@ -72,68 +127,43 @@ namespace Proyecto2_ED {
                     matrizLabels[i][j]->Top = 10 + i * 60; // Posición vertical
                 }
             }
-        
-        
-            
+
             // Crear el label rojo
             labelRojo->Width = 50;
             labelRojo->Height = 50;
             labelRojo->BackColor = Color::White;
- ;
             MoverLabelSobreLabel(0, 0); // Mover el label sobre el label en la posición (0,0)
             this->Controls->Add(labelRojo);
-
 
             // Inicializar las coordenadas del label rojo
             labelX = 0;
             labelY = 0;
 
             // Suscribir el formulario al evento KeyDown
-            this->KeyDown += gcnew KeyEventHandler(this, &AreaJuego::Form_KeyDown); 
+            this->KeyDown += gcnew KeyEventHandler(this, &AreaJuego::Form_KeyDown);
 
-        
+            // Crear el temporizador
+            System::Windows::Forms::Timer^ temporizador = gcnew System::Windows::Forms::Timer();
+            temporizador->Interval = 10000; // Intervalo de 10 segundos
+            temporizador->Tick += gcnew EventHandler(this, &AreaJuego::Temporizador_Tick);
+            temporizador->Start();
         }
 
 
-
-    public:
-
-        ~AreaJuego()
+        void AreaJuego::Temporizador_Tick(Object^ sender, EventArgs^ e)
         {
-            if (components)
+            // Obtener una casilla vacía aleatoria
+            int fila, columna;
+            do
             {
-                delete components;
-            }
+                fila = rand() % 12;
+                columna = rand() % 12;
+            } while (matrizLabels[fila][columna]->BackColor != Color::LimeGreen); // Seguir buscando si la casilla no está vacía
+
+            // Cambiar el color de la casilla vacía a negro
+            matrizLabels[fila][columna]->BackColor = Color::Black;
         }
-    private: System::Windows::Forms::Button^ B_GuardarJuego;
-    public:
 
-    private: System::Windows::Forms::Button^ B_Pausa;
-
-    private: System::Windows::Forms::Button^ B_Plantar;
-
-    private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
-    private: System::Windows::Forms::DataGridView^ TablaJuego;
-
-    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Tipo_Arbol;
-    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Ubicacion;
-    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Frutos;
-    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Monto;
-    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Vendidos;
-    private: System::Windows::Forms::DataGridViewTextBoxColumn^ Perdidos;
-private: System::Windows::Forms::Button^ B_Salir;
-
-private: System::Windows::Forms::Button^ B_VenderTodo;
-
-
-
-    protected:
-
-    public:
-
-        System::ComponentModel::Container^ components;
-
-#pragma region Windows Form Designer generated code
 
         void initCustom() {
             labelRojo = gcnew Label();
@@ -201,7 +231,48 @@ private: System::Windows::Forms::Button^ B_VenderTodo;
              TablaJuego->Rows[3]->Cells[0]->Value = "Heap";
              TablaJuego->Rows[3]->DefaultCellStyle = rowStyle;
          }
-    //---------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------Mostrar Ventana Mercado en Area de Juego cada cierto tiempo---------------------------------------------------------------------------------
+
+         void MostrarVentanaMercado(Object^ sender, EventArgs^ e)
+         {
+             // Detiene el temporizador
+             System::Windows::Forms::Timer^ timer = dynamic_cast<System::Windows::Forms::Timer^>(sender);
+             timer->Stop();
+
+             // Crea y muestra la ventana de mercado
+             Mercado^ mercado = gcnew Mercado();
+             mercado->Show();
+
+             // Configura un temporizador para cerrar la ventana de mercado después de 30 segundos
+             System::Windows::Forms::Timer^ timerCerrar = gcnew System::Windows::Forms::Timer();
+             timerCerrar->Interval = 4000; // 30000 ms = 30 segundos
+             timerCerrar->Tick += gcnew EventHandler(this, &AreaJuego::CerrarVentanaMercado);
+             timerCerrar->Start();
+         }
+
+         // Método para cerrar la ventana de mercado
+         void CerrarVentanaMercado(Object^ sender, EventArgs^ e)
+         {
+             // Detiene el temporizador
+             System::Windows::Forms::Timer^ timer = dynamic_cast<System::Windows::Forms::Timer^>(sender);
+             timer->Stop();
+
+             // Cierra la ventana de mercado
+             Mercado^ mercado = dynamic_cast<Mercado^>(Application::OpenForms["Mercado"]);
+             if (mercado != nullptr)
+             {
+                 mercado->Close();
+             }
+
+
+             // Configura un temporizador para mostrar la ventana de mercado nuevamente después de cierto tiempo
+             System::Windows::Forms::Timer^ timerMostrar = gcnew System::Windows::Forms::Timer();
+             timerMostrar->Interval = 4000; // 60000 ms = 1 minuto
+             timerMostrar->Tick += gcnew EventHandler(this, &AreaJuego::MostrarVentanaMercado);
+             timerMostrar->Start();
+         }
+
+         //----------------------------------------------------------------------------------------------------------------------------------------------------
 
         void InitializeComponent(void)
         {   

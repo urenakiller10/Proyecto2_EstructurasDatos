@@ -199,6 +199,8 @@ namespace CppCLRWinFormsProject {
 
 				Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
 				ventMercado->Show();
+
+
 			}
 			else {
 				// El usuario canceló la entrada del nombre
