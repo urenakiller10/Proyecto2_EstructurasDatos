@@ -1,6 +1,6 @@
 #pragma once
 //Includes necesarios
-
+#include "AreaJuego.h"
 #include "Configuracion.h"
 
 
@@ -34,7 +34,6 @@ namespace Proyecto2_ED {
 			DineroDisponible->Text = disponible.ToString();
 
 		}
-
 	protected:
 
 		~Mercado()
@@ -75,14 +74,13 @@ namespace Proyecto2_ED {
 
 			System::ComponentModel::Container^ components;
 
-
+	//-----------------------------------------Para actualizar elñ label de dinero disponible-------------------------------------------------------
 
 			void ActualizarLabelDisponible() {
 				DineroDisponible->Text = disponible.ToString();
 			}
-
 			void initCustom() {
-				this->pictureBox1->Image = Image::FromFile("recursos//espantapajaros1.png");
+				this->pictureBox1->Image = Image::FromFile("recursos//espant.png");
 				this->pictureBox2->Image = Image::FromFile("recursos//arbol1.png");
 				this->pictureBox3->Image = Image::FromFile("recursos//arbol2.png");
 				this->pictureBox4->Image = Image::FromFile("recursos//arbol31.png");
@@ -433,8 +431,6 @@ namespace Proyecto2_ED {
 
 	//------------------------------------------------------------Lógica de la compra de arboles---------------------------------------------------------------
 
-
-
 		private: System::Void B_Comprar_Click(System::Object^ sender, System::EventArgs^ e) {
 			
 			int precioBinario = 500;
@@ -471,10 +467,10 @@ namespace Proyecto2_ED {
 		}
 		private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
-	private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-};
+		private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
+		}
+	};
 
-	}
+}
 
 

@@ -44,8 +44,10 @@ Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
   Fields:
     System.ComponentModel.Container components : Public
   Methods:
+    B_Espanta_Click(Object, EventArgs): PrivateScope, Public, HideBySig
     CrearMatriz(): PrivateScope, Public, HideBySig
     Temporizador_Tick(Object, EventArgs): PrivateScope, Public, HideBySig
+    hayLabelEspantaCerca(Int32, Int32): PrivateScope, Public, HideBySig
     MoverLabelSobreLabel(Int32, Int32): PrivateScope, Public, HideBySig
     Form_KeyDown(Object, KeyEventArgs): PrivateScope, Public, HideBySig
     initCustom(): PrivateScope, Public, HideBySig

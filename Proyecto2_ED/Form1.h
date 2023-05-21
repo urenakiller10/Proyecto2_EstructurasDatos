@@ -1,3 +1,6 @@
+#ifndef FORM1_H
+#define FORM1_H
+
 
 //-----Includes necesarios en el programa-------
 
@@ -7,9 +10,6 @@ using namespace System::Windows::Forms;
 #include "Mercado.h"
 #include "ImputForm.h"
 #include <regex>
-
-
-#pragma once
 
 namespace CppCLRWinFormsProject {
 
@@ -168,17 +168,16 @@ namespace CppCLRWinFormsProject {
 		#pragma endregion
 
 
-		//Boton de "Configuraciones"
+		//-------------Boton de "Configuraciones"--------------
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
 			Proyecto2_ED::Configuracion^ ventaConfi = gcnew Proyecto2_ED::Configuracion();
 			ventaConfi->Show();
 
-
 		}
 
-		//Boton de "JUGAR"
+		//--------------Boton de "JUGAR"----------------------
 
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
@@ -227,3 +226,4 @@ namespace CppCLRWinFormsProject {
 
 	};
 
+#endif
