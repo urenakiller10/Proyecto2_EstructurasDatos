@@ -1,11 +1,18 @@
 #pragma once
+
+#include <vcclr.h>
+#include <string>
 #include <vector>
 #include <cstdlib> // Para generar números aleatorios
 #include <ctime> 
 #include "Mercado.h"
+#include "Administrador.h"
 #include "ImputForm.h"
 #include <iostream>
 #include <fstream>
+#include <map>
+#include <iomanip>
+
 
 
 // Resto de tus inclusiones de archivos de encabezado
@@ -21,6 +28,7 @@ namespace Proyecto2_ED {
     using namespace System::Data;
     using namespace System::Drawing;
     using namespace System::Threading;
+
 
 
 
@@ -49,6 +57,23 @@ namespace Proyecto2_ED {
 
         System::Windows::Forms::Label^ SinPlantar;
         System::Windows::Forms::Label^ Arboles_Pendientes;
+        private: System::Windows::Forms::Button^ B_PlantarBinario;
+        private: System::Windows::Forms::Button^ B_PlantarSplay;
+
+
+        private: System::Windows::Forms::Button^ button3;
+        private: System::Windows::Forms::Label^ label1;
+        private: System::Windows::Forms::Label^ label2;
+        private: System::Windows::Forms::Label^ label3;
+        private: System::Windows::Forms::TextBox^ T_CantBinarios;
+        private: System::Windows::Forms::TextBox^ T_CantAvl;
+        private: System::Windows::Forms::TextBox^ T_CantSplay;        //Se declaran los Text Box donde se guardan la cantidad de árboles
+        private: System::Windows::Forms::TextBox^ T_CantHeap;
+
+
+
+
+
 
         System::Windows::Forms::Button^ B_Espanta;
 
@@ -89,7 +114,8 @@ namespace Proyecto2_ED {
     private: System::Windows::Forms::Button^ B_GuardarJuego;
     public:
     private: System::Windows::Forms::Button^ B_Pausa;
-    private: System::Windows::Forms::Button^ B_Plantar;
+    private: System::Windows::Forms::Button^ B_PlantarAVL;
+
     private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
     private: System::Windows::Forms::DataGridView^ TablaJuego;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ Tipo_Arbol;
@@ -109,8 +135,8 @@ namespace Proyecto2_ED {
 
 #pragma region Windows Form Designer generated code
 
-    
-    //---------------------------------------------------Poner espantapajaros en la matriz-----------------------------------------------------------
+
+        //---------------------------------------------------Poner espantapajaros en la matriz-----------------------------------------------------------
 
         void AreaJuego::B_Espanta_Click(Object^ sender, EventArgs^ e)
         {
@@ -220,7 +246,7 @@ namespace Proyecto2_ED {
             //---------------------------------------------------------------------------------------------------------------------------------------
 
             //------------------------------------------------------Aparezcan plagas cada cierto tiempo-------------------------------------------------------
-            
+
             // Crear el temporizador
             System::Windows::Forms::Timer^ temporizador = gcnew System::Windows::Forms::Timer();
             temporizador->Interval = 8000; // Intervalo de 10 segundos
@@ -228,539 +254,715 @@ namespace Proyecto2_ED {
             temporizador->Start();
         }
 
-            void AreaJuego::Temporizador_Tick(Object^ sender, EventArgs^ e)
+        void AreaJuego::Temporizador_Tick(Object^ sender, EventArgs^ e)
+        {
+            // Obtener una casilla vacía aleatoria
+            int fila, columna;
+            bool esCasillaValida;
+
+            do
             {
-                // Obtener una casilla vacía aleatoria
-                int fila, columna;
-                bool esCasillaValida;
+                fila = rand() % 12;
+                columna = rand() % 12;
 
-                do
-                {
-                    fila = rand() % 12;
-                    columna = rand() % 12;
+                // Verificar si la casilla está vacía y no hay un "LabelEspanta" en un radio de 1
+                esCasillaValida = (matrizLabels[fila][columna]->BackColor == Color::LimeGreen) &&
+                    hayLabelEspantaCerca(fila, columna) != true;
+            } while (!esCasillaValida);
 
-                    // Verificar si la casilla está vacía y no hay un "LabelEspanta" en un radio de 1
-                    esCasillaValida = (matrizLabels[fila][columna]->BackColor == Color::LimeGreen) &&
-                        hayLabelEspantaCerca(fila, columna) != true;
-                } while (!esCasillaValida);
+            // Crear una lista de los tres labels
+            List<Label^>^ listaLabels = gcnew List<Label^>();
+            listaLabels->Add(LabelCuervo);
+            listaLabels->Add(LabelOveja);
+            listaLabels->Add(LabelGusano);
 
-                // Crear una lista de los tres labels
-                List<Label^>^ listaLabels = gcnew List<Label^>();
-                listaLabels->Add(LabelCuervo);
-                listaLabels->Add(LabelOveja);
-                listaLabels->Add(LabelGusano);
+            // Obtener un número aleatorio para seleccionar uno de los tres labels
+            int indiceAleatorio = rand() % listaLabels->Count;
 
-                // Obtener un número aleatorio para seleccionar uno de los tres labels
-                int indiceAleatorio = rand() % listaLabels->Count;
+            // Obtener el label correspondiente al índice aleatorio
+            Label^ labelImagen = listaLabels[indiceAleatorio];
 
-                // Obtener el label correspondiente al índice aleatorio
-                Label^ labelImagen = listaLabels[indiceAleatorio];
+            // Clonar la imagen del label y asignarla a la casilla vacía en la matriz
+            matrizLabels[fila][columna]->BackgroundImage = labelImagen->Image;
+            matrizLabels[fila][columna]->Name = labelImagen->Name;
 
-                // Clonar la imagen del label y asignarla a la casilla vacía en la matriz
-                matrizLabels[fila][columna]->BackgroundImage = labelImagen->Image;
-                matrizLabels[fila][columna]->Name = labelImagen->Name;
+            // Redimensionar la imagen para que se ajuste al tamaño del label
+            matrizLabels[fila][columna]->BackgroundImageLayout = ImageLayout::Stretch;
+        }
 
-                // Redimensionar la imagen para que se ajuste al tamaño del label
-                matrizLabels[fila][columna]->BackgroundImageLayout = ImageLayout::Stretch;
-            }
+        //----------------------------Verificar si hay un "LabelEspanta" en un radio de 1 alrededor de la casilla especificada---------------------
+        bool AreaJuego::hayLabelEspantaCerca(int fila, int columna)
+        {
 
-            //----------------------------Verificar si hay un "LabelEspanta" en un radio de 1 alrededor de la casilla especificada---------------------
-            bool AreaJuego::hayLabelEspantaCerca(int fila, int columna)
+
+            int filaInicio = Math::Max(fila - 1, 0);
+            int filaFin = Math::Min(fila + 1, 11);
+            int columnaInicio = Math::Max(columna - 1, 0);
+            int columnaFin = Math::Min(columna + 1, 11);
+
+            for (int i = filaInicio; i <= filaFin; i++)
             {
-
-
-                int filaInicio = Math::Max(fila - 1, 0);
-                int filaFin = Math::Min(fila + 1, 11);
-                int columnaInicio = Math::Max(columna - 1, 0);
-                int columnaFin = Math::Min(columna + 1, 11);
-
-                for (int i = filaInicio; i <= filaFin; i++)
+                for (int j = columnaInicio; j <= columnaFin; j++)
                 {
-                    for (int j = columnaInicio; j <= columnaFin; j++)
+                    // Verificar si la casilla actual contiene un "LabelEspanta"
+                    if (matrizLabels[i][j]->Name == "labelEspanta")
                     {
-                        // Verificar si la casilla actual contiene un "LabelEspanta"
-                        if (matrizLabels[i][j]->Name == "labelEspanta")
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
-
-                return false;
             }
 
+            return false;
+        }
 
 
-            //------------------------------------------------------------Movimiento granjero a traves de matriz--------------------------------------------------
 
-            //Perro esto es para mover granjero a traves de la matriz de Labels
+        //------------------------------------------------------------Movimiento granjero a traves de matriz--------------------------------------------------
 
-            void MoverLabelSobreLabel(int x, int y)
+        //Perro esto es para mover granjero a traves de la matriz de Labels
+
+        void MoverLabelSobreLabel(int x, int y)
+        {
+            labelGranjero->Left = matrizLabels[x][y]->Left;
+            labelGranjero->Top = matrizLabels[x][y]->Top;
+            labelGranjero->BringToFront();
+        }
+
+        //Esto es para mover el granjero, pero utilizando las teclas del bendito teclado de la compu
+
+        void Form_KeyDown(Object^ sender, KeyEventArgs^ e)
+        {
+            int newLabelX = labelX;
+            int newLabelY = labelY;
+
+            // Mover hacia arriba
+            if (e->KeyCode == Keys::Up)
             {
-                labelGranjero->Left = matrizLabels[x][y]->Left;
-                labelGranjero->Top = matrizLabels[x][y]->Top;
-                labelGranjero->BringToFront();
+                newLabelX = Math::Max(0, labelX - 1);
+
             }
+            // Mover hacia abajo
 
-            //Esto es para mover el granjero, pero utilizando las teclas del bendito teclado de la compu
-
-            void Form_KeyDown(Object^ sender, KeyEventArgs^ e)
+            else if (e->KeyCode == Keys::Down)
             {
-                int newLabelX = labelX;
-                int newLabelY = labelY;
-
-                // Mover hacia arriba
-                if (e->KeyCode == Keys::Up)
-                {
-                    newLabelX = Math::Max(0, labelX - 1);
-
-                }
-                // Mover hacia abajo
-
-                else if (e->KeyCode == Keys::Down)
-                {
-                    newLabelX = Math::Min(11, labelX + 1);
-                }
-                // Mover hacia la izquierda
-                else if (e->KeyCode == Keys::Left)
-                {
-                    newLabelY = Math::Max(0, labelY - 1);
-                }
-                // Mover hacia la derecha
-                else if (e->KeyCode == Keys::Right)
-                {
-                    newLabelY = Math::Min(11, labelY + 1);
-
-                }
-
-                // Verificar si la nueva posición del label está vacía (no hay otro label en esa posición)
-                if (matrizLabels[newLabelX][newLabelY]->BackColor != Color::Black)
-                {
-                    // Mover el label rojo a la nueva posición
-                    MoverLabelSobreLabel(newLabelX, newLabelY);
-
-                    // Verificar si hay una plaga en la nueva posición
-                    if (matrizLabels[newLabelX][newLabelY]->BackgroundImage != nullptr)
-                    {
-                        // Eliminar la plaga de la matriz
-                        matrizLabels[newLabelX][newLabelY]->BackgroundImage = nullptr;
-                        matrizLabels[newLabelX][newLabelY]->BackgroundImageLayout = ImageLayout::None;
-                    }
-
-                    // Actualizar las coordenadas del label rojo
-                    labelX = newLabelX;
-                    labelY = newLabelY;
-                }
+                newLabelX = Math::Min(11, labelX + 1);
             }
-
-            //------------------------------------------Se colocan imágenes de los labels y otros elementos del área de juego------------------------------------
-
-            void initCustom() {
-
-
-                labelGranjero = gcnew Label();
-                this->labelGranjero->Image = Image::FromFile("recursos/granje.png");
-                this->labelGranjero->Width = 50;
-                this->labelGranjero->Height = 50;
-                this->labelGranjero->BackgroundImageLayout = ImageLayout::Stretch;
-
-
-                LabelGusano = gcnew Label();
-                this->LabelGusano->Image = Image::FromFile("recursos/oruga.png");
-
-                LabelCuervo = gcnew Label();
-                this->LabelCuervo->Image = Image::FromFile("recursos/cuervo.png");
-
-                LabelOveja = gcnew Label();
-                this->LabelOveja->Image = Image::FromFile("recursos/oveja.png");
-
-
-            }
-
-            //-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-            //---------------------------------------------Métodos de la tabla de datos--------------------------------------------------------------
-
-
-
-            void SetupDataGridView()
+            // Mover hacia la izquierda
+            else if (e->KeyCode == Keys::Left)
             {
-                // Configurar la cantidad de filas del DataGridView
-
-                TablaJuego->RowCount = 4; // Por ejemplo maaeee establece 10 filas fijas
-
-                TablaJuego->KeyDown += gcnew KeyEventHandler(this, &AreaJuego::TablaJuego_KeyDown);
-
+                newLabelY = Math::Max(0, labelY - 1);
+            }
+            // Mover hacia la derecha
+            else if (e->KeyCode == Keys::Right)
+            {
+                newLabelY = Math::Min(11, labelY + 1);
 
             }
 
-            //----------****-METODO QUE SE PUEDE USAR MÁS ADELANTE----******------------
+            // Verificar si la nueva posición del label está vacía (no hay otro label en esa posición)
+            if (matrizLabels[newLabelX][newLabelY]->BackColor != Color::Black)
+            {
+                // Mover el label rojo a la nueva posición
+                MoverLabelSobreLabel(newLabelX, newLabelY);
 
-             void ActualizarInformacionFilas()
-             {
-                 // Actualizar información en las filas existentes
-                 for (int fila = 0; fila < TablaJuego->RowCount; fila++)
-                 {
-                     TablaJuego->Rows[fila]->Cells[0]->Value = "Valor 1";
-                     TablaJuego->Rows[fila]->Cells[1]->Value = "Valor 2";
-                     TablaJuego->Rows[fila]->Cells[2]->Value = "Valor 3";
-                 }
-             }
-         
-             void AreaJuego::TablaJuego_KeyDown(Object^ sender, KeyEventArgs^ e)
-             {
-                 // Verificar si la tecla presionada es una tecla de flecha
-                 if (e->KeyCode == Keys::Up || e->KeyCode == Keys::Down || e->KeyCode == Keys::Left || e->KeyCode == Keys::Right)
-                 {
-                     // Anular el evento de tecla para evitar que se procese
-                     e->SuppressKeyPress = true;
-                 }
-             }
+                // Verificar si hay una plaga en la nueva posición
+                if (matrizLabels[newLabelX][newLabelY]->BackgroundImage != nullptr)
+                {
+                    // Eliminar la plaga de la matriz
+                    matrizLabels[newLabelX][newLabelY]->BackgroundImage = nullptr;
+                    matrizLabels[newLabelX][newLabelY]->BackgroundImageLayout = ImageLayout::None;
+                }
 
-             void OcultarColumnaSeleccionada()
-             {
-                 TablaJuego->ColumnHeadersVisible = false;
-             }
+                // Actualizar las coordenadas del label rojo
+                labelX = newLabelX;
+                labelY = newLabelY;
+            }
+        }
 
-             void EstablecerTextoFilas()
-             {
-                 DataGridViewCellStyle^ rowStyle = gcnew DataGridViewCellStyle();
-                 rowStyle->Font = gcnew System::Drawing::Font(TablaJuego->Font->FontFamily, 10, FontStyle::Bold);
+        //------------------------------------------Se colocan imágenes de los labels y otros elementos del área de juego------------------------------------
 
-                 TablaJuego->Rows[0]->Cells[0]->Value = "Binario";
-                 TablaJuego->Rows[0]->DefaultCellStyle = rowStyle;
+        void initCustom() {
 
-                 TablaJuego->Rows[1]->Cells[0]->Value = "AVL";
-                 TablaJuego->Rows[1]->DefaultCellStyle = rowStyle;
 
-                 TablaJuego->Rows[2]->Cells[0]->Value = "Splay";
-                 TablaJuego->Rows[2]->DefaultCellStyle = rowStyle;
+            labelGranjero = gcnew Label();
+            this->labelGranjero->Image = Image::FromFile("recursos/granje.png");
+            this->labelGranjero->Width = 50;
+            this->labelGranjero->Height = 50;
+            this->labelGranjero->BackgroundImageLayout = ImageLayout::Stretch;
 
-                 TablaJuego->Rows[3]->Cells[0]->Value = "Heap";
-                 TablaJuego->Rows[3]->DefaultCellStyle = rowStyle;
-             }
+
+            LabelGusano = gcnew Label();
+            this->LabelGusano->Image = Image::FromFile("recursos/oruga.png");
+
+            LabelCuervo = gcnew Label();
+            this->LabelCuervo->Image = Image::FromFile("recursos/cuervo.png");
+
+            LabelOveja = gcnew Label();
+            this->LabelOveja->Image = Image::FromFile("recursos/oveja.png");
+
+
+            B_Espanta->Text = "Colocar espantapájaros";
+            B_Espanta->Location = System::Drawing::Point(850, 440);
+            B_Espanta->Click += gcnew EventHandler(this, &AreaJuego::B_Espanta_Click);
+           // B_Espanta = gcnew System::Windows::Forms::Button();
+
+
+        }
+
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        //---------------------------------------------Métodos de la tabla de datos--------------------------------------------------------------
+
+
+
+        void SetupDataGridView()
+        {
+            // Configurar la cantidad de filas del DataGridView
+
+            TablaJuego->RowCount = 4; // Por ejemplo maaeee establece 10 filas fijas
+
+            TablaJuego->KeyDown += gcnew KeyEventHandler(this, &AreaJuego::TablaJuego_KeyDown);
+
+
+        }
+
+        //----------****-METODO QUE SE PUEDE USAR MÁS ADELANTE----******------------
+
+        void ActualizarInformacionFilas()
+        {
+            // Actualizar información en las filas existentes
+            for (int fila = 0; fila < TablaJuego->RowCount; fila++)
+            {
+                TablaJuego->Rows[fila]->Cells[0]->Value = "Valor 1";
+                TablaJuego->Rows[fila]->Cells[1]->Value = "Valor 2";
+                TablaJuego->Rows[fila]->Cells[2]->Value = "Valor 3";
+            }
+        }
+
+        void AreaJuego::TablaJuego_KeyDown(Object^ sender, KeyEventArgs^ e)
+        {
+            // Verificar si la tecla presionada es una tecla de flecha
+            if (e->KeyCode == Keys::Up || e->KeyCode == Keys::Down || e->KeyCode == Keys::Left || e->KeyCode == Keys::Right)
+            {
+                // Anular el evento de tecla para evitar que se procese
+                e->SuppressKeyPress = true;
+            }
+        }
+
+        void OcultarColumnaSeleccionada()
+        {
+            TablaJuego->ColumnHeadersVisible = false;
+        }
+
+        void EstablecerTextoFilas()
+        {
+            DataGridViewCellStyle^ rowStyle = gcnew DataGridViewCellStyle();
+            rowStyle->Font = gcnew System::Drawing::Font(TablaJuego->Font->FontFamily, 10, FontStyle::Bold);
+
+            TablaJuego->Rows[0]->Cells[0]->Value = "Binario";
+            TablaJuego->Rows[0]->DefaultCellStyle = rowStyle;
+
+            TablaJuego->Rows[1]->Cells[0]->Value = "AVL";
+            TablaJuego->Rows[1]->DefaultCellStyle = rowStyle;
+
+            TablaJuego->Rows[2]->Cells[0]->Value = "Splay";
+            TablaJuego->Rows[2]->DefaultCellStyle = rowStyle;
+
+            TablaJuego->Rows[3]->Cells[0]->Value = "Heap";
+            TablaJuego->Rows[3]->DefaultCellStyle = rowStyle;
+        }
         //---------------------------------------------------Mostrar Ventana Mercado en Area de Juego cada cierto tiempo---------------------------------------------------------------------------------
 
-             void MostrarVentanaMercado(Object^ sender, EventArgs^ e)
-             {
-                 // Detiene el temporizador
-                 System::Windows::Forms::Timer^ timer = dynamic_cast<System::Windows::Forms::Timer^>(sender);
-                 timer->Stop();
+        void MostrarVentanaMercado(Object^ sender, EventArgs^ e)
+        {
+            // Detiene el temporizador
+            System::Windows::Forms::Timer^ timer = dynamic_cast<System::Windows::Forms::Timer^>(sender);
+            timer->Stop();
 
-                 // Crea y muestra la ventana de mercado
-                 Mercado^ mercado = gcnew Mercado();
-                 mercado->Show();
+            // Crea y muestra la ventana de mercado
+            Mercado^ mercado = gcnew Mercado();
+            mercado->Show();
 
-                 // Configura un temporizador para cerrar la ventana de mercado después de 30 segundos
-                 System::Windows::Forms::Timer^ timerCerrar = gcnew System::Windows::Forms::Timer();
-                 timerCerrar->Interval = 15000; // 30000 ms = 30 segundos
-                 timerCerrar->Tick += gcnew EventHandler(this, &AreaJuego::CerrarVentanaMercado);
-                 timerCerrar->Start();
-             }
+            // Configura un temporizador para cerrar la ventana de mercado después de 30 segundos
+            System::Windows::Forms::Timer^ timerCerrar = gcnew System::Windows::Forms::Timer();
+            timerCerrar->Interval = 15000; // 30000 ms = 30 segundos
+            timerCerrar->Tick += gcnew EventHandler(this, &AreaJuego::CerrarVentanaMercado);
+            timerCerrar->Start();
+        }
 
-             // Método para cerrar la ventana de mercado
-             void CerrarVentanaMercado(Object^ sender, EventArgs^ e)
-             {
-                 // Detiene el temporizador
-                 System::Windows::Forms::Timer^ timer = dynamic_cast<System::Windows::Forms::Timer^>(sender);
-                 timer->Stop();
+        // Método para cerrar la ventana de mercado
+        void CerrarVentanaMercado(Object^ sender, EventArgs^ e)
+        {
+            // Detiene el temporizador
+            System::Windows::Forms::Timer^ timer = dynamic_cast<System::Windows::Forms::Timer^>(sender);
+            timer->Stop();
 
-                 // Cierra la ventana de mercado
-                 Mercado^ mercado = dynamic_cast<Mercado^>(Application::OpenForms["Mercado"]);
-                 if (mercado != nullptr)
-                 {
-                     mercado->Close();
-                 }
+            // Cierra la ventana de mercado
+            Mercado^ mercado = dynamic_cast<Mercado^>(Application::OpenForms["Mercado"]);
+            if (mercado != nullptr)
+            {
+                mercado->Close();
+            }
 
 
-                 // Configura un temporizador para mostrar la ventana de mercado nuevamente después de cierto tiempo
-                 System::Windows::Forms::Timer^ timerMostrar = gcnew System::Windows::Forms::Timer();
-                 timerMostrar->Interval = 15000; // 60000 ms = 1 minuto
-                 timerMostrar->Tick += gcnew EventHandler(this, &AreaJuego::MostrarVentanaMercado);
-                 timerMostrar->Start();
-             }
+            // Configura un temporizador para mostrar la ventana de mercado nuevamente después de cierto tiempo
+            System::Windows::Forms::Timer^ timerMostrar = gcnew System::Windows::Forms::Timer();
+            timerMostrar->Interval = 15000; // 60000 ms = 1 minuto
+            timerMostrar->Tick += gcnew EventHandler(this, &AreaJuego::MostrarVentanaMercado);
+            timerMostrar->Start();
+        }
 
-             //----------------------------------------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-            void InitializeComponent(void)
-            {   
-                System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-                System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-                this->B_GuardarJuego = (gcnew System::Windows::Forms::Button());
-                this->B_Pausa = (gcnew System::Windows::Forms::Button());
-                this->B_Plantar = (gcnew System::Windows::Forms::Button());
-                this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
-                this->TablaJuego = (gcnew System::Windows::Forms::DataGridView());
-                this->Tipo_Arbol = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-                this->Ubicacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-                this->Frutos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-                this->Monto = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-                this->Vendidos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-                this->Perdidos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-                this->B_Salir = (gcnew System::Windows::Forms::Button());
-                this->B_VenderTodo = (gcnew System::Windows::Forms::Button());
-                this->SinPlantar = (gcnew System::Windows::Forms::Label());
-                this->Arboles_Pendientes = (gcnew System::Windows::Forms::Label());
-                this->B_Espanta = (gcnew System::Windows::Forms::Button());
-                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablaJuego))->BeginInit();
-                this->SuspendLayout();
-                // 
-                // B_GuardarJuego
-                // 
-                this->B_GuardarJuego->BackColor = System::Drawing::Color::Yellow;
-                this->B_GuardarJuego->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                    static_cast<System::Byte>(0)));
-                this->B_GuardarJuego->Location = System::Drawing::Point(1430, 626);
-                this->B_GuardarJuego->Name = L"B_GuardarJuego";
-                this->B_GuardarJuego->Size = System::Drawing::Size(209, 108);
-                this->B_GuardarJuego->TabIndex = 0;
-                this->B_GuardarJuego->Text = L"Guardar juego";
-                this->B_GuardarJuego->UseVisualStyleBackColor = false;
-                this->B_GuardarJuego->Click += gcnew System::EventHandler(this, &AreaJuego::B_GuardarJuego_Click);
-                // 
-                // B_Pausa
-                // 
-                this->B_Pausa->BackColor = System::Drawing::Color::RoyalBlue;
-                this->B_Pausa->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                    static_cast<System::Byte>(0)));
-                this->B_Pausa->Location = System::Drawing::Point(1302, 758);
-                this->B_Pausa->Name = L"B_Pausa";
-                this->B_Pausa->Size = System::Drawing::Size(209, 108);
-                this->B_Pausa->TabIndex = 1;
-                this->B_Pausa->Text = L"Pausa";
-                this->B_Pausa->UseVisualStyleBackColor = false;
-                this->B_Pausa->Click += gcnew System::EventHandler(this, &AreaJuego::button2_Click);
-                // 
-                // B_Plantar
-                // 
-                this->B_Plantar->BackColor = System::Drawing::Color::OrangeRed;
-                this->B_Plantar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                    static_cast<System::Byte>(0)));
-                this->B_Plantar->Location = System::Drawing::Point(1010, 553);
-                this->B_Plantar->Name = L"B_Plantar";
-                this->B_Plantar->Size = System::Drawing::Size(169, 57);
-                this->B_Plantar->TabIndex = 2;
-                this->B_Plantar->Text = L"Plantar";
-                this->B_Plantar->UseVisualStyleBackColor = false;
-                // 
-                // TablaJuego
-                // 
-                this->TablaJuego->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+        void InitializeComponent(void)
+        {
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+            this->B_GuardarJuego = (gcnew System::Windows::Forms::Button());
+            this->B_Pausa = (gcnew System::Windows::Forms::Button());
+            this->B_PlantarAVL = (gcnew System::Windows::Forms::Button());
+            this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
+            this->TablaJuego = (gcnew System::Windows::Forms::DataGridView());
+            this->Tipo_Arbol = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->Ubicacion = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->Frutos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->Monto = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->Vendidos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->Perdidos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->B_Salir = (gcnew System::Windows::Forms::Button());
+            this->B_VenderTodo = (gcnew System::Windows::Forms::Button());
+            this->SinPlantar = (gcnew System::Windows::Forms::Label());
+            this->Arboles_Pendientes = (gcnew System::Windows::Forms::Label());
+            this->B_Espanta = (gcnew System::Windows::Forms::Button());
+            this->B_PlantarBinario = (gcnew System::Windows::Forms::Button());
+            this->B_PlantarSplay = (gcnew System::Windows::Forms::Button());
+            this->button3 = (gcnew System::Windows::Forms::Button());
+            this->label1 = (gcnew System::Windows::Forms::Label());
+            this->label2 = (gcnew System::Windows::Forms::Label());
+            this->label3 = (gcnew System::Windows::Forms::Label());
+            this->T_CantBinarios = (gcnew System::Windows::Forms::TextBox());
+            this->T_CantAvl = (gcnew System::Windows::Forms::TextBox());
+            this->T_CantSplay = (gcnew System::Windows::Forms::TextBox());
+            this->T_CantHeap = (gcnew System::Windows::Forms::TextBox());
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablaJuego))->BeginInit();
+            this->SuspendLayout();
+            // 
+            // B_GuardarJuego
+            // 
+            this->B_GuardarJuego->BackColor = System::Drawing::Color::Yellow;
+            this->B_GuardarJuego->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->B_GuardarJuego->Location = System::Drawing::Point(1430, 626);
+            this->B_GuardarJuego->Name = L"B_GuardarJuego";
+            this->B_GuardarJuego->Size = System::Drawing::Size(209, 108);
+            this->B_GuardarJuego->TabIndex = 0;
+            this->B_GuardarJuego->Text = L"Guardar juego";
+            this->B_GuardarJuego->UseVisualStyleBackColor = false;
+            this->B_GuardarJuego->Click += gcnew System::EventHandler(this, &AreaJuego::B_GuardarJuego_Click);
+            // 
+            // B_Pausa
+            // 
+            this->B_Pausa->BackColor = System::Drawing::Color::RoyalBlue;
+            this->B_Pausa->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->B_Pausa->Location = System::Drawing::Point(1302, 758);
+            this->B_Pausa->Name = L"B_Pausa";
+            this->B_Pausa->Size = System::Drawing::Size(209, 108);
+            this->B_Pausa->TabIndex = 1;
+            this->B_Pausa->Text = L"Pausa";
+            this->B_Pausa->UseVisualStyleBackColor = false;
+            this->B_Pausa->Click += gcnew System::EventHandler(this, &AreaJuego::button2_Click);
+            // 
+            // B_PlantarAVL
+            // 
+            this->B_PlantarAVL->BackColor = System::Drawing::Color::DarkOrange;
+            this->B_PlantarAVL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->B_PlantarAVL->Location = System::Drawing::Point(1214, 162);
+            this->B_PlantarAVL->Name = L"B_PlantarAVL";
+            this->B_PlantarAVL->Size = System::Drawing::Size(169, 57);
+            this->B_PlantarAVL->TabIndex = 2;
+            this->B_PlantarAVL->Text = L"Plantar AVL";
+            this->B_PlantarAVL->UseVisualStyleBackColor = false;
+            // 
+            // TablaJuego
+            // 
+            this->TablaJuego->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
                 | System::Windows::Forms::AnchorStyles::Left)
                 | System::Windows::Forms::AnchorStyles::Right));
-                this->TablaJuego->BackgroundColor = System::Drawing::Color::ForestGreen;
-                this->TablaJuego->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-                this->TablaJuego->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Sunken;
-                dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-                dataGridViewCellStyle3->BackColor = System::Drawing::Color::PaleGreen;
-                dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            this->TablaJuego->BackgroundColor = System::Drawing::Color::ForestGreen;
+            this->TablaJuego->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+            this->TablaJuego->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Sunken;
+            dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+            dataGridViewCellStyle3->BackColor = System::Drawing::Color::PaleGreen;
+            dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-                dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
-                dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::PaleGreen;
-                dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::PaleGreen;
-                dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-                this->TablaJuego->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-                this->TablaJuego->ColumnHeadersHeight = 31;
-                this->TablaJuego->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
-                this->TablaJuego->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+            dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+            dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::PaleGreen;
+            dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::PaleGreen;
+            dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->TablaJuego->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this->TablaJuego->ColumnHeadersHeight = 31;
+            this->TablaJuego->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
+            this->TablaJuego->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
                 this->Tipo_Arbol,
-                this->Ubicacion, this->Frutos, this->Monto, this->Vendidos, this->Perdidos
-                });
-                this->TablaJuego->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-                this->TablaJuego->Location = System::Drawing::Point(982, 268);
-                this->TablaJuego->MultiSelect = false;
-                this->TablaJuego->Name = L"TablaJuego";
-                this->TablaJuego->ReadOnly = true;
-                this->TablaJuego->RightToLeft = System::Windows::Forms::RightToLeft::No;
-                dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-                dataGridViewCellStyle4->BackColor = System::Drawing::Color::ForestGreen;
-                dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                    this->Ubicacion, this->Frutos, this->Monto, this->Vendidos, this->Perdidos
+            });
+            this->TablaJuego->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
+            this->TablaJuego->Location = System::Drawing::Point(982, 268);
+            this->TablaJuego->MultiSelect = false;
+            this->TablaJuego->Name = L"TablaJuego";
+            this->TablaJuego->ReadOnly = true;
+            this->TablaJuego->RightToLeft = System::Windows::Forms::RightToLeft::No;
+            dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+            dataGridViewCellStyle4->BackColor = System::Drawing::Color::ForestGreen;
+            dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-                dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
-                dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-                dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-                dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-                this->TablaJuego->RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-                this->TablaJuego->RowHeadersWidth = 51;
-                this->TablaJuego->RowTemplate->Height = 24;
-                this->TablaJuego->ScrollBars = System::Windows::Forms::ScrollBars::None;
-                this->TablaJuego->ShowRowErrors = false;
-                this->TablaJuego->Size = System::Drawing::Size(884, 58);
-                this->TablaJuego->TabIndex = 3;
-                this->TablaJuego->TabStop = false;
-                this->TablaJuego->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AreaJuego::dataGridView1_CellContentClick);
-                // 
-                // Tipo_Arbol
-                // 
-                this->Tipo_Arbol->HeaderText = L"Tipo árbol";
-                this->Tipo_Arbol->MinimumWidth = 6;
-                this->Tipo_Arbol->Name = L"Tipo_Arbol";
-                this->Tipo_Arbol->ReadOnly = true;
-                this->Tipo_Arbol->Width = 125;
-                // 
-                // Ubicacion
-                // 
-                this->Ubicacion->HeaderText = L"Ubicación";
-                this->Ubicacion->MinimumWidth = 6;
-                this->Ubicacion->Name = L"Ubicacion";
-                this->Ubicacion->ReadOnly = true;
-                this->Ubicacion->Width = 125;
-                // 
-                // Frutos
-                // 
-                this->Frutos->HeaderText = L"Cant.Frutos";
-                this->Frutos->MinimumWidth = 6;
-                this->Frutos->Name = L"Frutos";
-                this->Frutos->ReadOnly = true;
-                this->Frutos->Width = 125;
-                // 
-                // Monto
-                // 
-                this->Monto->HeaderText = L"Monto Total";
-                this->Monto->MinimumWidth = 6;
-                this->Monto->Name = L"Monto";
-                this->Monto->ReadOnly = true;
-                this->Monto->Width = 125;
-                // 
-                // Vendidos
-                // 
-                this->Vendidos->HeaderText = L"Vendidos";
-                this->Vendidos->MinimumWidth = 6;
-                this->Vendidos->Name = L"Vendidos";
-                this->Vendidos->ReadOnly = true;
-                this->Vendidos->Width = 125;
-                // 
-                // Perdidos
-                // 
-                this->Perdidos->HeaderText = L"Perdidos";
-                this->Perdidos->MinimumWidth = 6;
-                this->Perdidos->Name = L"Perdidos";
-                this->Perdidos->ReadOnly = true;
-                this->Perdidos->Width = 125;
-                // 
-                // B_Salir
-                // 
-                this->B_Salir->BackColor = System::Drawing::SystemColors::ButtonShadow;
-                this->B_Salir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                    static_cast<System::Byte>(0)));
-                this->B_Salir->Location = System::Drawing::Point(1569, 758);
-                this->B_Salir->Name = L"B_Salir";
-                this->B_Salir->Size = System::Drawing::Size(209, 108);
-                this->B_Salir->TabIndex = 4;
-                this->B_Salir->Text = L"SALIR";
-                this->B_Salir->UseVisualStyleBackColor = false;
-                // 
-                // B_VenderTodo
-                // 
-                this->B_VenderTodo->BackColor = System::Drawing::Color::Red;
-                this->B_VenderTodo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                    static_cast<System::Byte>(0)));
-                this->B_VenderTodo->Location = System::Drawing::Point(1271, 432);
-                this->B_VenderTodo->Name = L"B_VenderTodo";
-                this->B_VenderTodo->Size = System::Drawing::Size(290, 38);
-                this->B_VenderTodo->TabIndex = 5;
-                this->B_VenderTodo->Text = L"VENDER TODO";
-                this->B_VenderTodo->UseVisualStyleBackColor = false;
-                // 
-                // SinPlantar
-                // 
-                this->SinPlantar->AutoSize = true;
-                this->SinPlantar->BackColor = System::Drawing::Color::Blue;
-                this->SinPlantar->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                    static_cast<System::Byte>(0)));
-                this->SinPlantar->Location = System::Drawing::Point(1241, 141);
-                this->SinPlantar->Name = L"SinPlantar";
-                this->SinPlantar->Size = System::Drawing::Size(210, 26);
-                this->SinPlantar->TabIndex = 7;
-                this->SinPlantar->Text = L"Árboles sin plantar";
-                // 
-                // Arboles_Pendientes
-                // 
-                this->Arboles_Pendientes->AutoSize = true;
-                this->Arboles_Pendientes->BackColor = System::Drawing::Color::White;
-                this->Arboles_Pendientes->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                    static_cast<System::Byte>(0)));
-                this->Arboles_Pendientes->Location = System::Drawing::Point(1489, 141);
-                this->Arboles_Pendientes->Name = L"Arboles_Pendientes";
-                this->Arboles_Pendientes->Size = System::Drawing::Size(40, 26);
-                this->Arboles_Pendientes->TabIndex = 8;
-                // 
-                // B_Espanta
-                // 
-
-
-                B_Espanta = gcnew System::Windows::Forms::Button();
-                this->B_Espanta->BackColor = System::Drawing::Color::MediumPurple;
-                B_Espanta->Text = "Colocar espantapájaros";
-                this->B_Espanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
+            dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+            dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+            dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+            this->TablaJuego->RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this->TablaJuego->RowHeadersWidth = 51;
+            this->TablaJuego->RowTemplate->Height = 24;
+            this->TablaJuego->ScrollBars = System::Windows::Forms::ScrollBars::None;
+            this->TablaJuego->ShowRowErrors = false;
+            this->TablaJuego->Size = System::Drawing::Size(884, 58);
+            this->TablaJuego->TabIndex = 3;
+            this->TablaJuego->TabStop = false;
+            this->TablaJuego->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AreaJuego::dataGridView1_CellContentClick);
+            // 
+            // Tipo_Arbol
+            // 
+            this->Tipo_Arbol->HeaderText = L"Tipo árbol";
+            this->Tipo_Arbol->MinimumWidth = 6;
+            this->Tipo_Arbol->Name = L"Tipo_Arbol";
+            this->Tipo_Arbol->ReadOnly = true;
+            this->Tipo_Arbol->Width = 125;
+            // 
+            // Ubicacion
+            // 
+            this->Ubicacion->HeaderText = L"Ubicación";
+            this->Ubicacion->MinimumWidth = 6;
+            this->Ubicacion->Name = L"Ubicacion";
+            this->Ubicacion->ReadOnly = true;
+            this->Ubicacion->Width = 125;
+            // 
+            // Frutos
+            // 
+            this->Frutos->HeaderText = L"Cant.Frutos";
+            this->Frutos->MinimumWidth = 6;
+            this->Frutos->Name = L"Frutos";
+            this->Frutos->ReadOnly = true;
+            this->Frutos->Width = 125;
+            // 
+            // Monto
+            // 
+            this->Monto->HeaderText = L"Monto Total";
+            this->Monto->MinimumWidth = 6;
+            this->Monto->Name = L"Monto";
+            this->Monto->ReadOnly = true;
+            this->Monto->Width = 125;
+            // 
+            // Vendidos
+            // 
+            this->Vendidos->HeaderText = L"Vendidos";
+            this->Vendidos->MinimumWidth = 6;
+            this->Vendidos->Name = L"Vendidos";
+            this->Vendidos->ReadOnly = true;
+            this->Vendidos->Width = 125;
+            // 
+            // Perdidos
+            // 
+            this->Perdidos->HeaderText = L"Perdidos";
+            this->Perdidos->MinimumWidth = 6;
+            this->Perdidos->Name = L"Perdidos";
+            this->Perdidos->ReadOnly = true;
+            this->Perdidos->Width = 125;
+            // 
+            // B_Salir
+            // 
+            this->B_Salir->BackColor = System::Drawing::SystemColors::ButtonShadow;
+            this->B_Salir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-                this->B_Espanta->Size = System::Drawing::Size(199, 82);
-                this->B_Espanta->TabIndex = 2;
-                B_Espanta->Location = System::Drawing::Point(999, 440);
-                this->B_Espanta->UseVisualStyleBackColor = false;
-                B_Espanta->Click += gcnew EventHandler(this, &AreaJuego::B_Espanta_Click);
+            this->B_Salir->Location = System::Drawing::Point(1569, 758);
+            this->B_Salir->Name = L"B_Salir";
+            this->B_Salir->Size = System::Drawing::Size(209, 108);
+            this->B_Salir->TabIndex = 4;
+            this->B_Salir->Text = L"SALIR";
+            this->B_Salir->UseVisualStyleBackColor = false;
+            // 
+            // B_VenderTodo
+            // 
+            this->B_VenderTodo->BackColor = System::Drawing::Color::Red;
+            this->B_VenderTodo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->B_VenderTodo->Location = System::Drawing::Point(1271, 432);
+            this->B_VenderTodo->Name = L"B_VenderTodo";
+            this->B_VenderTodo->Size = System::Drawing::Size(290, 38);
+            this->B_VenderTodo->TabIndex = 5;
+            this->B_VenderTodo->Text = L"VENDER TODO";
+            this->B_VenderTodo->UseVisualStyleBackColor = false;
+            // 
+            // SinPlantar
+            // 
+            this->SinPlantar->AutoSize = true;
+            this->SinPlantar->BackColor = System::Drawing::Color::Blue;
+            this->SinPlantar->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->SinPlantar->Location = System::Drawing::Point(1013, 56);
+            this->SinPlantar->Name = L"SinPlantar";
+            this->SinPlantar->Size = System::Drawing::Size(91, 26);
+            this->SinPlantar->TabIndex = 7;
+            this->SinPlantar->Text = L"Binarios";
+            // 
+            // Arboles_Pendientes
+            // 
+            this->Arboles_Pendientes->AutoSize = true;
+            this->Arboles_Pendientes->BackColor = System::Drawing::Color::White;
+            this->Arboles_Pendientes->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->Arboles_Pendientes->Location = System::Drawing::Point(1489, 141);
+            this->Arboles_Pendientes->Name = L"Arboles_Pendientes";
+            this->Arboles_Pendientes->Size = System::Drawing::Size(0, 26);
+            this->Arboles_Pendientes->TabIndex = 8;
+            // 
+            // B_Espanta
+            // 
+            this->B_Espanta->BackColor = System::Drawing::Color::MediumPurple;
+            this->B_Espanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->B_Espanta->Location = System::Drawing::Point(0, 0);
+            this->B_Espanta->Name = L"B_Espanta";
+            this->B_Espanta->Size = System::Drawing::Size(199, 82);
+            this->B_Espanta->TabIndex = 2;
+            this->B_Espanta->UseVisualStyleBackColor = false;
+            // 
+            // B_PlantarBinario
+            // 
+            this->B_PlantarBinario->BackColor = System::Drawing::Color::OrangeRed;
+            this->B_PlantarBinario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->B_PlantarBinario->Location = System::Drawing::Point(982, 162);
+            this->B_PlantarBinario->Name = L"B_PlantarBinario";
+            this->B_PlantarBinario->Size = System::Drawing::Size(169, 57);
+            this->B_PlantarBinario->TabIndex = 9;
+            this->B_PlantarBinario->Text = L"Plantar binario";
+            this->B_PlantarBinario->UseVisualStyleBackColor = false;
+            // 
+            // B_PlantarSplay
+            // 
+            this->B_PlantarSplay->BackColor = System::Drawing::Color::OrangeRed;
+            this->B_PlantarSplay->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->B_PlantarSplay->Location = System::Drawing::Point(1470, 162);
+            this->B_PlantarSplay->Name = L"B_PlantarSplay";
+            this->B_PlantarSplay->Size = System::Drawing::Size(169, 57);
+            this->B_PlantarSplay->TabIndex = 10;
+            this->B_PlantarSplay->Text = L"Plantar Splay";
+            this->B_PlantarSplay->UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this->button3->BackColor = System::Drawing::Color::DarkOrange;
+            this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->button3->Location = System::Drawing::Point(1687, 162);
+            this->button3->Name = L"button3";
+            this->button3->Size = System::Drawing::Size(169, 57);
+            this->button3->TabIndex = 11;
+            this->button3->Text = L"Plantar Heap";
+            this->button3->UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this->label1->AutoSize = true;
+            this->label1->BackColor = System::Drawing::Color::Blue;
+            this->label1->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label1->Location = System::Drawing::Point(1266, 56);
+            this->label1->Name = L"label1";
+            this->label1->Size = System::Drawing::Size(54, 26);
+            this->label1->TabIndex = 12;
+            this->label1->Text = L"AVL";
+            // 
+            // label2
+            // 
+            this->label2->AutoSize = true;
+            this->label2->BackColor = System::Drawing::Color::Blue;
+            this->label2->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label2->Location = System::Drawing::Point(1502, 56);
+            this->label2->Name = L"label2";
+            this->label2->Size = System::Drawing::Size(66, 26);
+            this->label2->TabIndex = 13;
+            this->label2->Text = L"Splay";
+            this->label2->Click += gcnew System::EventHandler(this, &AreaJuego::label2_Click);
+            // 
+            // label3
+            // 
+            this->label3->AutoSize = true;
+            this->label3->BackColor = System::Drawing::Color::Blue;
+            this->label3->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label3->Location = System::Drawing::Point(1728, 56);
+            this->label3->Name = L"label3";
+            this->label3->Size = System::Drawing::Size(62, 26);
+            this->label3->TabIndex = 14;
+            this->label3->Text = L"Heap";
+            // 
+            // T_CantBinarios
+            // 
+            this->T_CantBinarios->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->T_CantBinarios->Location = System::Drawing::Point(1039, 110);
+            this->T_CantBinarios->Name = L"T_CantBinarios";
+            this->T_CantBinarios->ReadOnly = true;
+            this->T_CantBinarios->Size = System::Drawing::Size(48, 28);
+            this->T_CantBinarios->TabIndex = 15;
+            this->T_CantBinarios->Text = Administrador::ObtenerCantidadBinario().ToString();
 
-                // 
-                // AreaJuego
-                // 
-                this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
-                this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-                this->BackColor = System::Drawing::Color::PaleGreen;
-                this->ClientSize = System::Drawing::Size(1924, 878);
-                this->Controls->Add(this->B_Espanta);
-                this->Controls->Add(this->Arboles_Pendientes);
-                this->Controls->Add(this->SinPlantar);
-                this->Controls->Add(this->B_VenderTodo);
-                this->Controls->Add(this->B_Salir);
-                this->Controls->Add(this->B_Plantar);
-                this->Controls->Add(this->B_Pausa);
-                this->Controls->Add(this->B_GuardarJuego);
-                this->Controls->Add(this->TablaJuego);
-                this->KeyPreview = true;
-                this->Name = L"AreaJuego";
-                this->Text = L"AreaJuego";
-                this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
-                (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablaJuego))->EndInit();
-                this->ResumeLayout(false);
-                this->PerformLayout();
+            // 
+            // T_CantAvl
+            // 
+            this->T_CantAvl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->T_CantAvl->Location = System::Drawing::Point(1271, 110);
+            this->T_CantAvl->Name = L"T_CantAvl";
+            this->T_CantAvl->ReadOnly = true;
+            this->T_CantAvl->Size = System::Drawing::Size(48, 28);
+            this->T_CantAvl->TabIndex = 16;
+            this->T_CantAvl->Text = Administrador::ObtenerCantidadAVL().ToString();
+            // 
+            // T_CantSplay
+            // 
+            this->T_CantSplay->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->T_CantSplay->Location = System::Drawing::Point(1513, 110);
+            this->T_CantSplay->Name = L"T_CantSplay";
+            this->T_CantSplay->ReadOnly = true;
+            this->T_CantSplay->Size = System::Drawing::Size(48, 28);
+            this->T_CantSplay->TabIndex = 17;
+            this->T_CantSplay->Text = Administrador::ObtenerCantidadSPLAY().ToString();
+            // 
+            // T_CantHeap
+            // 
+            this->T_CantHeap->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->T_CantHeap->Location = System::Drawing::Point(1745, 110);
+            this->T_CantHeap->Name = L"T_CantHeap";
+            this->T_CantHeap->ReadOnly = true;
+            this->T_CantHeap->Size = System::Drawing::Size(45, 28);
+            this->T_CantHeap->TabIndex = 18;
+            this->T_CantHeap->Text = Administrador::ObtenerCantidadHEAP().ToString();
+            // 
+            // AreaJuego
+            // 
+            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+            this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+            this->BackColor = System::Drawing::Color::PaleGreen;
+            this->ClientSize = System::Drawing::Size(1924, 878);
+            this->Controls->Add(this->T_CantHeap);
+            this->Controls->Add(this->T_CantSplay);
+            this->Controls->Add(this->T_CantAvl);
+            this->Controls->Add(this->T_CantBinarios);
+            this->Controls->Add(this->label3);
+            this->Controls->Add(this->label2);
+            this->Controls->Add(this->label1);
+            this->Controls->Add(this->button3);
+            this->Controls->Add(this->B_PlantarSplay);
+            this->Controls->Add(this->B_PlantarBinario);
+            this->Controls->Add(this->B_Espanta);
+            this->Controls->Add(this->Arboles_Pendientes);
+            this->Controls->Add(this->SinPlantar);
+            this->Controls->Add(this->B_VenderTodo);
+            this->Controls->Add(this->B_Salir);
+            this->Controls->Add(this->B_PlantarAVL);
+            this->Controls->Add(this->B_Pausa);
+            this->Controls->Add(this->B_GuardarJuego);
+            this->Controls->Add(this->TablaJuego);
+            this->KeyPreview = true;
+            this->Name = L"AreaJuego";
+            this->Text = L"AreaJuego";
+            this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablaJuego))->EndInit();
+            this->ResumeLayout(false);
+            this->PerformLayout();
 
-            }
+        }
 
-            #pragma endregion
+#pragma endregion
 
-            private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-            }
- 
-            private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-            }
-            private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-            }
-            private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-            }
+    private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+    }
+
+    private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+    }
+    private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+    }
+    private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+    }
+
+
 
            void B_GuardarJuego_Click(Object^ sender, EventArgs^ e)
+
            {
-               std::string filePath = "Top10.txt";
+               // Crear una ventana de diálogo para ingresar el nombre
+               Proyecto2_ED::InputForm^ inputForm = gcnew Proyecto2_ED::InputForm();
 
-               // Abrir el archivo en modo de escritura
-               std::ofstream archivo(filePath, std::ios::app); // std::ios::app para agregar contenido al final del archivo
+               // Mostrar la ventana de diálogo y obtener el nombre ingresado
+               if (inputForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+                   System::String^ nombre = inputForm->GetNombre();
 
-               // Verificar si el archivo se abrió correctamente
-               if (!archivo)
-               {
-                   MessageBox::Show("Error al abrir el archivo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+                   // Verificar si el nombre es un string válido
+                   if (System::String::IsNullOrEmpty(nombre)) {
+                       MessageBox::Show("Nombre inválido. Inténtelo de nuevo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+                       return;
+                   }
+
+                   // Convertir el contenido de nombre a std::string
+                   pin_ptr<const wchar_t> nombreChars = PtrToStringChars(nombre);
+                   const wchar_t* nombreRaw = static_cast<const wchar_t*>(nombreChars);
+                   std::wstring nombreWStr(nombreRaw);
+                   std::string nombreStr(nombreWStr.begin(), nombreWStr.end());
+
+
+
+                   // Obtener el dinero disponible desde Mercado.h
+                   int dineroDisponible = Mercado::ObtenerDineroDisponible();
+
+                   // Concatenar el dinero disponible al final del nombre
+                   //nombreStr += " --- " + std::to_string(dineroDisponible);
+
+                   // Abrir el archivo en modo de escritura
+                   std::ofstream archivo("Top10.txt", std::ios::app);
+
+                   // Verificar si el archivo se abrió correctamente
+                   if (archivo.is_open()) {
+                       // Escribir en el archivo
+                       archivo << std::left << std::setw(20) << nombreStr << std::right << std::setw(10) << dineroDisponible << std::endl;
+
+                       // Cerrar el archivo
+                       archivo.close();
+
+                       MessageBox::Show("El archivo ha sido guardado correctamente.", "Guardar", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                   }
+                   else {
+                       MessageBox::Show("Error al abrir el archivo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+                       return;
+                   }
+               }
+               else {
+                   // El usuario canceló la entrada del nombre
                    return;
                }
+           }
 
-               // Escribir en el archivo
-               archivo << "Hola mundo 10" << std::endl;
 
-               // Cerrar el archivo
-               archivo.close();
-
-               MessageBox::Show("El archivo ha sido guardado correctamente.", "Guardar", MessageBoxButtons::OK, MessageBoxIcon::Information);
-                }
-
-        };
+    private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
     }
+};
+
+    };

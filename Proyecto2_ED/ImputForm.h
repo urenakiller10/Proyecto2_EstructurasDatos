@@ -10,7 +10,7 @@ namespace Proyecto2_ED {
 
 	public ref class InputForm : public Form
 	{
-	private:
+	public:
 		Label^ label;
 		TextBox^ textBox;
 		Button^ buttonAceptar;
@@ -24,7 +24,7 @@ namespace Proyecto2_ED {
 
 		System::String^ GetNombre()
 		{
-			return textBox->Text;
+			return nombreGlobal;
 		}
 
 	private:

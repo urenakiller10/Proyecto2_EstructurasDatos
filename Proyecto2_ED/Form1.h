@@ -10,6 +10,7 @@ using namespace System::Windows::Forms;
 #include "Mercado.h"
 #include "ImputForm.h"
 #include <regex>
+#include <sstream>
 
 namespace CppCLRWinFormsProject {
 
@@ -130,7 +131,7 @@ namespace CppCLRWinFormsProject {
 			this->B_Top->TabIndex = 5;
 			this->B_Top->Text = L"Mostrar TOP 10";
 			this->B_Top->UseVisualStyleBackColor = false;
-			this->B_Top->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
+			this->B_Top->Click += gcnew System::EventHandler(this, &Form1::B_Top_Click);
 			// 
 			// Boton_CargarPartida
 			// 
@@ -181,20 +182,7 @@ namespace CppCLRWinFormsProject {
 
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-			//--- Crear una ventana de diálogo para ingresar el nombre---
 
-			Proyecto2_ED::InputForm^ inputForm = gcnew Proyecto2_ED::InputForm();
-
-			//--- Mostrar la ventana de diálogo y obtener el nombre ingresado--
-
-			if (inputForm->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-				System::String^ nombre = inputForm->GetNombre();
-
-			// Verificar si el nombre es un string válido
-				if (System::String::IsNullOrEmpty(nombre)) {
-					MessageBox::Show("Nombre inválido. Inténtelo de nuevo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-					return;
-				}
 			//Se abre primero mercado y luego ya el juego
 
 				Proyecto2_ED::AreaJuego^ ventaJuego = gcnew Proyecto2_ED::AreaJuego();
@@ -203,13 +191,6 @@ namespace CppCLRWinFormsProject {
 				Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
 				ventMercado->Show();
 
-
-			}
-			else {
-				// El usuario canceló la entrada del nombre
-				return;
-			}
-	
 	};
 	
 	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -217,10 +198,67 @@ namespace CppCLRWinFormsProject {
 	private: System::Void Título_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 
-	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	
 
 
-	}
+	private: System::Void B_Top_Click(System::Object^ sender, System::EventArgs^ e) 
+
+		{
+		// Crear una ventana para mostrar el contenido de Top10.txt
+		System::Windows::Forms::Form^ ventanaTop10 = gcnew System::Windows::Forms::Form();
+		ventanaTop10->Text = "TOP";
+		ventanaTop10->Width = 210;
+		ventanaTop10->Height = 350;
+		ventanaTop10->BackColor = System::Drawing::Color::Green;
+
+		// Crear un control ListView
+		System::Windows::Forms::ListView^ listView = gcnew System::Windows::Forms::ListView();
+		listView->Dock = System::Windows::Forms::DockStyle::Fill;
+		listView->View = System::Windows::Forms::View::Details;
+		listView->BackColor = System::Drawing::Color::LimeGreen;
+
+		// Agregar las columnas "Nombre" y "Dinero" al ListView
+		listView->Columns->Add(" Nombre", 100);
+		listView->Columns->Add(" Dinero", 100);
+
+		// Leer el contenido del archivo Top10.txt
+		std::ifstream archivo("Top10.txt");
+		if (archivo.is_open()) {
+			std::string linea;
+			while (std::getline(archivo, linea)) {
+				// Dividir la línea en nombre y dinero
+				std::string nombre, dinero;
+				std::istringstream iss(linea);
+				iss >> nombre >> dinero;
+
+				// Crear un nuevo elemento ListView con el nombre y dinero
+				System::Windows::Forms::ListViewItem^ item = gcnew System::Windows::Forms::ListViewItem(gcnew System::String(nombre.c_str()));
+				item->SubItems->Add(gcnew System::String(dinero.c_str()));
+
+				// Agregar el elemento al ListView
+				listView->Items->Add(item);
+			}
+
+			archivo.close();
+		}
+		else {
+			MessageBox::Show("Error al abrir el archivo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		// Ajustar el tamaño de fuente del ListView
+			System::Drawing::Font ^ fuente = gcnew System::Drawing::Font(listView->Font->FontFamily, 13);
+		listView->Font = fuente;
+
+		// Agregar el ListView a la ventana
+		ventanaTop10->Controls->Add(listView);
+
+
+
+		// Mostrar la ventana
+		ventanaTop10->Show();
+		}
 		 
 	};
 

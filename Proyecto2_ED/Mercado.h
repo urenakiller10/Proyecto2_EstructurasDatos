@@ -2,9 +2,13 @@
 //Includes necesarios
 #include "AreaJuego.h"
 #include "Configuracion.h"
+#include "Administrador.h"
 
 
 namespace Proyecto2_ED {
+
+
+
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -26,6 +30,16 @@ namespace Proyecto2_ED {
 		int PendHeap;
 		int PendEspanta;
 
+
+
+
+	public:
+		int static ObtenerDineroDisponible()
+		{
+			return disponible;
+		}
+
+
 	public:
 		Mercado(void)
 		{
@@ -33,7 +47,12 @@ namespace Proyecto2_ED {
 			initCustom();
 			DineroDisponible->Text = disponible.ToString();
 
+
+
+
 		}
+
+
 	protected:
 
 		~Mercado()
@@ -445,6 +464,18 @@ namespace Proyecto2_ED {
 			int cantHEAP = Convert::ToInt32(Up_HEAP->Value);
 			int cantEspanta = Convert::ToInt32(Up_Espanta->Value);
 
+
+
+			// Actualizar las cantidades en la clase estática
+			Administrador::canBinario = cantBinario;
+			Administrador::canAVL = cantAVL;
+			Administrador::canSPLAY = cantSPLAY;
+			Administrador::canHEAP = cantHEAP;
+
+			//Administrador::GuardarCantidades(cantBinario, cantAVL, cantSPLAY, cantHEAP, cantEspanta);
+
+
+
 			int precioTotal = (precioBinario * cantBinario) + (precioAVL * cantAVL) + (precioSPLAY * cantSPLAY) + (precioHEAP * cantHEAP)+ (precioEspanta * cantEspanta);
 
 			if (precioTotal <= disponible) {
@@ -459,7 +490,7 @@ namespace Proyecto2_ED {
 			}
 			//Aquí va que actualice el "inventario de arboles"
 			
-			//this->Close();
+			
 		}
 
 		public: System::Windows::Forms::Button^ ObtenerButton1() {
@@ -472,5 +503,6 @@ namespace Proyecto2_ED {
 	};
 
 }
+
 
 

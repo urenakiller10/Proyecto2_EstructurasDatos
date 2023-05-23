@@ -32,10 +32,16 @@ Class Proyecto2_ED.Mercado: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     Int32 PendEspanta : Public
     Int32 disponible : Public, Static
   Methods:
+    ObtenerDineroDisponible(): PrivateScope, Public, Static, HideBySig
     ObtenerButton1(): PrivateScope, Public, HideBySig
 Class Proyecto2_ED.InputForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Label label : Public
+    System.Windows.Forms.TextBox textBox : Public
+    System.Windows.Forms.Button buttonAceptar : Public
+    System.String nombreGlobal : Public
   Methods:
     GetNombre(): PrivateScope, Public, HideBySig
 Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

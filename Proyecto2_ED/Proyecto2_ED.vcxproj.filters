@@ -41,6 +41,12 @@
     <ClInclude Include="Mercado.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Administrador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ActualizadorCantidades.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
