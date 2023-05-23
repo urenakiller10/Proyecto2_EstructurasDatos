@@ -141,7 +141,11 @@
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Generador.h" />
+    <ClInclude Include="ArbolBinario.h" />
+    <ClInclude Include="Heap.h" />
     <ClInclude Include="ImputForm.h" />
+    <ClInclude Include="ListaSimple.h" />
     <ClInclude Include="Mercado.h">
       <FileType>CppForm</FileType>
     </ClInclude>
