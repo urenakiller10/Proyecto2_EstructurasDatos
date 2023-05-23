@@ -11,6 +11,9 @@ using namespace System::Windows::Forms;
 #include "ImputForm.h"
 #include <regex>
 #include <sstream>
+#include "Administrador.h"
+
+Administrador admin;
 
 namespace CppCLRWinFormsProject {
 
@@ -26,11 +29,12 @@ namespace CppCLRWinFormsProject {
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 	public:
+		
 		Form1(void)
 		{
 			InitializeComponent();
 			initCustom();
-
+			
 		}
 
 	protected:
@@ -53,8 +57,8 @@ namespace CppCLRWinFormsProject {
 		
 		void initCustom() {
 			this->pictureBox1->Image = Image::FromFile("recursos//animales.jpg");
-	
-						}
+			
+		}
 
 	#pragma region Windows Form Designer generated code
 
@@ -185,10 +189,10 @@ namespace CppCLRWinFormsProject {
 
 			//Se abre primero mercado y luego ya el juego
 
-				Proyecto2_ED::AreaJuego^ ventaJuego = gcnew Proyecto2_ED::AreaJuego();
-				ventaJuego->Show();
+				Proyecto2_ED::AreaJuego^ ventJuego = gcnew Proyecto2_ED::AreaJuego(admin);
+				ventJuego->Show();
 
-				Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado();
+				Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado(admin);
 				ventMercado->Show();
 
 	};

@@ -1,41 +1,54 @@
 #pragma once
-
-ref class Administrador {
- public:
-    static int canBinario;
-    static int canAVL;
-    static int canSPLAY;
-    static int canHEAP;
-    static int canEspanta;
-
+class Administrador {
+private:
+    int cantBinario = 0;
+    int cantHEAP = 0;
+    int cantAVL = 0;
+    int cantSPLAY = 0;
+    int cantEspanta = 0;
 
 public:
-    static void GuardarCantidades(int binario, int avl, int splay, int heap, int espanta) {
-        canBinario = binario;
-        canAVL = avl;
-        canSPLAY = splay;
-        canHEAP = heap;
-        canEspanta = espanta;
+    Administrador() : cantBinario(0), cantHEAP(0), cantAVL(0), cantSPLAY(0), cantEspanta(0) {}
+
+    void setCantidadBinario(int cantidad) {
+        cantBinario += cantidad;
     }
 
-    static int ObtenerCantidadBinario() {
-        return canBinario;
+    void setCantidadHEAP(int cantidad) {
+        cantHEAP += cantidad;
     }
 
-    static int ObtenerCantidadAVL() {
-        return canAVL;
+    void setCantidadAVL(int cantidad) {
+        cantAVL += cantidad;
     }
 
-    static int ObtenerCantidadSPLAY() {
-        return canSPLAY;
+    void setCantidadSPLAY(int cantidad) {
+        cantSPLAY += cantidad;
     }
 
-    static int ObtenerCantidadHEAP() {
-        return canHEAP;
+    void setCantidadEspanta(int cantidad) {
+        cantEspanta += cantidad;
     }
 
-    static int ObtenerCantidadEspanta() {
-        return canEspanta;
+    int getCantidadBinario() const {
+        return cantBinario;
+    }
+
+    int getCantidadHEAP() const {
+        return cantHEAP;
+    }
+
+    int getCantidadAVL() const {
+        return cantAVL;
+    }
+
+    int getCantidadSPLAY() const {
+        return cantSPLAY;
+    }
+
+    int getCantidadEspanta() const {
+        return cantEspanta;
     }
 };
+
 

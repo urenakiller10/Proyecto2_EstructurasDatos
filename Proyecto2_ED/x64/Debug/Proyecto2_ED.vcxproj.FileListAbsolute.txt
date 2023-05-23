@@ -4,12 +4,6 @@ C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.Configur
 C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.Form1.resources
 C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.GenerateResource.cache
 C:\Users\uband\Desktop\Proyecto2_ED\Proyecto2_ED\x64\Debug\Proyecto2_ED.AreaJuego.resources
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.AssemblyReference.cache
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.SuggestedBindingRedirects.cache
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.AreaJuego.resources
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Configuracion.resources
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Form1.resources
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.GenerateResource.cache
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.AssemblyReference.cache
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.SuggestedBindingRedirects.cache
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.AreaJuego.resources
@@ -17,3 +11,10 @@ C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyect
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Form1.resources
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Mercado.resources
 C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.GenerateResource.cache
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.AssemblyReference.cache
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.AreaJuego.resources
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Configuracion.resources
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Form1.resources
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.Mercado.resources
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\x64\Debug\Proyecto2_ED.vcxproj.GenerateResource.cache

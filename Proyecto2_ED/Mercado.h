@@ -21,6 +21,9 @@ namespace Proyecto2_ED {
 
 	public ref class Mercado : public System::Windows::Forms::Form
 	{
+	private:
+		Administrador& admin; // Declarar una referencia a Administrador
+
 
 	public:
 
@@ -32,7 +35,6 @@ namespace Proyecto2_ED {
 
 
 
-
 	public:
 		int static ObtenerDineroDisponible()
 		{
@@ -41,15 +43,11 @@ namespace Proyecto2_ED {
 
 
 	public:
-		Mercado(void)
+		Mercado(Administrador& adminRef) : admin(adminRef)
 		{
 			InitializeComponent();
 			initCustom();
 			DineroDisponible->Text = disponible.ToString();
-
-
-
-
 		}
 
 
@@ -464,18 +462,6 @@ namespace Proyecto2_ED {
 			int cantHEAP = Convert::ToInt32(Up_HEAP->Value);
 			int cantEspanta = Convert::ToInt32(Up_Espanta->Value);
 
-
-
-			// Actualizar las cantidades en la clase estática
-			Administrador::canBinario = cantBinario;
-			Administrador::canAVL = cantAVL;
-			Administrador::canSPLAY = cantSPLAY;
-			Administrador::canHEAP = cantHEAP;
-
-			//Administrador::GuardarCantidades(cantBinario, cantAVL, cantSPLAY, cantHEAP, cantEspanta);
-
-
-
 			int precioTotal = (precioBinario * cantBinario) + (precioAVL * cantAVL) + (precioSPLAY * cantSPLAY) + (precioHEAP * cantHEAP)+ (precioEspanta * cantEspanta);
 
 			if (precioTotal <= disponible) {
@@ -484,6 +470,15 @@ namespace Proyecto2_ED {
 				ActualizarLabelDisponible();
 
 				// Debe de ir lo de agregar al inventario de árboles sin sembrar aquí
+				// Papi Charlie al rescate
+				//MessageBox::Show(cantBinario.ToString(), "BINARIO", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				admin.setCantidadBinario(cantBinario);
+				admin.setCantidadAVL(cantAVL);
+				admin.setCantidadEspanta(cantEspanta);
+				admin.setCantidadHEAP(cantHEAP);
+				admin.setCantidadSPLAY(cantSPLAY);
+
+
 			}
 			else {
 				MessageBox::Show("No tienes suficiente dinero disponible", "Error de compra", MessageBoxButtons::OK, MessageBoxIcon::Error);
