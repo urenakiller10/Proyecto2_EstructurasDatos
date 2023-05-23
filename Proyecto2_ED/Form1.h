@@ -192,8 +192,10 @@ namespace CppCLRWinFormsProject {
 				Proyecto2_ED::AreaJuego^ ventJuego = gcnew Proyecto2_ED::AreaJuego(admin);
 				ventJuego->Show();
 
-				Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado(admin);
-				ventMercado->Show();
+
+				//Esto va a valer verga y no se muestra al inicio, que se esperen.
+				//Proyecto2_ED::Mercado^ ventMercado = gcnew Proyecto2_ED::Mercado(admin);
+				//ventMercado->Show();
 
 	};
 	

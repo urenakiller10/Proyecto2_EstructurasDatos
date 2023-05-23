@@ -27,11 +27,7 @@ namespace Proyecto2_ED {
 
 	public:
 
-		static int disponible =5000;
-		int PendAVL;
-		int PendSplay;
-		int PendHeap;
-		int PendEspanta;
+		static int disponible = 5000;
 
 
 

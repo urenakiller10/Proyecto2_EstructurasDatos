@@ -6,9 +6,10 @@ private:
     int cantAVL = 0;
     int cantSPLAY = 0;
     int cantEspanta = 0;
+    int espantaPlantados = 0;
 
 public:
-    Administrador() : cantBinario(0), cantHEAP(0), cantAVL(0), cantSPLAY(0), cantEspanta(0) {}
+    Administrador() : cantBinario(0), cantHEAP(0), cantAVL(0), cantSPLAY(0), cantEspanta(0), espantaPlantados(0) {}
 
     void setCantidadBinario(int cantidad) {
         cantBinario += cantidad;
@@ -30,6 +31,10 @@ public:
         cantEspanta += cantidad;
     }
 
+    void setCantidadEspantaPlantados(int cantidad) {
+        espantaPlantados += cantidad;
+    }
+
     int getCantidadBinario() const {
         return cantBinario;
     }
@@ -48,6 +53,10 @@ public:
 
     int getCantidadEspanta() const {
         return cantEspanta;
+    }
+
+    int getCantidadEspantaPlantados() const {
+        return espantaPlantados;
     }
 };
 
