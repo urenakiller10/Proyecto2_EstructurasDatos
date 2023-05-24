@@ -23,6 +23,13 @@ namespace Proyecto2_ED {
 	{
 	private:
 		Administrador& admin; // Declarar una referencia a Administrador
+	private: System::Windows::Forms::TextBox^ PrecioBinario;
+	private: System::Windows::Forms::TextBox^ PrecioAvl;
+
+
+	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ textBox4;
+	private: System::Windows::Forms::TextBox^ textBox5;
 
 
 	public:
@@ -128,6 +135,11 @@ namespace Proyecto2_ED {
 				this->Up_HEAP = (gcnew System::Windows::Forms::NumericUpDown());
 				this->Up_Espanta = (gcnew System::Windows::Forms::NumericUpDown());
 				this->B_Comprar = (gcnew System::Windows::Forms::Button());
+				this->PrecioBinario = (gcnew System::Windows::Forms::TextBox());
+				this->PrecioAvl = (gcnew System::Windows::Forms::TextBox());
+				this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+				this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+				this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_Binario))->BeginInit();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -157,7 +169,7 @@ namespace Proyecto2_ED {
 				// 
 				this->Up_Binario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_Binario->Location = System::Drawing::Point(86, 618);
+				this->Up_Binario->Location = System::Drawing::Point(107, 618);
 				this->Up_Binario->Name = L"Up_Binario";
 				this->Up_Binario->Size = System::Drawing::Size(50, 34);
 				this->Up_Binario->TabIndex = 1;
@@ -346,7 +358,7 @@ namespace Proyecto2_ED {
 				// 
 				this->Up_AVL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_AVL->Location = System::Drawing::Point(375, 618);
+				this->Up_AVL->Location = System::Drawing::Point(365, 618);
 				this->Up_AVL->Name = L"Up_AVL";
 				this->Up_AVL->Size = System::Drawing::Size(50, 34);
 				this->Up_AVL->TabIndex = 16;
@@ -355,7 +367,7 @@ namespace Proyecto2_ED {
 				// 
 				this->Up_SPLAY->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_SPLAY->Location = System::Drawing::Point(668, 606);
+				this->Up_SPLAY->Location = System::Drawing::Point(645, 618);
 				this->Up_SPLAY->Name = L"Up_SPLAY";
 				this->Up_SPLAY->Size = System::Drawing::Size(50, 34);
 				this->Up_SPLAY->TabIndex = 17;
@@ -364,7 +376,7 @@ namespace Proyecto2_ED {
 				// 
 				this->Up_HEAP->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_HEAP->Location = System::Drawing::Point(920, 618);
+				this->Up_HEAP->Location = System::Drawing::Point(890, 618);
 				this->Up_HEAP->Name = L"Up_HEAP";
 				this->Up_HEAP->Size = System::Drawing::Size(50, 34);
 				this->Up_HEAP->TabIndex = 18;
@@ -373,7 +385,7 @@ namespace Proyecto2_ED {
 				// 
 				this->Up_Espanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_Espanta->Location = System::Drawing::Point(1171, 618);
+				this->Up_Espanta->Location = System::Drawing::Point(1142, 618);
 				this->Up_Espanta->Name = L"Up_Espanta";
 				this->Up_Espanta->Size = System::Drawing::Size(50, 34);
 				this->Up_Espanta->TabIndex = 19;
@@ -391,12 +403,63 @@ namespace Proyecto2_ED {
 				this->B_Comprar->UseVisualStyleBackColor = false;
 				this->B_Comprar->Click += gcnew System::EventHandler(this, &Mercado::B_Comprar_Click);
 				// 
+				// PrecioBinario
+				// 
+				this->PrecioBinario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				this->PrecioBinario->Location = System::Drawing::Point(143, 576);
+				this->PrecioBinario->Name = L"PrecioBinario";
+				this->PrecioBinario->Size = System::Drawing::Size(99, 30);
+				this->PrecioBinario->TabIndex = 27;
+				this->PrecioBinario->TextChanged += gcnew System::EventHandler(this, &Mercado::textBox1_TextChanged);
+				// 
+				// PrecioAvl
+				// 
+				this->PrecioAvl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				this->PrecioAvl->Location = System::Drawing::Point(398, 574);
+				this->PrecioAvl->Name = L"PrecioAvl";
+				this->PrecioAvl->Size = System::Drawing::Size(100, 30);
+				this->PrecioAvl->TabIndex = 28;
+				// 
+				// textBox3
+				// 
+				this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				this->textBox3->Location = System::Drawing::Point(668, 576);
+				this->textBox3->Name = L"textBox3";
+				this->textBox3->Size = System::Drawing::Size(100, 30);
+				this->textBox3->TabIndex = 29;
+				// 
+				// textBox4
+				// 
+				this->textBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				this->textBox4->Location = System::Drawing::Point(920, 576);
+				this->textBox4->Name = L"textBox4";
+				this->textBox4->Size = System::Drawing::Size(100, 30);
+				this->textBox4->TabIndex = 30;
+				// 
+				// textBox5
+				// 
+				this->textBox5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				this->textBox5->Location = System::Drawing::Point(1171, 576);
+				this->textBox5->Name = L"textBox5";
+				this->textBox5->Size = System::Drawing::Size(100, 30);
+				this->textBox5->TabIndex = 31;
+				// 
 				// Mercado
 				// 
 				this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 				this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				this->BackColor = System::Drawing::Color::LightSalmon;
 				this->ClientSize = System::Drawing::Size(1324, 765);
+				this->Controls->Add(this->textBox5);
+				this->Controls->Add(this->textBox4);
+				this->Controls->Add(this->textBox3);
+				this->Controls->Add(this->PrecioAvl);
+				this->Controls->Add(this->PrecioBinario);
 				this->Controls->Add(this->DineroDisponible);
 				this->Controls->Add(this->label12);
 				this->Controls->Add(this->label11);
@@ -439,6 +502,8 @@ namespace Proyecto2_ED {
 			}
 
 	#pragma endregion
+
+
 		private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
 
@@ -466,13 +531,22 @@ namespace Proyecto2_ED {
 				ActualizarLabelDisponible();
 
 				// Debe de ir lo de agregar al inventario de árboles sin sembrar aquí
-				// Papi Charlie al rescate
+				// 
+				// Papi Charlie al rescate jajaj
 				//MessageBox::Show(cantBinario.ToString(), "BINARIO", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				admin.setCantidadBinario(cantBinario);
 				admin.setCantidadAVL(cantAVL);
 				admin.setCantidadEspanta(cantEspanta);
 				admin.setCantidadHEAP(cantHEAP);
 				admin.setCantidadSPLAY(cantSPLAY);
+
+
+				// Restablecer los valores de los controles Up a cero
+				Up_Binario->Value = 0;
+				Up_AVL->Value = 0;
+				Up_SPLAY->Value = 0;
+				Up_HEAP->Value = 0;
+				Up_Espanta->Value = 0;
 
 
 			}
@@ -491,7 +565,9 @@ namespace Proyecto2_ED {
 		}
 		private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
-	};
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 
 }
 

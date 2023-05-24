@@ -89,6 +89,9 @@ namespace Proyecto2_ED {
             updateStock(admin);
             mercadoVisible = false;
             confBotones(admin);
+
+
+
             //Tiempo para que la fucking ventana de mercado aparezca cada cierto tiempo en AreaJuego
 
 
@@ -484,6 +487,11 @@ namespace Proyecto2_ED {
             Mercado^ mercado = gcnew Mercado(admin);
             mercado->Show();
 
+
+            // Deshabilita el botón de cierre de la ventana de mercado
+            mercado->ControlBox = false;
+
+
             // Configura un temporizador para cerrar la ventana de mercado después de 30 segundos
             System::Windows::Forms::Timer^ timerCerrar = gcnew System::Windows::Forms::Timer();
             timerCerrar->Interval = 15000; // 30000 ms = 30 segundos
@@ -502,8 +510,9 @@ namespace Proyecto2_ED {
             Mercado^ mercado = dynamic_cast<Mercado^>(Application::OpenForms["Mercado"]);
             if (mercado != nullptr)
             {
-                mercado->Close();
+
                 updateStock(admin);
+                mercado->Close();
             }
 
 
@@ -554,10 +563,10 @@ namespace Proyecto2_ED {
             this->B_GuardarJuego->BackColor = System::Drawing::Color::Yellow;
             this->B_GuardarJuego->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_GuardarJuego->Location = System::Drawing::Point(1072, 509);
-            this->B_GuardarJuego->Margin = System::Windows::Forms::Padding(2);
+            this->B_GuardarJuego->Location = System::Drawing::Point(1429, 626);
+            this->B_GuardarJuego->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->B_GuardarJuego->Name = L"B_GuardarJuego";
-            this->B_GuardarJuego->Size = System::Drawing::Size(157, 88);
+            this->B_GuardarJuego->Size = System::Drawing::Size(209, 108);
             this->B_GuardarJuego->TabIndex = 0;
             this->B_GuardarJuego->Text = L"Guardar juego";
             this->B_GuardarJuego->UseVisualStyleBackColor = false;
@@ -568,10 +577,10 @@ namespace Proyecto2_ED {
             this->B_Pausa->BackColor = System::Drawing::Color::RoyalBlue;
             this->B_Pausa->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_Pausa->Location = System::Drawing::Point(976, 616);
-            this->B_Pausa->Margin = System::Windows::Forms::Padding(2);
+            this->B_Pausa->Location = System::Drawing::Point(1301, 758);
+            this->B_Pausa->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->B_Pausa->Name = L"B_Pausa";
-            this->B_Pausa->Size = System::Drawing::Size(157, 88);
+            this->B_Pausa->Size = System::Drawing::Size(209, 108);
             this->B_Pausa->TabIndex = 1;
             this->B_Pausa->Text = L"Pausa";
             this->B_Pausa->UseVisualStyleBackColor = false;
@@ -582,10 +591,10 @@ namespace Proyecto2_ED {
             this->B_PlantarAVL->BackColor = System::Drawing::Color::DarkOrange;
             this->B_PlantarAVL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_PlantarAVL->Location = System::Drawing::Point(910, 132);
-            this->B_PlantarAVL->Margin = System::Windows::Forms::Padding(2);
+            this->B_PlantarAVL->Location = System::Drawing::Point(1213, 162);
+            this->B_PlantarAVL->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->B_PlantarAVL->Name = L"B_PlantarAVL";
-            this->B_PlantarAVL->Size = System::Drawing::Size(127, 46);
+            this->B_PlantarAVL->Size = System::Drawing::Size(169, 57);
             this->B_PlantarAVL->TabIndex = 2;
             this->B_PlantarAVL->Text = L"Plantar AVL";
             this->B_PlantarAVL->UseVisualStyleBackColor = false;
@@ -615,8 +624,8 @@ namespace Proyecto2_ED {
                     this->Ubicacion, this->Frutos, this->Monto, this->Vendidos, this->Perdidos
             });
             this->TablaJuego->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-            this->TablaJuego->Location = System::Drawing::Point(736, 218);
-            this->TablaJuego->Margin = System::Windows::Forms::Padding(2);
+            this->TablaJuego->Location = System::Drawing::Point(981, 268);
+            this->TablaJuego->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->TablaJuego->MultiSelect = false;
             this->TablaJuego->Name = L"TablaJuego";
             this->TablaJuego->ReadOnly = true;
@@ -634,7 +643,7 @@ namespace Proyecto2_ED {
             this->TablaJuego->RowTemplate->Height = 24;
             this->TablaJuego->ScrollBars = System::Windows::Forms::ScrollBars::None;
             this->TablaJuego->ShowRowErrors = false;
-            this->TablaJuego->Size = System::Drawing::Size(858, 47);
+            this->TablaJuego->Size = System::Drawing::Size(1144, 58);
             this->TablaJuego->TabIndex = 3;
             this->TablaJuego->TabStop = false;
             this->TablaJuego->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AreaJuego::dataGridView1_CellContentClick);
@@ -692,10 +701,10 @@ namespace Proyecto2_ED {
             this->B_Salir->BackColor = System::Drawing::SystemColors::ButtonShadow;
             this->B_Salir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_Salir->Location = System::Drawing::Point(1177, 616);
-            this->B_Salir->Margin = System::Windows::Forms::Padding(2);
+            this->B_Salir->Location = System::Drawing::Point(1569, 758);
+            this->B_Salir->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->B_Salir->Name = L"B_Salir";
-            this->B_Salir->Size = System::Drawing::Size(157, 88);
+            this->B_Salir->Size = System::Drawing::Size(209, 108);
             this->B_Salir->TabIndex = 4;
             this->B_Salir->Text = L"SALIR";
             this->B_Salir->UseVisualStyleBackColor = false;
@@ -705,10 +714,10 @@ namespace Proyecto2_ED {
             this->B_VenderTodo->BackColor = System::Drawing::Color::Red;
             this->B_VenderTodo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_VenderTodo->Location = System::Drawing::Point(953, 351);
-            this->B_VenderTodo->Margin = System::Windows::Forms::Padding(2);
+            this->B_VenderTodo->Location = System::Drawing::Point(1271, 432);
+            this->B_VenderTodo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->B_VenderTodo->Name = L"B_VenderTodo";
-            this->B_VenderTodo->Size = System::Drawing::Size(218, 31);
+            this->B_VenderTodo->Size = System::Drawing::Size(291, 38);
             this->B_VenderTodo->TabIndex = 5;
             this->B_VenderTodo->Text = L"VENDER TODO";
             this->B_VenderTodo->UseVisualStyleBackColor = false;
@@ -719,10 +728,9 @@ namespace Proyecto2_ED {
             this->SinPlantar->BackColor = System::Drawing::Color::Blue;
             this->SinPlantar->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->SinPlantar->Location = System::Drawing::Point(760, 46);
-            this->SinPlantar->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->SinPlantar->Location = System::Drawing::Point(1013, 57);
             this->SinPlantar->Name = L"SinPlantar";
-            this->SinPlantar->Size = System::Drawing::Size(75, 21);
+            this->SinPlantar->Size = System::Drawing::Size(91, 26);
             this->SinPlantar->TabIndex = 7;
             this->SinPlantar->Text = L"Binarios";
             // 
@@ -732,10 +740,9 @@ namespace Proyecto2_ED {
             this->Arboles_Pendientes->BackColor = System::Drawing::Color::White;
             this->Arboles_Pendientes->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->Arboles_Pendientes->Location = System::Drawing::Point(1117, 115);
-            this->Arboles_Pendientes->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->Arboles_Pendientes->Location = System::Drawing::Point(1489, 142);
             this->Arboles_Pendientes->Name = L"Arboles_Pendientes";
-            this->Arboles_Pendientes->Size = System::Drawing::Size(0, 21);
+            this->Arboles_Pendientes->Size = System::Drawing::Size(0, 26);
             this->Arboles_Pendientes->TabIndex = 8;
             // 
             // B_Espanta
@@ -743,10 +750,10 @@ namespace Proyecto2_ED {
             this->B_Espanta->BackColor = System::Drawing::Color::MediumPurple;
             this->B_Espanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_Espanta->Location = System::Drawing::Point(0, 0);
-            this->B_Espanta->Margin = System::Windows::Forms::Padding(2);
+            this->B_Espanta->Location = System::Drawing::Point(951, 379);
+            this->B_Espanta->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->B_Espanta->Name = L"B_Espanta";
-            this->B_Espanta->Size = System::Drawing::Size(149, 67);
+            this->B_Espanta->Size = System::Drawing::Size(199, 82);
             this->B_Espanta->TabIndex = 2;
             this->B_Espanta->UseVisualStyleBackColor = false;
             this->B_Espanta->Click += gcnew System::EventHandler(this, &AreaJuego::B_Espanta_Click_1);
@@ -756,10 +763,10 @@ namespace Proyecto2_ED {
             this->B_PlantarBinario->BackColor = System::Drawing::Color::OrangeRed;
             this->B_PlantarBinario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_PlantarBinario->Location = System::Drawing::Point(736, 132);
-            this->B_PlantarBinario->Margin = System::Windows::Forms::Padding(2);
+            this->B_PlantarBinario->Location = System::Drawing::Point(981, 162);
+            this->B_PlantarBinario->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->B_PlantarBinario->Name = L"B_PlantarBinario";
-            this->B_PlantarBinario->Size = System::Drawing::Size(127, 46);
+            this->B_PlantarBinario->Size = System::Drawing::Size(169, 57);
             this->B_PlantarBinario->TabIndex = 9;
             this->B_PlantarBinario->Text = L"Plantar binario";
             this->B_PlantarBinario->UseVisualStyleBackColor = false;
@@ -770,10 +777,10 @@ namespace Proyecto2_ED {
             this->B_PlantarSplay->BackColor = System::Drawing::Color::OrangeRed;
             this->B_PlantarSplay->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_PlantarSplay->Location = System::Drawing::Point(1102, 132);
-            this->B_PlantarSplay->Margin = System::Windows::Forms::Padding(2);
+            this->B_PlantarSplay->Location = System::Drawing::Point(1469, 162);
+            this->B_PlantarSplay->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->B_PlantarSplay->Name = L"B_PlantarSplay";
-            this->B_PlantarSplay->Size = System::Drawing::Size(127, 46);
+            this->B_PlantarSplay->Size = System::Drawing::Size(169, 57);
             this->B_PlantarSplay->TabIndex = 10;
             this->B_PlantarSplay->Text = L"Plantar Splay";
             this->B_PlantarSplay->UseVisualStyleBackColor = false;
@@ -784,10 +791,10 @@ namespace Proyecto2_ED {
             this->button3->BackColor = System::Drawing::Color::DarkOrange;
             this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->button3->Location = System::Drawing::Point(1265, 132);
-            this->button3->Margin = System::Windows::Forms::Padding(2);
+            this->button3->Location = System::Drawing::Point(1687, 162);
+            this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->button3->Name = L"button3";
-            this->button3->Size = System::Drawing::Size(127, 46);
+            this->button3->Size = System::Drawing::Size(169, 57);
             this->button3->TabIndex = 11;
             this->button3->Text = L"Plantar Heap";
             this->button3->UseVisualStyleBackColor = false;
@@ -799,10 +806,9 @@ namespace Proyecto2_ED {
             this->label1->BackColor = System::Drawing::Color::Blue;
             this->label1->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->label1->Location = System::Drawing::Point(950, 46);
-            this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->label1->Location = System::Drawing::Point(1267, 57);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(44, 21);
+            this->label1->Size = System::Drawing::Size(54, 26);
             this->label1->TabIndex = 12;
             this->label1->Text = L"AVL";
             // 
@@ -812,10 +818,9 @@ namespace Proyecto2_ED {
             this->label2->BackColor = System::Drawing::Color::Blue;
             this->label2->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->label2->Location = System::Drawing::Point(1126, 46);
-            this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->label2->Location = System::Drawing::Point(1501, 57);
             this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(54, 21);
+            this->label2->Size = System::Drawing::Size(66, 26);
             this->label2->TabIndex = 13;
             this->label2->Text = L"Splay";
             this->label2->Click += gcnew System::EventHandler(this, &AreaJuego::label2_Click);
@@ -826,10 +831,9 @@ namespace Proyecto2_ED {
             this->label3->BackColor = System::Drawing::Color::Blue;
             this->label3->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->label3->Location = System::Drawing::Point(1296, 46);
-            this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+            this->label3->Location = System::Drawing::Point(1728, 57);
             this->label3->Name = L"label3";
-            this->label3->Size = System::Drawing::Size(51, 21);
+            this->label3->Size = System::Drawing::Size(62, 26);
             this->label3->TabIndex = 14;
             this->label3->Text = L"Heap";
             // 
@@ -837,52 +841,52 @@ namespace Proyecto2_ED {
             // 
             this->T_CantBinarios->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->T_CantBinarios->Location = System::Drawing::Point(779, 89);
-            this->T_CantBinarios->Margin = System::Windows::Forms::Padding(2);
+            this->T_CantBinarios->Location = System::Drawing::Point(1039, 110);
+            this->T_CantBinarios->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->T_CantBinarios->Name = L"T_CantBinarios";
             this->T_CantBinarios->ReadOnly = true;
-            this->T_CantBinarios->Size = System::Drawing::Size(37, 24);
+            this->T_CantBinarios->Size = System::Drawing::Size(48, 28);
             this->T_CantBinarios->TabIndex = 15;
             // 
             // T_CantAvl
             // 
             this->T_CantAvl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->T_CantAvl->Location = System::Drawing::Point(953, 89);
-            this->T_CantAvl->Margin = System::Windows::Forms::Padding(2);
+            this->T_CantAvl->Location = System::Drawing::Point(1271, 110);
+            this->T_CantAvl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->T_CantAvl->Name = L"T_CantAvl";
             this->T_CantAvl->ReadOnly = true;
-            this->T_CantAvl->Size = System::Drawing::Size(37, 24);
+            this->T_CantAvl->Size = System::Drawing::Size(48, 28);
             this->T_CantAvl->TabIndex = 16;
             // 
             // T_CantSplay
             // 
             this->T_CantSplay->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->T_CantSplay->Location = System::Drawing::Point(1135, 89);
-            this->T_CantSplay->Margin = System::Windows::Forms::Padding(2);
+            this->T_CantSplay->Location = System::Drawing::Point(1513, 110);
+            this->T_CantSplay->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->T_CantSplay->Name = L"T_CantSplay";
             this->T_CantSplay->ReadOnly = true;
-            this->T_CantSplay->Size = System::Drawing::Size(37, 24);
+            this->T_CantSplay->Size = System::Drawing::Size(48, 28);
             this->T_CantSplay->TabIndex = 17;
             // 
             // T_CantHeap
             // 
             this->T_CantHeap->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->T_CantHeap->Location = System::Drawing::Point(1309, 89);
-            this->T_CantHeap->Margin = System::Windows::Forms::Padding(2);
+            this->T_CantHeap->Location = System::Drawing::Point(1745, 110);
+            this->T_CantHeap->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->T_CantHeap->Name = L"T_CantHeap";
             this->T_CantHeap->ReadOnly = true;
-            this->T_CantHeap->Size = System::Drawing::Size(35, 24);
+            this->T_CantHeap->Size = System::Drawing::Size(45, 28);
             this->T_CantHeap->TabIndex = 18;
             // 
             // AreaJuego
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::PaleGreen;
-            this->ClientSize = System::Drawing::Size(1278, 713);
+            this->ClientSize = System::Drawing::Size(1704, 878);
             this->Controls->Add(this->T_CantHeap);
             this->Controls->Add(this->T_CantSplay);
             this->Controls->Add(this->T_CantAvl);
@@ -903,7 +907,7 @@ namespace Proyecto2_ED {
             this->Controls->Add(this->B_GuardarJuego);
             this->Controls->Add(this->TablaJuego);
             this->KeyPreview = true;
-            this->Margin = System::Windows::Forms::Padding(2);
+            this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->Name = L"AreaJuego";
             this->Text = L"AreaJuego";
             this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
