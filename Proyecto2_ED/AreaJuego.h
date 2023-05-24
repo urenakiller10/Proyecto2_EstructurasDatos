@@ -60,9 +60,9 @@ namespace Proyecto2_ED {
         System::Windows::Forms::Label^ Arboles_Pendientes;
         private: System::Windows::Forms::Button^ B_PlantarBinario;
         private: System::Windows::Forms::Button^ B_PlantarSplay;
+        private: System::Windows::Forms::Button^ B_PlantarHeap;
+    private: System::Windows::Forms::Button^ B_Espanta;
 
-
-        private: System::Windows::Forms::Button^ button3;
         private: System::Windows::Forms::Label^ label1;
         private: System::Windows::Forms::Label^ label2;
         private: System::Windows::Forms::Label^ label3;
@@ -70,13 +70,23 @@ namespace Proyecto2_ED {
         private: System::Windows::Forms::TextBox^ T_CantAvl;
         private: System::Windows::Forms::TextBox^ T_CantSplay;        //Se declaran los Text Box donde se guardan la cantidad de árboles
         private: System::Windows::Forms::TextBox^ T_CantHeap;
+       private: System::Windows::Forms::TextBox^ T_CantidadEspanta;
+
+        private: System::Windows::Forms::Label^ label4;
 
 
 
 
 
 
-        System::Windows::Forms::Button^ B_Espanta;
+
+
+
+
+
+
+
+
 
     public:
         AreaJuego(Administrador& adminRef) : admin(adminRef)
@@ -139,6 +149,12 @@ namespace Proyecto2_ED {
 #pragma region Windows Form Designer generated code
 
 
+
+      
+
+
+
+
         //---------------------------------------------------Poner espantapajaros en la matriz-----------------------------------------------------------
 
         void AreaJuego::B_Espanta_Click(Object^ sender, EventArgs^ e)
@@ -168,10 +184,10 @@ namespace Proyecto2_ED {
             int espantaY = labelEspanta->Left / 60;
 
             // Cambiar el color de las casillas adyacentes al LabelEspanta a gris
-            int filaInicio = Math::Max(espantaX - 1, 0);
-            int filaFin = Math::Min(espantaX + 1, 11);
-            int columnaInicio = Math::Max(espantaY - 1, 0);
-            int columnaFin = Math::Min(espantaY + 1, 11);
+            int filaInicio = Math::Max(espantaX - 2, 0);
+            int filaFin = Math::Min(espantaX + 2, 11);
+            int columnaInicio = Math::Max(espantaY - 2, 0);
+            int columnaFin = Math::Min(espantaY + 2, 11);
 
             for (int i = filaInicio; i <= filaFin; i++)
             {
@@ -405,10 +421,8 @@ namespace Proyecto2_ED {
 
 
             B_Espanta->Text = "Colocar espantapájaros";
-            B_Espanta->Location = System::Drawing::Point(850, 440);
+            B_Espanta->Location = System::Drawing::Point(790, 460);
             B_Espanta->Click += gcnew EventHandler(this, &AreaJuego::B_Espanta_Click);
-           // B_Espanta = gcnew System::Windows::Forms::Button();
-
 
         }
 
@@ -544,10 +558,9 @@ namespace Proyecto2_ED {
             this->B_VenderTodo = (gcnew System::Windows::Forms::Button());
             this->SinPlantar = (gcnew System::Windows::Forms::Label());
             this->Arboles_Pendientes = (gcnew System::Windows::Forms::Label());
-            this->B_Espanta = (gcnew System::Windows::Forms::Button());
             this->B_PlantarBinario = (gcnew System::Windows::Forms::Button());
             this->B_PlantarSplay = (gcnew System::Windows::Forms::Button());
-            this->button3 = (gcnew System::Windows::Forms::Button());
+            this->B_PlantarHeap = (gcnew System::Windows::Forms::Button());
             this->label1 = (gcnew System::Windows::Forms::Label());
             this->label2 = (gcnew System::Windows::Forms::Label());
             this->label3 = (gcnew System::Windows::Forms::Label());
@@ -555,6 +568,9 @@ namespace Proyecto2_ED {
             this->T_CantAvl = (gcnew System::Windows::Forms::TextBox());
             this->T_CantSplay = (gcnew System::Windows::Forms::TextBox());
             this->T_CantHeap = (gcnew System::Windows::Forms::TextBox());
+            this->label4 = (gcnew System::Windows::Forms::Label());
+            this->T_CantidadEspanta = (gcnew System::Windows::Forms::TextBox());
+            this->B_Espanta = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TablaJuego))->BeginInit();
             this->SuspendLayout();
             // 
@@ -610,7 +626,7 @@ namespace Proyecto2_ED {
             this->TablaJuego->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Sunken;
             dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
             dataGridViewCellStyle1->BackColor = System::Drawing::Color::PaleGreen;
-            dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
             dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::PaleGreen;
@@ -632,7 +648,7 @@ namespace Proyecto2_ED {
             this->TablaJuego->RightToLeft = System::Windows::Forms::RightToLeft::No;
             dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
             dataGridViewCellStyle2->BackColor = System::Drawing::Color::ForestGreen;
-            dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
             dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
             dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
@@ -643,7 +659,7 @@ namespace Proyecto2_ED {
             this->TablaJuego->RowTemplate->Height = 24;
             this->TablaJuego->ScrollBars = System::Windows::Forms::ScrollBars::None;
             this->TablaJuego->ShowRowErrors = false;
-            this->TablaJuego->Size = System::Drawing::Size(1144, 58);
+            this->TablaJuego->Size = System::Drawing::Size(1531, 31);
             this->TablaJuego->TabIndex = 3;
             this->TablaJuego->TabStop = false;
             this->TablaJuego->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AreaJuego::dataGridView1_CellContentClick);
@@ -714,7 +730,7 @@ namespace Proyecto2_ED {
             this->B_VenderTodo->BackColor = System::Drawing::Color::Red;
             this->B_VenderTodo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_VenderTodo->Location = System::Drawing::Point(1271, 432);
+            this->B_VenderTodo->Location = System::Drawing::Point(1270, 473);
             this->B_VenderTodo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
             this->B_VenderTodo->Name = L"B_VenderTodo";
             this->B_VenderTodo->Size = System::Drawing::Size(291, 38);
@@ -745,19 +761,6 @@ namespace Proyecto2_ED {
             this->Arboles_Pendientes->Size = System::Drawing::Size(0, 26);
             this->Arboles_Pendientes->TabIndex = 8;
             // 
-            // B_Espanta
-            // 
-            this->B_Espanta->BackColor = System::Drawing::Color::MediumPurple;
-            this->B_Espanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->B_Espanta->Location = System::Drawing::Point(951, 379);
-            this->B_Espanta->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->B_Espanta->Name = L"B_Espanta";
-            this->B_Espanta->Size = System::Drawing::Size(199, 82);
-            this->B_Espanta->TabIndex = 2;
-            this->B_Espanta->UseVisualStyleBackColor = false;
-            this->B_Espanta->Click += gcnew System::EventHandler(this, &AreaJuego::B_Espanta_Click_1);
-            // 
             // B_PlantarBinario
             // 
             this->B_PlantarBinario->BackColor = System::Drawing::Color::OrangeRed;
@@ -786,19 +789,19 @@ namespace Proyecto2_ED {
             this->B_PlantarSplay->UseVisualStyleBackColor = false;
             this->B_PlantarSplay->Click += gcnew System::EventHandler(this, &AreaJuego::B_PlantarSplay_Click);
             // 
-            // button3
+            // B_PlantarHeap
             // 
-            this->button3->BackColor = System::Drawing::Color::DarkOrange;
-            this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+            this->B_PlantarHeap->BackColor = System::Drawing::Color::DarkOrange;
+            this->B_PlantarHeap->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->button3->Location = System::Drawing::Point(1687, 162);
-            this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->button3->Name = L"button3";
-            this->button3->Size = System::Drawing::Size(169, 57);
-            this->button3->TabIndex = 11;
-            this->button3->Text = L"Plantar Heap";
-            this->button3->UseVisualStyleBackColor = false;
-            this->button3->Click += gcnew System::EventHandler(this, &AreaJuego::button3_Click);
+            this->B_PlantarHeap->Location = System::Drawing::Point(1687, 162);
+            this->B_PlantarHeap->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_PlantarHeap->Name = L"button3";
+            this->B_PlantarHeap->Size = System::Drawing::Size(169, 57);
+            this->B_PlantarHeap->TabIndex = 11;
+            this->B_PlantarHeap->Text = L"Plantar Heap";
+            this->B_PlantarHeap->UseVisualStyleBackColor = false;
+            this->B_PlantarHeap->Click += gcnew System::EventHandler(this, &AreaJuego::B_PlantarHeap_Click);
             // 
             // label1
             // 
@@ -881,12 +884,51 @@ namespace Proyecto2_ED {
             this->T_CantHeap->Size = System::Drawing::Size(45, 28);
             this->T_CantHeap->TabIndex = 18;
             // 
+            // label4
+            // 
+            this->label4->AutoSize = true;
+            this->label4->BackColor = System::Drawing::Color::Blue;
+            this->label4->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->label4->Location = System::Drawing::Point(1864, 57);
+            this->label4->Name = L"label4";
+            this->label4->Size = System::Drawing::Size(163, 26);
+            this->label4->TabIndex = 19;
+            this->label4->Text = L"Espantapájaros";
+            // 
+            // T_CantidadEspanta
+            // 
+            this->T_CantidadEspanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular,
+                System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+            this->T_CantidadEspanta->Location = System::Drawing::Point(1905, 110);
+            this->T_CantidadEspanta->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->T_CantidadEspanta->Name = L"T_CantidadEspanta";
+            this->T_CantidadEspanta->ReadOnly = true;
+            this->T_CantidadEspanta->Size = System::Drawing::Size(48, 28);
+            this->T_CantidadEspanta->TabIndex = 20;
+            this->T_CantidadEspanta->TextChanged += gcnew System::EventHandler(this, &AreaJuego::textBox1_TextChanged_1);
+            // 
+            // B_Espanta
+            // 
+            this->B_Espanta->BackColor = System::Drawing::Color::MediumPurple;
+            this->B_Espanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->B_Espanta->Location = System::Drawing::Point(277, 407);
+            this->B_Espanta->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_Espanta->Name = L"B_Espanta";
+            this->B_Espanta->Size = System::Drawing::Size(199, 82);
+            this->B_Espanta->TabIndex = 2;
+            this->B_Espanta->UseVisualStyleBackColor = false;
+            this->B_Espanta->Click += gcnew System::EventHandler(this, &AreaJuego::B_Espanta_Click_1);
+            // 
             // AreaJuego
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::PaleGreen;
-            this->ClientSize = System::Drawing::Size(1704, 878);
+            this->ClientSize = System::Drawing::Size(2091, 844);
+            this->Controls->Add(this->T_CantidadEspanta);
+            this->Controls->Add(this->label4);
             this->Controls->Add(this->T_CantHeap);
             this->Controls->Add(this->T_CantSplay);
             this->Controls->Add(this->T_CantAvl);
@@ -894,7 +936,7 @@ namespace Proyecto2_ED {
             this->Controls->Add(this->label3);
             this->Controls->Add(this->label2);
             this->Controls->Add(this->label1);
-            this->Controls->Add(this->button3);
+            this->Controls->Add(this->B_PlantarHeap);
             this->Controls->Add(this->B_PlantarSplay);
             this->Controls->Add(this->B_PlantarBinario);
             this->Controls->Add(this->B_Espanta);
@@ -994,6 +1036,7 @@ namespace Proyecto2_ED {
                this->T_CantHeap->Text = formato(admin.getCantidadHEAP());
                this->T_CantAvl->Text = formato(admin.getCantidadAVL());
                this->T_CantSplay->Text = formato(admin.getCantidadSPLAY());
+               this->T_CantidadEspanta->Text = formato(admin.getCantidadEspanta());
                confBotones(admin);
            }
 
@@ -1018,9 +1061,9 @@ namespace Proyecto2_ED {
                }
 
                if (admin.getCantidadHEAP() == 0) {
-                   button3->Enabled = false;
+                   B_PlantarHeap->Enabled = false;
                }else {
-                   button3->Enabled = true;
+                   B_PlantarHeap->Enabled = true;
                }
 
                if (admin.getCantidadSPLAY() == 0) {
@@ -1028,6 +1071,7 @@ namespace Proyecto2_ED {
                }else {
                    B_PlantarSplay->Enabled = true;
                }
+
                //Que hayan 2 plantados o no hayan en stock
                if(admin.getCantidadEspantaPlantados() == 2 || admin.getCantidadEspanta() == 0){
                    B_Espanta->Enabled = false;
@@ -1037,27 +1081,129 @@ namespace Proyecto2_ED {
            }
 
 
-
+//------------------------------------------------------Metodos de los botones de PLANTAR---------------------------------------------------------------------
 
 private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::EventArgs^ e) {
     admin.setCantidadBinario(-1);
     updateStock(admin);
+
+    // Obtener las coordenadas del LabelGranjero
+    int granjeroX = labelGranjero->Top;
+    int granjeroY = labelGranjero->Left;
+
+    // Verificar si la casilla está vacía (no tiene imagen y el color de fondo no es gris ni lime green)
+    if (labelGranjero->BackColor != Color::Gray && labelGranjero->BackColor != Color::LimeGreen)
+    {
+        // Crear un nuevo label
+        Label^ labelBinario = gcnew Label();
+        labelBinario->BackgroundImage = Image::FromFile("recursos/arbol1.png");
+        labelBinario->BackgroundImageLayout = ImageLayout::Stretch;
+        labelBinario->Width = 50;
+        labelBinario->Height = 50;
+        labelBinario->Left = granjeroY;
+        labelBinario->Top = granjeroX;
+
+        // Agregar el nuevo label al formulario
+        this->Controls->Add(labelBinario);
+        labelBinario->BringToFront();
+    }
+ 
+
 }
 private: System::Void B_PlantarAVL_Click(System::Object^ sender, System::EventArgs^ e) {
     admin.setCantidadAVL(-1);
     updateStock(admin);
+
+
+    // Obtener las coordenadas del LabelGranjero
+    int granjeroX = labelGranjero->Top;
+    int granjeroY = labelGranjero->Left;
+
+    // Verificar si la casilla está vacía (no tiene imagen y el color de fondo no es gris ni lime green)
+    if (labelGranjero->BackColor != Color::Gray && labelGranjero->BackColor != Color::LimeGreen)
+    {
+        // Crear un nuevo label
+        Label^ labelAvl = gcnew Label();
+        labelAvl->BackgroundImage = Image::FromFile("recursos/arbol41.png");
+        labelAvl->BackgroundImageLayout = ImageLayout::Stretch;
+        labelAvl->Width = 50;
+        labelAvl->Height = 50;
+        labelAvl->Left = granjeroY;
+        labelAvl->Top = granjeroX;
+
+        // Agregar el nuevo label al formulario
+        this->Controls->Add(labelAvl);
+        labelAvl->BringToFront();
+    }
+
+
+
+
+
 }
 private: System::Void B_PlantarSplay_Click(System::Object^ sender, System::EventArgs^ e) {
     admin.setCantidadSPLAY(-1);
     updateStock(admin);
+
+    // Obtener las coordenadas del LabelGranjero
+    int granjeroX = labelGranjero->Top;
+    int granjeroY = labelGranjero->Left;
+
+    // Verificar si la casilla está vacía (no tiene imagen y el color de fondo no es gris ni lime green)
+    if (labelGranjero->BackColor != Color::Gray && labelGranjero->BackColor != Color::LimeGreen)
+    {
+        // Crear un nuevo label
+        Label^ labelSplay = gcnew Label();
+        labelSplay->BackgroundImage = Image::FromFile("recursos/arbol31.png");
+        labelSplay->BackgroundImageLayout = ImageLayout::Stretch;
+        labelSplay->Width = 50;
+        labelSplay->Height = 50;
+        labelSplay->Left = granjeroY;
+        labelSplay->Top = granjeroX;
+
+        // Agregar el nuevo label al formulario
+        this->Controls->Add(labelSplay);
+        labelSplay->BringToFront();
+    }
+
+
+
+
 }
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void B_PlantarHeap_Click(System::Object^ sender, System::EventArgs^ e) {
     admin.setCantidadHEAP(-1);
     updateStock(admin);
+
+
+
+    // Obtener las coordenadas del LabelGranjero
+    int granjeroX = labelGranjero->Top;
+    int granjeroY = labelGranjero->Left;
+
+    // Verificar si la casilla está vacía (no tiene imagen y el color de fondo no es gris ni lime green)
+    if (labelGranjero->BackColor != Color::Gray && labelGranjero->BackColor != Color::LimeGreen)
+    {
+        // Crear un nuevo label
+        Label^ labelHeap = gcnew Label();
+        labelHeap->BackgroundImage = Image::FromFile("recursos/arbol2.png");
+        labelHeap->BackgroundImageLayout = ImageLayout::Stretch;
+        labelHeap->Width = 50;
+        labelHeap->Height = 50;
+        labelHeap->Left = granjeroY;
+        labelHeap->Top = granjeroX;
+
+        // Agregar el nuevo label al formulario
+        this->Controls->Add(labelHeap);
+        labelHeap->BringToFront();
+    }
+
+
 }
 private: System::Void B_Espanta_Click_1(System::Object^ sender, System::EventArgs^ e) {
-    admin.setCantidadEspantaPlantados(1);
+    admin.setCantidadEspanta(-1);
     updateStock(admin);
+}
+private: System::Void textBox1_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 

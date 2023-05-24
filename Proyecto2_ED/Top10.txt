@@ -1,3 +1,5 @@
 Juan                      5000
 Riquelme                  4000
 Loaiza                    3000
+kk                        5000
+Gera                      2500

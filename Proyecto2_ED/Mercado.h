@@ -389,6 +389,11 @@ namespace Proyecto2_ED {
 				this->Up_Espanta->Name = L"Up_Espanta";
 				this->Up_Espanta->Size = System::Drawing::Size(50, 34);
 				this->Up_Espanta->TabIndex = 19;
+				this->Up_Espanta->Maximum = 2;
+
+
+
+
 				// 
 				// B_Comprar
 				// 
