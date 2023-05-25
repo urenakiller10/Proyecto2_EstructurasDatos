@@ -14,6 +14,7 @@
 #include <thread>
 #include <chrono>
 #include "Administrador.h"
+#include "Confi.h"
 
 // Resto de tus inclusiones de archivos de encabezado
 
@@ -39,6 +40,7 @@ namespace Proyecto2_ED {
     {
     private:
         Administrador& admin; // Declarar una referencia a Administrador
+        Confi& config;
 
     private:
         array<array<Label^, 1>^>^ matrizLabels;
@@ -89,7 +91,7 @@ namespace Proyecto2_ED {
 
 
     public:
-        AreaJuego(Administrador& adminRef) : admin(adminRef)
+        AreaJuego(Administrador& adminRef,Confi configRef) : admin(adminRef), config (configRef)
         {
             InitializeComponent();
             SetupDataGridView();
@@ -498,7 +500,7 @@ namespace Proyecto2_ED {
             timer->Stop();
 
             // Crea y muestra la ventana de mercado
-            Mercado^ mercado = gcnew Mercado(admin);
+            Mercado^ mercado = gcnew Mercado(admin,config);
             mercado->Show();
 
 

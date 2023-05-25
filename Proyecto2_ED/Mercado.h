@@ -3,6 +3,7 @@
 #include "AreaJuego.h"
 #include "Configuracion.h"
 #include "Administrador.h"
+#include "Confi.h"
 
 
 namespace Proyecto2_ED {
@@ -22,6 +23,7 @@ namespace Proyecto2_ED {
 	public ref class Mercado : public System::Windows::Forms::Form
 	{
 	private:
+		Confi& config;
 		Administrador& admin; // Declarar una referencia a Administrador
 	private: System::Windows::Forms::TextBox^ PrecioBinario;
 	private: System::Windows::Forms::TextBox^ PrecioAvl;
@@ -46,7 +48,7 @@ namespace Proyecto2_ED {
 
 
 	public:
-		Mercado(Administrador& adminRef) : admin(adminRef)
+		Mercado(Administrador& adminRef, Confi& configRef ) : admin(adminRef), config(configRef)
 		{
 			InitializeComponent();
 			initCustom();
@@ -515,7 +517,7 @@ namespace Proyecto2_ED {
 	//------------------------------------------------------------Lógica de la compra de arboles---------------------------------------------------------------
 
 		private: System::Void B_Comprar_Click(System::Object^ sender, System::EventArgs^ e) {
-			
+
 			int precioBinario = 500;
 			int precioAVL = 500;
 			int precioSPLAY = 500;

@@ -12,8 +12,10 @@ using namespace System::Windows::Forms;
 #include <regex>
 #include <sstream>
 #include "Administrador.h"
+#include "Confi.h"
 
 Administrador admin;
+Confi config;
 
 namespace CppCLRWinFormsProject {
 
@@ -189,7 +191,7 @@ namespace CppCLRWinFormsProject {
 
 			//Se abre primero mercado y luego ya el juego
 
-				Proyecto2_ED::AreaJuego^ ventJuego = gcnew Proyecto2_ED::AreaJuego(admin);
+				Proyecto2_ED::AreaJuego^ ventJuego = gcnew Proyecto2_ED::AreaJuego(admin,config);
 				ventJuego->Show();
 
 

@@ -24,7 +24,7 @@ Class Proyecto2_ED.Configuracion: AutoLayout, AnsiClass, Class, Public, BeforeFi
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class Proyecto2_ED.Mercado: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(Administrador*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Administrador*, Confi*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Int32 disponible : Public, Static
   Methods:
@@ -42,7 +42,7 @@ Class Proyecto2_ED.InputForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     GetNombre(): PrivateScope, Public, HideBySig
 Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(Administrador*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Administrador*, Confi): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     System.ComponentModel.Container components : Public
   Methods:
