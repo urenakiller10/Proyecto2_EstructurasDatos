@@ -34,6 +34,8 @@ C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_E
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
+  AssemblyInfo.cpp
+  Configuracion.cpp
   CppCLR_WinFormsProject.cpp
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xstring(2859,53): warning C4244: 'argumento': conversión de 'wchar_t' a 'const _Elem'; posible pérdida de datos
           with
@@ -70,6 +72,8 @@ C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_E
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
+  Form1.cpp
+  Mercado.cpp
   Generando código...
   AreaJuego.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   Proyecto2_ED.vcxproj -> C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\x64\Debug\Proyecto2_ED.exe
