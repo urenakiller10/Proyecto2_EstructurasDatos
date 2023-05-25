@@ -2,38 +2,44 @@
 
 class Confi{
 private:
+    const float valorMinimo = 0.1f;
+    //Los tiempos son en segundos
     int precioBinario = 250;
-    int creceBinario = 30000;
-    int cosechaBinario = 30000;
-    int precioFrutosBinario = 500;
+    int creceBinario = 60;
+    int cosechaBinario = 15;
+    float precioFrutosBinario = 500.0f;
 
     int precioSplay = 250;
-    int creceSplay = 30000;
-    int cosechaSplay = 30000;
-    int precioFrutosSplay = 500;
+    int creceSplay = 90;
+    int cosechaSplay = 8;
+    float precioFrutosSplay = 500.0f;
 
     int precioHeap = 250;
-    int creceHeap = 30000;
-    int cosechaHeap = 30000;
-    int precioFrutosHeap = 500;
+    int creceHeap = 120;
+    int cosechaHeap = 4;
+    float precioFrutosHeap = 500.0f;
 
     int precioAvl = 250;
-    int creceAvl = 30000;
-    int cosechaAvl = 30000;
-    int precioFrutosAvl = 500;
+    int creceAvl = 15;
+    int cosechaAvl = 30;
+    float precioFrutosAvl = 500.0f;
 
-    int ovejaAparicion = 30000;
-    int ovejaComeFruto = 30000;
+    int ovejaAparicion = 180;
+    int ovejaComeFruto = 90;
 
-    int cuervoAparicion = 30000;
-    int cuervoComeFruto = 30000;
+    int cuervoAparicion = 120;
+    int cuervoComeFruto = 90;
 
-    int plagaAparicion = 30000;
-    int plagaComeArbol = 30000;
+    int plagaAparicion = 69;
+    int plagaComeArbol = 100;
 
 
 public:
-    Confi() : precioBinario(250),creceBinario(30000),cosechaBinario(30000), precioFrutosBinario(500),precioSplay(250),creceSplay(30000),cosechaSplay(30000), precioFrutosSplay(500), precioHeap (250), creceHeap(30000),cosechaHeap(30000), precioFrutosHeap(500),precioAvl(250),creceAvl(30000),cosechaAvl(30000),precioFrutosAvl(500),ovejaAparicion(3000), ovejaComeFruto(3000),cuervoAparicion(3000),cuervoComeFruto(3000),plagaAparicion(3000),plagaComeArbol(3000) {}
+    Confi() : precioBinario(250),creceBinario(60),cosechaBinario(15), precioFrutosBinario(500.0f)
+        ,precioSplay(250),creceSplay(90),cosechaSplay(8), precioFrutosSplay(500.0f)
+        ,precioHeap (250), creceHeap(120),cosechaHeap(4), precioFrutosHeap(500.0f)
+        ,precioAvl(250),creceAvl(15),cosechaAvl(30),precioFrutosAvl(500.0f)
+        ,ovejaAparicion(180), ovejaComeFruto(90),cuervoAparicion(120),cuervoComeFruto(90),plagaAparicion(69),plagaComeArbol(100) {}
                                                                                                                                                                                                             
     //Binario
 
@@ -49,7 +55,7 @@ public:
         cosechaBinario = cantidad;
     }
 
-    void setPrecioFrutosBinario(int cantidad) {
+    void setPrecioFrutosBinario(float cantidad) {
         precioFrutosBinario = cantidad;
     }
 
@@ -65,7 +71,7 @@ public:
     void setCosechaSplay(int cantidad) {
         cosechaSplay = cantidad;
     }
-    void setPrecioFrutosSplay(int cantidad) {
+    void setPrecioFrutosSplay(float cantidad) {
         precioFrutosSplay = cantidad;
 
     //Heap
@@ -81,7 +87,7 @@ public:
     void setCosechaHeap(int cantidad) {
         cosechaHeap = cantidad;
     }
-    void setPrecioFrutosHeap(int cantidad) {
+    void setPrecioFrutosHeap(float cantidad) {
         precioFrutosHeap = cantidad;
 
     //Avl
@@ -97,7 +103,7 @@ public:
         cosechaAvl = cantidad;
     }
 
-    void setPrecioFrutosAvl(int cantidad) {
+    void setPrecioFrutosAvl(float cantidad) {
         precioFrutosAvl = cantidad;
     }
 
@@ -145,7 +151,7 @@ public:
         return cosechaBinario;
     }
 
-    int getPrecioFrutosBinario() const {
+    float getPrecioFrutosBinario() const {
         return precioFrutosBinario;
     }
 
@@ -161,7 +167,7 @@ public:
         return cosechaSplay;
     }
 
-    int getPrecioFrutosSplay() const {
+    float getPrecioFrutosSplay() const {
         return precioFrutosSplay;
     }
 
@@ -181,7 +187,7 @@ public:
     }
 
 
-    int getPrecioFrutosHeap() const {
+    float getPrecioFrutosHeap() const {
         return precioFrutosHeap;
     }
 
@@ -200,7 +206,7 @@ public:
     }
 
 
-    int getPrecioFrutosAvl() const {
+    float getPrecioFrutosAvl() const {
         return precioFrutosAvl;
     }
 
