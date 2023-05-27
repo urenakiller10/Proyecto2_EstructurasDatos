@@ -15,6 +15,9 @@
 #include <chrono>
 #include "Administrador.h"
 #include "Confi.h"
+#include "ArbolBinario.h"
+#include "Generador.h"
+
 
 // Resto de tus inclusiones de archivos de encabezado
 
@@ -29,8 +32,6 @@ namespace Proyecto2_ED {
     using namespace System::Data;
     using namespace System::Drawing;
     using namespace System::Threading;
-
-
 
 
     /// <summary>
@@ -49,6 +50,7 @@ namespace Proyecto2_ED {
         int labelY;
         int contEspanta = 0;
         bool mercadoVisible;
+        bool running = true;
 
         Label^ labelGranjero;
         Label^ LabelCuervo;
@@ -72,23 +74,8 @@ namespace Proyecto2_ED {
         private: System::Windows::Forms::TextBox^ T_CantAvl;
         private: System::Windows::Forms::TextBox^ T_CantSplay;        //Se declaran los Text Box donde se guardan la cantidad de árboles
         private: System::Windows::Forms::TextBox^ T_CantHeap;
-       private: System::Windows::Forms::TextBox^ T_CantidadEspanta;
-
+        private: System::Windows::Forms::TextBox^ T_CantidadEspanta;
         private: System::Windows::Forms::Label^ label4;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public:
         AreaJuego(Administrador& adminRef,Confi configRef) : admin(adminRef), config (configRef)
@@ -1202,6 +1189,20 @@ private: System::Void B_PlantarHeap_Click(System::Object^ sender, System::EventA
 
 
 }
+
+    void hiloBinario() {
+        ArbolBinario* ab = new ArbolBinario();
+
+        if (ab->listo == false) {
+            std::this_thread::sleep_for(std::chrono::seconds(config.getCreceBinario()));
+        }
+
+        while (running) {
+            std::this_thread::sleep_for(std::chrono::seconds(config.getCosechaBinario()));
+            
+        }
+    }
+
 private: System::Void B_Espanta_Click_1(System::Object^ sender, System::EventArgs^ e) {
     admin.setCantidadEspanta(-1);
     updateStock(admin);
@@ -1214,10 +1215,6 @@ private: System::Void B_Salir_Click(System::Object^ sender, System::EventArgs^ e
     Application::Exit();
 
     // Volver a ejecutar el programa
-    System::Diagnostics::Process::Start(Application::ExecutablePath);
-
-
-                                                                                   }
-};
-
+    System::Diagnostics::Process::Start(Application::ExecutablePath);                                                                             }
     };
+};

@@ -133,77 +133,82 @@ public:
 
     //-----------------------------------------------------
 
+    //Precio de un arbol binario en tienda
     int getPrecioBinario() const {
         return precioBinario;
     }
-
+    //Tiempo de crecimiento de un arbol binario antes de dar frutos
     int getCreceBinario() const {
         return creceBinario;
     }
-
+    //Tiempo de crecimiento de un fruto en un arbol binario
     int getCosechaBinario() const {
         return cosechaBinario;
     }
-
+    //Precio maximo de un fruto de un arbol binario
     int getPrecioFrutosBinario() const {
         return precioFrutosBinario;
     }
 
+    // Precio de un árbol Splay en tienda
     int getPrecioSplay() const {
         return precioSplay;
     }
 
+    // Tiempo de crecimiento de un árbol Splay antes de dar frutos
     int getCreceSplay() const {
         return creceSplay;
     }
 
+    // Tiempo de crecimiento de un fruto en un árbol Splay
     int getCosechaSplay() const {
         return cosechaSplay;
     }
 
+    // Precio máximo de un fruto de un árbol Splay
     int getPrecioFrutosSplay() const {
         return precioFrutosSplay;
     }
 
-
+    // Precio de un árbol Heap en tienda
     int getPrecioHeap() const {
         return precioHeap;
     }
 
-
+    // Tiempo de crecimiento de un árbol Heap antes de dar frutos
     int getCreceHeap() const {
         return creceHeap;
     }
 
-
+    // Tiempo de crecimiento de un fruto en un árbol Heap
     int getCosechaHeap() const {
         return cosechaHeap;
     }
 
-
+    // Precio máximo de un fruto de un árbol Heap
     int getPrecioFrutosHeap() const {
         return precioFrutosHeap;
     }
 
+    // Precio de un árbol AVL en tienda
     int getPrecioAvl() const {
         return precioAvl;
     }
 
-
+    // Tiempo de crecimiento de un árbol AVL antes de dar frutos
     int getCreceAvl() const {
         return creceAvl;
     }
 
-
+    // Tiempo de crecimiento de un fruto en un árbol AVL
     int getCosechaAvl() const {
         return cosechaAvl;
     }
 
-
+    // Precio máximo de un fruto de un árbol AVL
     int getPrecioFrutosAvl() const {
         return precioFrutosAvl;
     }
-
 
     int getOvejaAparicion() const {
         return ovejaAparicion;

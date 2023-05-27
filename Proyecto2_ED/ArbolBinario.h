@@ -1,5 +1,5 @@
+#pragma once
 #include <iostream>
-using namespace std;
 
 struct Node {
     float value;
@@ -9,7 +9,7 @@ struct Node {
 
 struct ArbolBinario {
     Node* root;
-    string tipo = "ARBOL BINARIO BUSQUEDA";
+    std::string tipo = "ARBOL BINARIO BUSQUEDA";
     bool listo = false;
 
     ArbolBinario() {

@@ -44,9 +44,6 @@
     <ClInclude Include="Administrador.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ActualizadorCantidades.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ListaSimple.h">
       <Filter>Header Files</Filter>
     </ClInclude>

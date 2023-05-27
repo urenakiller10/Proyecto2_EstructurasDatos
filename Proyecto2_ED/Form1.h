@@ -1,3 +1,4 @@
+#pragma once
 #ifndef FORM1_H
 #define FORM1_H
 
