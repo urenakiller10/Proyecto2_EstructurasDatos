@@ -135,6 +135,7 @@
     <ClInclude Include="AreaJuego.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Avl.h" />
     <ClInclude Include="Confi.h" />
     <ClInclude Include="Configuracion.h">
       <FileType>CppForm</FileType>
@@ -152,6 +153,7 @@
     </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Splay.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AreaJuego.cpp" />

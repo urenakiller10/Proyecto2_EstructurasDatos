@@ -726,6 +726,7 @@ namespace Proyecto2_ED {
             this->B_Salir->TabIndex = 4;
             this->B_Salir->Text = L"SALIR";
             this->B_Salir->UseVisualStyleBackColor = false;
+            this->B_Salir->Click += gcnew System::EventHandler(this, &AreaJuego::B_Salir_Click);
             // 
             // B_VenderTodo
             // 
@@ -798,7 +799,7 @@ namespace Proyecto2_ED {
                 static_cast<System::Byte>(0)));
             this->B_PlantarHeap->Location = System::Drawing::Point(1687, 162);
             this->B_PlantarHeap->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-            this->B_PlantarHeap->Name = L"button3";
+            this->B_PlantarHeap->Name = L"B_PlantarHeap";
             this->B_PlantarHeap->Size = System::Drawing::Size(169, 57);
             this->B_PlantarHeap->TabIndex = 11;
             this->B_PlantarHeap->Text = L"Plantar Heap";
@@ -928,7 +929,7 @@ namespace Proyecto2_ED {
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::PaleGreen;
-            this->ClientSize = System::Drawing::Size(2091, 844);
+            this->ClientSize = System::Drawing::Size(1924, 844);
             this->Controls->Add(this->T_CantidadEspanta);
             this->Controls->Add(this->label4);
             this->Controls->Add(this->T_CantHeap);
@@ -1207,6 +1208,16 @@ private: System::Void B_Espanta_Click_1(System::Object^ sender, System::EventArg
 }
 private: System::Void textBox1_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {
 }
+private: System::Void B_Salir_Click(System::Object^ sender, System::EventArgs^ e) {
+
+    // Cerrar el programa actual
+    Application::Exit();
+
+    // Volver a ejecutar el programa
+    System::Diagnostics::Process::Start(Application::ExecutablePath);
+
+
+                                                                                   }
 };
 
     };

@@ -12,14 +12,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.3253
               _Sent=wchar_t *,
               _Size=unsigned __int64
           ]
-C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(998,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(999,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
-C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(998,41): message : vea la primera referencia a “std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string” en “Proyecto2_ED::AreaJuego::B_GuardarJuego_Click”
+C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(999,41): message : vea la primera referencia a “std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string” en “Proyecto2_ED::AreaJuego::B_GuardarJuego_Click”
   CppCLR_WinFormsProject.cpp
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\xstring(2765,53): warning C4244: 'argumento': conversión de 'wchar_t' a 'const _Elem'; posible pérdida de datos
           with
@@ -34,14 +34,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.3253
               _Sent=wchar_t *,
               _Size=unsigned __int64
           ]
-C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(998,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(999,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
-C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(998,41): message : vea la primera referencia a “std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string” en “Proyecto2_ED::AreaJuego::B_GuardarJuego_Click”
+C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(999,41): message : vea la primera referencia a “std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string” en “Proyecto2_ED::AreaJuego::B_GuardarJuego_Click”
   Generando código...
   AreaJuego.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   Proyecto2_ED.vcxproj -> C:\Users\uband\Desktop\Proyecto2_EstructurasDatos\x64\Debug\Proyecto2_ED.exe

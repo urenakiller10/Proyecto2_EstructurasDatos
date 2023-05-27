@@ -62,6 +62,12 @@
     <ClInclude Include="Confi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Avl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Splay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
