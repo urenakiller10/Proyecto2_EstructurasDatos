@@ -3,8 +3,8 @@
 class Confi{
 private:
     int precioBinario = 250;
-    int creceBinario = 60;
-    int cosechaBinario = 15;
+    int creceBinario = 10;
+    int cosechaBinario = 1;
     float precioFrutosBinario = 10.0f;
 
     int precioSplay = 250;

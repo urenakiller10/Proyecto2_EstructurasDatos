@@ -1,36 +1,33 @@
 #pragma once
-#include <thread>
+template<typename T>
+class NodoLista {
+public:
+    T dato;
+    NodoLista<T>* siguiente;
 
-using namespace std;
-struct nodo {
-	nodo* sig;
-	thread* hilo;
-
-	nodo(thread* _hilo) {
-		this->hilo = _hilo;
-		sig = NULL;
-	}
+    NodoLista(const T& valor) : dato(valor), siguiente(nullptr) {}
 };
 
-struct listaSimple {
-	nodo* primerNodo;
+template<typename T>
+class Lista {
+public:
+    NodoLista<T>* cabeza;
 
-	listaSimple() {
-		primerNodo = NULL;
-	}
+public:
+    Lista() : cabeza(nullptr) {}
 
-	void insertar(thread* hilo) {
-		nodo* nuevo = new nodo(hilo);
-		if (primerNodo == NULL) {
-			primerNodo = nuevo;
-		}
-		else {
-			nodo* tmp = primerNodo;
-			while (tmp->sig != NULL) {
-				tmp = tmp->sig;
-			}
-			tmp->sig = nuevo;
-		}
-	}
+    void agregarElemento(const T& valor) {
+        NodoLista<T>* nuevoNodo = new NodoLista<T>(valor);
 
+        if (cabeza == nullptr) {
+            cabeza = nuevoNodo;
+        }
+        else {
+            Nodo<T>* actual = cabeza;
+            while (actual->siguiente != nullptr) {
+                actual = actual->siguiente;
+            }
+            actual->siguiente = nuevoNodo;
+        }
+    }
 };

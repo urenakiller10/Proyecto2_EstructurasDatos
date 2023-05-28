@@ -2,116 +2,114 @@
 #include "Confi.h"
 
 
-struct NodeBin {
-    float value;
-    NodeBin* left;
-    NodeBin* right;
+#include <iostream>
+
+class Nodo {
+public:
+    float dato;
+    Nodo* izquierdo;
+    Nodo* derecho;
+
+    Nodo(float dato)
+        : dato(dato), izquierdo(nullptr), derecho(nullptr) {}
 };
 
-struct ArbolBinario {
-    NodeBin* root;
-    std::string tipo = "ARBOL BINARIO BUSQUEDA";
+class ArbolBinario {
+public:
+    float x;
+    float y;
     bool listo = false;
-    int x; int y;
-    ArbolBinario() {
-        root = NULL;;
-
-    }
-
-    void insert(float value) {
-        insertNode(root, value);
-    }
-
-    int countNodes() {
-        return countNodesRecursive(root);
-    }
-
-    float getSum() {
-        return getSumRecursive(root);
-    }
-
-    void deleteLeftmostNode() {
-        deleteLeftmostNodeRecursive(root);
-    }
-
-    void deleteNodes(int n) {
-
-    }
 
 private:
-    NodeBin* createNode(float value) {
-        NodeBin* newNode = new NodeBin;
-        newNode->value = value;
-        newNode->left = nullptr;
-        newNode->right = nullptr;
-        return newNode;
+    Nodo* raiz;
+
+    Nodo* insertarNodoRecursivo(Nodo* nodo, float dato) {
+        if (nodo == nullptr) {
+            return new Nodo(dato);
+        }
+
+        if (dato <= nodo->dato)
+            nodo->izquierdo = insertarNodoRecursivo(nodo->izquierdo, dato);
+        else
+            nodo->derecho = insertarNodoRecursivo(nodo->derecho, dato);
+
+        return nodo;
     }
 
-    void insertNode(NodeBin*& root, float value) {
-        if (root == nullptr) {
-            root = createNode(value);
+    void eliminarMayorNodoRecursivo(Nodo* nodo) {
+        if (nodo == nullptr)
             return;
+
+        Nodo* nodoActual = nodo;
+        Nodo* padre = nullptr;
+
+        while (nodoActual->derecho != nullptr) {
+            padre = nodoActual;
+            nodoActual = nodoActual->derecho;
         }
 
-        if (value < root->value) {
-            insertNode(root->left, value);
-        }
-        else if (value > root->value) {
-            insertNode(root->right, value);
-        }
+        if (padre != nullptr)
+            padre->derecho = nodoActual->izquierdo;
+        else
+            raiz = nodoActual->izquierdo;
+
+        delete nodoActual;
     }
 
-    int countNodesRecursive(NodeBin* root) {
-        if (root == nullptr) {
-            return 0;
-        }
-
-        return 1 + countNodesRecursive(root->left) + countNodesRecursive(root->right);
-    }
-
-    float getSumRecursive(NodeBin* root) {
-        if (root == nullptr) {
-            return 0.0f;
-        }
-
-        return root->value + getSumRecursive(root->left) + getSumRecursive(root->right);
-    }
-
-    //Se carga el menor, para no ser tan mala nota :D
-    void deleteLeftmostNodeRecursive(NodeBin*& root) {
-        if (root == nullptr) {
+    void calcularSumaValoresRecursivo(Nodo* nodo, float& sumaValores) {
+        if (nodo == nullptr)
             return;
-        }
 
-        if (root->left == nullptr) {
-            NodeBin* temp = root;
-            root = root->right;
-            delete temp;
-        }
-        else {
-            deleteLeftmostNodeRecursive(root->left);
-        }
+        sumaValores += nodo->dato;
+        calcularSumaValoresRecursivo(nodo->izquierdo, sumaValores);
+        calcularSumaValoresRecursivo(nodo->derecho, sumaValores);
     }
 
-    void deleteMultipleNodes(int n) {
-        for (int i = 0; i < n; i++) {
-            deleteLeftmostNode();
-        }
+    void calcularTotalNodosRecursivo(Nodo* nodo, int& totalNodos) {
+        if (nodo == nullptr)
+            return;
+
+        totalNodos++;
+        calcularTotalNodosRecursivo(nodo->izquierdo, totalNodos);
+        calcularTotalNodosRecursivo(nodo->derecho, totalNodos);
+    }
+
+    void liberarMemoriaRecursivo(Nodo* nodo) {
+        if (nodo == nullptr)
+            return;
+
+        liberarMemoriaRecursivo(nodo->izquierdo);
+        liberarMemoriaRecursivo(nodo->derecho);
+        delete nodo;
     }
 
 public:
+    ArbolBinario() : raiz(nullptr) {}
+    ArbolBinario(int _x, int _y) { 
+        x = _x, y = _y;
+    }
+
+    void insertar(float dato) {
+        raiz = insertarNodoRecursivo(raiz, dato);
+    }
+
+    void eliminarMayorNodo() {
+        eliminarMayorNodoRecursivo(raiz);
+    }
+
+    float calcularSumaValores() {
+        float sumaValores = 0;
+        calcularSumaValoresRecursivo(raiz, sumaValores);
+        return sumaValores;
+    }
+
+    int calcularTotalNodos() {
+        int totalNodos = 0;
+        calcularTotalNodosRecursivo(raiz, totalNodos);
+        return totalNodos;
+    }
+
     ~ArbolBinario() {
-        deleteTree(root);
+        liberarMemoriaRecursivo(raiz);
     }
-
-private:
-    void deleteTree(NodeBin* root) {
-        if (root == nullptr) {
-            return;
-        }
-
-        deleteTree(root->left);
-        deleteTree(root->right);
-        delete root;
-    }
-}; 
+};

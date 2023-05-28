@@ -19,7 +19,9 @@
 //#include "Heap.h"
 #include <Thread>
 #include <cstdlib>
-
+#include <list>
+#include <vcclr.h>
+#include "ListaSimple.h"
 
 // Resto de tus inclusiones de archivos de encabezado
 
@@ -45,11 +47,21 @@ namespace Proyecto2_ED {
         Administrador& admin; // Declarar una referencia a Administrador
         Confi& config;
 
-    public:
+        //Esto quedara como un vestigio de nuestro sufrimiento
+    public: int cantidadFrutos = 0;
 
-        int cantidadFrutos = 0;
+    private:
+        List<Thread^>^ listaHilosBinarios = gcnew List<Thread^>();
+        Lista<ArbolBinario*>* lista = new Lista<ArbolBinario*>();
 
+        List<Thread^>^ listaHilosHeap = gcnew List<Thread^>();
+        Dictionary<Thread^, System::IntPtr>^ datosHilosHeap;
 
+        List<Thread^>^ listaHilosAvl = gcnew List<Thread^>();
+        Dictionary<Thread^, System::IntPtr>^ datosHilosAvl;
+
+        List<Thread^>^ listaHilosSplay = gcnew List<Thread^>();
+        Dictionary<Thread^, System::IntPtr>^ datosHilosSplay;
 
     private:
         array<array<Label^, 1>^>^ matrizLabels;
@@ -98,8 +110,8 @@ namespace Proyecto2_ED {
             updateStock(admin);
             mercadoVisible = false;
             confBotones(admin);
-
-
+            Thread^ hiloActu = gcnew Thread(gcnew System::Threading::ThreadStart(this, &AreaJuego::controlActu));
+            hiloActu->Start();
 
             //Tiempo para que la fucking ventana de mercado aparezca cada cierto tiempo en AreaJuego
 
@@ -438,7 +450,7 @@ namespace Proyecto2_ED {
 
         //----------****-METODO QUE SE PUEDE USAR MÁS ADELANTE----******------------
 
-        void ActualizarInformacionFilas(std::string tipo, int x, int y)
+        void ActualizarInformacionNuevo(std::string tipo, int x, int y)
         {
             int rowIndex = TablaJuego->Rows->Add();
 
@@ -460,6 +472,55 @@ namespace Proyecto2_ED {
             nuevaFila->Cells[4]->Value = "0";
         }
 
+        void actualizarInfo(){
+            int x, y;
+            for each (DataGridViewRow ^ fila in TablaJuego->Rows){
+                // Obtener el valor de la celda en la columna 2
+                String^ valorCelda = fila->Cells[2]->Value->ToString();
+
+                // Eliminar los paréntesis alrededor de los números
+                valorCelda = valorCelda->Replace("(", "");
+                valorCelda = valorCelda->Replace(")", "");
+
+                // Dividir la cadena en dos partes separadas por la coma
+                array<String^>^ partes = valorCelda->Split(',');
+
+                // Obtener los números como cadenas
+                String^ strX = partes[0]->Trim();
+                String^ strY = partes[1]->Trim();
+
+                // Convertir las cadenas a enteros
+                x = System::Int32::Parse(strX);
+                y = System::Int32::Parse(strY);
+
+                //2,3
+                NodoLista<ArbolBinario*>* nodo = lista->cabeza;
+                while (nodo != nullptr) {
+                    ArbolBinario* arbol = nodo->dato;
+
+                    if (arbol->x == x && arbol->y == y) {
+                        //Agarrar los frutos
+                        std::string cantidadFrutos = std::to_string(arbol->calcularTotalNodos());
+                        System::String^ canFrutos = gcnew System::String(cantidadFrutos.c_str());
+                        fila->Cells[2]->Value = canFrutos;
+
+                        std::string sumaFrutos = std::to_string(arbol->calcularTotalNodos());
+                        System::String^ sumFrutos = gcnew System::String(sumaFrutos.c_str());
+                        fila->Cells[3]->Value = canFrutos;
+                    }
+
+                    nodo = nodo->siguiente;
+                }
+            }
+        }
+
+        void controlActu() {
+            while (true) {
+                System::Threading::Thread::Sleep(30000);
+                actualizarInfo();
+            }
+        }
+
         void AgregarFrutosPeriodicamente()
         {
             while (true)
@@ -468,6 +529,7 @@ namespace Proyecto2_ED {
 
                 // Pausa el hilo durante 30 segundos
                 System::Threading::Thread::Sleep(30000);
+                
             }
         }
 
@@ -479,7 +541,18 @@ namespace Proyecto2_ED {
 
 
 
-
+        void hiloBinario() {
+            ArbolBinario* ab = new ArbolBinario(labelGranjero->Top, labelGranjero->Left);
+            // Agregar el árbol binario al diccionario
+            if (ab->listo == false) {
+                System::Threading::Thread::Sleep(config.getCreceBinario()*1000);
+            }
+            while (running) {
+                float fruto = config.getMinValue() + static_cast<float>(rand()) * static_cast<float>(config.getPrecioFrutosBinario() - config.getMinValue()) / RAND_MAX;
+                System::Threading::Thread::Sleep(config.getCosechaBinario()*1000);
+                ab->insertar(fruto);
+            }
+        }
 
 
 
@@ -1118,24 +1191,15 @@ private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::Eve
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelBinario);
         labelBinario->BringToFront();
+        
 
+        //Crear el hilo
+        Thread^ nuevoHiloBinario = gcnew Thread(gcnew System::Threading::ThreadStart(this, &AreaJuego::hiloBinario));
+        nuevoHiloBinario->Start();
+        //Agregar el hilo a la lista
+        listaHilosBinarios->Add(nuevoHiloBinario);
+        ActualizarInformacionNuevo("Arbol Binario", granjeroX, granjeroX);
 
-
-
-
-
-        hiloFrutos = gcnew System::Threading::Thread(gcnew System::Threading::ThreadStart(this, &AreaJuego::AgregarFrutosPeriodicamente));
-        hiloFrutos->Start();
-
-
-
-        ActualizarInformacionFilas("Arbol binario", granjeroX, cantidadFrutos);
-
-
-
-
-
-//aqui va lo del hilo
 
     }
  
@@ -1165,7 +1229,7 @@ private: System::Void B_PlantarAVL_Click(System::Object^ sender, System::EventAr
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelAvl);
         labelAvl->BringToFront();
-        ActualizarInformacionFilas("Arbol AVL", granjeroX, granjeroX);
+        //ActualizarInformacionNuevo("Arbol AVL", granjeroX, granjeroX);
     }
 
 
@@ -1196,7 +1260,7 @@ private: System::Void B_PlantarSplay_Click(System::Object^ sender, System::Event
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelSplay);
         labelSplay->BringToFront();
-        ActualizarInformacionFilas("Arbol Splay", granjeroX, granjeroX);
+        //ActualizarInformacionNuevo("Arbol Splay", granjeroX, granjeroX);
     }
 
 
@@ -1228,35 +1292,10 @@ private: System::Void B_PlantarHeap_Click(System::Object^ sender, System::EventA
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelHeap);
         labelHeap->BringToFront();
-        ActualizarInformacionFilas("Heap", granjeroX, granjeroX);
+        //ActualizarInformacionNuevo("Heap", granjeroX, granjeroX);
     }
 
 }
-       public:
-
-           void hiloBinario(Confi& config, bool& running)
-           {
-               // Setear un puntero a un nuevo arbol
-               ArbolBinario* ab = new ArbolBinario();
-
-               // Espero crecimiento
-               if (ab->listo == false)
-               {
-                   std::this_thread::sleep_for(std::chrono::seconds(config.getCreceBinario()));
-                   ab->listo = true;
-               }
-
-               while (running)
-               {
-                   std::this_thread::sleep_for(std::chrono::seconds(config.getCosechaBinario()));
-                   float fruto = config.getMinValue() + static_cast<float>(rand()) * static_cast<float>(config.getPrecioFrutosBinario() - config.getMinValue()) / RAND_MAX;
-                   ab->insert(fruto);
-               }
-           }
-
-
-
-
 private: System::Void B_Espanta_Click_1(System::Object^ sender, System::EventArgs^ e) {
     admin.setCantidadEspanta(-1);
     updateStock(admin);
