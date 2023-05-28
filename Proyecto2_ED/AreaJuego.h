@@ -44,8 +44,8 @@ namespace Proyecto2_ED {
     public ref class AreaJuego : public System::Windows::Forms::Form
     {
     private:
-        Administrador& admin; // Declarar una referencia a Administrador
-        Confi& config;
+        Administrador* admin; // Declarar una referencia a Administrador
+        Confi* config;
 
         //Esto quedara como un vestigio de nuestro sufrimiento
     public: int cantidadFrutos = 0;
@@ -101,7 +101,7 @@ namespace Proyecto2_ED {
         System::Threading::Thread^ hiloFrutos;
 
     public:
-        AreaJuego(Administrador& adminRef,Confi configRef) : admin(adminRef), config (configRef)
+        AreaJuego(Administrador* adminRef,Confi* configRef) : admin(adminRef), config (configRef)
         {
             InitializeComponent();
             SetupDataGridView();
@@ -473,10 +473,10 @@ namespace Proyecto2_ED {
         }
 
         void actualizarInfo(){
-            int x, y;
+            int x = 0; int y = 0;
             for each (DataGridViewRow ^ fila in TablaJuego->Rows){
                 // Obtener el valor de la celda en la columna 2
-                String^ valorCelda = fila->Cells[2]->Value->ToString();
+                String^ valorCelda = fila->Cells[1]->Value->ToString();
 
                 // Eliminar los paréntesis alrededor de los números
                 valorCelda = valorCelda->Replace("(", "");
@@ -545,11 +545,11 @@ namespace Proyecto2_ED {
             ArbolBinario* ab = new ArbolBinario(labelGranjero->Top, labelGranjero->Left);
             // Agregar el árbol binario al diccionario
             if (ab->listo == false) {
-                System::Threading::Thread::Sleep(config.getCreceBinario()*1000);
+                System::Threading::Thread::Sleep(config->getCreceBinario()*1000);
             }
             while (running) {
-                float fruto = config.getMinValue() + static_cast<float>(rand()) * static_cast<float>(config.getPrecioFrutosBinario() - config.getMinValue()) / RAND_MAX;
-                System::Threading::Thread::Sleep(config.getCosechaBinario()*1000);
+                float fruto = config->getMinValue() + static_cast<float>(rand()) * static_cast<float>(config->getPrecioFrutosBinario() - config->getMinValue()) / RAND_MAX;
+                System::Threading::Thread::Sleep(config->getCosechaBinario()*1000);
                 ab->insertar(fruto);
             }
         }
@@ -1116,12 +1116,12 @@ namespace Proyecto2_ED {
     private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
     }
 
-           void updateStock(Administrador& admin) {
-               this->T_CantBinarios->Text = formato(admin.getCantidadBinario());
-               this->T_CantHeap->Text = formato(admin.getCantidadHEAP());
-               this->T_CantAvl->Text = formato(admin.getCantidadAVL());
-               this->T_CantSplay->Text = formato(admin.getCantidadSPLAY());
-               this->T_CantidadEspanta->Text = formato(admin.getCantidadEspanta());
+           void updateStock(Administrador* admin) {
+               this->T_CantBinarios->Text = formato(admin->getCantidadBinario());
+               this->T_CantHeap->Text = formato(admin->getCantidadHEAP());
+               this->T_CantAvl->Text = formato(admin->getCantidadAVL());
+               this->T_CantSplay->Text = formato(admin->getCantidadSPLAY());
+               this->T_CantidadEspanta->Text = formato(admin->getCantidadEspanta());
                confBotones(admin);
            }
 
@@ -1132,33 +1132,33 @@ namespace Proyecto2_ED {
                return texto;
            }
 
-           void confBotones(Administrador& admin) {
-               if (admin.getCantidadBinario() == 0) {
+           void confBotones(Administrador* admin) {
+               if (admin->getCantidadBinario() == 0) {
                    B_PlantarBinario->Enabled = false;
                }else {
                    B_PlantarBinario->Enabled = true;
                }
 
-               if (admin.getCantidadAVL() == 0) {
+               if (admin->getCantidadAVL() == 0) {
                    B_PlantarAVL->Enabled = false;
                }else {
                    B_PlantarAVL->Enabled = true;
                }
 
-               if (admin.getCantidadHEAP() == 0) {
+               if (admin->getCantidadHEAP() == 0) {
                    B_PlantarHeap->Enabled = false;
                }else {
                    B_PlantarHeap->Enabled = true;
                }
 
-               if (admin.getCantidadSPLAY() == 0) {
+               if (admin->getCantidadSPLAY() == 0) {
                    B_PlantarSplay->Enabled = false;
                }else {
                    B_PlantarSplay->Enabled = true;
                }
 
                //Que hayan 2 plantados o no hayan en stock
-               if(admin.getCantidadEspantaPlantados() == 2 || admin.getCantidadEspanta() == 0){
+               if(admin->getCantidadEspantaPlantados() == 2 || admin->getCantidadEspanta() == 0){
                    B_Espanta->Enabled = false;
                }else {
                    B_Espanta->Enabled = true;
@@ -1169,7 +1169,7 @@ namespace Proyecto2_ED {
 //------------------------------------------------------Metodos de los botones de PLANTAR---------------------------------------------------------------------
 
 private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::EventArgs^ e) {    
-    admin.setCantidadBinario(-1);
+    admin->setCantidadBinario(-1);
     updateStock(admin);
 
     // Obtener las coordenadas del LabelGranjero
@@ -1206,7 +1206,7 @@ private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::Eve
 
 }
 private: System::Void B_PlantarAVL_Click(System::Object^ sender, System::EventArgs^ e) {
-    admin.setCantidadAVL(-1);
+    admin->setCantidadAVL(-1);
     updateStock(admin);
 
 
@@ -1238,7 +1238,7 @@ private: System::Void B_PlantarAVL_Click(System::Object^ sender, System::EventAr
 
 }
 private: System::Void B_PlantarSplay_Click(System::Object^ sender, System::EventArgs^ e) {
-    admin.setCantidadSPLAY(-1);
+    admin->setCantidadSPLAY(-1);
     updateStock(admin);
 
     // Obtener las coordenadas del LabelGranjero
@@ -1268,7 +1268,7 @@ private: System::Void B_PlantarSplay_Click(System::Object^ sender, System::Event
 
 }
 private: System::Void B_PlantarHeap_Click(System::Object^ sender, System::EventArgs^ e) {
-    admin.setCantidadHEAP(-1);
+    admin->setCantidadHEAP(-1);
     updateStock(admin);
 
 
@@ -1297,7 +1297,7 @@ private: System::Void B_PlantarHeap_Click(System::Object^ sender, System::EventA
 
 }
 private: System::Void B_Espanta_Click_1(System::Object^ sender, System::EventArgs^ e) {
-    admin.setCantidadEspanta(-1);
+    admin->setCantidadEspanta(-1);
     updateStock(admin);
 }
 private: System::Void textBox1_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {

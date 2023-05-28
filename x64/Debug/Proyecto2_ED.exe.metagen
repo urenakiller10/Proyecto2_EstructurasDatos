@@ -42,7 +42,7 @@ Class Proyecto2_ED.InputForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     GetNombre(): PrivateScope, Public, HideBySig
 Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(Administrador*, Confi): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Administrador*, Confi*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Int32 cantidadFrutos : Public
     System.ComponentModel.Container components : Public

@@ -24,7 +24,7 @@ private:
     Nodo* raiz;
 
     Nodo* insertarNodoRecursivo(Nodo* nodo, float dato) {
-        if (nodo == nullptr) {
+        if (nodo == NULL) {
             return new Nodo(dato);
         }
 
@@ -37,18 +37,18 @@ private:
     }
 
     void eliminarMayorNodoRecursivo(Nodo* nodo) {
-        if (nodo == nullptr)
+        if (nodo == NULL)
             return;
 
         Nodo* nodoActual = nodo;
-        Nodo* padre = nullptr;
+        Nodo* padre = NULL;
 
-        while (nodoActual->derecho != nullptr) {
+        while (nodoActual->derecho != NULL) {
             padre = nodoActual;
             nodoActual = nodoActual->derecho;
         }
 
-        if (padre != nullptr)
+        if (padre != NULL)
             padre->derecho = nodoActual->izquierdo;
         else
             raiz = nodoActual->izquierdo;
@@ -57,7 +57,7 @@ private:
     }
 
     void calcularSumaValoresRecursivo(Nodo* nodo, float& sumaValores) {
-        if (nodo == nullptr)
+        if (nodo == NULL)
             return;
 
         sumaValores += nodo->dato;
@@ -86,6 +86,7 @@ private:
 public:
     ArbolBinario() : raiz(nullptr) {}
     ArbolBinario(int _x, int _y) { 
+        raiz = NULL;
         x = _x, y = _y;
     }
 

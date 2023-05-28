@@ -1,6 +1,6 @@
 ﻿  AreaJuego.cpp
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(89,13): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(89,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(90,13): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(90,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xstring(2859,53): warning C4244: 'argumento': conversión de 'wchar_t' a 'const _Elem'; posible pérdida de datos
           with
           [
@@ -37,8 +37,8 @@ C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_E
               _Alloc=std::allocator<char>
           ]
   CppCLR_WinFormsProject.cpp
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(89,13): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(89,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(90,13): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(90,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xstring(2859,53): warning C4244: 'argumento': conversión de 'wchar_t' a 'const _Elem'; posible pérdida de datos
           with
           [

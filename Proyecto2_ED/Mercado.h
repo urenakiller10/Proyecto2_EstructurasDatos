@@ -24,8 +24,8 @@ namespace Proyecto2_ED {
 	public ref class Mercado : public System::Windows::Forms::Form
 	{
 	private:
-		Confi& config;
-		Administrador& admin; // Declarar una referencia a Administrador
+		Confi* config;
+		Administrador* admin; // Declarar una referencia a Administrador
 	private: System::Windows::Forms::TextBox^ PrecioBinario;
 	private: System::Windows::Forms::TextBox^ PrecioAvl;
 
@@ -49,7 +49,7 @@ namespace Proyecto2_ED {
 
 
 	public:
-		Mercado(Administrador& adminRef, Confi& configRef ) : admin(adminRef), config(configRef)
+		Mercado(Administrador* adminRef, Confi* configRef ) : admin(adminRef), config(configRef)
 		{
 			InitializeComponent();
 			initCustom();
@@ -542,11 +542,11 @@ namespace Proyecto2_ED {
 				// 
 				// Papi Charlie al rescate jajaj
 				//MessageBox::Show(cantBinario.ToString(), "BINARIO", MessageBoxButtons::OK, MessageBoxIcon::Error);
-				admin.setCantidadBinario(cantBinario);
-				admin.setCantidadAVL(cantAVL);
-				admin.setCantidadEspanta(cantEspanta);
-				admin.setCantidadHEAP(cantHEAP);
-				admin.setCantidadSPLAY(cantSPLAY);
+				admin->setCantidadBinario(cantBinario);
+				admin->setCantidadAVL(cantAVL);
+				admin->setCantidadEspanta(cantEspanta);
+				admin->setCantidadHEAP(cantHEAP);
+				admin->setCantidadSPLAY(cantSPLAY);
 
 
 				// Restablecer los valores de los controles Up a cero

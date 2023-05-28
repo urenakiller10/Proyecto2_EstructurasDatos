@@ -16,8 +16,8 @@
 using namespace System::Windows::Forms;
 
 
-Administrador admin;
-Confi config;
+Administrador* admin = new Administrador();
+Confi* config = new Confi();
 
 namespace CppCLRWinFormsProject {
 
