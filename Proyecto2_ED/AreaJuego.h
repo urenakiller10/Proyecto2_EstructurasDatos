@@ -1133,7 +1133,6 @@ private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::Eve
 
 
 
-\\\
 
 
 //aqui va lo del hilo
