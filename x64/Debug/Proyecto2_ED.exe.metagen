@@ -54,7 +54,7 @@ Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     Form_KeyDown(Object, KeyEventArgs): PrivateScope, Public, HideBySig
     initCustom(): PrivateScope, Public, HideBySig
     SetupDataGridView(): PrivateScope, Public, HideBySig
-    ActualizarInformacionFilas(): PrivateScope, Public, HideBySig
+    ActualizarInformacionFilas(basic_string<char\,std::char_traits<char>\,std::allocator<char> >*, Int32, Int32): PrivateScope, Public, HideBySig
     TablaJuego_KeyDown(Object, KeyEventArgs): PrivateScope, Public, HideBySig
     OcultarColumnaSeleccionada(): PrivateScope, Public, HideBySig
     EstablecerTextoFilas(): PrivateScope, Public, HideBySig

@@ -20,14 +20,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.3221
               _Sent=wchar_t *,
               _Size=unsigned __int64
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(986,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(998,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(986,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(998,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
@@ -56,14 +56,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.3221
               _Sent=wchar_t *,
               _Size=unsigned __int64
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(986,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(998,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(986,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(998,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
@@ -72,6 +72,4 @@ C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_E
           ]
   Generando código...
   AreaJuego.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
-CppCLR_WinFormsProject.obj : error LNK2005: ya se definió "float __cdecl generarNumeroAleatorio(float,float)" (?generarNumeroAleatorio@@YAMMM@Z) en AreaJuego.obj
-CppCLR_WinFormsProject.obj : error LNK2005: ya se definió "float __cdecl generarNumeroAleatorio(float,float)" (?generarNumeroAleatorio@@$$FYAMMM@Z) en AreaJuego.obj
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\x64\Debug\Proyecto2_ED.exe : fatal error LNK1169: se encontraron uno o más símbolos definidos simultáneamente
+  Proyecto2_ED.vcxproj -> C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\x64\Debug\Proyecto2_ED.exe

@@ -16,7 +16,7 @@
 #include "Administrador.h"
 #include "Confi.h"
 #include "ArbolBinario.h"
-#include "Generador.h"
+#include <thread>
 
 
 // Resto de tus inclusiones de archivos de encabezado
@@ -426,7 +426,7 @@ namespace Proyecto2_ED {
         {
             // Configurar la cantidad de filas del DataGridView
 
-            TablaJuego->RowCount = 4; // Por ejemplo maaeee establece 10 filas fijas
+            TablaJuego->RowCount = 1; // Por ejemplo maaeee establece 10 filas fijas
 
             TablaJuego->KeyDown += gcnew KeyEventHandler(this, &AreaJuego::TablaJuego_KeyDown);
 
@@ -435,15 +435,26 @@ namespace Proyecto2_ED {
 
         //----------****-METODO QUE SE PUEDE USAR MÁS ADELANTE----******------------
 
-        void ActualizarInformacionFilas()
+        void ActualizarInformacionFilas(std::string tipo, int x, int y)
         {
-            // Actualizar información en las filas existentes
-            for (int fila = 0; fila < TablaJuego->RowCount; fila++)
-            {
-                TablaJuego->Rows[fila]->Cells[0]->Value = "Valor 1";
-                TablaJuego->Rows[fila]->Cells[1]->Value = "Valor 2";
-                TablaJuego->Rows[fila]->Cells[2]->Value = "Valor 3";
-            }
+            int rowIndex = TablaJuego->Rows->Add();
+
+            //Formatear el string de las coords
+            std::string ubicacion = "(" + std::to_string(x) + "," + std::to_string(y) + ")";
+
+            //Convertir los datos al tipo necesario
+            System::String^ tipoA = gcnew System::String(tipo.c_str());
+            System::String^ ubi = gcnew System::String(ubicacion.c_str());
+
+            // Obtener la fila agregada
+            DataGridViewRow^ nuevaFila = TablaJuego->Rows[rowIndex];
+
+            // Asignar los valores a las celdas de la nueva fila
+            nuevaFila->Cells[0]->Value = tipoA;
+            nuevaFila->Cells[1]->Value = ubi;
+            nuevaFila->Cells[2]->Value = "0";
+            nuevaFila->Cells[3]->Value = "0.0";
+            nuevaFila->Cells[4]->Value = "0";
         }
 
         void AreaJuego::TablaJuego_KeyDown(Object^ sender, KeyEventArgs^ e)
@@ -465,7 +476,7 @@ namespace Proyecto2_ED {
         {
             DataGridViewCellStyle^ rowStyle = gcnew DataGridViewCellStyle();
             rowStyle->Font = gcnew System::Drawing::Font(TablaJuego->Font->FontFamily, 10, FontStyle::Bold);
-
+            /*
             TablaJuego->Rows[0]->Cells[0]->Value = "Binario";
             TablaJuego->Rows[0]->DefaultCellStyle = rowStyle;
 
@@ -477,6 +488,7 @@ namespace Proyecto2_ED {
 
             TablaJuego->Rows[3]->Cells[0]->Value = "Heap";
             TablaJuego->Rows[3]->DefaultCellStyle = rowStyle;
+            */
         }
         //---------------------------------------------------Mostrar Ventana Mercado en Area de Juego cada cierto tiempo---------------------------------------------------------------------------------
 
@@ -1074,6 +1086,7 @@ namespace Proyecto2_ED {
 //------------------------------------------------------Metodos de los botones de PLANTAR---------------------------------------------------------------------
 
 private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::EventArgs^ e) {
+    
     admin.setCantidadBinario(-1);
     updateStock(admin);
 
@@ -1096,6 +1109,9 @@ private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::Eve
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelBinario);
         labelBinario->BringToFront();
+        ActualizarInformacionFilas("Arbol binario", granjeroX, granjeroX);
+        //std::thread* t = new std::thread(hiloBinario&(granjeroX, granjeroX));
+        //std::thread* t = new std::thread();
     }
  
 
@@ -1124,6 +1140,7 @@ private: System::Void B_PlantarAVL_Click(System::Object^ sender, System::EventAr
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelAvl);
         labelAvl->BringToFront();
+        ActualizarInformacionFilas("Arbol AVL", granjeroX, granjeroX);
     }
 
 
@@ -1154,6 +1171,7 @@ private: System::Void B_PlantarSplay_Click(System::Object^ sender, System::Event
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelSplay);
         labelSplay->BringToFront();
+        ActualizarInformacionFilas("Arbol Splay", granjeroX, granjeroX);
     }
 
 
@@ -1185,23 +1203,13 @@ private: System::Void B_PlantarHeap_Click(System::Object^ sender, System::EventA
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelHeap);
         labelHeap->BringToFront();
+        ActualizarInformacionFilas("Heap", granjeroX, granjeroX);
     }
 
 
 }
 
-    void hiloBinario() {
-        ArbolBinario* ab = new ArbolBinario();
 
-        if (ab->listo == false) {
-            std::this_thread::sleep_for(std::chrono::seconds(config.getCreceBinario()));
-        }
-
-        while (running) {
-            std::this_thread::sleep_for(std::chrono::seconds(config.getCosechaBinario()));
-            
-        }
-    }
 
 private: System::Void B_Espanta_Click_1(System::Object^ sender, System::EventArgs^ e) {
     admin.setCantidadEspanta(-1);

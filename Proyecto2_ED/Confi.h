@@ -3,77 +3,95 @@
 class Confi{
 private:
     int precioBinario = 250;
-    int creceBinario = 30000;
-    int cosechaBinario = 30000;
-    int precioFrutosBinario = 500;
+    int creceBinario = 60;
+    int cosechaBinario = 15;
+    float precioFrutosBinario = 10.0f;
 
     int precioSplay = 250;
-    int creceSplay = 30000;
-    int cosechaSplay = 30000;
-    int precioFrutosSplay = 500;
+    int creceSplay = 60;
+    int cosechaSplay = 15;
+    float precioFrutosSplay = 10.0f;
 
     int precioHeap = 250;
-    int creceHeap = 30000;
-    int cosechaHeap = 30000;
-    int precioFrutosHeap = 500;
+    int creceHeap = 60;
+    int cosechaHeap = 15;
+    float precioFrutosHeap = 10.0f;
 
     int precioAvl = 250;
-    int creceAvl = 30000;
-    int cosechaAvl = 30000;
-    int precioFrutosAvl = 500;
+    int creceAvl = 60;
+    int cosechaAvl = 15;
+    float precioFrutosAvl = 10.0f;
 
-    int ovejaAparicion = 30000;
-    int ovejaComeFruto = 30000;
 
-    int cuervoAparicion = 30000;
-    int cuervoComeFruto = 30000;
+    int ovejaAparicion = 90;
+    int ovejaComeFruto = 60;
 
-    int plagaAparicion = 30000;
-    int plagaComeArbol = 30000;
+    int cuervoAparicion = 90;
+    int cuervoComeFruto = 60;
+
+    int plagaAparicion = 90;
+    int plagaComeArbol = 60;
+
+    float valorMinimo = 0.001f;
 
 
 public:
-    Confi() : precioBinario(250),creceBinario(30000),cosechaBinario(30000), precioFrutosBinario(500),precioSplay(250),creceSplay(30000),cosechaSplay(30000), precioFrutosSplay(500), precioHeap (250), creceHeap(30000),cosechaHeap(30000), precioFrutosHeap(500),precioAvl(250),creceAvl(30000),cosechaAvl(30000),precioFrutosAvl(500),ovejaAparicion(3000), ovejaComeFruto(3000),cuervoAparicion(3000),cuervoComeFruto(3000),plagaAparicion(3000),plagaComeArbol(3000) {}
-                                                                                                                                                                                                            
+    Confi() : precioBinario(250),creceBinario(60),cosechaBinario(15), precioFrutosBinario(10.0f)
+        ,precioSplay(250),creceSplay(60),cosechaSplay(15), precioFrutosSplay(10.0f)
+        , precioHeap (250), creceHeap(60),cosechaHeap(15), precioFrutosHeap(10.0f)
+        ,precioAvl(250),creceAvl(60),cosechaAvl(15),precioFrutosAvl(10.0f)
+        ,ovejaAparicion(90), ovejaComeFruto(60),cuervoAparicion(90),cuervoComeFruto(60),plagaAparicion(90),plagaComeArbol(60) {}
+                
+    float getMinValue() {
+        return valorMinimo;
+    }
+
+
     //Binario
 
+   // Precio de un arbol binario en tienda
     void setPrecioBinario(int cantidad) {
         precioBinario = cantidad;
     }
 
+    // Tiempo de crecimiento de un arbol binario antes de dar frutos
     void setCreceBinario(int cantidad) {
         creceBinario = cantidad;
     }
 
+    // Tiempo de crecimiento de un fruto en un arbol binario
     void setCosechaBinario(int cantidad) {
         cosechaBinario = cantidad;
     }
 
-    void setPrecioFrutosBinario(int cantidad) {
+    // Precio maximo de un fruto de un arbol binario
+    void setPrecioFrutosBinario(float cantidad) {
         precioFrutosBinario = cantidad;
     }
 
-    //Splay
-
+    // Precio de un árbol Splay en tienda
     void setPrecioSplay(int cantidad) {
         precioSplay = cantidad;
     }
 
+    // Tiempo de crecimiento de un árbol Splay antes de dar frutos
     void setCreceSplay(int cantidad) {
         creceSplay = cantidad;
     }
+
     void setCosechaSplay(int cantidad) {
         cosechaSplay = cantidad;
     }
-    void setPrecioFrutosSplay(int cantidad) {
+
+    void setPrecioFrutosSplay(float cantidad) {
         precioFrutosSplay = cantidad;
-
-    //Heap
-
     }
+
+    // Precio de un árbol Heap en tienda
     void setPrecioHeap(int cantidad) {
         precioHeap = cantidad;
     }
+
     void setCreceHeap(int cantidad) {
         creceHeap = cantidad;
     }
@@ -81,11 +99,12 @@ public:
     void setCosechaHeap(int cantidad) {
         cosechaHeap = cantidad;
     }
-    void setPrecioFrutosHeap(int cantidad) {
-        precioFrutosHeap = cantidad;
 
-    //Avl
+    void setPrecioFrutosHeap(float cantidad) {
+        precioFrutosHeap = cantidad;
     }
+
+    // Precio de un árbol AVL en tienda
     void setPrecioAvl(int cantidad) {
         precioAvl = cantidad;
     }
@@ -93,14 +112,14 @@ public:
     void setCreceAvl(int cantidad) {
         creceAvl = cantidad;
     }
+
     void setCosechaAvl(int cantidad) {
         cosechaAvl = cantidad;
     }
 
-    void setPrecioFrutosAvl(int cantidad) {
+    void setPrecioFrutosAvl(float cantidad) {
         precioFrutosAvl = cantidad;
     }
-
     //Oveja
 
     void setOvejaAparicion(int cantidad) {
@@ -133,80 +152,83 @@ public:
 
     //-----------------------------------------------------
 
-    //Precio de un arbol binario en tienda
-    int getPrecioBinario() const {
+// Precio de un arbol binario en tienda
+    int getPrecioBinario() {
         return precioBinario;
     }
-    //Tiempo de crecimiento de un arbol binario antes de dar frutos
-    int getCreceBinario() const {
+
+    // Tiempo de crecimiento de un arbol binario antes de dar frutos
+    int getCreceBinario() {
         return creceBinario;
     }
-    //Tiempo de crecimiento de un fruto en un arbol binario
-    int getCosechaBinario() const {
+
+    // Tiempo de crecimiento de un fruto en un arbol binario
+    int getCosechaBinario() {
         return cosechaBinario;
     }
-    //Precio maximo de un fruto de un arbol binario
-    int getPrecioFrutosBinario() const {
+
+    // Precio maximo de un fruto de un arbol binario
+    float getPrecioFrutosBinario() {
         return precioFrutosBinario;
     }
 
     // Precio de un árbol Splay en tienda
-    int getPrecioSplay() const {
+    int getPrecioSplay() {
         return precioSplay;
     }
 
     // Tiempo de crecimiento de un árbol Splay antes de dar frutos
-    int getCreceSplay() const {
+    int getCreceSplay() {
         return creceSplay;
     }
 
     // Tiempo de crecimiento de un fruto en un árbol Splay
-    int getCosechaSplay() const {
+    int getCosechaSplay() {
         return cosechaSplay;
     }
 
     // Precio máximo de un fruto de un árbol Splay
-    int getPrecioFrutosSplay() const {
+    float getPrecioFrutosSplay() {
         return precioFrutosSplay;
     }
 
     // Precio de un árbol Heap en tienda
-    int getPrecioHeap() const {
+    int getPrecioHeap() {
         return precioHeap;
     }
 
     // Tiempo de crecimiento de un árbol Heap antes de dar frutos
-    int getCreceHeap() const {
+    int getCreceHeap() {
         return creceHeap;
     }
 
     // Tiempo de crecimiento de un fruto en un árbol Heap
-    int getCosechaHeap() const {
+    int getCosechaHeap() {
         return cosechaHeap;
     }
 
     // Precio máximo de un fruto de un árbol Heap
-    int getPrecioFrutosHeap() const {
+    float getPrecioFrutosHeap() {
         return precioFrutosHeap;
     }
 
     // Precio de un árbol AVL en tienda
-    int getPrecioAvl() const {
+    int getPrecioAvl() {
         return precioAvl;
     }
 
     // Tiempo de crecimiento de un árbol AVL antes de dar frutos
-    int getCreceAvl() const {
+    int getCreceAvl() {
         return creceAvl;
     }
 
     // Tiempo de crecimiento de un fruto en un árbol AVL
-    int getCosechaAvl() const {
+    int getCosechaAvl() {
         return cosechaAvl;
     }
 
     // Precio máximo de un fruto de un árbol AVL
-    int getPrecioFrutosAvl() const {
+    float getPrecioFrutosAvl() {
         return precioFrutosAvl;
     }
 

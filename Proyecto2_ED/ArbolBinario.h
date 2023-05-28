@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Confi.h"
 
 struct Node {
     float value;
@@ -11,9 +12,11 @@ struct ArbolBinario {
     Node* root;
     std::string tipo = "ARBOL BINARIO BUSQUEDA";
     bool listo = false;
-
-    ArbolBinario() {
+    int x; int y;
+    ArbolBinario(int _x, int _y) {
         root = NULL;;
+        x = _x;
+        y = _y;
 
     }
 
@@ -113,4 +116,4 @@ private:
         deleteTree(root->right);
         delete root;
     }
-};
+}; 
