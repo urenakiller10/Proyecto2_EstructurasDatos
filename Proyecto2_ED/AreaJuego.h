@@ -16,6 +16,9 @@
 #include "Administrador.h"
 #include "Confi.h"
 #include "ArbolBinario.h"
+//#include "Heap.h"
+#include <Thread>
+#include <cstdlib>
 
 
 // Resto de tus inclusiones de archivos de encabezado
@@ -41,6 +44,12 @@ namespace Proyecto2_ED {
     private:
         Administrador& admin; // Declarar una referencia a Administrador
         Confi& config;
+
+    public:
+
+        int cantidadFrutos = 0;
+
+
 
     private:
         array<array<Label^, 1>^>^ matrizLabels;
@@ -75,6 +84,9 @@ namespace Proyecto2_ED {
         private: System::Windows::Forms::TextBox^ T_CantHeap;
         private: System::Windows::Forms::TextBox^ T_CantidadEspanta;
         private: System::Windows::Forms::Label^ label4;
+
+    private:
+        System::Threading::Thread^ hiloFrutos;
 
     public:
         AreaJuego(Administrador& adminRef,Confi configRef) : admin(adminRef), config (configRef)
@@ -447,6 +459,32 @@ namespace Proyecto2_ED {
             nuevaFila->Cells[3]->Value = "0.0";
             nuevaFila->Cells[4]->Value = "0";
         }
+
+        void AgregarFrutosPeriodicamente()
+        {
+            while (true)
+            {
+                AgregarFrutosAleatorios();
+
+                // Pausa el hilo durante 30 segundos
+                System::Threading::Thread::Sleep(30000);
+            }
+        }
+
+        void AgregarFrutosAleatorios()
+        {
+            int cantidad = rand() % 10 + 1;  // Genera un número aleatorio entre 1 y 10
+            cantidadFrutos += cantidad;
+        }
+
+
+
+
+
+
+
+
+
 
         void AreaJuego::TablaJuego_KeyDown(Object^ sender, KeyEventArgs^ e)
         {
@@ -1080,7 +1118,23 @@ private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::Eve
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelBinario);
         labelBinario->BringToFront();
-        ActualizarInformacionFilas("Arbol binario", granjeroX, granjeroX);
+
+
+
+
+
+
+        hiloFrutos = gcnew System::Threading::Thread(gcnew System::Threading::ThreadStart(this, &AreaJuego::AgregarFrutosPeriodicamente));
+        hiloFrutos->Start();
+
+
+
+        ActualizarInformacionFilas("Arbol binario", granjeroX, cantidadFrutos);
+
+
+
+\\\
+
 
 //aqui va lo del hilo
 
