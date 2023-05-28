@@ -2,17 +2,16 @@
 
 
 #include <iostream>
-using namespace std;
 
-struct Node {
+struct NodeSplay {
     float value;
-    Node* left;
-    Node* right;
+    NodeSplay* left;
+    NodeSplay* right;
 };
 
 struct SplayTree {
-    Node* root;
-    string tipo = "ÁRBOL SPLAY";
+    NodeSplay* root;
+    std::string tipo = "ÁRBOL SPLAY";
     bool listo = false;
 
     SplayTree() {
@@ -40,15 +39,15 @@ struct SplayTree {
     }
 
 private:
-    Node* createNode(float value) {
-        Node* newNode = new Node;
+    NodeSplay* createNode(float value) {
+        NodeSplay* newNode = new NodeSplay;
         newNode->value = value;
         newNode->left = nullptr;
         newNode->right = nullptr;
         return newNode;
     }
 
-    void splay(Node*& root, float value) {
+    void splay(NodeSplay*& root, float value) {
         if (root == nullptr || root->value == value)
             return;
 
@@ -92,21 +91,21 @@ private:
         }
     }
 
-    Node* rotateRight(Node* node) {
-        Node* newRoot = node->left;
+    NodeSplay* rotateRight(NodeSplay* node) {
+        NodeSplay* newRoot = node->left;
         node->left = newRoot->right;
         newRoot->right = node;
         return newRoot;
     }
 
-    Node* rotateLeft(Node* node) {
-        Node* newRoot = node->right;
+    NodeSplay* rotateLeft(NodeSplay* node) {
+        NodeSplay* newRoot = node->right;
         node->right = newRoot->left;
         newRoot->left = node;
         return newRoot;
     }
 
-    void insertNode(Node*& root, float value) {
+    void insertNode(NodeSplay*& root, float value) {
         if (root == nullptr) {
             root = createNode(value);
             return;
@@ -115,14 +114,14 @@ private:
         splay(root, value);
 
         if (value < root->value) {
-            Node* newNode = createNode(value);
+            NodeSplay* newNode = createNode(value);
             newNode->left = root->left;
             newNode->right = root;
             root->left = nullptr;
             root = newNode;
         }
         else if (value > root->value) {
-            Node* newNode = createNode(value);
+            NodeSplay* newNode = createNode(value);
             newNode->left = root;
             newNode->right = root->right;
             root->right = nullptr;
@@ -130,26 +129,26 @@ private:
         }
     }
 
-    int countNodesRecursive(Node* root) {
+    int countNodesRecursive(NodeSplay* root) {
         if (root == nullptr)
             return 0;
 
         return 1 + countNodesRecursive(root->left) + countNodesRecursive(root->right);
     }
 
-    float getSumRecursive(Node* root) {
+    float getSumRecursive(NodeSplay* root) {
         if (root == nullptr)
             return 0.0f;
 
         return root->value + getSumRecursive(root->left) + getSumRecursive(root->right);
     }
 
-    void deleteLeftmostNodeRecursive(Node*& root) {
+    void deleteLeftmostNodeRecursive(NodeSplay*& root) {
         if (root == nullptr)
             return;
 
         if (root->left == nullptr) {
-            Node* temp = root;
+            NodeSplay* temp = root;
             root = root->right;
             delete temp;
         }
@@ -170,7 +169,7 @@ public:
     }
 
 private:
-    void deleteTree(Node* root) {
+    void deleteTree(NodeSplay* root) {
         if (root == nullptr)
             return;
 

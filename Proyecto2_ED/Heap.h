@@ -1,13 +1,11 @@
 #pragma once
 #include <iostream>
 
-using namespace std;
 
 struct Heap {
     float* arr; // arreglo que representa el heap
     int capacity; // capacidad máxima del heap
     int size; // cantidad de elementos del heap
-    string tipo = "HEAP";
     bool listo = false;
 
     // Constructor
@@ -40,7 +38,6 @@ struct Heap {
     // Función para insertar un elemento al heap
     void insert(float value) {
         if (size == capacity) {
-            cout << "El heap está lleno" << endl;
             return;
         }
 
@@ -50,7 +47,7 @@ struct Heap {
 
         // mantener la propiedad del heap (max-heap)
         while (i != 0 && arr[parent(i)] < arr[i]) {
-            swap(arr[parent(i)], arr[i]);
+            std::swap(arr[parent(i)], arr[i]);
             i = parent(i);
         }
     }
@@ -58,7 +55,6 @@ struct Heap {
     // Función para eliminar el elemento máximo del heap
     void eliminar() {
         if (size == 0) {
-            cout << "El heap está vacío" << endl;
             return;
         }
 
@@ -85,7 +81,7 @@ struct Heap {
             }
 
             if (maximoIndex != i) {
-                swap(arr[i], arr[maximoIndex]);
+                std::swap(arr[i], arr[maximoIndex]);
                 i = maximoIndex;
             }
             else {
@@ -97,18 +93,5 @@ struct Heap {
     }
 
     // Función para imprimir el heap por niveles
-    void imprimir() {
-        int nivelActual = 0;
-        int elementosNivelActual = 1;
 
-        for (int i = 0; i < size; i++) {
-            if (i == elementosNivelActual - 1) {
-                cout << endl << "Nivel " << nivelActual << ": ";
-                elementosNivelActual *= 2;
-                nivelActual++;
-            }
-            cout << arr[i] << " ";
-        }
-        cout << endl;
-    }
 };

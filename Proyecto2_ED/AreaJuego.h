@@ -1,10 +1,10 @@
 #pragma once
 
-#include <vcclr.h>
+#include "vcclr.h"
 #include <string>
 #include <vector>
-#include <cstdlib> // Para generar números aleatorios
-#include <ctime> 
+#include <cstdlib>
+#include <ctime>
 #include "Mercado.h"
 #include "ImputForm.h"
 #include <iostream>
@@ -16,7 +16,6 @@
 #include "Administrador.h"
 #include "Confi.h"
 #include "ArbolBinario.h"
-#include <thread>
 
 
 // Resto de tus inclusiones de archivos de encabezado
@@ -82,7 +81,6 @@ namespace Proyecto2_ED {
         {
             InitializeComponent();
             SetupDataGridView();
-            EstablecerTextoFilas();
             initCustom();
             CrearMatriz();
             updateStock(admin);
@@ -136,13 +134,6 @@ namespace Proyecto2_ED {
         System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
-
-
-
-      
-
-
-
 
         //---------------------------------------------------Poner espantapajaros en la matriz-----------------------------------------------------------
 
@@ -470,25 +461,6 @@ namespace Proyecto2_ED {
         void OcultarColumnaSeleccionada()
         {
             TablaJuego->ColumnHeadersVisible = false;
-        }
-
-        void EstablecerTextoFilas()
-        {
-            DataGridViewCellStyle^ rowStyle = gcnew DataGridViewCellStyle();
-            rowStyle->Font = gcnew System::Drawing::Font(TablaJuego->Font->FontFamily, 10, FontStyle::Bold);
-            /*
-            TablaJuego->Rows[0]->Cells[0]->Value = "Binario";
-            TablaJuego->Rows[0]->DefaultCellStyle = rowStyle;
-
-            TablaJuego->Rows[1]->Cells[0]->Value = "AVL";
-            TablaJuego->Rows[1]->DefaultCellStyle = rowStyle;
-
-            TablaJuego->Rows[2]->Cells[0]->Value = "Splay";
-            TablaJuego->Rows[2]->DefaultCellStyle = rowStyle;
-
-            TablaJuego->Rows[3]->Cells[0]->Value = "Heap";
-            TablaJuego->Rows[3]->DefaultCellStyle = rowStyle;
-            */
         }
         //---------------------------------------------------Mostrar Ventana Mercado en Area de Juego cada cierto tiempo---------------------------------------------------------------------------------
 
@@ -1085,8 +1057,7 @@ namespace Proyecto2_ED {
 
 //------------------------------------------------------Metodos de los botones de PLANTAR---------------------------------------------------------------------
 
-private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::EventArgs^ e) {
-    
+private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::EventArgs^ e) {    
     admin.setCantidadBinario(-1);
     updateStock(admin);
 
@@ -1110,8 +1081,9 @@ private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::Eve
         this->Controls->Add(labelBinario);
         labelBinario->BringToFront();
         ActualizarInformacionFilas("Arbol binario", granjeroX, granjeroX);
-        //std::thread* t = new std::thread(hiloBinario&(granjeroX, granjeroX));
-        //std::thread* t = new std::thread();
+
+//aqui va lo del hilo
+
     }
  
 
@@ -1206,8 +1178,29 @@ private: System::Void B_PlantarHeap_Click(System::Object^ sender, System::EventA
         ActualizarInformacionFilas("Heap", granjeroX, granjeroX);
     }
 
-
 }
+       public:
+
+           void hiloBinario(Confi& config, bool& running)
+           {
+               // Setear un puntero a un nuevo arbol
+               ArbolBinario* ab = new ArbolBinario();
+
+               // Espero crecimiento
+               if (ab->listo == false)
+               {
+                   std::this_thread::sleep_for(std::chrono::seconds(config.getCreceBinario()));
+                   ab->listo = true;
+               }
+
+               while (running)
+               {
+                   std::this_thread::sleep_for(std::chrono::seconds(config.getCosechaBinario()));
+                   float fruto = config.getMinValue() + static_cast<float>(rand()) * static_cast<float>(config.getPrecioFrutosBinario() - config.getMinValue()) / RAND_MAX;
+                   ab->insert(fruto);
+               }
+           }
+
 
 
 

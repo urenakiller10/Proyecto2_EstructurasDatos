@@ -2,7 +2,6 @@
 
 
 #include <stdlib.h>
-#include <time.h>
 #include<iostream>
 
 float generarNumeroAleatorio(float limiteInferior, float limiteSuperior) {

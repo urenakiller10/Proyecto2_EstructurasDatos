@@ -7,13 +7,14 @@
 
 #include "Configuracion.h"
 #include "AreaJuego.h"
-using namespace System::Windows::Forms;
-#include "Mercado.h"
 #include "ImputForm.h"
 #include <regex>
 #include <sstream>
 #include "Administrador.h"
 #include "Confi.h"
+
+using namespace System::Windows::Forms;
+
 
 Administrador admin;
 Confi config;

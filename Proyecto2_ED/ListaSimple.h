@@ -1,5 +1,6 @@
 #pragma once
 #include <thread>
+
 using namespace std;
 struct nodo {
 	nodo* sig;

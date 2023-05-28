@@ -2,20 +2,20 @@
 
 
 #include <iostream>
-using namespace std;
 
-struct Node {
+
+struct NodeAvl {
     float value;
-    Node* left;
-    Node* right;
+    NodeAvl* left;
+    NodeAvl* right;
 };
 
-struct ArbolBinario {
-    Node* root;
-    string tipo = "ARBOL BINARIO BUSQUEDA";
+struct Avl {
+    NodeAvl* root;
+    std::string tipo = "AVL";
     bool listo = false;
 
-    ArbolBinario() {
+    Avl() {
         root = NULL;;
 
     }
@@ -41,15 +41,15 @@ struct ArbolBinario {
     }
 
 private:
-    Node* createNode(float value) {
-        Node* newNode = new Node;
+    NodeAvl* createNode(float value) {
+        NodeAvl* newNode = new NodeAvl;
         newNode->value = value;
         newNode->left = nullptr;
         newNode->right = nullptr;
         return newNode;
     }
 
-    void insertNode(Node*& root, float value) {
+    void insertNode(NodeAvl*& root, float value) {
         if (root == nullptr) {
             root = createNode(value);
             return;
@@ -63,7 +63,7 @@ private:
         }
     }
 
-    int countNodesRecursive(Node* root) {
+    int countNodesRecursive(NodeAvl* root) {
         if (root == nullptr) {
             return 0;
         }
@@ -71,7 +71,7 @@ private:
         return 1 + countNodesRecursive(root->left) + countNodesRecursive(root->right);
     }
 
-    float getSumRecursive(Node* root) {
+    float getSumRecursive(NodeAvl* root) {
         if (root == nullptr) {
             return 0.0f;
         }
@@ -80,13 +80,13 @@ private:
     }
 
     //Se carga el menor, para no ser tan mala nota :D
-    void deleteLeftmostNodeRecursive(Node*& root) {
+    void deleteLeftmostNodeRecursive(NodeAvl*& root) {
         if (root == nullptr) {
             return;
         }
 
         if (root->left == nullptr) {
-            Node* temp = root;
+            NodeAvl* temp = root;
             root = root->right;
             delete temp;
         }
@@ -102,12 +102,12 @@ private:
     }
 
 public:
-    ~ArbolBinario() {
+    ~Avl() {
         deleteTree(root);
     }
 
 private:
-    void deleteTree(Node* root) {
+    void deleteTree(NodeAvl* root) {
         if (root == nullptr) {
             return;
         }
