@@ -474,16 +474,27 @@ namespace Proyecto2_ED {
 
         void actualizarInfo(){
             int x = 0; int y = 0;
-            for each (DataGridViewRow ^ fila in TablaJuego->Rows){
-                // Obtener el valor de la celda en la columna 2
-                String^ valorCelda = fila->Cells[1]->Value->ToString();
+            for (int fila = 0; fila < TablaJuego->Rows->Count; fila++)
+            {
+                DataGridViewRow^ dataGridViewRow = TablaJuego->Rows[fila];
 
-                // Eliminar los paréntesis alrededor de los números
-                valorCelda = valorCelda->Replace("(", "");
-                valorCelda = valorCelda->Replace(")", "");
+                // Acceder a la segunda celda de la fila
+                DataGridViewCell^ cell = dataGridViewRow->Cells[1];
+
+                // Verificar si la celda es nula
+                if (cell->Value == nullptr)
+                {
+                    // Celda nula encontrada, salir del ciclo
+                    break;
+                }
+
+                // Obtener el valor de la celda
+                String^ valor = cell->Value->ToString();
+                valor = valor->Replace("(", "");
+                valor = valor->Replace(")", "");
 
                 // Dividir la cadena en dos partes separadas por la coma
-                array<String^>^ partes = valorCelda->Split(',');
+                array<String^>^ partes = valor->Split(',');
 
                 // Obtener los números como cadenas
                 String^ strX = partes[0]->Trim();
@@ -492,8 +503,6 @@ namespace Proyecto2_ED {
                 // Convertir las cadenas a enteros
                 x = System::Int32::Parse(strX);
                 y = System::Int32::Parse(strY);
-
-                //2,3
                 NodoLista<ArbolBinario*>* nodo = lista->cabeza;
                 while (nodo != nullptr) {
                     ArbolBinario* arbol = nodo->dato;
@@ -502,16 +511,18 @@ namespace Proyecto2_ED {
                         //Agarrar los frutos
                         std::string cantidadFrutos = std::to_string(arbol->calcularTotalNodos());
                         System::String^ canFrutos = gcnew System::String(cantidadFrutos.c_str());
-                        fila->Cells[2]->Value = canFrutos;
+                        dataGridViewRow->Cells[2]->Value = canFrutos;
 
                         std::string sumaFrutos = std::to_string(arbol->calcularTotalNodos());
                         System::String^ sumFrutos = gcnew System::String(sumaFrutos.c_str());
-                        fila->Cells[3]->Value = canFrutos;
+                        dataGridViewRow->Cells[3]->Value = canFrutos;
                     }
 
                     nodo = nodo->siguiente;
                 }
             }
+
+            
         }
 
         void controlActu() {

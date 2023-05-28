@@ -22,14 +22,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.3221
               _Sent=wchar_t *,
               _Size=unsigned __int64
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1081,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1092,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1081,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1092,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
@@ -60,14 +60,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.3221
               _Sent=wchar_t *,
               _Size=unsigned __int64
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1081,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1092,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1081,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1092,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
