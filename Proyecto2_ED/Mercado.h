@@ -106,7 +106,32 @@ namespace Proyecto2_ED {
 				this->pictureBox3->Image = Image::FromFile("recursos//arbol2.png");
 				this->pictureBox4->Image = Image::FromFile("recursos//arbol31.png");
 				this->pictureBox5->Image = Image::FromFile("recursos//arbol41.png");
+				std::string precioBinario = std::to_string(config->getPrecioBinario());
+				System::String^ precioBin = gcnew System::String(precioBinario.c_str());
+				this->PrecioBinario->Text = precioBin;
+
+				std::string precioAvl = std::to_string(config->getPrecioAvl());
+				System::String^ precioAv = gcnew System::String(precioAvl.c_str());
+				this->PrecioAvl->Text = precioAv;
+
+				std::string precioHeap = std::to_string(config->getPrecioHeap());
+				System::String^ precioH = gcnew System::String(precioHeap.c_str());
+				this->textBox4->Text = precioH;
+
+				std::string precioSplay = std::to_string(config->getPrecioSplay());
+				System::String^ precioSp = gcnew System::String(precioSplay.c_str());
+				this->textBox3->Text = precioSp;
+
+				std::string precioEsp = std::to_string(config->getPrecioEspanta());
+				System::String^ precioEs = gcnew System::String(precioEsp.c_str());
+				this->textBox5->Text = precioH;
 			}
+
+			/*			int precioBinario = config->getPrecioBinario();
+			int precioAVL = config->getPrecioAvl();
+			int precioSPLAY = config->getPrecioSplay();
+			int precioHEAP = config->getPrecioHeap();
+			int precioEspanta = config->getPrecioEspanta();*/
 
 	#pragma region Windows Form Designer generated code
 
@@ -517,11 +542,11 @@ namespace Proyecto2_ED {
 
 		private: System::Void B_Comprar_Click(System::Object^ sender, System::EventArgs^ e) {
 
-			int precioBinario = 500;
-			int precioAVL = 500;
-			int precioSPLAY = 500;
-			int precioHEAP = 500;
-			int precioEspanta = 500;
+			int precioBinario = config->getPrecioBinario();
+			int precioAVL = config->getPrecioAvl();
+			int precioSPLAY = config->getPrecioSplay();
+			int precioHEAP = config->getPrecioHeap();
+			int precioEspanta = config->getPrecioEspanta();
 
 			int cantBinario = Convert::ToInt32(Up_Binario->Value);
 			int cantAVL = Convert::ToInt32(Up_AVL->Value);

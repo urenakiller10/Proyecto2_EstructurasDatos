@@ -22,6 +22,7 @@ private:
     int cosechaAvl = 15;
     float precioFrutosAvl = 10.0f;
 
+    int precioEspanta = 5000;
 
     int ovejaAparicion = 90;
     int ovejaComeFruto = 60;
@@ -39,13 +40,20 @@ public:
     Confi() : precioBinario(250),creceBinario(60),cosechaBinario(15), precioFrutosBinario(10.0f)
         ,precioSplay(250),creceSplay(60),cosechaSplay(15), precioFrutosSplay(10.0f)
         , precioHeap (250), creceHeap(60),cosechaHeap(15), precioFrutosHeap(10.0f)
-        ,precioAvl(250),creceAvl(60),cosechaAvl(15),precioFrutosAvl(10.0f)
+        ,precioAvl(250),creceAvl(60),cosechaAvl(15),precioFrutosAvl(10.0f), precioEspanta(5000)
         ,ovejaAparicion(90), ovejaComeFruto(60),cuervoAparicion(90),cuervoComeFruto(60),plagaAparicion(90),plagaComeArbol(60) {}
                 
     float getMinValue() {
         return valorMinimo;
     }
 
+    void setPrecioEspanta(int precio) {
+        precioEspanta = precio;
+    }
+
+    int getPrecioEspanta() {
+        return precioEspanta;
+    }
 
     //Binario
 
