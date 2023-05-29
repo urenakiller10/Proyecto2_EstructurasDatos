@@ -5,7 +5,7 @@
 #include "Administrador.h"
 #include "Confi.h"
 
-
+extern float dinero;
 
 namespace Proyecto2_ED {
 
@@ -37,14 +37,12 @@ namespace Proyecto2_ED {
 
 	public:
 
-		static int disponible = 5000;
-
 
 
 	public:
-		int static ObtenerDineroDisponible()
+		float static ObtenerDineroDisponible()
 		{
-			return disponible;
+			return dinero;
 		}
 
 
@@ -53,7 +51,7 @@ namespace Proyecto2_ED {
 		{
 			InitializeComponent();
 			initCustom();
-			DineroDisponible->Text = disponible.ToString();
+			DineroDisponible->Text = dinero.ToString();
 		}
 
 
@@ -100,7 +98,7 @@ namespace Proyecto2_ED {
 	//-----------------------------------------Para actualizar elñ label de dinero disponible-------------------------------------------------------
 
 			void ActualizarLabelDisponible() {
-				DineroDisponible->Text = disponible.ToString();
+				DineroDisponible->Text = dinero.ToString();
 			}
 			void initCustom() {
 				this->pictureBox1->Image = Image::FromFile("recursos//espant.png");
@@ -533,9 +531,9 @@ namespace Proyecto2_ED {
 
 			int precioTotal = (precioBinario * cantBinario) + (precioAVL * cantAVL) + (precioSPLAY * cantSPLAY) + (precioHEAP * cantHEAP)+ (precioEspanta * cantEspanta);
 
-			if (precioTotal <= disponible) {
-				disponible -= precioTotal;
-				DineroDisponible->Text = disponible.ToString();
+			if (precioTotal <= dinero) {
+				dinero -= precioTotal;
+				DineroDisponible->Text = dinero.ToString();
 				ActualizarLabelDisponible();
 
 				// Debe de ir lo de agregar al inventario de árboles sin sembrar aquí

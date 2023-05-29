@@ -1,6 +1,7 @@
 ﻿  AreaJuego.cpp
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(90,13): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(90,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(588,27): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(603,27): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1144,41): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xstring(2859,53): warning C4244: 'argumento': conversión de 'wchar_t' a 'const _Elem'; posible pérdida de datos
           with
           [
@@ -22,14 +23,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.3221
               _Sent=wchar_t *,
               _Size=unsigned __int64
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1092,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1139,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1092,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1139,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
@@ -37,8 +38,9 @@ C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_E
               _Alloc=std::allocator<char>
           ]
   CppCLR_WinFormsProject.cpp
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(90,13): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\ArbolBinario.h(90,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(588,27): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(603,27): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1144,41): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xstring(2859,53): warning C4244: 'argumento': conversión de 'wchar_t' a 'const _Elem'; posible pérdida de datos
           with
           [
@@ -60,14 +62,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.3221
               _Sent=wchar_t *,
               _Size=unsigned __int64
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1092,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1139,1): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
-C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1092,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
+C:\Users\carlo\OneDrive\Documentos\GitHub\Proyecto2_EstructurasDatos\Proyecto2_ED\AreaJuego.h(1139,41): message : Vea la referencia a la creación de una instancia de la función plantilla "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)" que se está compilando
           with
           [
               _Elem=wchar_t,

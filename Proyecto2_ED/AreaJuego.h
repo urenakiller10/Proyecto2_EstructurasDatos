@@ -16,14 +16,17 @@
 #include "Administrador.h"
 #include "Confi.h"
 #include "ArbolBinario.h"
-//#include "Heap.h"
+#include "Heap.h"
 #include <Thread>
 #include <cstdlib>
 #include <list>
 #include <vcclr.h>
-#include "ListaSimple.h"
+#include "ListaSimpleBin.h"
+#include "ListaSimpleHeap.h"
 
 // Resto de tus inclusiones de archivos de encabezado
+
+extern float dinero;
 
 using namespace System::Collections::Generic;
 
@@ -52,10 +55,10 @@ namespace Proyecto2_ED {
 
     private:
         List<Thread^>^ listaHilosBinarios = gcnew List<Thread^>();
-        Lista<ArbolBinario*>* lista = new Lista<ArbolBinario*>();
+        ListaSimpleBin* listaBin = new ListaSimpleBin();
 
         List<Thread^>^ listaHilosHeap = gcnew List<Thread^>();
-        Dictionary<Thread^, System::IntPtr>^ datosHilosHeap;
+        ListaSimpleHeap* listaHeap = new ListaSimpleHeap();
 
         List<Thread^>^ listaHilosAvl = gcnew List<Thread^>();
         Dictionary<Thread^, System::IntPtr>^ datosHilosAvl;
@@ -472,62 +475,82 @@ namespace Proyecto2_ED {
             nuevaFila->Cells[4]->Value = "0";
         }
 
-        void actualizarInfo(){
-            int x = 0; int y = 0;
+        void actualizarInfo()
+        {
+            // Por cada fila de datos en el DataGridView
             for (int fila = 0; fila < TablaJuego->Rows->Count; fila++)
             {
                 DataGridViewRow^ dataGridViewRow = TablaJuego->Rows[fila];
 
-                // Acceder a la segunda celda de la fila
                 DataGridViewCell^ cell = dataGridViewRow->Cells[1];
-
-                // Verificar si la celda es nula
-                if (cell->Value == nullptr)
-                {
-                    // Celda nula encontrada, salir del ciclo
+                if (cell->Value == nullptr) {
                     break;
                 }
 
-                // Obtener el valor de la celda
                 String^ valor = cell->Value->ToString();
                 valor = valor->Replace("(", "");
                 valor = valor->Replace(")", "");
 
-                // Dividir la cadena en dos partes separadas por la coma
                 array<String^>^ partes = valor->Split(',');
 
-                // Obtener los números como cadenas
                 String^ strX = partes[0]->Trim();
                 String^ strY = partes[1]->Trim();
 
-                // Convertir las cadenas a enteros
-                x = System::Int32::Parse(strX);
-                y = System::Int32::Parse(strY);
-                NodoLista<ArbolBinario*>* nodo = lista->cabeza;
-                while (nodo != nullptr) {
-                    ArbolBinario* arbol = nodo->dato;
+                int x = System::Int32::Parse(strX);
+                int y = System::Int32::Parse(strY);
 
-                    if (arbol->x == x && arbol->y == y) {
-                        //Agarrar los frutos
-                        std::string cantidadFrutos = std::to_string(arbol->calcularTotalNodos());
+                // Buscar el arbol binario correspondiente a las coordenadas en la lista
+                bool encontrado = false;
+                NodoListaBin* tmpB = listaBin->primerNodo;
+                while (tmpB != nullptr) {
+                    ArbolBinario* arbolT = tmpB->dato;
+                    if (arbolT->x == x && arbolT->y == y) {
+                        // Capturar los datos y actualizar las celdas correspondientes
+                        std::string cantidadFrutos = std::to_string(arbolT->calcularTotalNodos());
                         System::String^ canFrutos = gcnew System::String(cantidadFrutos.c_str());
                         dataGridViewRow->Cells[2]->Value = canFrutos;
 
-                        std::string sumaFrutos = std::to_string(arbol->calcularTotalNodos());
+                        std::string sumaFrutos = std::to_string(arbolT->calcularSumaValores());
                         System::String^ sumFrutos = gcnew System::String(sumaFrutos.c_str());
-                        dataGridViewRow->Cells[3]->Value = canFrutos;
-                    }
+                        dataGridViewRow->Cells[3]->Value = sumFrutos;
 
-                    nodo = nodo->siguiente;
+                        // Marcar que se encontró el arbol correspondiente
+                        encontrado = true;
+                        break;
+                    }
+                    tmpB = tmpB->siguiente;
+                }
+
+                NodoListaHeap* tmpH = listaHeap->primerNodo;
+                while (tmpH != NULL) {
+                    Heap* heapT = tmpH->dato;
+                    if (heapT->x == x && heapT->y == y) {
+                        std::string cantidadFrutosHeap = std::to_string(heapT->sumatoriaTotalNodos());
+                        System::String^ canFrutosH = gcnew System::String(cantidadFrutosHeap.c_str());
+                        dataGridViewRow->Cells[2]->Value = canFrutosH;
+
+                        std::string valorFrutosHeap = std::to_string(heapT->sumatoriaValorNodos());
+                        System::String^ valFrutosH = gcnew System::String(valorFrutosHeap.c_str());
+                        dataGridViewRow->Cells[3]->Value = valFrutosH;
+
+                        encontrado = true;
+                        break;
+                    }
+                    tmpH = tmpH->siguiente;
+                }
+
+                // Si no se encontró el arbol correspondiente, se puede dejar las celdas vacías o asignar un valor predeterminado
+                if (!encontrado) {
+                    dataGridViewRow->Cells[2]->Value = "N/A";
+                    dataGridViewRow->Cells[3]->Value = "N/A";
                 }
             }
-
-            
         }
+
 
         void controlActu() {
             while (true) {
-                System::Threading::Thread::Sleep(30000);
+                System::Threading::Thread::Sleep(15000);
                 actualizarInfo();
             }
         }
@@ -554,18 +577,35 @@ namespace Proyecto2_ED {
 
         void hiloBinario() {
             ArbolBinario* ab = new ArbolBinario(labelGranjero->Top, labelGranjero->Left);
-            // Agregar el árbol binario al diccionario
+            listaBin->agregarElemento(ab);
+            // Agregar el árbol binario a la lista
             if (ab->listo == false) {
                 System::Threading::Thread::Sleep(config->getCreceBinario()*1000);
+               ab->listo = true;
             }
+
             while (running) {
+                srand(time(NULL));
                 float fruto = config->getMinValue() + static_cast<float>(rand()) * static_cast<float>(config->getPrecioFrutosBinario() - config->getMinValue()) / RAND_MAX;
                 System::Threading::Thread::Sleep(config->getCosechaBinario()*1000);
                 ab->insertar(fruto);
             }
         }
 
-
+        void hiloHeap() {
+            Heap* h = new Heap(999, labelGranjero->Top, labelGranjero->Left);
+            listaHeap->agregarElemento(h);
+            if (h->listo == false) {
+                System::Threading::Thread::Sleep(config->getCreceHeap() * 1000);
+                h->listo;
+            }
+            while (running) {
+                srand(time(NULL));
+                float fruto = config->getMinValue() + static_cast<float>(rand()) * static_cast<float>(config->getPrecioFrutosHeap() - config->getMinValue()) / RAND_MAX;
+                System::Threading::Thread::Sleep(config->getCosechaBinario() * 1000);
+                h->insert(fruto);
+            }
+        }
 
 
 
@@ -674,10 +714,10 @@ namespace Proyecto2_ED {
             this->B_GuardarJuego->BackColor = System::Drawing::Color::Yellow;
             this->B_GuardarJuego->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_GuardarJuego->Location = System::Drawing::Point(1429, 626);
-            this->B_GuardarJuego->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_GuardarJuego->Location = System::Drawing::Point(1072, 509);
+            this->B_GuardarJuego->Margin = System::Windows::Forms::Padding(2);
             this->B_GuardarJuego->Name = L"B_GuardarJuego";
-            this->B_GuardarJuego->Size = System::Drawing::Size(209, 108);
+            this->B_GuardarJuego->Size = System::Drawing::Size(157, 88);
             this->B_GuardarJuego->TabIndex = 0;
             this->B_GuardarJuego->Text = L"Guardar juego";
             this->B_GuardarJuego->UseVisualStyleBackColor = false;
@@ -688,10 +728,10 @@ namespace Proyecto2_ED {
             this->B_Pausa->BackColor = System::Drawing::Color::RoyalBlue;
             this->B_Pausa->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_Pausa->Location = System::Drawing::Point(1301, 758);
-            this->B_Pausa->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_Pausa->Location = System::Drawing::Point(976, 616);
+            this->B_Pausa->Margin = System::Windows::Forms::Padding(2);
             this->B_Pausa->Name = L"B_Pausa";
-            this->B_Pausa->Size = System::Drawing::Size(209, 108);
+            this->B_Pausa->Size = System::Drawing::Size(157, 88);
             this->B_Pausa->TabIndex = 1;
             this->B_Pausa->Text = L"Pausa";
             this->B_Pausa->UseVisualStyleBackColor = false;
@@ -702,10 +742,10 @@ namespace Proyecto2_ED {
             this->B_PlantarAVL->BackColor = System::Drawing::Color::DarkOrange;
             this->B_PlantarAVL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_PlantarAVL->Location = System::Drawing::Point(1213, 162);
-            this->B_PlantarAVL->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_PlantarAVL->Location = System::Drawing::Point(910, 132);
+            this->B_PlantarAVL->Margin = System::Windows::Forms::Padding(2);
             this->B_PlantarAVL->Name = L"B_PlantarAVL";
-            this->B_PlantarAVL->Size = System::Drawing::Size(169, 57);
+            this->B_PlantarAVL->Size = System::Drawing::Size(127, 46);
             this->B_PlantarAVL->TabIndex = 2;
             this->B_PlantarAVL->Text = L"Plantar AVL";
             this->B_PlantarAVL->UseVisualStyleBackColor = false;
@@ -735,8 +775,8 @@ namespace Proyecto2_ED {
                     this->Ubicacion, this->Frutos, this->Monto, this->Vendidos, this->Perdidos
             });
             this->TablaJuego->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-            this->TablaJuego->Location = System::Drawing::Point(981, 268);
-            this->TablaJuego->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->TablaJuego->Location = System::Drawing::Point(736, 218);
+            this->TablaJuego->Margin = System::Windows::Forms::Padding(2);
             this->TablaJuego->MultiSelect = false;
             this->TablaJuego->Name = L"TablaJuego";
             this->TablaJuego->ReadOnly = true;
@@ -754,7 +794,7 @@ namespace Proyecto2_ED {
             this->TablaJuego->RowTemplate->Height = 24;
             this->TablaJuego->ScrollBars = System::Windows::Forms::ScrollBars::None;
             this->TablaJuego->ShowRowErrors = false;
-            this->TablaJuego->Size = System::Drawing::Size(1531, 31);
+            this->TablaJuego->Size = System::Drawing::Size(1460, 25);
             this->TablaJuego->TabIndex = 3;
             this->TablaJuego->TabStop = false;
             this->TablaJuego->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AreaJuego::dataGridView1_CellContentClick);
@@ -812,10 +852,10 @@ namespace Proyecto2_ED {
             this->B_Salir->BackColor = System::Drawing::SystemColors::ButtonShadow;
             this->B_Salir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_Salir->Location = System::Drawing::Point(1569, 758);
-            this->B_Salir->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_Salir->Location = System::Drawing::Point(1177, 616);
+            this->B_Salir->Margin = System::Windows::Forms::Padding(2);
             this->B_Salir->Name = L"B_Salir";
-            this->B_Salir->Size = System::Drawing::Size(209, 108);
+            this->B_Salir->Size = System::Drawing::Size(157, 88);
             this->B_Salir->TabIndex = 4;
             this->B_Salir->Text = L"SALIR";
             this->B_Salir->UseVisualStyleBackColor = false;
@@ -826,13 +866,14 @@ namespace Proyecto2_ED {
             this->B_VenderTodo->BackColor = System::Drawing::Color::Red;
             this->B_VenderTodo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_VenderTodo->Location = System::Drawing::Point(1270, 473);
-            this->B_VenderTodo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_VenderTodo->Location = System::Drawing::Point(952, 384);
+            this->B_VenderTodo->Margin = System::Windows::Forms::Padding(2);
             this->B_VenderTodo->Name = L"B_VenderTodo";
-            this->B_VenderTodo->Size = System::Drawing::Size(291, 38);
+            this->B_VenderTodo->Size = System::Drawing::Size(218, 31);
             this->B_VenderTodo->TabIndex = 5;
             this->B_VenderTodo->Text = L"VENDER TODO";
             this->B_VenderTodo->UseVisualStyleBackColor = false;
+            this->B_VenderTodo->Click += gcnew System::EventHandler(this, &AreaJuego::B_VenderTodo_Click);
             // 
             // SinPlantar
             // 
@@ -840,9 +881,10 @@ namespace Proyecto2_ED {
             this->SinPlantar->BackColor = System::Drawing::Color::Blue;
             this->SinPlantar->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->SinPlantar->Location = System::Drawing::Point(1013, 57);
+            this->SinPlantar->Location = System::Drawing::Point(760, 46);
+            this->SinPlantar->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->SinPlantar->Name = L"SinPlantar";
-            this->SinPlantar->Size = System::Drawing::Size(91, 26);
+            this->SinPlantar->Size = System::Drawing::Size(75, 21);
             this->SinPlantar->TabIndex = 7;
             this->SinPlantar->Text = L"Binarios";
             // 
@@ -852,9 +894,10 @@ namespace Proyecto2_ED {
             this->Arboles_Pendientes->BackColor = System::Drawing::Color::White;
             this->Arboles_Pendientes->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->Arboles_Pendientes->Location = System::Drawing::Point(1489, 142);
+            this->Arboles_Pendientes->Location = System::Drawing::Point(1117, 115);
+            this->Arboles_Pendientes->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->Arboles_Pendientes->Name = L"Arboles_Pendientes";
-            this->Arboles_Pendientes->Size = System::Drawing::Size(0, 26);
+            this->Arboles_Pendientes->Size = System::Drawing::Size(0, 21);
             this->Arboles_Pendientes->TabIndex = 8;
             // 
             // B_PlantarBinario
@@ -862,10 +905,10 @@ namespace Proyecto2_ED {
             this->B_PlantarBinario->BackColor = System::Drawing::Color::OrangeRed;
             this->B_PlantarBinario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_PlantarBinario->Location = System::Drawing::Point(981, 162);
-            this->B_PlantarBinario->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_PlantarBinario->Location = System::Drawing::Point(736, 132);
+            this->B_PlantarBinario->Margin = System::Windows::Forms::Padding(2);
             this->B_PlantarBinario->Name = L"B_PlantarBinario";
-            this->B_PlantarBinario->Size = System::Drawing::Size(169, 57);
+            this->B_PlantarBinario->Size = System::Drawing::Size(127, 46);
             this->B_PlantarBinario->TabIndex = 9;
             this->B_PlantarBinario->Text = L"Plantar binario";
             this->B_PlantarBinario->UseVisualStyleBackColor = false;
@@ -876,10 +919,10 @@ namespace Proyecto2_ED {
             this->B_PlantarSplay->BackColor = System::Drawing::Color::OrangeRed;
             this->B_PlantarSplay->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_PlantarSplay->Location = System::Drawing::Point(1469, 162);
-            this->B_PlantarSplay->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_PlantarSplay->Location = System::Drawing::Point(1102, 132);
+            this->B_PlantarSplay->Margin = System::Windows::Forms::Padding(2);
             this->B_PlantarSplay->Name = L"B_PlantarSplay";
-            this->B_PlantarSplay->Size = System::Drawing::Size(169, 57);
+            this->B_PlantarSplay->Size = System::Drawing::Size(127, 46);
             this->B_PlantarSplay->TabIndex = 10;
             this->B_PlantarSplay->Text = L"Plantar Splay";
             this->B_PlantarSplay->UseVisualStyleBackColor = false;
@@ -890,10 +933,10 @@ namespace Proyecto2_ED {
             this->B_PlantarHeap->BackColor = System::Drawing::Color::DarkOrange;
             this->B_PlantarHeap->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_PlantarHeap->Location = System::Drawing::Point(1687, 162);
-            this->B_PlantarHeap->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_PlantarHeap->Location = System::Drawing::Point(1265, 132);
+            this->B_PlantarHeap->Margin = System::Windows::Forms::Padding(2);
             this->B_PlantarHeap->Name = L"B_PlantarHeap";
-            this->B_PlantarHeap->Size = System::Drawing::Size(169, 57);
+            this->B_PlantarHeap->Size = System::Drawing::Size(127, 46);
             this->B_PlantarHeap->TabIndex = 11;
             this->B_PlantarHeap->Text = L"Plantar Heap";
             this->B_PlantarHeap->UseVisualStyleBackColor = false;
@@ -905,9 +948,10 @@ namespace Proyecto2_ED {
             this->label1->BackColor = System::Drawing::Color::Blue;
             this->label1->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->label1->Location = System::Drawing::Point(1267, 57);
+            this->label1->Location = System::Drawing::Point(950, 46);
+            this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(54, 26);
+            this->label1->Size = System::Drawing::Size(44, 21);
             this->label1->TabIndex = 12;
             this->label1->Text = L"AVL";
             // 
@@ -917,9 +961,10 @@ namespace Proyecto2_ED {
             this->label2->BackColor = System::Drawing::Color::Blue;
             this->label2->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->label2->Location = System::Drawing::Point(1501, 57);
+            this->label2->Location = System::Drawing::Point(1126, 46);
+            this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(66, 26);
+            this->label2->Size = System::Drawing::Size(54, 21);
             this->label2->TabIndex = 13;
             this->label2->Text = L"Splay";
             this->label2->Click += gcnew System::EventHandler(this, &AreaJuego::label2_Click);
@@ -930,9 +975,10 @@ namespace Proyecto2_ED {
             this->label3->BackColor = System::Drawing::Color::Blue;
             this->label3->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->label3->Location = System::Drawing::Point(1728, 57);
+            this->label3->Location = System::Drawing::Point(1296, 46);
+            this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label3->Name = L"label3";
-            this->label3->Size = System::Drawing::Size(62, 26);
+            this->label3->Size = System::Drawing::Size(51, 21);
             this->label3->TabIndex = 14;
             this->label3->Text = L"Heap";
             // 
@@ -940,44 +986,44 @@ namespace Proyecto2_ED {
             // 
             this->T_CantBinarios->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->T_CantBinarios->Location = System::Drawing::Point(1039, 110);
-            this->T_CantBinarios->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->T_CantBinarios->Location = System::Drawing::Point(779, 89);
+            this->T_CantBinarios->Margin = System::Windows::Forms::Padding(2);
             this->T_CantBinarios->Name = L"T_CantBinarios";
             this->T_CantBinarios->ReadOnly = true;
-            this->T_CantBinarios->Size = System::Drawing::Size(48, 28);
+            this->T_CantBinarios->Size = System::Drawing::Size(37, 24);
             this->T_CantBinarios->TabIndex = 15;
             // 
             // T_CantAvl
             // 
             this->T_CantAvl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->T_CantAvl->Location = System::Drawing::Point(1271, 110);
-            this->T_CantAvl->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->T_CantAvl->Location = System::Drawing::Point(953, 89);
+            this->T_CantAvl->Margin = System::Windows::Forms::Padding(2);
             this->T_CantAvl->Name = L"T_CantAvl";
             this->T_CantAvl->ReadOnly = true;
-            this->T_CantAvl->Size = System::Drawing::Size(48, 28);
+            this->T_CantAvl->Size = System::Drawing::Size(37, 24);
             this->T_CantAvl->TabIndex = 16;
             // 
             // T_CantSplay
             // 
             this->T_CantSplay->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->T_CantSplay->Location = System::Drawing::Point(1513, 110);
-            this->T_CantSplay->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->T_CantSplay->Location = System::Drawing::Point(1135, 89);
+            this->T_CantSplay->Margin = System::Windows::Forms::Padding(2);
             this->T_CantSplay->Name = L"T_CantSplay";
             this->T_CantSplay->ReadOnly = true;
-            this->T_CantSplay->Size = System::Drawing::Size(48, 28);
+            this->T_CantSplay->Size = System::Drawing::Size(37, 24);
             this->T_CantSplay->TabIndex = 17;
             // 
             // T_CantHeap
             // 
             this->T_CantHeap->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->T_CantHeap->Location = System::Drawing::Point(1745, 110);
-            this->T_CantHeap->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->T_CantHeap->Location = System::Drawing::Point(1309, 89);
+            this->T_CantHeap->Margin = System::Windows::Forms::Padding(2);
             this->T_CantHeap->Name = L"T_CantHeap";
             this->T_CantHeap->ReadOnly = true;
-            this->T_CantHeap->Size = System::Drawing::Size(45, 28);
+            this->T_CantHeap->Size = System::Drawing::Size(35, 24);
             this->T_CantHeap->TabIndex = 18;
             // 
             // label4
@@ -986,9 +1032,10 @@ namespace Proyecto2_ED {
             this->label4->BackColor = System::Drawing::Color::Blue;
             this->label4->Font = (gcnew System::Drawing::Font(L"MV Boli", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->label4->Location = System::Drawing::Point(1864, 57);
+            this->label4->Location = System::Drawing::Point(1398, 46);
+            this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
             this->label4->Name = L"label4";
-            this->label4->Size = System::Drawing::Size(163, 26);
+            this->label4->Size = System::Drawing::Size(134, 21);
             this->label4->TabIndex = 19;
             this->label4->Text = L"Espantapájaros";
             // 
@@ -996,11 +1043,11 @@ namespace Proyecto2_ED {
             // 
             this->T_CantidadEspanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular,
                 System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-            this->T_CantidadEspanta->Location = System::Drawing::Point(1905, 110);
-            this->T_CantidadEspanta->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->T_CantidadEspanta->Location = System::Drawing::Point(1429, 89);
+            this->T_CantidadEspanta->Margin = System::Windows::Forms::Padding(2);
             this->T_CantidadEspanta->Name = L"T_CantidadEspanta";
             this->T_CantidadEspanta->ReadOnly = true;
-            this->T_CantidadEspanta->Size = System::Drawing::Size(48, 28);
+            this->T_CantidadEspanta->Size = System::Drawing::Size(37, 24);
             this->T_CantidadEspanta->TabIndex = 20;
             this->T_CantidadEspanta->TextChanged += gcnew System::EventHandler(this, &AreaJuego::textBox1_TextChanged_1);
             // 
@@ -1009,20 +1056,20 @@ namespace Proyecto2_ED {
             this->B_Espanta->BackColor = System::Drawing::Color::MediumPurple;
             this->B_Espanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->B_Espanta->Location = System::Drawing::Point(277, 407);
-            this->B_Espanta->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->B_Espanta->Location = System::Drawing::Point(208, 331);
+            this->B_Espanta->Margin = System::Windows::Forms::Padding(2);
             this->B_Espanta->Name = L"B_Espanta";
-            this->B_Espanta->Size = System::Drawing::Size(199, 82);
+            this->B_Espanta->Size = System::Drawing::Size(149, 67);
             this->B_Espanta->TabIndex = 2;
             this->B_Espanta->UseVisualStyleBackColor = false;
             this->B_Espanta->Click += gcnew System::EventHandler(this, &AreaJuego::B_Espanta_Click_1);
             // 
             // AreaJuego
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::PaleGreen;
-            this->ClientSize = System::Drawing::Size(1924, 844);
+            this->ClientSize = System::Drawing::Size(1395, 686);
             this->Controls->Add(this->T_CantidadEspanta);
             this->Controls->Add(this->label4);
             this->Controls->Add(this->T_CantHeap);
@@ -1045,7 +1092,7 @@ namespace Proyecto2_ED {
             this->Controls->Add(this->B_GuardarJuego);
             this->Controls->Add(this->TablaJuego);
             this->KeyPreview = true;
-            this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+            this->Margin = System::Windows::Forms::Padding(2);
             this->Name = L"AreaJuego";
             this->Text = L"AreaJuego";
             this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
@@ -1209,7 +1256,7 @@ private: System::Void B_PlantarBinario_Click(System::Object^ sender, System::Eve
         nuevoHiloBinario->Start();
         //Agregar el hilo a la lista
         listaHilosBinarios->Add(nuevoHiloBinario);
-        ActualizarInformacionNuevo("Arbol Binario", granjeroX, granjeroX);
+        ActualizarInformacionNuevo("Arbol Binario", granjeroX, granjeroY);
 
 
     }
@@ -1282,8 +1329,6 @@ private: System::Void B_PlantarHeap_Click(System::Object^ sender, System::EventA
     admin->setCantidadHEAP(-1);
     updateStock(admin);
 
-
-
     // Obtener las coordenadas del LabelGranjero
     int granjeroX = labelGranjero->Top;
     int granjeroY = labelGranjero->Left;
@@ -1303,7 +1348,18 @@ private: System::Void B_PlantarHeap_Click(System::Object^ sender, System::EventA
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelHeap);
         labelHeap->BringToFront();
-        //ActualizarInformacionNuevo("Heap", granjeroX, granjeroX);
+        Thread^ nuevoHiloHeap = gcnew Thread(gcnew System::Threading::ThreadStart(this, &AreaJuego::hiloHeap));
+        nuevoHiloHeap->Start();
+        listaHilosHeap->Add(nuevoHiloHeap);
+        ActualizarInformacionNuevo("Heap", granjeroX, granjeroY);
+
+        /*        //Crear el hilo
+        Thread^ nuevoHiloBinario = gcnew Thread(gcnew System::Threading::ThreadStart(this, &AreaJuego::hiloBinario));
+        nuevoHiloBinario->Start();
+        //Agregar el hilo a la lista
+        listaHilosBinarios->Add(nuevoHiloBinario);
+        ActualizarInformacionNuevo("Arbol Binario", granjeroX, granjeroY);*/
+
     }
 
 }
@@ -1320,5 +1376,27 @@ private: System::Void B_Salir_Click(System::Object^ sender, System::EventArgs^ e
 
     // Volver a ejecutar el programa
     System::Diagnostics::Process::Start(Application::ExecutablePath);                                                                             }
-    };
+    private: System::Void B_VenderTodo_Click(System::Object^ sender, System::EventArgs^ e) {
+
+        //VENDER TODO
+        float suma = 0.0f;
+        //Recorrer todos los binarios
+        NodoListaBin* tmp = listaBin->primerNodo;
+        while (tmp != nullptr) {
+            ArbolBinario* arbolT = tmp->dato;
+            suma += arbolT->calcularSumaValores();
+            arbolT->raiz = NULL;
+            tmp = tmp->siguiente;
+        }
+        NodoListaHeap* tmpH = listaHeap->primerNodo;
+        while (tmpH != NULL) {
+            Heap* arbolH = tmpH->dato;
+            suma += arbolH->sumatoriaValorNodos();
+            arbolH->eliminarTodos();
+            tmpH = tmpH->siguiente;
+        }
+        dinero += suma;
+        actualizarInfo();
+    }
+};
 };

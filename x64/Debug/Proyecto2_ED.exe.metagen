@@ -25,8 +25,6 @@ Class Proyecto2_ED.Configuracion: AutoLayout, AnsiClass, Class, Public, BeforeFi
 Class Proyecto2_ED.Mercado: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(Administrador*, Confi*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Fields:
-    Int32 disponible : Public, Static
   Methods:
     ObtenerDineroDisponible(): PrivateScope, Public, Static, HideBySig
     ObtenerButton1(): PrivateScope, Public, HideBySig
@@ -61,6 +59,7 @@ Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     AgregarFrutosPeriodicamente(): PrivateScope, Public, HideBySig
     AgregarFrutosAleatorios(): PrivateScope, Public, HideBySig
     hiloBinario(): PrivateScope, Public, HideBySig
+    hiloHeap(): PrivateScope, Public, HideBySig
     TablaJuego_KeyDown(Object, KeyEventArgs): PrivateScope, Public, HideBySig
     OcultarColumnaSeleccionada(): PrivateScope, Public, HideBySig
     MostrarVentanaMercado(Object, EventArgs): PrivateScope, Public, HideBySig

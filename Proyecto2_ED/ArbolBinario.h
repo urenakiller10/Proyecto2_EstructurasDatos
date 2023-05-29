@@ -10,18 +10,20 @@ public:
     Nodo* izquierdo;
     Nodo* derecho;
 
-    Nodo(float dato)
-        : dato(dato), izquierdo(nullptr), derecho(nullptr) {}
+    Nodo(float _dato) {
+        dato = _dato;
+        izquierdo = derecho = NULL;
+    }
 };
 
 class ArbolBinario {
 public:
-    float x;
-    float y;
+    int x;
+    int y;
     bool listo = false;
-
-private:
     Nodo* raiz;
+private:
+    
 
     Nodo* insertarNodoRecursivo(Nodo* nodo, float dato) {
         if (nodo == NULL) {
@@ -84,7 +86,6 @@ private:
     }
 
 public:
-    ArbolBinario() : raiz(nullptr) {}
     ArbolBinario(int _x, int _y) { 
         raiz = NULL;
         x = _x, y = _y;

@@ -32,7 +32,7 @@ private:
     int plagaAparicion = 90;
     int plagaComeArbol = 60;
 
-    float valorMinimo = 0.001f;
+    float valorMinimo = 0.1f;
 
 
 public:

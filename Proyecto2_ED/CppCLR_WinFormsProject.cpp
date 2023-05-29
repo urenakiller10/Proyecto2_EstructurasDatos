@@ -9,6 +9,8 @@ using namespace System;
 
 #include "Form1.h"
 
+float dinero = 9999;
+
 using namespace System::Windows::Forms;
 
 [STAThread]

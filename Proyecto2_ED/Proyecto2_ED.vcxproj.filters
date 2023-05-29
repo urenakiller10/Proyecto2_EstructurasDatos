@@ -44,7 +44,7 @@
     <ClInclude Include="Administrador.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListaSimple.h">
+    <ClInclude Include="ListaSimpleBin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Heap.h">
@@ -63,6 +63,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Splay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaSimpleHeap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaSimpleAvl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaSimpleSplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

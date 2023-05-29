@@ -7,12 +7,15 @@ struct Heap {
     int capacity; // capacidad máxima del heap
     int size; // cantidad de elementos del heap
     bool listo = false;
+    int x; int y;
 
     // Constructor
-    Heap(int n) {
+    Heap(int n, int _x, int _y) {
         capacity = n;
         size = 0;
         arr = new float[n];
+        x = _x;
+        y = _y;
     }
 
     // Destructor
@@ -59,7 +62,7 @@ struct Heap {
         }
 
         // el elemento máximo siempre está en la raíz (índice 0)
-        int maximo = arr[0];
+        float maximo = arr[0];
 
         // reemplazar la raíz con el último elemento del arreglo
         arr[0] = arr[size - 1];
@@ -88,10 +91,25 @@ struct Heap {
                 break;
             }
         }
-
-        //cout << "El elemento maximo (" << maximo << ") ha sido eliminado" << endl;
     }
 
-    // Función para imprimir el heap por niveles
+    // Método para obtener la sumatoria del valor de los nodos
+    float sumatoriaValorNodos() {
+        float sumatoria = 0.0;
+        for (int i = 0; i < size; i++) {
+            sumatoria += arr[i];
+        }
+        return sumatoria;
+    }
 
+    int sumatoriaTotalNodos() {
+        return size;
+    }
+
+    void eliminarTodos() {
+        delete[] arr;
+        capacity = 0;
+        size = 0;
+        arr = new float[capacity];
+    }
 };
