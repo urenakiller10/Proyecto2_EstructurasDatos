@@ -106,6 +106,7 @@ namespace Proyecto2_ED {
 				this->pictureBox3->Image = Image::FromFile("recursos//arbol2.png");
 				this->pictureBox4->Image = Image::FromFile("recursos//arbol31.png");
 				this->pictureBox5->Image = Image::FromFile("recursos//arbol41.png");
+
 				std::string precioBinario = std::to_string(config->getPrecioBinario());
 				System::String^ precioBin = gcnew System::String(precioBinario.c_str());
 				this->PrecioBinario->Text = precioBin;
@@ -124,7 +125,7 @@ namespace Proyecto2_ED {
 
 				std::string precioEsp = std::to_string(config->getPrecioEspanta());
 				System::String^ precioEs = gcnew System::String(precioEsp.c_str());
-				this->textBox5->Text = precioH;
+				this->textBox5->Text = precioEs;
 			}
 
 			/*			int precioBinario = config->getPrecioBinario();
@@ -184,9 +185,10 @@ namespace Proyecto2_ED {
 				this->label1->BackColor = System::Drawing::Color::Firebrick;
 				this->label1->Font = (gcnew System::Drawing::Font(L"MV Boli", 48, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label1->Location = System::Drawing::Point(462, 47);
+				this->label1->Location = System::Drawing::Point(346, 38);
+				this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label1->Name = L"label1";
-				this->label1->Size = System::Drawing::Size(417, 105);
+				this->label1->Size = System::Drawing::Size(335, 85);
 				this->label1->TabIndex = 0;
 				this->label1->Text = L"MercaTEC";
 				this->label1->Click += gcnew System::EventHandler(this, &Mercado::label1_Click);
@@ -195,9 +197,10 @@ namespace Proyecto2_ED {
 				// 
 				this->Up_Binario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_Binario->Location = System::Drawing::Point(107, 618);
+				this->Up_Binario->Location = System::Drawing::Point(80, 502);
+				this->Up_Binario->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->Up_Binario->Name = L"Up_Binario";
-				this->Up_Binario->Size = System::Drawing::Size(50, 34);
+				this->Up_Binario->Size = System::Drawing::Size(38, 28);
 				this->Up_Binario->TabIndex = 1;
 				// 
 				// label2
@@ -205,9 +208,10 @@ namespace Proyecto2_ED {
 				this->label2->AutoSize = true;
 				this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label2->Location = System::Drawing::Point(59, 256);
+				this->label2->Location = System::Drawing::Point(44, 208);
+				this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label2->Name = L"label2";
-				this->label2->Size = System::Drawing::Size(163, 29);
+				this->label2->Size = System::Drawing::Size(130, 24);
 				this->label2->TabIndex = 2;
 				this->label2->Text = L"Árbol binario";
 				// 
@@ -216,9 +220,10 @@ namespace Proyecto2_ED {
 				this->label3->AutoSize = true;
 				this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label3->Location = System::Drawing::Point(360, 256);
+				this->label3->Location = System::Drawing::Point(270, 208);
+				this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label3->Name = L"label3";
-				this->label3->Size = System::Drawing::Size(128, 29);
+				this->label3->Size = System::Drawing::Size(105, 24);
 				this->label3->TabIndex = 3;
 				this->label3->Text = L"Árbol AVL";
 				// 
@@ -227,9 +232,10 @@ namespace Proyecto2_ED {
 				this->label4->AutoSize = true;
 				this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label4->Location = System::Drawing::Point(612, 256);
+				this->label4->Location = System::Drawing::Point(459, 208);
+				this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label4->Name = L"label4";
-				this->label4->Size = System::Drawing::Size(163, 29);
+				this->label4->Size = System::Drawing::Size(130, 24);
 				this->label4->TabIndex = 4;
 				this->label4->Text = L"Árbol SPLAY";
 				// 
@@ -238,9 +244,10 @@ namespace Proyecto2_ED {
 				this->label5->AutoSize = true;
 				this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label5->Location = System::Drawing::Point(872, 256);
+				this->label5->Location = System::Drawing::Point(654, 208);
+				this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label5->Name = L"label5";
-				this->label5->Size = System::Drawing::Size(150, 29);
+				this->label5->Size = System::Drawing::Size(122, 24);
 				this->label5->TabIndex = 5;
 				this->label5->Text = L"Árbol HEAP";
 				// 
@@ -249,9 +256,10 @@ namespace Proyecto2_ED {
 				this->label6->AutoSize = true;
 				this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label6->Location = System::Drawing::Point(1086, 256);
+				this->label6->Location = System::Drawing::Point(814, 208);
+				this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label6->Name = L"label6";
-				this->label6->Size = System::Drawing::Size(194, 29);
+				this->label6->Size = System::Drawing::Size(153, 24);
 				this->label6->TabIndex = 6;
 				this->label6->Text = L"Espantapájaros";
 				// 
@@ -260,9 +268,10 @@ namespace Proyecto2_ED {
 				this->label7->AutoSize = true;
 				this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label7->Location = System::Drawing::Point(37, 579);
+				this->label7->Location = System::Drawing::Point(28, 470);
+				this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label7->Name = L"label7";
-				this->label7->Size = System::Drawing::Size(80, 25);
+				this->label7->Size = System::Drawing::Size(64, 20);
 				this->label7->TabIndex = 20;
 				this->label7->Text = L"Precio:";
 				// 
@@ -271,9 +280,10 @@ namespace Proyecto2_ED {
 				this->label8->AutoSize = true;
 				this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label8->Location = System::Drawing::Point(294, 579);
+				this->label8->Location = System::Drawing::Point(220, 470);
+				this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label8->Name = L"label8";
-				this->label8->Size = System::Drawing::Size(80, 25);
+				this->label8->Size = System::Drawing::Size(64, 20);
 				this->label8->TabIndex = 21;
 				this->label8->Text = L"Precio:";
 				// 
@@ -282,9 +292,10 @@ namespace Proyecto2_ED {
 				this->label9->AutoSize = true;
 				this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label9->Location = System::Drawing::Point(582, 579);
+				this->label9->Location = System::Drawing::Point(436, 470);
+				this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label9->Name = L"label9";
-				this->label9->Size = System::Drawing::Size(80, 25);
+				this->label9->Size = System::Drawing::Size(64, 20);
 				this->label9->TabIndex = 22;
 				this->label9->Text = L"Precio:";
 				// 
@@ -293,9 +304,10 @@ namespace Proyecto2_ED {
 				this->label10->AutoSize = true;
 				this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label10->Location = System::Drawing::Point(820, 579);
+				this->label10->Location = System::Drawing::Point(615, 470);
+				this->label10->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label10->Name = L"label10";
-				this->label10->Size = System::Drawing::Size(80, 25);
+				this->label10->Size = System::Drawing::Size(64, 20);
 				this->label10->TabIndex = 23;
 				this->label10->Text = L"Precio:";
 				// 
@@ -304,9 +316,10 @@ namespace Proyecto2_ED {
 				this->label11->AutoSize = true;
 				this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label11->Location = System::Drawing::Point(1086, 579);
+				this->label11->Location = System::Drawing::Point(814, 470);
+				this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label11->Name = L"label11";
-				this->label11->Size = System::Drawing::Size(80, 25);
+				this->label11->Size = System::Drawing::Size(64, 20);
 				this->label11->TabIndex = 24;
 				this->label11->Text = L"Precio:";
 				// 
@@ -315,9 +328,10 @@ namespace Proyecto2_ED {
 				this->label12->AutoSize = true;
 				this->label12->Font = (gcnew System::Drawing::Font(L"MV Boli", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->label12->Location = System::Drawing::Point(985, 33);
+				this->label12->Location = System::Drawing::Point(739, 27);
+				this->label12->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label12->Name = L"label12";
-				this->label12->Size = System::Drawing::Size(220, 29);
+				this->label12->Size = System::Drawing::Size(186, 25);
 				this->label12->TabIndex = 25;
 				this->label12->Text = L"Dinero disponible:";
 				this->label12->Click += gcnew System::EventHandler(this, &Mercado::label12_Click);
@@ -328,35 +342,39 @@ namespace Proyecto2_ED {
 				this->DineroDisponible->BackColor = System::Drawing::Color::White;
 				this->DineroDisponible->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->DineroDisponible->Location = System::Drawing::Point(1219, 37);
+				this->DineroDisponible->Location = System::Drawing::Point(914, 30);
+				this->DineroDisponible->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->DineroDisponible->Name = L"DineroDisponible";
-				this->DineroDisponible->Size = System::Drawing::Size(67, 25);
+				this->DineroDisponible->Size = System::Drawing::Size(54, 20);
 				this->DineroDisponible->TabIndex = 26;
 				this->DineroDisponible->Text = L"Monto";
 				// 
 				// pictureBox1
 				// 
-				this->pictureBox1->Location = System::Drawing::Point(1073, 300);
+				this->pictureBox1->Location = System::Drawing::Point(805, 244);
+				this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->pictureBox1->Name = L"pictureBox1";
-				this->pictureBox1->Size = System::Drawing::Size(230, 265);
+				this->pictureBox1->Size = System::Drawing::Size(172, 215);
 				this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 				this->pictureBox1->TabIndex = 8;
 				this->pictureBox1->TabStop = false;
 				// 
 				// pictureBox2
 				// 
-				this->pictureBox2->Location = System::Drawing::Point(12, 300);
+				this->pictureBox2->Location = System::Drawing::Point(9, 244);
+				this->pictureBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->pictureBox2->Name = L"pictureBox2";
-				this->pictureBox2->Size = System::Drawing::Size(230, 265);
+				this->pictureBox2->Size = System::Drawing::Size(172, 215);
 				this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 				this->pictureBox2->TabIndex = 9;
 				this->pictureBox2->TabStop = false;
 				// 
 				// pictureBox3
 				// 
-				this->pictureBox3->Location = System::Drawing::Point(825, 300);
+				this->pictureBox3->Location = System::Drawing::Point(619, 244);
+				this->pictureBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->pictureBox3->Name = L"pictureBox3";
-				this->pictureBox3->Size = System::Drawing::Size(230, 265);
+				this->pictureBox3->Size = System::Drawing::Size(172, 215);
 				this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 				this->pictureBox3->TabIndex = 13;
 				this->pictureBox3->TabStop = false;
@@ -364,18 +382,20 @@ namespace Proyecto2_ED {
 				// 
 				// pictureBox4
 				// 
-				this->pictureBox4->Location = System::Drawing::Point(574, 300);
+				this->pictureBox4->Location = System::Drawing::Point(430, 244);
+				this->pictureBox4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->pictureBox4->Name = L"pictureBox4";
-				this->pictureBox4->Size = System::Drawing::Size(230, 265);
+				this->pictureBox4->Size = System::Drawing::Size(172, 215);
 				this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 				this->pictureBox4->TabIndex = 14;
 				this->pictureBox4->TabStop = false;
 				// 
 				// pictureBox5
 				// 
-				this->pictureBox5->Location = System::Drawing::Point(277, 300);
+				this->pictureBox5->Location = System::Drawing::Point(208, 244);
+				this->pictureBox5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->pictureBox5->Name = L"pictureBox5";
-				this->pictureBox5->Size = System::Drawing::Size(251, 265);
+				this->pictureBox5->Size = System::Drawing::Size(188, 215);
 				this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 				this->pictureBox5->TabIndex = 15;
 				this->pictureBox5->TabStop = false;
@@ -384,51 +404,52 @@ namespace Proyecto2_ED {
 				// 
 				this->Up_AVL->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_AVL->Location = System::Drawing::Point(365, 618);
+				this->Up_AVL->Location = System::Drawing::Point(274, 502);
+				this->Up_AVL->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->Up_AVL->Name = L"Up_AVL";
-				this->Up_AVL->Size = System::Drawing::Size(50, 34);
+				this->Up_AVL->Size = System::Drawing::Size(38, 28);
 				this->Up_AVL->TabIndex = 16;
 				// 
 				// Up_SPLAY
 				// 
 				this->Up_SPLAY->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_SPLAY->Location = System::Drawing::Point(645, 618);
+				this->Up_SPLAY->Location = System::Drawing::Point(484, 502);
+				this->Up_SPLAY->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->Up_SPLAY->Name = L"Up_SPLAY";
-				this->Up_SPLAY->Size = System::Drawing::Size(50, 34);
+				this->Up_SPLAY->Size = System::Drawing::Size(38, 28);
 				this->Up_SPLAY->TabIndex = 17;
 				// 
 				// Up_HEAP
 				// 
 				this->Up_HEAP->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_HEAP->Location = System::Drawing::Point(890, 618);
+				this->Up_HEAP->Location = System::Drawing::Point(668, 502);
+				this->Up_HEAP->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->Up_HEAP->Name = L"Up_HEAP";
-				this->Up_HEAP->Size = System::Drawing::Size(50, 34);
+				this->Up_HEAP->Size = System::Drawing::Size(38, 28);
 				this->Up_HEAP->TabIndex = 18;
 				// 
 				// Up_Espanta
 				// 
 				this->Up_Espanta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->Up_Espanta->Location = System::Drawing::Point(1142, 618);
+				this->Up_Espanta->Location = System::Drawing::Point(856, 502);
+				this->Up_Espanta->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+				this->Up_Espanta->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
 				this->Up_Espanta->Name = L"Up_Espanta";
-				this->Up_Espanta->Size = System::Drawing::Size(50, 34);
+				this->Up_Espanta->Size = System::Drawing::Size(38, 28);
 				this->Up_Espanta->TabIndex = 19;
-				this->Up_Espanta->Maximum = 2;
-
-
-
-
 				// 
 				// B_Comprar
 				// 
 				this->B_Comprar->BackColor = System::Drawing::Color::Firebrick;
 				this->B_Comprar->Font = (gcnew System::Drawing::Font(L"MV Boli", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->B_Comprar->Location = System::Drawing::Point(574, 677);
+				this->B_Comprar->Location = System::Drawing::Point(430, 550);
+				this->B_Comprar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->B_Comprar->Name = L"B_Comprar";
-				this->B_Comprar->Size = System::Drawing::Size(214, 76);
+				this->B_Comprar->Size = System::Drawing::Size(160, 62);
 				this->B_Comprar->TabIndex = 7;
 				this->B_Comprar->Text = L"Comprar";
 				this->B_Comprar->UseVisualStyleBackColor = false;
@@ -438,9 +459,10 @@ namespace Proyecto2_ED {
 				// 
 				this->PrecioBinario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->PrecioBinario->Location = System::Drawing::Point(143, 576);
+				this->PrecioBinario->Location = System::Drawing::Point(107, 468);
+				this->PrecioBinario->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->PrecioBinario->Name = L"PrecioBinario";
-				this->PrecioBinario->Size = System::Drawing::Size(99, 30);
+				this->PrecioBinario->Size = System::Drawing::Size(75, 26);
 				this->PrecioBinario->TabIndex = 27;
 				this->PrecioBinario->TextChanged += gcnew System::EventHandler(this, &Mercado::textBox1_TextChanged);
 				// 
@@ -448,44 +470,49 @@ namespace Proyecto2_ED {
 				// 
 				this->PrecioAvl->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->PrecioAvl->Location = System::Drawing::Point(398, 574);
+				this->PrecioAvl->Location = System::Drawing::Point(298, 466);
+				this->PrecioAvl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->PrecioAvl->Name = L"PrecioAvl";
-				this->PrecioAvl->Size = System::Drawing::Size(100, 30);
+				this->PrecioAvl->Size = System::Drawing::Size(76, 26);
 				this->PrecioAvl->TabIndex = 28;
 				// 
 				// textBox3
 				// 
 				this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->textBox3->Location = System::Drawing::Point(668, 576);
+				this->textBox3->Location = System::Drawing::Point(501, 468);
+				this->textBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->textBox3->Name = L"textBox3";
-				this->textBox3->Size = System::Drawing::Size(100, 30);
+				this->textBox3->Size = System::Drawing::Size(76, 26);
 				this->textBox3->TabIndex = 29;
 				// 
 				// textBox4
 				// 
 				this->textBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->textBox4->Location = System::Drawing::Point(920, 576);
+				this->textBox4->Location = System::Drawing::Point(690, 468);
+				this->textBox4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->textBox4->Name = L"textBox4";
-				this->textBox4->Size = System::Drawing::Size(100, 30);
+				this->textBox4->Size = System::Drawing::Size(76, 26);
 				this->textBox4->TabIndex = 30;
 				// 
 				// textBox5
 				// 
 				this->textBox5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				this->textBox5->Location = System::Drawing::Point(1171, 576);
+				this->textBox5->Location = System::Drawing::Point(878, 468);
+				this->textBox5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->textBox5->Name = L"textBox5";
-				this->textBox5->Size = System::Drawing::Size(100, 30);
+				this->textBox5->Size = System::Drawing::Size(76, 26);
 				this->textBox5->TabIndex = 31;
+				this->textBox5->TextChanged += gcnew System::EventHandler(this, &Mercado::textBox5_TextChanged);
 				// 
 				// Mercado
 				// 
-				this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+				this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 				this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				this->BackColor = System::Drawing::Color::LightSalmon;
-				this->ClientSize = System::Drawing::Size(1324, 765);
+				this->ClientSize = System::Drawing::Size(993, 622);
 				this->Controls->Add(this->textBox5);
 				this->Controls->Add(this->textBox4);
 				this->Controls->Add(this->textBox3);
@@ -515,6 +542,7 @@ namespace Proyecto2_ED {
 				this->Controls->Add(this->label2);
 				this->Controls->Add(this->Up_Binario);
 				this->Controls->Add(this->label1);
+				this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 				this->Name = L"Mercado";
 				this->Text = L"Mercado";
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Up_Binario))->EndInit();
@@ -598,6 +626,8 @@ namespace Proyecto2_ED {
 		}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 
 }

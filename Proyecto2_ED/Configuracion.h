@@ -228,447 +228,273 @@ namespace Proyecto2_ED {
 			// T_BinCosto
 			// 
 			this->T_BinCosto->LargeChange = 10;
-			this->T_BinCosto->Location = System::Drawing::Point(220, 160);
+			this->T_BinCosto->Location = System::Drawing::Point(165, 130);
+			this->T_BinCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_BinCosto->Maximum = 100;
 			this->T_BinCosto->Name = L"T_BinCosto";
-			this->T_BinCosto->Size = System::Drawing::Size(104, 56);
+			this->T_BinCosto->Size = System::Drawing::Size(78, 45);
 			this->T_BinCosto->TabIndex = 1;
 			this->T_BinCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar1_Scroll);
 			// 
 			// T_BinCosecha
 			// 
 			this->T_BinCosecha->LargeChange = 10;
-			this->T_BinCosecha->Location = System::Drawing::Point(223, 234);
+			this->T_BinCosecha->Location = System::Drawing::Point(167, 190);
+			this->T_BinCosecha->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_BinCosecha->Maximum = 60;
 			this->T_BinCosecha->Name = L"T_BinCosecha";
-			this->T_BinCosecha->Size = System::Drawing::Size(104, 56);
+			this->T_BinCosecha->Size = System::Drawing::Size(78, 45);
 			this->T_BinCosecha->TabIndex = 3;
 			this->T_BinCosecha->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar3_Scroll);
 			// 
 			// T_BinCrece
 			// 
 			this->T_BinCrece->LargeChange = 10;
-			this->T_BinCrece->Location = System::Drawing::Point(220, 197);
+			this->T_BinCrece->Location = System::Drawing::Point(165, 160);
+			this->T_BinCrece->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_BinCrece->Maximum = 60;
 			this->T_BinCrece->Name = L"T_BinCrece";
-			this->T_BinCrece->Size = System::Drawing::Size(104, 56);
+			this->T_BinCrece->Size = System::Drawing::Size(78, 45);
 			this->T_BinCrece->TabIndex = 16;
 			this->T_BinCrece->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar2_Scroll);
 			// 
 			// T_BinFrutos
 			// 
 			this->T_BinFrutos->LargeChange = 10;
-			this->T_BinFrutos->Location = System::Drawing::Point(220, 264);
+			this->T_BinFrutos->Location = System::Drawing::Point(165, 214);
+			this->T_BinFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_BinFrutos->Maximum = 70;
 			this->T_BinFrutos->Name = L"T_BinFrutos";
-			this->T_BinFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_BinFrutos->Size = System::Drawing::Size(78, 45);
 			this->T_BinFrutos->TabIndex = 17;
 			this->T_BinFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar4_Scroll);
 			// 
 			// T_SplayCosto
 			// 
-			this->T_SplayCosto->Location = System::Drawing::Point(220, 347);
+			this->T_SplayCosto->Location = System::Drawing::Point(165, 282);
+			this->T_SplayCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_SplayCosto->Name = L"T_SplayCosto";
-			this->T_SplayCosto->Size = System::Drawing::Size(104, 56);
+			this->T_SplayCosto->Size = System::Drawing::Size(78, 45);
 			this->T_SplayCosto->TabIndex = 18;
 			this->T_SplayCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar5_Scroll);
 			// 
 			// T_SplayCrece
 			// 
 			this->T_SplayCrece->LargeChange = 10;
-			this->T_SplayCrece->Location = System::Drawing::Point(220, 379);
+			this->T_SplayCrece->Location = System::Drawing::Point(165, 308);
+			this->T_SplayCrece->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_SplayCrece->Maximum = 60;
 			this->T_SplayCrece->Name = L"T_SplayCrece";
-			this->T_SplayCrece->Size = System::Drawing::Size(104, 56);
+			this->T_SplayCrece->Size = System::Drawing::Size(78, 45);
 			this->T_SplayCrece->TabIndex = 19;
 			this->T_SplayCrece->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar6_Scroll);
 			// 
 			// T_SplayCosecha
 			// 
 			this->T_SplayCosecha->LargeChange = 10;
-			this->T_SplayCosecha->Location = System::Drawing::Point(220, 424);
+			this->T_SplayCosecha->Location = System::Drawing::Point(165, 344);
+			this->T_SplayCosecha->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_SplayCosecha->Maximum = 60;
 			this->T_SplayCosecha->Name = L"T_SplayCosecha";
-			this->T_SplayCosecha->Size = System::Drawing::Size(104, 56);
+			this->T_SplayCosecha->Size = System::Drawing::Size(78, 45);
 			this->T_SplayCosecha->TabIndex = 20;
 			this->T_SplayCosecha->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar7_Scroll);
 			// 
 			// T_SplayFrutos
 			// 
 			this->T_SplayFrutos->LargeChange = 10;
-			this->T_SplayFrutos->Location = System::Drawing::Point(220, 468);
+			this->T_SplayFrutos->Location = System::Drawing::Point(165, 380);
+			this->T_SplayFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_SplayFrutos->Maximum = 70;
 			this->T_SplayFrutos->Name = L"T_SplayFrutos";
-			this->T_SplayFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_SplayFrutos->Size = System::Drawing::Size(78, 45);
 			this->T_SplayFrutos->TabIndex = 21;
 			this->T_SplayFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar8_Scroll);
 			// 
 			// T_HeapCosto
 			// 
 			this->T_HeapCosto->LargeChange = 10;
-			this->T_HeapCosto->Location = System::Drawing::Point(664, 154);
+			this->T_HeapCosto->Location = System::Drawing::Point(498, 125);
+			this->T_HeapCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_HeapCosto->Maximum = 100;
 			this->T_HeapCosto->Name = L"T_HeapCosto";
-			this->T_HeapCosto->Size = System::Drawing::Size(104, 56);
+			this->T_HeapCosto->Size = System::Drawing::Size(78, 45);
 			this->T_HeapCosto->TabIndex = 22;
 			this->T_HeapCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar9_Scroll);
 			// 
 			// T_HeapCrece
 			// 
 			this->T_HeapCrece->LargeChange = 10;
-			this->T_HeapCrece->Location = System::Drawing::Point(664, 194);
+			this->T_HeapCrece->Location = System::Drawing::Point(498, 158);
+			this->T_HeapCrece->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_HeapCrece->Maximum = 60;
 			this->T_HeapCrece->Name = L"T_HeapCrece";
-			this->T_HeapCrece->Size = System::Drawing::Size(104, 56);
+			this->T_HeapCrece->Size = System::Drawing::Size(78, 45);
 			this->T_HeapCrece->TabIndex = 23;
 			this->T_HeapCrece->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar10_Scroll);
 			// 
 			// T_HeapCosecha
 			// 
 			this->T_HeapCosecha->LargeChange = 10;
-			this->T_HeapCosecha->Location = System::Drawing::Point(664, 234);
+			this->T_HeapCosecha->Location = System::Drawing::Point(498, 190);
+			this->T_HeapCosecha->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_HeapCosecha->Maximum = 60;
 			this->T_HeapCosecha->Name = L"T_HeapCosecha";
-			this->T_HeapCosecha->Size = System::Drawing::Size(104, 56);
+			this->T_HeapCosecha->Size = System::Drawing::Size(78, 45);
 			this->T_HeapCosecha->TabIndex = 24;
 			this->T_HeapCosecha->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar11_Scroll);
 			// 
 			// T_HeapFrutos
 			// 
 			this->T_HeapFrutos->LargeChange = 10;
-			this->T_HeapFrutos->Location = System::Drawing::Point(664, 264);
+			this->T_HeapFrutos->Location = System::Drawing::Point(498, 214);
+			this->T_HeapFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_HeapFrutos->Maximum = 70;
 			this->T_HeapFrutos->Name = L"T_HeapFrutos";
-			this->T_HeapFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_HeapFrutos->Size = System::Drawing::Size(78, 45);
 			this->T_HeapFrutos->TabIndex = 25;
 			this->T_HeapFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar12_Scroll);
 			// 
 			// T_AvlCosto
 			// 
-			this->T_AvlCosto->Location = System::Drawing::Point(664, 347);
+			this->T_AvlCosto->Location = System::Drawing::Point(498, 282);
+			this->T_AvlCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_AvlCosto->Name = L"T_AvlCosto";
-			this->T_AvlCosto->Size = System::Drawing::Size(104, 56);
+			this->T_AvlCosto->Size = System::Drawing::Size(78, 45);
 			this->T_AvlCosto->TabIndex = 26;
 			this->T_AvlCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar13_Scroll);
 			// 
 			// T_AvlCrece
 			// 
 			this->T_AvlCrece->LargeChange = 10;
-			this->T_AvlCrece->Location = System::Drawing::Point(664, 379);
+			this->T_AvlCrece->Location = System::Drawing::Point(498, 308);
+			this->T_AvlCrece->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_AvlCrece->Maximum = 60;
 			this->T_AvlCrece->Name = L"T_AvlCrece";
-			this->T_AvlCrece->Size = System::Drawing::Size(104, 56);
+			this->T_AvlCrece->Size = System::Drawing::Size(78, 45);
 			this->T_AvlCrece->TabIndex = 27;
 			this->T_AvlCrece->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar14_Scroll);
 			// 
 			// T_AvlCosecha
 			// 
 			this->T_AvlCosecha->LargeChange = 10;
-			this->T_AvlCosecha->Location = System::Drawing::Point(664, 424);
+			this->T_AvlCosecha->Location = System::Drawing::Point(498, 344);
+			this->T_AvlCosecha->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_AvlCosecha->Maximum = 60;
 			this->T_AvlCosecha->Name = L"T_AvlCosecha";
-			this->T_AvlCosecha->Size = System::Drawing::Size(104, 56);
+			this->T_AvlCosecha->Size = System::Drawing::Size(78, 45);
 			this->T_AvlCosecha->TabIndex = 28;
 			this->T_AvlCosecha->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar15_Scroll);
 			// 
 			// T_AvlFrutos
 			// 
 			this->T_AvlFrutos->LargeChange = 10;
-			this->T_AvlFrutos->Location = System::Drawing::Point(664, 468);
+			this->T_AvlFrutos->Location = System::Drawing::Point(498, 380);
+			this->T_AvlFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_AvlFrutos->Maximum = 70;
 			this->T_AvlFrutos->Name = L"T_AvlFrutos";
-			this->T_AvlFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_AvlFrutos->Size = System::Drawing::Size(78, 45);
 			this->T_AvlFrutos->TabIndex = 45;
 			this->T_AvlFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar16_Scroll);
 			// 
 			// T_OvejasAparicion
 			// 
 			this->T_OvejasAparicion->LargeChange = 20;
-			this->T_OvejasAparicion->Location = System::Drawing::Point(1077, 142);
+			this->T_OvejasAparicion->Location = System::Drawing::Point(808, 115);
+			this->T_OvejasAparicion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_OvejasAparicion->Maximum = 100;
 			this->T_OvejasAparicion->Name = L"T_OvejasAparicion";
-			this->T_OvejasAparicion->Size = System::Drawing::Size(104, 56);
+			this->T_OvejasAparicion->Size = System::Drawing::Size(78, 45);
 			this->T_OvejasAparicion->TabIndex = 56;
 			this->T_OvejasAparicion->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar17_Scroll);
 			// 
 			// T_OvejasFrutos
 			// 
 			this->T_OvejasFrutos->LargeChange = 10;
-			this->T_OvejasFrutos->Location = System::Drawing::Point(1077, 179);
+			this->T_OvejasFrutos->Location = System::Drawing::Point(808, 145);
+			this->T_OvejasFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_OvejasFrutos->Maximum = 60;
 			this->T_OvejasFrutos->Name = L"T_OvejasFrutos";
-			this->T_OvejasFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_OvejasFrutos->Size = System::Drawing::Size(78, 45);
 			this->T_OvejasFrutos->TabIndex = 57;
 			this->T_OvejasFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar18_Scroll);
 			// 
 			// T_CuervosAparicion
 			// 
 			this->T_CuervosAparicion->LargeChange = 10;
-			this->T_CuervosAparicion->Location = System::Drawing::Point(1077, 285);
+			this->T_CuervosAparicion->Location = System::Drawing::Point(808, 232);
+			this->T_CuervosAparicion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_CuervosAparicion->Maximum = 100;
 			this->T_CuervosAparicion->Name = L"T_CuervosAparicion";
-			this->T_CuervosAparicion->Size = System::Drawing::Size(104, 56);
+			this->T_CuervosAparicion->Size = System::Drawing::Size(78, 45);
 			this->T_CuervosAparicion->TabIndex = 58;
 			this->T_CuervosAparicion->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar19_Scroll);
 			// 
 			// T_CuervosFrutos
 			// 
 			this->T_CuervosFrutos->LargeChange = 10;
-			this->T_CuervosFrutos->Location = System::Drawing::Point(1077, 323);
+			this->T_CuervosFrutos->Location = System::Drawing::Point(808, 262);
+			this->T_CuervosFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_CuervosFrutos->Maximum = 60;
 			this->T_CuervosFrutos->Name = L"T_CuervosFrutos";
-			this->T_CuervosFrutos->Size = System::Drawing::Size(104, 56);
+			this->T_CuervosFrutos->Size = System::Drawing::Size(78, 45);
 			this->T_CuervosFrutos->TabIndex = 59;
 			this->T_CuervosFrutos->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar20_Scroll);
 			// 
 			// T_PlagasAparicion
 			// 
 			this->T_PlagasAparicion->LargeChange = 10;
-			this->T_PlagasAparicion->Location = System::Drawing::Point(1077, 424);
+			this->T_PlagasAparicion->Location = System::Drawing::Point(808, 344);
+			this->T_PlagasAparicion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_PlagasAparicion->Maximum = 100;
 			this->T_PlagasAparicion->Name = L"T_PlagasAparicion";
-			this->T_PlagasAparicion->Size = System::Drawing::Size(104, 56);
+			this->T_PlagasAparicion->Size = System::Drawing::Size(78, 45);
 			this->T_PlagasAparicion->TabIndex = 60;
 			this->T_PlagasAparicion->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar21_Scroll);
 			// 
 			// T_PlagasArboles
 			// 
 			this->T_PlagasArboles->LargeChange = 10;
-			this->T_PlagasArboles->Location = System::Drawing::Point(1077, 468);
+			this->T_PlagasArboles->Location = System::Drawing::Point(808, 380);
+			this->T_PlagasArboles->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_PlagasArboles->Maximum = 60;
 			this->T_PlagasArboles->Name = L"T_PlagasArboles";
-			this->T_PlagasArboles->Size = System::Drawing::Size(104, 56);
+			this->T_PlagasArboles->Size = System::Drawing::Size(78, 45);
 			this->T_PlagasArboles->TabIndex = 61;
 			this->T_PlagasArboles->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar22_Scroll);
 			// 
 			// T_EspantaCosto
 			// 
 			this->T_EspantaCosto->LargeChange = 10;
-			this->T_EspantaCosto->Location = System::Drawing::Point(220, 560);
+			this->T_EspantaCosto->Location = System::Drawing::Point(165, 455);
+			this->T_EspantaCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_EspantaCosto->Maximum = 200;
 			this->T_EspantaCosto->Name = L"T_EspantaCosto";
-			this->T_EspantaCosto->Size = System::Drawing::Size(104, 56);
+			this->T_EspantaCosto->Size = System::Drawing::Size(78, 45);
 			this->T_EspantaCosto->TabIndex = 64;
 			this->T_EspantaCosto->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar23_Scroll);
 			// 
 			// T_EspantaMax
 			// 
 			this->T_EspantaMax->LargeChange = 1;
-			this->T_EspantaMax->Location = System::Drawing::Point(220, 604);
+			this->T_EspantaMax->Location = System::Drawing::Point(165, 491);
+			this->T_EspantaMax->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->T_EspantaMax->Maximum = 5;
 			this->T_EspantaMax->Name = L"T_EspantaMax";
-			this->T_EspantaMax->Size = System::Drawing::Size(104, 56);
+			this->T_EspantaMax->Size = System::Drawing::Size(78, 45);
 			this->T_EspantaMax->TabIndex = 65;
 			this->T_EspantaMax->Scroll += gcnew System::EventHandler(this, &Configuracion::trackBar24_Scroll);
-			//
-			// BinCosto
 			// 
-			this->BinCosto->Location = System::Drawing::Point(330, 154);
-			this->BinCosto->Name = L"BinCosto";
-			this->BinCosto->ReadOnly = true;
-			this->BinCosto->Size = System::Drawing::Size(47, 22);
-			this->BinCosto->TabIndex = 4;
-			this->BinCosto->TextChanged += gcnew System::EventHandler(this, &Configuracion::textBox1_TextChanged);
-			// 
-			// BinCrece
-			// 
-			this->BinCrece->Location = System::Drawing::Point(330, 194);
-			this->BinCrece->Name = L"BinCrece";
-			this->BinCrece->Size = System::Drawing::Size(47, 22);
-			this->BinCrece->TabIndex = 66;
-			// 
-			// BinCosecha
-			// 
-			this->BinCosecha->Location = System::Drawing::Point(330, 234);
-			this->BinCosecha->Name = L"BinCosecha";
-			this->BinCosecha->Size = System::Drawing::Size(47, 22);
-			this->BinCosecha->TabIndex = 67;
-			// 
-			// BinFfrutos
-			// 
-			this->BinFfrutos->Location = System::Drawing::Point(330, 268);
-			this->BinFfrutos->Name = L"BinFfrutos";
-			this->BinFfrutos->Size = System::Drawing::Size(47, 22);
-			this->BinFfrutos->TabIndex = 68;
-			// 
-			// SplayCosto
-			// 
-			this->SplayCosto->Location = System::Drawing::Point(330, 347);
-			this->SplayCosto->Name = L"SplayCosto";
-			this->SplayCosto->Size = System::Drawing::Size(47, 22);
-			this->SplayCosto->TabIndex = 69;
-			// 
-			// SplayCrece
-			// 
-			this->SplayCrece->Location = System::Drawing::Point(330, 383);
-			this->SplayCrece->Name = L"SplayCrece";
-			this->SplayCrece->Size = System::Drawing::Size(47, 22);
-			this->SplayCrece->TabIndex = 70;
-			// 
-			// SplayCosecha
-			// 
-			this->SplayCosecha->Location = System::Drawing::Point(330, 421);
-			this->SplayCosecha->Name = L"SplayCosecha";
-			this->SplayCosecha->Size = System::Drawing::Size(47, 22);
-			this->SplayCosecha->TabIndex = 71;
-			// 
-			// SplayFrutos
-			// 
-			this->SplayFrutos->Location = System::Drawing::Point(330, 462);
-			this->SplayFrutos->Name = L"SplayFrutos";
-			this->SplayFrutos->Size = System::Drawing::Size(47, 22);
-			this->SplayFrutos->TabIndex = 72;
-			// 
-			// HeapCosto
-			// 
-			this->HeapCosto->Location = System::Drawing::Point(774, 142);
-			this->HeapCosto->Name = L"HeapCosto";
-			this->HeapCosto->Size = System::Drawing::Size(50, 22);
-			this->HeapCosto->TabIndex = 73;
-			// 
-			// HeapCrece
-			// 
-			this->HeapCrece->Location = System::Drawing::Point(774, 183);
-			this->HeapCrece->Name = L"HeapCrece";
-			this->HeapCrece->Size = System::Drawing::Size(50, 22);
-			this->HeapCrece->TabIndex = 74;
-			// 
-			// HeapCosecha
-			// 
-			this->HeapCosecha->Location = System::Drawing::Point(774, 216);
-			this->HeapCosecha->Name = L"HeapCosecha";
-			this->HeapCosecha->Size = System::Drawing::Size(50, 22);
-			this->HeapCosecha->TabIndex = 75;
-			// 
-			// HeapFrutos
-			// 
-			this->HeapFrutos->Location = System::Drawing::Point(774, 251);
-			this->HeapFrutos->Name = L"HeapFrutos";
-			this->HeapFrutos->Size = System::Drawing::Size(50, 22);
-			this->HeapFrutos->TabIndex = 76;
-			// 
-			// AvlCosto
-			// 
-			this->AvlCosto->Location = System::Drawing::Point(774, 347);
-			this->AvlCosto->Name = L"AvlCosto";
-			this->AvlCosto->Size = System::Drawing::Size(50, 22);
-			this->AvlCosto->TabIndex = 77;
-			// 
-			// AvlCrece
-			// 
-			this->AvlCrece->Location = System::Drawing::Point(774, 383);
-			this->AvlCrece->Name = L"AvlCrece";
-			this->AvlCrece->Size = System::Drawing::Size(50, 22);
-			this->AvlCrece->TabIndex = 78;
-			// 
-			// AvlCosecha
-			// 
-			this->AvlCosecha->Location = System::Drawing::Point(774, 421);
-			this->AvlCosecha->Name = L"AvlCosecha";
-			this->AvlCosecha->Size = System::Drawing::Size(50, 22);
-			this->AvlCosecha->TabIndex = 79;
-			this->AvlCosecha->TextChanged += gcnew System::EventHandler(this, &Configuracion::textBox15_TextChanged);
-			// 
-			// AvlFrutos
-			// 
-			this->AvlFrutos->Location = System::Drawing::Point(774, 465);
-			this->AvlFrutos->Name = L"AvlFrutos";
-			this->AvlFrutos->Size = System::Drawing::Size(50, 22);
-			this->AvlFrutos->TabIndex = 80;
-			// 
-			// OvejaAparicion
-			// 
-			this->OvejaAparicion->Location = System::Drawing::Point(1187, 142);
-			this->OvejaAparicion->Name = L"OvejaAparicion";
-			this->OvejaAparicion->Size = System::Drawing::Size(50, 22);
-			this->OvejaAparicion->TabIndex = 81;
-			// 
-			// OvejaFrutos
-			// 
-			this->OvejaFrutos->Location = System::Drawing::Point(1187, 183);
-			this->OvejaFrutos->Name = L"OvejaFrutos";
-			this->OvejaFrutos->Size = System::Drawing::Size(50, 22);
-			this->OvejaFrutos->TabIndex = 81;
-			// 
-			// CuervoAparicion
-			// 
-			this->CuervoAparicion->Location = System::Drawing::Point(1187, 268);
-			this->CuervoAparicion->Name = L"CuervoAparicion";
-			this->CuervoAparicion->Size = System::Drawing::Size(50, 22);
-			this->CuervoAparicion->TabIndex = 82;
-			// 
-			// CuervoFrutos
-			// 
-			this->CuervoFrutos->Location = System::Drawing::Point(1187, 323);
-			this->CuervoFrutos->Name = L"CuervoFrutos";
-			this->CuervoFrutos->Size = System::Drawing::Size(50, 22);
-			this->CuervoFrutos->TabIndex = 83;
-			// 
-			// PlagaAparicion
-			// 
-			this->PlagaAparicion->Location = System::Drawing::Point(1187, 424);
-			this->PlagaAparicion->Name = L"PlagaAparicion";
-			this->PlagaAparicion->Size = System::Drawing::Size(50, 22);
-			this->PlagaAparicion->TabIndex = 84;
-			// 
-			// PlagaArbol
-			// 
-			this->PlagaArbol->Location = System::Drawing::Point(1187, 474);
-			this->PlagaArbol->Name = L"PlagaArbol";
-			this->PlagaArbol->Size = System::Drawing::Size(50, 22);
-			this->PlagaArbol->TabIndex = 85;
-			// 
-			// EspantaCosto
-			// 
-			this->EspantaCosto->Location = System::Drawing::Point(333, 560);
-			this->EspantaCosto->Name = L"EspantaCosto";
-			this->EspantaCosto->Size = System::Drawing::Size(44, 22);
-			this->EspantaCosto->TabIndex = 86;
-			// 
-			// EspantaMax
-			// 
-			this->EspantaMax->Location = System::Drawing::Point(333, 604);
-			this->EspantaMax->Name = L"EspantaMax";
-			this->EspantaMax->Size = System::Drawing::Size(47, 22);
-			this->EspantaMax->TabIndex = 87;
-			// 
-			// Espantapájaros
-			// 
-			this->Espantapájaros->AutoSize = true;
-			this->Espantapájaros->BackColor = System::Drawing::Color::Cyan;
-			this->Espantapájaros->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->Espantapájaros->Location = System::Drawing::Point(21, 535);
-			this->Espantapájaros->Name = L"Espantapájaros";
-			this->Espantapájaros->Size = System::Drawing::Size(125, 18);
-			this->Espantapájaros->TabIndex = 46;
-			this->Espantapájaros->Text = L"Espantapájaros";
-			// 
-			// B_GuardarConfiguracion
-			// 
-			this->B_GuardarConfiguracion->BackColor = System::Drawing::Color::LimeGreen;
-			this->B_GuardarConfiguracion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->B_GuardarConfiguracion->Location = System::Drawing::Point(686, 596);
-			this->B_GuardarConfiguracion->Name = L"B_GuardarConfiguracion";
-			this->B_GuardarConfiguracion->Size = System::Drawing::Size(399, 56);
-			this->B_GuardarConfiguracion->TabIndex = 88;
-			this->B_GuardarConfiguracion->Text = L"Guardar configuración";
-			this->B_GuardarConfiguracion->UseVisualStyleBackColor = false;
-			// 
-
-
-			// 
-			//----------------------------------------------------LABEL (NO SE USAN PARA NADA, IGNORAR)--------------------------------------------------------
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->BackColor = System::Drawing::SystemColors::ControlDarkDark;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(110, 68);
+			this->label1->Location = System::Drawing::Point(82, 55);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(425, 22);
+			this->label1->Size = System::Drawing::Size(358, 18);
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"Configuración de los árboles y espantapájaros";
 			// 
@@ -678,9 +504,10 @@ namespace Proyecto2_ED {
 			this->label2->BackColor = System::Drawing::Color::DarkOrange;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(512, 322);
+			this->label2->Location = System::Drawing::Point(384, 262);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(81, 18);
+			this->label2->Size = System::Drawing::Size(68, 15);
 			this->label2->TabIndex = 13;
 			this->label2->Text = L"Árbol AVL";
 			// 
@@ -690,9 +517,10 @@ namespace Proyecto2_ED {
 			this->label3->BackColor = System::Drawing::Color::DarkOrange;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(512, 133);
+			this->label3->Location = System::Drawing::Point(384, 108);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(96, 18);
+			this->label3->Size = System::Drawing::Size(80, 15);
 			this->label3->TabIndex = 14;
 			this->label3->Text = L"Árbol HEAP";
 			// 
@@ -702,9 +530,10 @@ namespace Proyecto2_ED {
 			this->label4->BackColor = System::Drawing::Color::DarkOrange;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(43, 323);
+			this->label4->Location = System::Drawing::Point(32, 262);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(103, 18);
+			this->label4->Size = System::Drawing::Size(86, 15);
 			this->label4->TabIndex = 15;
 			this->label4->Text = L"Árbol SPLAY";
 			// 
@@ -713,9 +542,10 @@ namespace Proyecto2_ED {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(21, 160);
+			this->label5->Location = System::Drawing::Point(16, 130);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(51, 16);
+			this->label5->Size = System::Drawing::Size(43, 13);
 			this->label5->TabIndex = 29;
 			this->label5->Text = L"Costo:";
 			// 
@@ -724,9 +554,10 @@ namespace Proyecto2_ED {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(21, 197);
+			this->label6->Location = System::Drawing::Point(16, 160);
+			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(169, 16);
+			this->label6->Size = System::Drawing::Size(138, 13);
 			this->label6->TabIndex = 30;
 			this->label6->Text = L"Crece cada(segundos):";
 			// 
@@ -736,9 +567,10 @@ namespace Proyecto2_ED {
 			this->label7->BackColor = System::Drawing::SystemColors::ControlDarkDark;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(703, 68);
+			this->label7->Location = System::Drawing::Point(527, 55);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(394, 22);
+			this->label7->Size = System::Drawing::Size(332, 18);
 			this->label7->TabIndex = 11;
 			this->label7->Text = L"Configuración de las diversas afectaciones";
 			// 
@@ -748,9 +580,10 @@ namespace Proyecto2_ED {
 			this->label8->BackColor = System::Drawing::Color::DarkOrange;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(66, 133);
+			this->label8->Location = System::Drawing::Point(50, 108);
+			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(103, 18);
+			this->label8->Size = System::Drawing::Size(89, 15);
 			this->label8->TabIndex = 12;
 			this->label8->Text = L"Árbol binario";
 			// 
@@ -759,9 +592,10 @@ namespace Proyecto2_ED {
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(21, 237);
+			this->label9->Location = System::Drawing::Point(16, 193);
+			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(193, 16);
+			this->label9->Size = System::Drawing::Size(158, 13);
 			this->label9->TabIndex = 31;
 			this->label9->Text = L"Cosecha cada (segundos):";
 			// 
@@ -770,9 +604,10 @@ namespace Proyecto2_ED {
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(21, 274);
+			this->label10->Location = System::Drawing::Point(16, 223);
+			this->label10->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(98, 16);
+			this->label10->Size = System::Drawing::Size(83, 13);
 			this->label10->TabIndex = 32;
 			this->label10->Text = L"Precio frutos:";
 			// 
@@ -781,9 +616,10 @@ namespace Proyecto2_ED {
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(21, 363);
+			this->label11->Location = System::Drawing::Point(16, 295);
+			this->label11->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(51, 16);
+			this->label11->Size = System::Drawing::Size(43, 13);
 			this->label11->TabIndex = 33;
 			this->label11->Text = L"Costo:";
 			// 
@@ -792,9 +628,10 @@ namespace Proyecto2_ED {
 			this->label12->AutoSize = true;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(21, 398);
+			this->label12->Location = System::Drawing::Point(16, 323);
+			this->label12->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(169, 16);
+			this->label12->Size = System::Drawing::Size(138, 13);
 			this->label12->TabIndex = 34;
 			this->label12->Text = L"Crece cada(segundos):";
 			// 
@@ -803,9 +640,10 @@ namespace Proyecto2_ED {
 			this->label13->AutoSize = true;
 			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label13->Location = System::Drawing::Point(21, 438);
+			this->label13->Location = System::Drawing::Point(16, 356);
+			this->label13->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(193, 16);
+			this->label13->Size = System::Drawing::Size(158, 13);
 			this->label13->TabIndex = 35;
 			this->label13->Text = L"Cosecha cada (segundos):";
 			// 
@@ -814,9 +652,10 @@ namespace Proyecto2_ED {
 			this->label14->AutoSize = true;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(21, 480);
+			this->label14->Location = System::Drawing::Point(16, 390);
+			this->label14->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(98, 16);
+			this->label14->Size = System::Drawing::Size(83, 13);
 			this->label14->TabIndex = 36;
 			this->label14->Text = L"Precio frutos:";
 			// 
@@ -825,9 +664,10 @@ namespace Proyecto2_ED {
 			this->label15->AutoSize = true;
 			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label15->Location = System::Drawing::Point(439, 363);
+			this->label15->Location = System::Drawing::Point(329, 295);
+			this->label15->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(51, 16);
+			this->label15->Size = System::Drawing::Size(43, 13);
 			this->label15->TabIndex = 37;
 			this->label15->Text = L"Costo:";
 			// 
@@ -836,9 +676,10 @@ namespace Proyecto2_ED {
 			this->label16->AutoSize = true;
 			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(439, 398);
+			this->label16->Location = System::Drawing::Point(329, 323);
+			this->label16->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(169, 16);
+			this->label16->Size = System::Drawing::Size(138, 13);
 			this->label16->TabIndex = 38;
 			this->label16->Text = L"Crece cada(segundos):";
 			// 
@@ -847,9 +688,10 @@ namespace Proyecto2_ED {
 			this->label17->AutoSize = true;
 			this->label17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label17->Location = System::Drawing::Point(439, 197);
+			this->label17->Location = System::Drawing::Point(329, 160);
+			this->label17->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(169, 16);
+			this->label17->Size = System::Drawing::Size(138, 13);
 			this->label17->TabIndex = 39;
 			this->label17->Text = L"Crece cada(segundos):";
 			// 
@@ -858,9 +700,10 @@ namespace Proyecto2_ED {
 			this->label18->AutoSize = true;
 			this->label18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label18->Location = System::Drawing::Point(439, 160);
+			this->label18->Location = System::Drawing::Point(329, 130);
+			this->label18->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(51, 16);
+			this->label18->Size = System::Drawing::Size(43, 13);
 			this->label18->TabIndex = 40;
 			this->label18->Text = L"Costo:";
 			// 
@@ -869,9 +712,10 @@ namespace Proyecto2_ED {
 			this->label19->AutoSize = true;
 			this->label19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label19->Location = System::Drawing::Point(439, 438);
+			this->label19->Location = System::Drawing::Point(329, 356);
+			this->label19->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(193, 16);
+			this->label19->Size = System::Drawing::Size(158, 13);
 			this->label19->TabIndex = 41;
 			this->label19->Text = L"Cosecha cada (segundos):";
 			// 
@@ -880,9 +724,10 @@ namespace Proyecto2_ED {
 			this->label20->AutoSize = true;
 			this->label20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label20->Location = System::Drawing::Point(439, 237);
+			this->label20->Location = System::Drawing::Point(329, 193);
+			this->label20->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(193, 16);
+			this->label20->Size = System::Drawing::Size(158, 13);
 			this->label20->TabIndex = 42;
 			this->label20->Text = L"Cosecha cada (segundos):";
 			// 
@@ -891,9 +736,10 @@ namespace Proyecto2_ED {
 			this->label21->AutoSize = true;
 			this->label21->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label21->Location = System::Drawing::Point(439, 274);
+			this->label21->Location = System::Drawing::Point(329, 223);
+			this->label21->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label21->Name = L"label21";
-			this->label21->Size = System::Drawing::Size(98, 16);
+			this->label21->Size = System::Drawing::Size(83, 13);
 			this->label21->TabIndex = 43;
 			this->label21->Text = L"Precio frutos:";
 			// 
@@ -902,9 +748,10 @@ namespace Proyecto2_ED {
 			this->label22->AutoSize = true;
 			this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label22->Location = System::Drawing::Point(439, 480);
+			this->label22->Location = System::Drawing::Point(329, 390);
+			this->label22->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label22->Name = L"label22";
-			this->label22->Size = System::Drawing::Size(98, 16);
+			this->label22->Size = System::Drawing::Size(83, 13);
 			this->label22->TabIndex = 44;
 			this->label22->Text = L"Precio frutos:";
 			// 
@@ -914,9 +761,10 @@ namespace Proyecto2_ED {
 			this->label23->BackColor = System::Drawing::SystemColors::HotTrack;
 			this->label23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label23->Location = System::Drawing::Point(937, 131);
+			this->label23->Location = System::Drawing::Point(703, 106);
+			this->label23->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label23->Name = L"label23";
-			this->label23->Size = System::Drawing::Size(67, 20);
+			this->label23->Size = System::Drawing::Size(58, 17);
 			this->label23->TabIndex = 47;
 			this->label23->Text = L"Ovejas";
 			// 
@@ -926,9 +774,10 @@ namespace Proyecto2_ED {
 			this->label24->BackColor = System::Drawing::SystemColors::HotTrack;
 			this->label24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label24->Location = System::Drawing::Point(949, 383);
+			this->label24->Location = System::Drawing::Point(712, 311);
+			this->label24->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label24->Name = L"label24";
-			this->label24->Size = System::Drawing::Size(66, 20);
+			this->label24->Size = System::Drawing::Size(57, 17);
 			this->label24->TabIndex = 48;
 			this->label24->Text = L"Plagas";
 			// 
@@ -938,9 +787,10 @@ namespace Proyecto2_ED {
 			this->label25->BackColor = System::Drawing::SystemColors::HotTrack;
 			this->label25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label25->Location = System::Drawing::Point(937, 249);
+			this->label25->Location = System::Drawing::Point(703, 202);
+			this->label25->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label25->Name = L"label25";
-			this->label25->Size = System::Drawing::Size(78, 20);
+			this->label25->Size = System::Drawing::Size(67, 17);
 			this->label25->TabIndex = 49;
 			this->label25->Text = L"Cuervos";
 			// 
@@ -949,9 +799,10 @@ namespace Proyecto2_ED {
 			this->label26->AutoSize = true;
 			this->label26->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label26->Location = System::Drawing::Point(838, 160);
+			this->label26->Location = System::Drawing::Point(628, 130);
+			this->label26->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label26->Name = L"label26";
-			this->label26->Size = System::Drawing::Size(192, 16);
+			this->label26->Size = System::Drawing::Size(155, 13);
 			this->label26->TabIndex = 50;
 			this->label26->Text = L"Probabilidad de aparición:";
 			// 
@@ -960,9 +811,10 @@ namespace Proyecto2_ED {
 			this->label27->AutoSize = true;
 			this->label27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label27->Location = System::Drawing::Point(838, 424);
+			this->label27->Location = System::Drawing::Point(628, 344);
+			this->label27->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label27->Name = L"label27";
-			this->label27->Size = System::Drawing::Size(192, 16);
+			this->label27->Size = System::Drawing::Size(155, 13);
 			this->label27->TabIndex = 51;
 			this->label27->Text = L"Probabilidad de aparición:";
 			// 
@@ -971,9 +823,10 @@ namespace Proyecto2_ED {
 			this->label28->AutoSize = true;
 			this->label28->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label28->Location = System::Drawing::Point(838, 304);
+			this->label28->Location = System::Drawing::Point(628, 247);
+			this->label28->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label28->Name = L"label28";
-			this->label28->Size = System::Drawing::Size(192, 16);
+			this->label28->Size = System::Drawing::Size(155, 13);
 			this->label28->TabIndex = 52;
 			this->label28->Text = L"Probabilidad de aparición:";
 			// 
@@ -982,9 +835,10 @@ namespace Proyecto2_ED {
 			this->label29->AutoSize = true;
 			this->label29->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label29->Location = System::Drawing::Point(838, 197);
+			this->label29->Location = System::Drawing::Point(628, 160);
+			this->label29->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label29->Name = L"label29";
-			this->label29->Size = System::Drawing::Size(210, 16);
+			this->label29->Size = System::Drawing::Size(172, 13);
 			this->label29->TabIndex = 53;
 			this->label29->Text = L"Come frutos cada(segundos):";
 			// 
@@ -993,9 +847,10 @@ namespace Proyecto2_ED {
 			this->label30->AutoSize = true;
 			this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label30->Location = System::Drawing::Point(838, 338);
+			this->label30->Location = System::Drawing::Point(628, 275);
+			this->label30->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label30->Name = L"label30";
-			this->label30->Size = System::Drawing::Size(210, 16);
+			this->label30->Size = System::Drawing::Size(172, 13);
 			this->label30->TabIndex = 54;
 			this->label30->Text = L"Come frutos cada(segundos):";
 			// 
@@ -1004,9 +859,10 @@ namespace Proyecto2_ED {
 			this->label31->AutoSize = true;
 			this->label31->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label31->Location = System::Drawing::Point(838, 468);
+			this->label31->Location = System::Drawing::Point(628, 380);
+			this->label31->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label31->Name = L"label31";
-			this->label31->Size = System::Drawing::Size(247, 16);
+			this->label31->Size = System::Drawing::Size(201, 13);
 			this->label31->TabIndex = 55;
 			this->label31->Text = L"Destruye el árbol cada(segundos):";
 			// 
@@ -1015,9 +871,10 @@ namespace Proyecto2_ED {
 			this->label32->AutoSize = true;
 			this->label32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label32->Location = System::Drawing::Point(21, 586);
+			this->label32->Location = System::Drawing::Point(16, 476);
+			this->label32->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label32->Name = L"label32";
-			this->label32->Size = System::Drawing::Size(51, 16);
+			this->label32->Size = System::Drawing::Size(43, 13);
 			this->label32->TabIndex = 62;
 			this->label32->Text = L"Costo:";
 			// 
@@ -1026,18 +883,241 @@ namespace Proyecto2_ED {
 			this->label33->AutoSize = true;
 			this->label33->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label33->Location = System::Drawing::Point(21, 622);
+			this->label33->Location = System::Drawing::Point(16, 505);
+			this->label33->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label33->Name = L"label33";
-			this->label33->Size = System::Drawing::Size(146, 16);
+			this->label33->Size = System::Drawing::Size(121, 13);
 			this->label33->TabIndex = 63;
 			this->label33->Text = L"Máximos en terreno:";
-			//---------------------------------------------------------------------------------------------------------------------------------------------------
-			// -----------------------------------------------------------------Se agregan elementos a Configuracion---------------------------------------------
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			// BinCosto
+			// 
+			this->BinCosto->Location = System::Drawing::Point(248, 125);
+			this->BinCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->BinCosto->Name = L"BinCosto";
+			this->BinCosto->ReadOnly = true;
+			this->BinCosto->Size = System::Drawing::Size(36, 20);
+			this->BinCosto->TabIndex = 4;
+			this->BinCosto->TextChanged += gcnew System::EventHandler(this, &Configuracion::textBox1_TextChanged);
+			// 
+			// BinCrece
+			// 
+			this->BinCrece->Location = System::Drawing::Point(248, 158);
+			this->BinCrece->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->BinCrece->Name = L"BinCrece";
+			this->BinCrece->Size = System::Drawing::Size(36, 20);
+			this->BinCrece->TabIndex = 66;
+			// 
+			// BinCosecha
+			// 
+			this->BinCosecha->Location = System::Drawing::Point(248, 190);
+			this->BinCosecha->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->BinCosecha->Name = L"BinCosecha";
+			this->BinCosecha->Size = System::Drawing::Size(36, 20);
+			this->BinCosecha->TabIndex = 67;
+			// 
+			// BinFfrutos
+			// 
+			this->BinFfrutos->Location = System::Drawing::Point(248, 218);
+			this->BinFfrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->BinFfrutos->Name = L"BinFfrutos";
+			this->BinFfrutos->Size = System::Drawing::Size(36, 20);
+			this->BinFfrutos->TabIndex = 68;
+			// 
+			// SplayCosto
+			// 
+			this->SplayCosto->Location = System::Drawing::Point(248, 282);
+			this->SplayCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->SplayCosto->Name = L"SplayCosto";
+			this->SplayCosto->Size = System::Drawing::Size(36, 20);
+			this->SplayCosto->TabIndex = 69;
+			// 
+			// SplayCrece
+			// 
+			this->SplayCrece->Location = System::Drawing::Point(248, 311);
+			this->SplayCrece->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->SplayCrece->Name = L"SplayCrece";
+			this->SplayCrece->Size = System::Drawing::Size(36, 20);
+			this->SplayCrece->TabIndex = 70;
+			// 
+			// SplayCosecha
+			// 
+			this->SplayCosecha->Location = System::Drawing::Point(248, 342);
+			this->SplayCosecha->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->SplayCosecha->Name = L"SplayCosecha";
+			this->SplayCosecha->Size = System::Drawing::Size(36, 20);
+			this->SplayCosecha->TabIndex = 71;
+			// 
+			// SplayFrutos
+			// 
+			this->SplayFrutos->Location = System::Drawing::Point(248, 375);
+			this->SplayFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->SplayFrutos->Name = L"SplayFrutos";
+			this->SplayFrutos->Size = System::Drawing::Size(36, 20);
+			this->SplayFrutos->TabIndex = 72;
+			// 
+			// HeapCosto
+			// 
+			this->HeapCosto->Location = System::Drawing::Point(580, 115);
+			this->HeapCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->HeapCosto->Name = L"HeapCosto";
+			this->HeapCosto->Size = System::Drawing::Size(38, 20);
+			this->HeapCosto->TabIndex = 73;
+			// 
+			// HeapCrece
+			// 
+			this->HeapCrece->Location = System::Drawing::Point(580, 149);
+			this->HeapCrece->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->HeapCrece->Name = L"HeapCrece";
+			this->HeapCrece->Size = System::Drawing::Size(38, 20);
+			this->HeapCrece->TabIndex = 74;
+			// 
+			// HeapCosecha
+			// 
+			this->HeapCosecha->Location = System::Drawing::Point(580, 176);
+			this->HeapCosecha->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->HeapCosecha->Name = L"HeapCosecha";
+			this->HeapCosecha->Size = System::Drawing::Size(38, 20);
+			this->HeapCosecha->TabIndex = 75;
+			// 
+			// HeapFrutos
+			// 
+			this->HeapFrutos->Location = System::Drawing::Point(580, 204);
+			this->HeapFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->HeapFrutos->Name = L"HeapFrutos";
+			this->HeapFrutos->Size = System::Drawing::Size(38, 20);
+			this->HeapFrutos->TabIndex = 76;
+			// 
+			// AvlCosto
+			// 
+			this->AvlCosto->Location = System::Drawing::Point(580, 282);
+			this->AvlCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->AvlCosto->Name = L"AvlCosto";
+			this->AvlCosto->Size = System::Drawing::Size(38, 20);
+			this->AvlCosto->TabIndex = 77;
+			// 
+			// AvlCrece
+			// 
+			this->AvlCrece->Location = System::Drawing::Point(580, 311);
+			this->AvlCrece->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->AvlCrece->Name = L"AvlCrece";
+			this->AvlCrece->Size = System::Drawing::Size(38, 20);
+			this->AvlCrece->TabIndex = 78;
+			// 
+			// AvlCosecha
+			// 
+			this->AvlCosecha->Location = System::Drawing::Point(580, 342);
+			this->AvlCosecha->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->AvlCosecha->Name = L"AvlCosecha";
+			this->AvlCosecha->Size = System::Drawing::Size(38, 20);
+			this->AvlCosecha->TabIndex = 79;
+			this->AvlCosecha->TextChanged += gcnew System::EventHandler(this, &Configuracion::textBox15_TextChanged);
+			// 
+			// AvlFrutos
+			// 
+			this->AvlFrutos->Location = System::Drawing::Point(580, 378);
+			this->AvlFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->AvlFrutos->Name = L"AvlFrutos";
+			this->AvlFrutos->Size = System::Drawing::Size(38, 20);
+			this->AvlFrutos->TabIndex = 80;
+			// 
+			// OvejaAparicion
+			// 
+			this->OvejaAparicion->Location = System::Drawing::Point(890, 115);
+			this->OvejaAparicion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->OvejaAparicion->Name = L"OvejaAparicion";
+			this->OvejaAparicion->Size = System::Drawing::Size(38, 20);
+			this->OvejaAparicion->TabIndex = 81;
+			// 
+			// OvejaFrutos
+			// 
+			this->OvejaFrutos->Location = System::Drawing::Point(890, 149);
+			this->OvejaFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->OvejaFrutos->Name = L"OvejaFrutos";
+			this->OvejaFrutos->Size = System::Drawing::Size(38, 20);
+			this->OvejaFrutos->TabIndex = 81;
+			// 
+			// CuervoAparicion
+			// 
+			this->CuervoAparicion->Location = System::Drawing::Point(890, 218);
+			this->CuervoAparicion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->CuervoAparicion->Name = L"CuervoAparicion";
+			this->CuervoAparicion->Size = System::Drawing::Size(38, 20);
+			this->CuervoAparicion->TabIndex = 82;
+			// 
+			// CuervoFrutos
+			// 
+			this->CuervoFrutos->Location = System::Drawing::Point(890, 262);
+			this->CuervoFrutos->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->CuervoFrutos->Name = L"CuervoFrutos";
+			this->CuervoFrutos->Size = System::Drawing::Size(38, 20);
+			this->CuervoFrutos->TabIndex = 83;
+			// 
+			// PlagaAparicion
+			// 
+			this->PlagaAparicion->Location = System::Drawing::Point(890, 344);
+			this->PlagaAparicion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->PlagaAparicion->Name = L"PlagaAparicion";
+			this->PlagaAparicion->Size = System::Drawing::Size(38, 20);
+			this->PlagaAparicion->TabIndex = 84;
+			// 
+			// PlagaArbol
+			// 
+			this->PlagaArbol->Location = System::Drawing::Point(890, 385);
+			this->PlagaArbol->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->PlagaArbol->Name = L"PlagaArbol";
+			this->PlagaArbol->Size = System::Drawing::Size(38, 20);
+			this->PlagaArbol->TabIndex = 85;
+			// 
+			// EspantaCosto
+			// 
+			this->EspantaCosto->Location = System::Drawing::Point(250, 455);
+			this->EspantaCosto->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->EspantaCosto->Name = L"EspantaCosto";
+			this->EspantaCosto->Size = System::Drawing::Size(34, 20);
+			this->EspantaCosto->TabIndex = 86;
+			// 
+			// EspantaMax
+			// 
+			this->EspantaMax->Location = System::Drawing::Point(250, 491);
+			this->EspantaMax->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->EspantaMax->Name = L"EspantaMax";
+			this->EspantaMax->Size = System::Drawing::Size(36, 20);
+			this->EspantaMax->TabIndex = 87;
+			// 
+			// Espantapájaros
+			// 
+			this->Espantapájaros->AutoSize = true;
+			this->Espantapájaros->BackColor = System::Drawing::Color::Cyan;
+			this->Espantapájaros->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Espantapájaros->Location = System::Drawing::Point(16, 435);
+			this->Espantapájaros->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->Espantapájaros->Name = L"Espantapájaros";
+			this->Espantapájaros->Size = System::Drawing::Size(107, 15);
+			this->Espantapájaros->TabIndex = 46;
+			this->Espantapájaros->Text = L"Espantapájaros";
+			// 
+			// B_GuardarConfiguracion
+			// 
+			this->B_GuardarConfiguracion->BackColor = System::Drawing::Color::LimeGreen;
+			this->B_GuardarConfiguracion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->B_GuardarConfiguracion->Location = System::Drawing::Point(514, 484);
+			this->B_GuardarConfiguracion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->B_GuardarConfiguracion->Name = L"B_GuardarConfiguracion";
+			this->B_GuardarConfiguracion->Size = System::Drawing::Size(299, 46);
+			this->B_GuardarConfiguracion->TabIndex = 88;
+			this->B_GuardarConfiguracion->Text = L"Guardar configuración";
+			this->B_GuardarConfiguracion->UseVisualStyleBackColor = false;
+			this->B_GuardarConfiguracion->Click += gcnew System::EventHandler(this, &Configuracion::B_GuardarConfiguracion_Click);
+			// 
+			// Configuracion
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->ClientSize = System::Drawing::Size(1302, 744);
+			this->ClientSize = System::Drawing::Size(976, 604);
 			this->Controls->Add(this->B_GuardarConfiguracion);
 			this->Controls->Add(this->EspantaMax);
 			this->Controls->Add(this->EspantaCosto);
@@ -1121,6 +1201,7 @@ namespace Proyecto2_ED {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->BinCosto);
 			this->Controls->Add(this->T_BinCosto);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"Configuracion";
 			this->Text = L"Configuracion";
 			this->Load += gcnew System::EventHandler(this, &Configuracion::Configuracion_Load);
@@ -1308,5 +1389,7 @@ namespace Proyecto2_ED {
 
 
 
-	};
+	private: System::Void B_GuardarConfiguracion_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 	}
