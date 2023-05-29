@@ -11,11 +11,17 @@ struct NodeSplay {
 
 struct SplayTree {
     NodeSplay* root;
-    std::string tipo = "ÁRBOL SPLAY";
+    int x; int y;
     bool listo = false;
 
+    SplayTree(int _x, int _y) {
+        root = NULL;
+        x = _x;
+        y = _y;
+    }
+
     SplayTree() {
-        root = nullptr;
+        root = NULL;
     }
 
     void insert(float value) {

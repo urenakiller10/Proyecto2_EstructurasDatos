@@ -23,6 +23,8 @@
 #include <vcclr.h>
 #include "ListaSimpleBin.h"
 #include "ListaSimpleHeap.h"
+#include "ListaSimpleSplay.h"
+#include "Splay.h"
 
 // Resto de tus inclusiones de archivos de encabezado
 
@@ -61,7 +63,7 @@ namespace Proyecto2_ED {
         ListaSimpleHeap* listaHeap = new ListaSimpleHeap();
 
         List<Thread^>^ listaHilosAvl = gcnew List<Thread^>();
-        Dictionary<Thread^, System::IntPtr>^ datosHilosAvl;
+        ListaSimpleSplay* listaSplay = new ListaSimpleSplay();
 
         List<Thread^>^ listaHilosSplay = gcnew List<Thread^>();
         Dictionary<Thread^, System::IntPtr>^ datosHilosSplay;
@@ -539,6 +541,24 @@ namespace Proyecto2_ED {
                     tmpH = tmpH->siguiente;
                 }
 
+                nodoListaSplay* tmpSt = listaSplay->primero;
+                while (tmpSt != NULL) {
+                    SplayTree* splayT = tmpSt->data;
+                    if (splayT->x == x && splayT->y == y) {
+                        std::string cantidadFrutosSplay = std::to_string(splayT->countNodes());
+                        System::String^ canFrutosSt = gcnew System::String(cantidadFrutosSplay.c_str());
+                        dataGridViewRow->Cells[2]->Value = canFrutosSt;
+
+                        std::string valorFrutosSt = std::to_string(splayT->getSum());
+                        System::String^ valFrutosSt = gcnew System::String(valorFrutosSt.c_str());
+                        dataGridViewRow->Cells[3]->Value = valFrutosSt;
+
+                        encontrado = true; 
+                        break;
+                    }
+                    tmpSt = tmpSt->siguiente;
+                }
+
                 // Si no se encontró el arbol correspondiente, se puede dejar las celdas vacías o asignar un valor predeterminado
                 if (!encontrado) {
                     dataGridViewRow->Cells[2]->Value = "N/A";
@@ -607,6 +627,20 @@ namespace Proyecto2_ED {
             }
         }
 
+        void hiloSplay() {
+            SplayTree* st = new SplayTree(labelGranjero->Top, labelGranjero->Left);
+            listaSplay->agregarElemento(st);
+            if (st->listo == false) {
+                System::Threading::Thread::Sleep(config->getCreceSplay() * 1000);
+                st->listo = true;
+            }
+            while (running) {
+                srand(time(NULL));
+                float fruto = config->getMinValue() + static_cast<float>(rand()) * static_cast<float>(config->getPrecioFrutosSplay() - config->getMinValue()) / RAND_MAX;
+                System::Threading::Thread::Sleep(config->getCosechaBinario() * 1000);
+                st->insert(fruto);
+            }
+        }
 
 
 
@@ -1318,7 +1352,10 @@ private: System::Void B_PlantarSplay_Click(System::Object^ sender, System::Event
         // Agregar el nuevo label al formulario
         this->Controls->Add(labelSplay);
         labelSplay->BringToFront();
-        //ActualizarInformacionNuevo("Arbol Splay", granjeroX, granjeroX);
+        Thread^ nuevoHiloSplay = gcnew Thread(gcnew System::Threading::ThreadStart(this, &AreaJuego::hiloSplay));
+        nuevoHiloSplay->Start();
+        listaHilosSplay->Add(nuevoHiloSplay);
+        ActualizarInformacionNuevo("Splay", granjeroX, granjeroY);
     }
 
 
@@ -1395,6 +1432,15 @@ private: System::Void B_Salir_Click(System::Object^ sender, System::EventArgs^ e
             arbolH->eliminarTodos();
             tmpH = tmpH->siguiente;
         }
+        nodoListaSplay* tmpSt = listaSplay->primero;
+        while (tmpSt != NULL) {
+            SplayTree* st = tmpSt->data;
+            suma += st->getSum();
+            st->root=NULL;
+            tmpSt = tmpSt->siguiente;
+        }
+
+
         dinero += suma;
         actualizarInfo();
     }
