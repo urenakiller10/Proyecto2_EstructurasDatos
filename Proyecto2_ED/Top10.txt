@@ -1,5 +1,4 @@
-Juan                      5000
-Riquelme                  4000
-Loaiza                    3000
-kk                        5000
-Gera                      2500
+Andrey                    9000
+Pepe                      3001
+Lola                      8201
+Juancho                86485.6

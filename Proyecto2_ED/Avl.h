@@ -1,119 +1,117 @@
 #pragma once
+#include "Confi.h"
 
 
 #include <iostream>
 
+class NodoA {
+public:
+    float datoA;
+    NodoA* izquierdo;
+    NodoA* derecho;
 
-struct NodeAvl {
-    float value;
-    NodeAvl* left;
-    NodeAvl* right;
+    NodoA(float _dato) {
+        datoA = _dato;
+        izquierdo = derecho = NULL;
+    }
 };
 
-struct Avl {
-    NodeAvl* root;
-    std::string tipo = "AVL";
+class ArbolAvl {
+public:
+    int x;
+    int y;
     bool listo = false;
-
-    Avl() {
-        root = NULL;;
-
-    }
-
-    void insert(float value) {
-        insertNode(root, value);
-    }
-
-    int countNodes() {
-        return countNodesRecursive(root);
-    }
-
-    float getSum() {
-        return getSumRecursive(root);
-    }
-
-    void deleteLeftmostNode() {
-        deleteLeftmostNodeRecursive(root);
-    }
-
-    void deleteNodes(int n) {
-
-    }
-
+    NodoA* raiz;
 private:
-    NodeAvl* createNode(float value) {
-        NodeAvl* newNode = new NodeAvl;
-        newNode->value = value;
-        newNode->left = nullptr;
-        newNode->right = nullptr;
-        return newNode;
+
+
+    NodoA* insertarNodoRecursivo(NodoA* nodo, float datoA) {
+        if (nodo == NULL) {
+            return new NodoA (datoA);
+        }
+
+        if (datoA <= nodo->datoA)
+            nodo->izquierdo = insertarNodoRecursivo(nodo->izquierdo, datoA);
+        else
+            nodo->derecho = insertarNodoRecursivo(nodo->derecho, datoA);
+
+        return nodo;
     }
 
-    void insertNode(NodeAvl*& root, float value) {
-        if (root == nullptr) {
-            root = createNode(value);
+    void eliminarMayorNodoRecursivo(NodoA* nodo) {
+        if (nodo == NULL)
             return;
+
+        NodoA* nodoActual = nodo;
+        NodoA* padre = NULL;
+
+        while (nodoActual->derecho != NULL) {
+            padre = nodoActual;
+            nodoActual = nodoActual->derecho;
         }
 
-        if (value < root->value) {
-            insertNode(root->left, value);
-        }
-        else if (value > root->value) {
-            insertNode(root->right, value);
-        }
+        if (padre != NULL)
+            padre->derecho = nodoActual->izquierdo;
+        else
+            raiz = nodoActual->izquierdo;
+
+        delete nodoActual;
     }
 
-    int countNodesRecursive(NodeAvl* root) {
-        if (root == nullptr) {
-            return 0;
-        }
-
-        return 1 + countNodesRecursive(root->left) + countNodesRecursive(root->right);
-    }
-
-    float getSumRecursive(NodeAvl* root) {
-        if (root == nullptr) {
-            return 0.0f;
-        }
-
-        return root->value + getSumRecursive(root->left) + getSumRecursive(root->right);
-    }
-
-    //Se carga el menor, para no ser tan mala nota :D
-    void deleteLeftmostNodeRecursive(NodeAvl*& root) {
-        if (root == nullptr) {
+    void calcularSumaValoresRecursivo(NodoA* nodo, float& sumaValores) {
+        if (nodo == NULL)
             return;
-        }
 
-        if (root->left == nullptr) {
-            NodeAvl* temp = root;
-            root = root->right;
-            delete temp;
-        }
-        else {
-            deleteLeftmostNodeRecursive(root->left);
-        }
+        sumaValores += nodo->datoA;
+        calcularSumaValoresRecursivo(nodo->izquierdo, sumaValores);
+        calcularSumaValoresRecursivo(nodo->derecho, sumaValores);
     }
 
-    void deleteMultipleNodes(int n) {
-        for (int i = 0; i < n; i++) {
-            deleteLeftmostNode();
-        }
+    void calcularTotalNodosRecursivo(NodoA* nodo, int& totalNodos) {
+        if (nodo == nullptr)
+            return;
+
+        totalNodos++;
+        calcularTotalNodosRecursivo(nodo->izquierdo, totalNodos);
+        calcularTotalNodosRecursivo(nodo->derecho, totalNodos);
+    }
+
+    void liberarMemoriaRecursivo(NodoA* nodo) {
+        if (nodo == nullptr)
+            return;
+
+        liberarMemoriaRecursivo(nodo->izquierdo);
+        liberarMemoriaRecursivo(nodo->derecho);
+        delete nodo;
     }
 
 public:
-    ~Avl() {
-        deleteTree(root);
+    ArbolAvl(int _x, int _y) {
+        raiz = NULL;
+        x = _x, y = _y;
     }
 
-private:
-    void deleteTree(NodeAvl* root) {
-        if (root == nullptr) {
-            return;
-        }
+    void insertar(float dato) {
+        raiz = insertarNodoRecursivo(raiz, dato);
+    }
 
-        deleteTree(root->left);
-        deleteTree(root->right);
-        delete root;
+    void eliminarMayorNodo() {
+        eliminarMayorNodoRecursivo(raiz);
+    }
+
+    float calcularSumaValores() {
+        float sumaValores = 0;
+        calcularSumaValoresRecursivo(raiz, sumaValores);
+        return sumaValores;
+    }
+
+    int calcularTotalNodos() {
+        int totalNodos = 0;
+        calcularTotalNodosRecursivo(raiz, totalNodos);
+        return totalNodos;
+    }
+
+    ~ArbolAvl() {
+        liberarMemoriaRecursivo(raiz);
     }
 };

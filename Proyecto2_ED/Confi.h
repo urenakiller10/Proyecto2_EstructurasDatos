@@ -37,10 +37,10 @@ private:
 
 
 public:
-    Confi() : precioBinario(300),creceBinario(60),cosechaBinario(15), precioFrutosBinario(10.0f)
+    Confi() : precioBinario(799),creceBinario(60),cosechaBinario(15), precioFrutosBinario(10.0f)
         ,precioSplay(799),creceSplay(60),cosechaSplay(15), precioFrutosSplay(10.0f)
-        , precioHeap (999999), creceHeap(60),cosechaHeap(15), precioFrutosHeap(10.0f)
-        ,precioAvl(50),creceAvl(60),cosechaAvl(15),precioFrutosAvl(10.0f), precioEspanta(5000)
+        , precioHeap (999), creceHeap(60),cosechaHeap(15), precioFrutosHeap(10.0f)
+        ,precioAvl(999),creceAvl(60),cosechaAvl(15),precioFrutosAvl(10.0f), precioEspanta(5000)
         ,ovejaAparicion(90), ovejaComeFruto(60),cuervoAparicion(90),cuervoComeFruto(60),plagaAparicion(90),plagaComeArbol(60) {}
                 
     float getMinValue() {

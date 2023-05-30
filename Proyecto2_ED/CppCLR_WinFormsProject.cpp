@@ -2,14 +2,9 @@
 
 using namespace System;
 
-// int main(array<System::String ^> ^args)
-// {
-//    return 0;
-// }
-
 #include "Form1.h"
 
-float dinero = 9999;
+float dinero = 90000;
 
 using namespace System::Windows::Forms;
 

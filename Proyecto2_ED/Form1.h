@@ -209,7 +209,10 @@ namespace CppCLRWinFormsProject {
 	}
 
 
-	
+		   // Función estática para comparar los pares (nombre, dinero) en función de la cantidad de dinero (orden descendente)
+		   static bool Comparador(const std::pair<std::string, int>& a, const std::pair<std::string, int>& b) {
+			   return a.second > b.second;
+		   }
 
 
 	private: System::Void B_Top_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -232,9 +235,11 @@ namespace CppCLRWinFormsProject {
 		listView->Columns->Add(" Nombre", 100);
 		listView->Columns->Add(" Dinero", 100);
 
-		// Leer el contenido del archivo Top10.txt
+// Leer el contenido del archivo Top10.txt
 		std::ifstream archivo("Top10.txt");
 		if (archivo.is_open()) {
+			std::vector<std::pair<std::string, int>> datos; // Vector para almacenar los datos
+
 			std::string linea;
 			while (std::getline(archivo, linea)) {
 				// Dividir la línea en nombre y dinero
@@ -242,15 +247,24 @@ namespace CppCLRWinFormsProject {
 				std::istringstream iss(linea);
 				iss >> nombre >> dinero;
 
-				// Crear un nuevo elemento ListView con el nombre y dinero
-				System::Windows::Forms::ListViewItem^ item = gcnew System::Windows::Forms::ListViewItem(gcnew System::String(nombre.c_str()));
-				item->SubItems->Add(gcnew System::String(dinero.c_str()));
+				// Convertir el dinero a entero
+				int dineroInt = std::stoi(dinero);
 
-				// Agregar el elemento al ListView
-				listView->Items->Add(item);
+				// Agregar los datos al vector
+				datos.push_back(std::make_pair(nombre, dineroInt));
 			}
 
 			archivo.close();
+
+			// Ordenar el vector en función de la cantidad de dinero (orden descendente) usando el comparador estático
+			std::sort(datos.begin(), datos.end(), Comparador);
+
+			// Agregar los elementos al ListView en el orden correcto
+			for (const auto& dato : datos) {
+				System::Windows::Forms::ListViewItem^ item = gcnew System::Windows::Forms::ListViewItem(gcnew System::String(dato.first.c_str()));
+				item->SubItems->Add(gcnew System::String(std::to_string(dato.second).c_str()));
+				listView->Items->Add(item);
+			}
 		}
 		else {
 			MessageBox::Show("Error al abrir el archivo.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -258,17 +272,15 @@ namespace CppCLRWinFormsProject {
 		}
 
 		// Ajustar el tamaño de fuente del ListView
-			System::Drawing::Font ^ fuente = gcnew System::Drawing::Font(listView->Font->FontFamily, 13);
+		System::Drawing::Font^ fuente = gcnew System::Drawing::Font(listView->Font->FontFamily, 13);
 		listView->Font = fuente;
 
 		// Agregar el ListView a la ventana
 		ventanaTop10->Controls->Add(listView);
 
-
-
 		// Mostrar la ventana
 		ventanaTop10->Show();
-		}
+	}
 		 
 	};
 

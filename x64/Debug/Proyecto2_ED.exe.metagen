@@ -61,6 +61,7 @@ Class Proyecto2_ED.AreaJuego: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     hiloBinario(): PrivateScope, Public, HideBySig
     hiloHeap(): PrivateScope, Public, HideBySig
     hiloSplay(): PrivateScope, Public, HideBySig
+    hiloAvl(): PrivateScope, Public, HideBySig
     TablaJuego_KeyDown(Object, KeyEventArgs): PrivateScope, Public, HideBySig
     OcultarColumnaSeleccionada(): PrivateScope, Public, HideBySig
     MostrarVentanaMercado(Object, EventArgs): PrivateScope, Public, HideBySig
