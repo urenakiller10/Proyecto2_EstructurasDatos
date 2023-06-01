@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Administrador.h" />
+    <ClInclude Include="ArbolAVL.h" />
     <ClInclude Include="AreaJuego.h">
       <FileType>CppForm</FileType>
     </ClInclude>
